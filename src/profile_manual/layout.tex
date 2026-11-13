@@ -1,0 +1,180 @@
+% Layout system for the KodeWorks identity manual (round 2).
+% Page: 297 x 167 mm (16:9). Margins 16 mm. 12-column grid: content width 265 mm.
+% All absolute coordinates are in mm from the page's top-left corner.
+\makeatletter
+\renewcommand{\normalsize}{\@setfontsize\normalsize{10.5}{15}}
+\makeatother
+\normalsize
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3mm}
+\setlength{\columnsep}{10mm}
+\setlength{\leftmargini}{4mm}
+\renewcommand{\labelitemi}{\textcolor{kwdarkgreen}{\textendash}}
+\setlength{\columnseprule}{0pt}
+\sloppy
+
+% ---------- Absolute placement helpers ----------
+\newcommand{\kwo}[2]{($(current page.north west)+(#1mm,-#2mm)$)}
+% \kwoo{x}{y}{dx}{dy}: like \kwo with an extra offset in cm (dx, dy may be pgf maths)
+\newcommand{\kwoo}[4]{($(current page.north west)+(#1mm,-#2mm)+({#3},{#4})$)}
+\newcommand{\kwdraw}[1]{\nointerlineskip\vbox to 0pt{\hbox to 0pt{%
+  \begin{tikzpicture}[remember picture,overlay] #1 \end{tikzpicture}\hss}\vss}\nointerlineskip}
+% \kwat{x}{y}{content}: text/graphic block, top-left anchored. \kwatw has a fixed width.
+\newcommand{\kwat}[3]{\kwdraw{\node[anchor=north west,inner sep=0pt,align=left] at \kwo{#1}{#2} {#3};}}
+\newcommand{\kwatw}[4]{\kwdraw{\node[anchor=north west,inner sep=0pt,align=left,text width=#3mm] at \kwo{#1}{#2} {#4};}}
+% \kwrect{x}{y}{w}{h}{colour}
+\newcommand{\kwrect}[5]{\kwdraw{\fill[fill=#5] \kwo{#1}{#2} rectangle ++(#3mm,-#4mm);}}
+% \kwtile{x}{y}{w}{h}{fill}{border colour or none}{img}{img width mm}{colour command + label}
+\newcommand{\kwtile}[9]{\kwdraw{%
+  \fill[fill=#5,draw=#6,line width=0.4pt] \kwo{#1}{#2} rectangle ++(#3mm,-#4mm);
+  \node[inner sep=0pt] at ($(current page.north west)+(#1mm+0.5*#3mm,-#2mm-0.5*#4mm)$)
+    {\includegraphics[width=#8mm]{\kwimgdir/#7}};
+  \node[anchor=south west,inner sep=0pt] at ($(current page.north west)+(#1mm+3mm,-#2mm-#4mm+3mm)$)
+    {\kwsize{6.5}{8}\kwregular #9};}}
+% \kwtileok / \kwtileno: same as \kwtile plus a check / cross mark in the top-left corner
+\newcommand{\kwtileok}[9]{\kwtile{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}\kwmark{ok}{#1}{#2}}
+\newcommand{\kwtileno}[9]{\kwtile{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}\kwmark{no}{#1}{#2}}
+% \kwpanel{x}{y}{w}{h}{fill}{img}{img x}{img y}{img width}: clipped panel, image may bleed
+\newcommand{\kwpanel}[9]{\kwdraw{\begin{scope}
+  \clip \kwo{#1}{#2} rectangle ++(#3mm,-#4mm);
+  \fill[fill=#5] \kwo{#1}{#2} rectangle ++(#3mm,-#4mm);
+  \node[anchor=north west,inner sep=0pt] at \kwo{#7}{#8} {\includegraphics[width=#9mm]{\kwimgdir/#6}};
+  \end{scope}}}
+% \kwimg{x}{y}{width mm}{file}: free image, top-left anchored
+\newcommand{\kwimg}[4]{\kwat{#1}{#2}{\includegraphics[width=#3mm]{\kwimgdir/#4}}}
+
+% ---------- Check / cross marks (the only place red is used) ----------
+% \kwmark{ok|no}{x}{y}: round mark; (x,y) is the corner of its 8.4 mm box (pass the tile corner).
+\makeatletter
+\newcommand{\kwmark}[3]{\kwdraw{\begin{scope}[shift={($(current page.north west)+(#2mm+4.2mm,-#3mm-4.2mm)$)}]
+  \fill[fill=kw#1] (0,0) circle (3mm);
+  \csname kwmark@#1\endcsname\end{scope}}}
+\newcommand{\kwmark@ok}{\draw[white,line width=1.3pt,line cap=round,line join=round] (-1.25mm,-0.05mm)--(-0.35mm,-1.0mm)--(1.35mm,1.1mm);}
+\newcommand{\kwmark@no}{\draw[white,line width=1.3pt,line cap=round] (-1.05mm,-1.05mm)--(1.05mm,1.05mm) (-1.05mm,1.05mm)--(1.05mm,-1.05mm);}
+
+% ---------- Dimension lines (tikz code: use inside \kwdraw{...}) ----------
+% \kwdimh{x1}{x2}{y}{label}: horizontal dimension, label above. \kwdimv{y1}{y2}{x}{label}: vertical, label left.
+\newcommand{\kwdimh}[4]{%
+  \draw[kwdarkgreen,line width=0.4pt,{Stealth[length=1.3mm,width=0.9mm]}-{Stealth[length=1.3mm,width=0.9mm]}]
+    ($(current page.north west)+(#1mm,-#3mm)$) -- ($(current page.north west)+(#2mm,-#3mm)$);
+  \draw[kwdarkgreen,line width=0.4pt]
+    ($(current page.north west)+(#1mm,-#3mm+1.4mm)$) -- ($(current page.north west)+(#1mm,-#3mm-1.4mm)$)
+    ($(current page.north west)+(#2mm,-#3mm+1.4mm)$) -- ($(current page.north west)+(#2mm,-#3mm-1.4mm)$);
+  \node[anchor=south,inner sep=0.5mm,text=kwdarkgreen] at ($(current page.north west)+(0.5*#1mm+0.5*#2mm,-#3mm)$)
+    {\kwsize{7}{8}\kwregular #4};}
+\newcommand{\kwdimv}[4]{%
+  \draw[kwdarkgreen,line width=0.4pt,{Stealth[length=1.3mm,width=0.9mm]}-{Stealth[length=1.3mm,width=0.9mm]}]
+    ($(current page.north west)+(#3mm,-#1mm)$) -- ($(current page.north west)+(#3mm,-#2mm)$);
+  \draw[kwdarkgreen,line width=0.4pt]
+    ($(current page.north west)+(#3mm+1.4mm,-#1mm)$) -- ($(current page.north west)+(#3mm-1.4mm,-#1mm)$)
+    ($(current page.north west)+(#3mm+1.4mm,-#2mm)$) -- ($(current page.north west)+(#3mm-1.4mm,-#2mm)$);
+  \node[anchor=east,inner sep=0.8mm,text=kwdarkgreen] at ($(current page.north west)+(#3mm,-0.5*#1mm-0.5*#2mm)$)
+    {\kwsize{7}{8}\kwregular #4};}
+
+% ---------- Page start / footer ----------
+\gdef\kwcursec{}\gdef\kwcurbg{kwwhite}\gdef\kwcurfooter{grey}
+\newcommand{\kwfooterh}{18}% footer band height in mm
+\newcommand{\kwpageno}{\ifnum\value{page}<10 0\fi\thepage}
+\newcommand{\kwfooterband}[3]{% band colour, text colour, hairline colour
+  \fill[fill=#1] ($(current page.south west)$) rectangle ($(current page.south east)+(0,\kwfooterh mm)$);
+  \draw[#3,line width=0.4pt] ($(current page.south west)+(0,\kwfooterh mm)$) -- ($(current page.south east)+(0,\kwfooterh mm)$);
+  \fill[kwgreen] ($(current page.south west)+(16mm,\kwfooterh mm)$) rectangle ++(14mm,0.9mm);
+  \node[anchor=west,text=#2,inner sep=0pt] at ($(current page.south west)+(16mm,0.5*\kwfooterh mm-0.9mm)$) {\kwsize{8.5}{10}\kwmedium \kwcursec};
+  \node[text=#2,inner sep=0pt] at ($(current page.south west)+(0.5*\paperwidth,0.5*\kwfooterh mm-0.9mm)$) {\kwsize{8.5}{10}\kwregular KodeWorks};
+  \node[anchor=east,text=#2,inner sep=0pt] at ($(current page.south east)+(-16mm,0.5*\kwfooterh mm-0.9mm)$) {\kwsize{8.5}{10}\kwregular \kwpageno};}
+\newcommand{\kwdrawbg}{\begin{tikzpicture}[remember picture,overlay]
+  \fill[fill=\kwcurbg] (current page.south west) rectangle (current page.north east);
+  \csname kwfooter@\kwcurfooter\endcsname
+  \end{tikzpicture}}
+\newcommand{\kwfooter@none}{}
+\newcommand{\kwfooter@grey}{\kwfooterband{kwgrey}{kwblack}{kwgrey}}
+\newcommand{\kwfooter@white}{\kwfooterband{kwwhite}{kwblack}{kwhair}}
+\newcommand{\kwfooter@black}{\kwfooterband{kwblack}{kwwhite}{kwblack}}
+\newcommand{\kwfooter@green}{\kwfooterband{kwgreen}{kwblack}{kwgreen}}
+% \kwbegin{section}{background colour}{text colour}{footer style}
+\newcommand{\kwbegin}[4]{\clearpage
+  \gdef\kwcursec{#1}\gdef\kwcurbg{#2}\gdef\kwcurfooter{#4}%
+  \AddToHookNext{shipout/background}{\kwdrawbg}%
+  \color{#3}\raggedright\vspace*{0pt}\par}
+\makeatother
+
+% ---------- Page head and headings ----------
+\newcommand{\kwpagehead}[2]{\noindent
+  \begin{minipage}[t]{0.56\linewidth}{\raggedright\kwsize{30}{34}\kwlight #1\par}\end{minipage}\hfill
+  \begin{minipage}[t]{0.36\linewidth}{\raggedright\kwsize{11}{15.5}\kwregular #2\par}\end{minipage}\par\vspace{8mm}}
+\newcommand{\kwhone}[1]{\par{\kwsize{20}{24}\kwlight #1\par}\vspace{2mm}}
+\newcommand{\kwhtwo}[1]{\par\vspace{3mm}\nopagebreak{\color{kwgreen}\rule{8mm}{1.3pt}}\par\nopagebreak\vspace{-1mm}{\kwsize{11}{14}\kwmedium #1\par}\nopagebreak\vspace{-1mm}}
+\newcommand{\kwhthree}[1]{\par{\kwsize{9}{12}\kwmedium #1\par}}
+% Emphasis in titles: colour, not weight. Usage: Dine \kwem{ideer}
+\newcommand{\kwem}[1]{\textcolor{kwdarkgreen}{#1}}
+
+% ---------- Page types (called from the Lua filter) ----------
+% Cover: \kwcover{title}{subtitle}{meta}
+\newcommand{\kwcover}[3]{\kwbegin{}{kwblack}{kwwhite}{none}%
+  \kwpanel{0}{0}{297}{167}{kwblack}{kw-symbol-hvit-med-gronn-strek.pdf}{184}{-30}{104}%
+  \kwimg{16}{16}{62}{kw-navnetrekk-hvit.pdf}%
+  \kwat{16}{66}{\color{kwwhite}\kwsize{70}{72}\kwlight #1}%
+  \kwatw{16}{128}{150}{\color{kwwhite}\kwsize{13}{18}\kwregular #2}%
+  \kwat{16}{148}{\color{kwgreen}\kwsize{8.5}{10}\kwregular #3}}
+% Divider: \kwdivider{number}{title}{text}; sets label sec:<number> for the contents page
+\newcommand{\kwdivider}[3]{\kwbegin{}{kwdeepgreen}{kwwhite}{none}\label{sec:#1}%
+  \kwpanel{0}{0}{297}{167}{kwdeepgreen}{femte-element-mork-gronn.pdf}{205}{-12}{130}%
+  \kwat{16}{18}{\color{kwgreen}\kwsize{11}{13}\kwmedium #1}%
+  \kwat{16}{52}{\color{kwwhite}\kwsize{54}{58}\kwlight #2}%
+  \kwatw{16}{118}{110}{\color{kwwhite}\kwsize{13}{18.5}\kwregular #3}%
+  \kwimg{16}{148}{34}{kw-navnetrekk-hvit.pdf}}
+
+% ---------- Contents page ----------
+% \kwpg{01}: page number of divider 01 (works after the second pass; '--' when the divider is not in the build)
+\newcommand{\kwpg}[1]{\ifcsname r@sec:#1\endcsname\pageref{sec:#1}\else--\fi}
+% \kwtocrow{row index 0-8}{number}{title}
+\newcommand{\kwtocrow}[3]{\kwdraw{%
+  \draw[kwhair,line width=0.4pt] \kwo{128}{\the\numexpr16+#1*13\relax} -- \kwo{281}{\the\numexpr16+#1*13\relax};
+  \node[anchor=north west,inner sep=0pt,text=kwdarkgreen] at \kwo{128}{\the\numexpr19+#1*13\relax} {\kwsize{9}{11}\kwmedium #2};
+  \node[anchor=north west,inner sep=0pt] at \kwo{144}{\the\numexpr17+#1*13\relax} {\kwsize{20}{24}\kwlight #3};
+  \node[anchor=north east,inner sep=0pt] at \kwo{281}{\the\numexpr19+#1*13\relax} {\kwsize{9}{11}\kwregular \kwpg{#2}};}}
+\newcommand{\kwtoc}{%
+  \kwtocrow{0}{01}{Introduksjon}\kwtocrow{1}{02}{Logo}\kwtocrow{2}{03}{Farger}\kwtocrow{3}{04}{Typografi}%
+  \kwtocrow{4}{05}{Grafiske elementer}\kwtocrow{5}{06}{Foto}\kwtocrow{6}{07}{Tone}\kwtocrow{7}{08}{Anvendelse}%
+  \kwtocrow{8}{09}{Produksjon}%
+  \kwdraw{\draw[kwhair,line width=0.4pt] \kwo{128}{133} -- \kwo{281}{133};}}
+
+% ---------- Content components ----------
+% \kwswatch{x}{y}{w}{colour}{name}{HEX}{RGB}{CMYK}{PMS}
+\newcommand{\kwswatch}[9]{%
+  \kwdraw{\fill[fill=#4,draw=kwhair,line width=0.4pt] \kwo{#1}{#2} rectangle ++(#3mm,-48mm);}%
+  \kwatw{#1}{\the\numexpr#2+51\relax}{#3}{{\kwsize{9.5}{12}\kwmedium \vphantom{Åg}#5}\par\vspace{1.5mm}%
+    {\kwsize{7}{10}\kwlight\setlength{\tabcolsep}{0pt}\renewcommand{\arraystretch}{1.25}%
+    \begin{tabular}{@{}>{\kwregular\color{kwmuted}}l@{\hspace{3.5mm}}l@{}}%
+      HEX & #6\\ RGB & #7\\ CMYK & #8\\ PMS & #9\end{tabular}}}}
+
+% ---------- Free-form helpers ----------
+% \kwcell{x}{y}{w}{h}{fill|none}{border colour|none}{colour command + label}: tile without image
+\newcommand{\kwcell}[7]{\kwdraw{%
+  \fill[fill=#5,draw=#6,line width=0.4pt] \kwo{#1}{#2} rectangle ++(#3mm,-#4mm);
+  \node[anchor=south west,inner sep=0pt] at ($(current page.north west)+(#1mm+3mm,-#2mm-#4mm+3mm)$)
+    {\kwsize{6.5}{8}\kwregular #7};}}
+% \kwatc{x}{y}{content}: centred on (x,y). \kwatco{x}{y}{tikz node options}{content}, e.g. xslant=0.4,transform shape
+\newcommand{\kwatco}[4]{\kwdraw{\node[inner sep=0pt,#3] at \kwo{#1}{#2} {#4};}}
+\newcommand{\kwatc}[3]{\kwatco{#1}{#2}{}{#3}}
+% \kwdotat{x}{y}: small black dot (tikz code, use inside \kwdraw)
+\newcommand{\kwdotat}[2]{\fill[kwblack] \kwo{#1}{#2} circle (0.7mm);}
+
+% ---------- Web components (from kodeworks.no; 1 px = 0.75 pt) ----------
+% Button: rectangular, no radius. \kwbutton{fill colour}{label}
+\newcommand{\kwbutton}[2]{\setlength{\fboxsep}{0pt}\colorbox{#1}{\hspace{6mm}\raisebox{3.3mm}[0pt][0pt]{\kwsize{12}{14}\kwregular\textcolor{kwwhite}{#2}}\hspace{6mm}\rule{0pt}{10mm}}}
+% Link: black text, green underline. \kwlink{text}
+\newcommand{\kwlink}[1]{\begin{tikzpicture}[baseline=(t.base)]\node[inner sep=0pt,anchor=base west] (t) {\kwsize{12}{14}\kwregular #1};\fill[kwgreen] ([yshift=-1.0mm]t.base west) rectangle ([yshift=-1.6mm]t.base east);\end{tikzpicture}}
+% Quote with 10 px green left edge. \kwquote{width}{text}
+\newcommand{\kwquote}[2]{\setlength{\fboxsep}{0pt}\hbox{{\color{kwgreen}\vrule width 2.65mm}\hspace{4mm}\begin{minipage}{#1}\raggedright\kwsize{15}{20}\kwlight #2\end{minipage}}}
+% Box with thin black frame (1.25 px). \kwbox{width}{content}
+\newcommand{\kwbox}[2]{\setlength{\fboxrule}{0.33mm}\setlength{\fboxsep}{4mm}\fbox{\begin{minipage}{#1}\raggedright\kwsize{9}{12.5}\kwregular #2\end{minipage}}}
+
+% ---------- Table (profile style): hairlines, Medium header ----------
+% \begin{kwtable}{colspec} \kwth{A} & \kwth{B} \\ \hline ... \end{kwtable}
+% Pandoc pipe tables are converted to this automatically by filter.lua.
+\newenvironment{kwtable}[1]{\begingroup\kwsize{9}{12}\kwregular\renewcommand{\arraystretch}{1.5}%
+  \arrayrulecolor{kwhair}\setlength{\arrayrulewidth}{0.4pt}\setlength{\tabcolsep}{0pt}%
+  \begin{tabular}{#1}\hline}{\end{tabular}\endgroup}
+\newcommand{\kwth}[1]{{\kwmedium #1}}
+\newcommand{\kwmutedtext}[1]{\textcolor{kwmuted}{#1}}

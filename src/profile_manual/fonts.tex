@@ -1,0 +1,21 @@
+% Non Natural Grotesk loaded from files (no installation).
+% build/paths.tex (written by build_manual.py) defines \kwfontdir.
+% Rule: Light for titles/lead/large text (>= 14 pt), Regular for body and small text,
+% Medium for emphasis and small subheadings. Thin and Bold are not used in profiled material.
+% kernfix.lua (written from kernfix.json by the build) adds extra kern pairs as features
+% kwfr/kwfl/kwfm for Regular/Light/Medium (gaps around j and r-f in the font's own kerning).
+\directlua{dofile("kernfix.lua")}
+\defaultfontfeatures{Path=\kwfontdir, Extension=.otf}
+\setmainfont{NON Natural Grotesk-Regular}[
+  UprightFont={NON Natural Grotesk-Regular}, UprightFeatures={RawFeature={+kwfr}},
+  BoldFont={NON Natural Grotesk-Medium}, BoldFeatures={RawFeature={+kwfm}},
+  ItalicFont={NON Natural Grotesk-Regular}, ItalicFeatures={FakeSlant=0.14, RawFeature={+kwfr}},
+  BoldItalicFont={NON Natural Grotesk-Medium}, BoldItalicFeatures={FakeSlant=0.14, RawFeature={+kwfm}}]
+\setsansfont{NON Natural Grotesk-Regular}[RawFeature={+kwfr}]
+\newfontfamily\kwthin{NON Natural Grotesk-Thin}
+\newfontfamily\kwlight{NON Natural Grotesk-Light}[RawFeature={+kwfl}]
+\newfontfamily\kwregular{NON Natural Grotesk-Regular}[RawFeature={+kwfr}]
+\newfontfamily\kwmedium{NON Natural Grotesk-Medium}[RawFeature={+kwfm}]
+\newfontfamily\kwbold{NON Natural Grotesk-Bold}
+% Size helper: \kwsize{font size}{leading}
+\newcommand{\kwsize}[2]{\fontsize{#1}{#2}\selectfont}

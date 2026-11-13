@@ -1,0 +1,222 @@
+% KodeWorks document style (letter and document variants). A4, one grid, family of CV v3.
+% Page: left margin 20 mm, text 135 (letter) or 140 mm (document), furniture spans 20-190 mm.
+% Body 10/15 pt; paragraph gap 7.5 pt; headings Light; labels small letterspaced Medium in #666.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{kwdocument}[2026/11/11 KodeWorks document style]
+\RequirePackage{fontspec}
+\RequirePackage{xcolor}
+\RequirePackage{graphicx}
+\InputIfFileExists{paths.tex}{}{}
+\providecommand{\kwfontdir}{fonts/}
+\providecommand{\kwassetdir}{assets/}
+\providecommand{\kwtextwmm}{145}
+
+\@ifundefined{ifkwletter}{\newif\ifkwletter}{}
+\RequirePackage[a4paper,left=20mm,textwidth=\kwtextwmm mm,top=29mm,bottom=40mm]{geometry}
+
+% ---------- palette (colors.json) ----------
+\definecolor{kwgreen}{HTML}{B6FF9E}
+\definecolor{kwgrey}{HTML}{E8E7E6}
+\definecolor{kwdarkgreen}{HTML}{35664C}
+\definecolor{kwmuted}{HTML}{666666}
+\colorlet{kwhair}{black!14}
+
+% ---------- fonts (from files in the build folder, never installed) ----------
+\directlua{dofile("kernfix.lua")}
+\InputIfFileExists{fontguard.tex}{}{}
+\edef\kwfp{\directlua{tex.sprint((string.gsub([[\kwfontdir]],"/*$","/")))}}
+\defaultfontfeatures{Path=\kwfp, Extension=.otf, Ligatures=TeX}
+\setmainfont{NON Natural Grotesk-Regular}[
+  UprightFont={NON Natural Grotesk-Regular}, UprightFeatures={RawFeature={+kwfr}},
+  BoldFont={NON Natural Grotesk-Medium}, BoldFeatures={RawFeature={+kwfm}},
+  ItalicFont={NON Natural Grotesk-Regular}, ItalicFeatures={FakeSlant=0.14, RawFeature={+kwfr}},
+  BoldItalicFont={NON Natural Grotesk-Medium}, BoldItalicFeatures={FakeSlant=0.14, RawFeature={+kwfm}}]
+\setsansfont{NON Natural Grotesk-Regular}[RawFeature={+kwfr}]
+\setmonofont{NON Natural Grotesk-Regular}[RawFeature={+kwfr}]
+\newfontfamily\kwlightfam{NON Natural Grotesk-Light}[RawFeature={+kwfl},
+  BoldFont={NON Natural Grotesk-Medium}, BoldFeatures={RawFeature={+kwfm}},
+  ItalicFont={NON Natural Grotesk-Light}, ItalicFeatures={FakeSlant=0.14, RawFeature={+kwfl}}]
+\newfontfamily\kwregularfam{NON Natural Grotesk-Regular}[RawFeature={+kwfr},
+  BoldFont={NON Natural Grotesk-Medium}, BoldFeatures={RawFeature={+kwfm}},
+  ItalicFont={NON Natural Grotesk-Regular}, ItalicFeatures={FakeSlant=0.14, RawFeature={+kwfr}}]
+\newfontfamily\kwmediumfam{NON Natural Grotesk-Medium}[RawFeature={+kwfm}]
+\newfontfamily\kwmediumlsfam{NON Natural Grotesk-Medium}[LetterSpace=7,RawFeature={+kwfm}]
+\def\kwspfix{\spaceskip=\fontdimen2\font plus 0pt minus 0.2pt\relax}
+% the Light space is too narrow for running text: widen it for Light only
+\newcommand{\kwlight}{\kwlightfam}
+\newcommand{\kwregular}{\kwregularfam}
+\newcommand{\kwmedium}{\kwmediumfam}
+\newcommand{\kwmediumls}{\kwmediumlsfam}
+% body font is the main (roman) family: it carries the Medium bold and the slanted italic
+\newcommand{\kwsize}[2]{\fontsize{#1}{#2}\selectfont\kwspfix}
+
+\RequirePackage{polyglossia}
+\setmainlanguage{nb}
+\RequirePackage[protrusion=false]{microtype}
+\RequirePackage{ragged2e}
+% the font's ellipsis glyph shows a single dot; set three dots by hand
+\newcommand{\kwellip}{.\kern0.14em.\kern0.14em.}
+\newcommand{\kwneed}[1]{\par\dimen0=\pagegoal\relax\advance\dimen0 by -\pagetotal\relax\ifdim\dimen0<#1\relax\vfill\penalty-10000 \fi}
+\RequirePackage{tikz}
+\usetikzlibrary{calc}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{lastpage}
+\RequirePackage{refcount}
+\RequirePackage{array}
+\RequirePackage{colortbl}
+\RequirePackage[hidelinks,unicode]{hyperref}
+\providecommand{\tightlist}{}
+\providecommand{\pandocbounded}[1]{#1}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6.8pt plus 1pt minus 0.5pt}
+\renewcommand{\normalsize}{\kwsize{10}{14.4}}
+\normalsize
+\raggedbottom
+\clubpenalties=2 10000 0 \widowpenalties=2 10000 0 \displaywidowpenalty=9000
+\hyphenpenalty=180 \exhyphenpenalty=50
+\emergencystretch=3em
+\tolerance=1500
+\hfuzz=1pt
+\setlength{\fboxsep}{0pt}
+% ragged right that avoids a very short last line
+\newcommand{\kwragged}{\rightskip=0pt plus 2.2em\relax\leftskip=0pt\relax\parfillskip=0pt plus 1fil\relax}
+\newcommand{\kwnh}{\lefthyphenmin=100 \righthyphenmin=100 \exhyphenpenalty=10000 \hyphenpenalty=10000 }
+\newcommand{\kwhyph}{\lefthyphenmin=3 \righthyphenmin=4 \uchyph=0 \hyphenpenalty=300 \exhyphenpenalty=50 }
+\kwhyph
+\AddToHook{begindocument/end}{\kwragged\kwhyph
+  \hyphenation{konsulent-oppdrag utviklings-oppdrag utviklings-miljø kunde-portal maskin-vare kode-base team-leder
+    prosjekt-leder integrasjons-løsning sanntids-data bruker-opplevelsen bruker-grensesnitt}}
+
+% ---------- tokens ----------
+\newlength{\kwbul}\setlength{\kwbul}{5.6mm}
+\newlength{\kwtextw}\setlength{\kwtextw}{\kwtextwmm mm}
+\newsavebox{\kwdotbox}
+\sbox{\kwdotbox}{\tikz[baseline=0pt]\fill[kwgreen] (0.7mm,1.0mm) circle (0.72mm);}
+\newsavebox{\kwdottwobox}
+\sbox{\kwdottwobox}{\tikz[baseline=0pt]\fill[kwdarkgreen] (0.7mm,1.0mm) circle (0.42mm);}
+\newcommand{\kwdot}{\usebox{\kwdotbox}}
+\newcommand{\kwdottwo}{\usebox{\kwdottwobox}}
+\newcommand{\kwmuted}[1]{{\color{kwmuted}#1}}
+\newcommand{\kwlabel}[1]{{\kwsize{6.8}{9}\kwmediumls\color{kwmuted}\MakeUppercase{#1}}}
+\newcommand{\kwhead}[1]{\par\addvspace{20pt}\kwneed{5\baselineskip}%
+  {\parskip=0pt\kwnh\kwragged\kwsize{15}{19}\kwlightfam #1\par}\nobreak\vspace{7pt}\nobreak}
+\newcommand{\kwsubhead}[1]{\par\addvspace{12pt}\kwneed{4\baselineskip}%
+  {\parskip=0pt\kwnh\kwragged\kwsize{10.5}{15}\kwmedium #1\par}\nobreak\vspace{3pt}\nobreak}
+\newcommand{\kwlead}[1]{\par\addvspace{9pt}\kwneed{4\baselineskip}{\kwmedium #1}\par\nobreak}
+\newcommand{\kwrule}{\par\vspace{8pt}\noindent{\color{kwhair}\rule{\kwtextw}{0.3pt}}\par\vspace{8pt}}
+
+% ---------- lists (own markers; two levels) ----------
+\newcommand{\kwitem}[3]{{\parskip=3.4pt plus 0.5pt\leftskip=#1\kwbul\relax\kwragged\leftskip=#1\kwbul\relax
+  \noindent\llap{\hbox to \kwbul{#2\hss}}#3\par}}
+\newcommand{\kwnum}[1]{{\kwmedium\color{kwdarkgreen}#1}}
+\newcommand{\kwlistend}{}
+
+% ---------- quote ----------
+\newtcolorbox{kwquote}{enhanced jigsaw, breakable, colback=white, colframe=white, boxrule=0pt, frame hidden, sharp corners,
+  borderline west={1mm}{0pt}{kwgreen}, left=6mm, right=0pt, top=1pt, bottom=1pt, boxsep=0pt,
+  before skip=10pt, after skip=10pt}
+\newcommand{\kwquotetext}{\kwsize{11.5}{17}\kwlight}
+
+% ---------- fact box ----------
+\newlength{\kwfl}\setlength{\kwfl}{33mm}
+\newtcolorbox{kwfacts}{enhanced, colback=kwgrey!55, colframe=kwgrey!55, boxrule=0pt, sharp corners,
+  borderline west={1mm}{0pt}{kwgreen}, left=7mm, right=6mm, top=4.5mm, bottom=3mm, boxsep=0pt,
+  before skip=14pt, after skip=14pt}
+\newcommand{\kwfact}[2]{\par{\parskip=0pt\noindent\hbox to \linewidth{\hbox to \kwfl{\kwlabel{#1}\hss}%
+  \vtop{\hsize=\dimexpr\linewidth-\kwfl\relax\kwragged\kwhyph\noindent\strut #2\par}\hss}}\vspace{1.5mm}}
+
+% ---------- columns ----------
+\newcommand{\kwcolgap}{9mm}
+
+% ---------- contact and signature ----------
+\newtcolorbox{kwcontactbox}{enhanced jigsaw, breakable=false, colback=white, colframe=white, boxrule=0pt, frame hidden, sharp corners,
+  borderline west={1mm}{0pt}{kwgreen}, left=6mm, right=0pt, top=0.5mm, bottom=0.5mm, boxsep=0pt,
+  before skip=16pt, after skip=8pt}
+\newcommand{\kwpers}[4]{{\parskip=0pt\kwragged\kwnh\noindent\strut\ifx\relax#1\relax\else{\kwmedium #1}\par\fi
+  \ifx\relax#2\relax\else\kwmuted{#2}\par\fi\ifx\relax#3\relax\else#3\par\fi\ifx\relax#4\relax\else#4\par\fi}}
+\newcommand{\kwsignoff}[2]{\par\kwneed{9\baselineskip}\vspace{14pt}{\parskip=0pt\noindent #1\par}\vspace{12mm}#2\par}
+
+% ---------- tables ----------
+\newcommand{\kwth}[1]{\kwlabel{#1}}
+\newcommand{\kwtablerule}{\arrayrulecolor{kwhair}\hline\arrayrulecolor{black}}
+\renewcommand{\arraystretch}{1.0}
+
+% ---------- document title (document variant) ----------
+\newcommand{\kwdoctitle}[5]{% kicker, title, subtitle, size, leading
+  \par\vspace*{17mm}%
+  {\parskip=0pt\kwnh\kwragged\rightskip=0pt plus 50mm\relax
+   \ifx\relax#1\relax\else{\kwsize{7}{9}\kwmediumls\color{kwdarkgreen}\MakeUppercase{#1}}\par\vspace{4.5mm}\fi
+   {\kwsize{#4}{#5}\kwlightfam #2}\par
+   \ifx\relax#3\relax\else\vspace{4mm}{\kwsize{13}{18}\kwlightfam\color{kwmuted}#3}\par\fi}%
+  \vspace{4mm}}
+% ---------- subject (letter variant) ----------
+\newdimen\kwy
+% top of the subject (mm from the page top): the base position, or below the recipient / meta block if they run long
+\newcommand{\kwsubjecttop}[1]{%
+  \kwy=#1\relax
+  \ifx\kwrecipient\empty\else
+    \sbox0{\parbox[t]{95mm}{\kwsize{10}{14.5}\kwregular\kwragged\kwnh\kwrecipient\par}}%
+    \dimen0=\dimexpr50mm+\ht0+\dp0+10mm\relax \ifdim\dimen0>\kwy \kwy=\dimen0 \fi
+  \fi
+  \ifx\kwmeta\empty\else
+    \sbox0{\parbox[t]{55mm}{\kwmeta\par}}%
+    \dimen0=\dimexpr16mm+\ht0+\dp0+9mm\relax \ifdim\dimen0>\kwy \kwy=\dimen0 \fi
+  \fi
+  \vspace*{\dimexpr\kwy-29mm\relax}}
+\newcommand{\kwsubject}[2]{\par\kwsubjecttop{#1}{\parskip=0pt\kwnh\kwragged\rightskip=0pt plus 50mm\relax\kwsize{16}{20.5}\kwlightfam #2\par}\vspace{6mm}}
+\newcommand{\kwnosubject}[1]{\par\kwsubjecttop{#1}}
+
+% ---------- page furniture ----------
+\newcommand{\kwfootertext}{%
+  \node[anchor=base west,inner sep=0pt] at (20,16.4) {\kwsize{7}{9}\kwmedium\kwcompany};
+  \node[anchor=base west,inner sep=0pt] at (20,12.7) {\kwsize{7}{9}\kwregular\color{kwmuted}Org.nr.~\kworgnr};
+  \node[anchor=base west,inner sep=0pt] at (71,16.4) {\kwsize{7}{9}\kwregular\color{kwmuted}Fjordgata 30};
+  \node[anchor=base west,inner sep=0pt] at (71,12.7) {\kwsize{7}{9}\kwregular\color{kwmuted}7010 Trondheim};
+  \node[anchor=base west,inner sep=0pt] at (105,16.4) {\kwsize{7}{9}\kwregular\color{kwmuted}Grønnegata 10};
+  \node[anchor=base west,inner sep=0pt] at (105,12.7) {\kwsize{7}{9}\kwregular\color{kwmuted}0350 Oslo};
+  \node[anchor=base east,inner sep=0pt] at (190,16.4) {\kwsize{7}{9}\kwregular\color{kwmuted}kodeworks.no};
+  \ifnum\getpagerefnumber{LastPage}>1
+    \node[anchor=base east,inner sep=0pt] at (190,12.7) {\kwsize{7}{9}\kwregular\color{kwmuted}Side \thepage{} av \getpagerefnumber{LastPage}};
+  \fi}
+\newcommand{\kwframe}{%
+  \fill[kwgreen] (20,23.2) rectangle (110,24.5);
+  \fill[kwgreen] (20,23.2) rectangle (21.3,33.4);
+  \fill[kwgreen] (28,33.0) -- (110,24.5) -- (110,24.88) -- (28,33.38) -- cycle;}
+\newcommand{\kwfooterhair}{\fill[kwhair] (20,23.2) rectangle (190,23.5);}
+\newcommand{\kwheadernode}{%
+  \node[anchor=north west,inner sep=0pt] at (20,12) {\includegraphics[width=24mm]{\kwassetdir kw-navnetrekk-svart.pdf}};
+  \node[anchor=base east,inner sep=0pt] at (190,15.5) {\kwsize{7.5}{9}\kwregular\color{kwmuted}\kwrunning};}
+\newcommand{\kwletterhead}{%
+  \begin{tikzpicture}[remember picture,overlay,x=1mm,y=-1mm,shift={(current page.north west)}]
+    \node[anchor=north west,inner sep=0pt] at (20,16) {\includegraphics[width=40mm]{\kwassetdir kw-navnetrekk-svart.pdf}};
+    \ifx\kwrecipient\empty\else
+      \node[anchor=base west,inner sep=0pt] at (20,46.5) {\kwsize{6.5}{8}\kwregular\color{kwmuted}\kwretline};
+      \node[anchor=north west,inner sep=0pt,text width=95mm,align=flush left] at (20,50) {\kwsize{10}{14.5}\kwregular\kwragged\kwnh\kwrecipient\par};
+    \fi
+    \node[anchor=north west,inner sep=0pt,text width=55mm,align=flush left] at (135,16) {\kwmeta\par};
+  \end{tikzpicture}}
+\newcommand{\kwdocdate}{%
+  \ifx\kwdate\empty\else
+  \begin{tikzpicture}[remember picture,overlay,x=1mm,y=-1mm,shift={(current page.north west)}]
+    \node[anchor=base east,inner sep=0pt] at (190,21.5) {\kwsize{7.5}{9}\kwregular\color{kwmuted}\kwdate};
+  \end{tikzpicture}\fi}
+\newcommand{\kwdocwordmark}{%
+  \begin{tikzpicture}[remember picture,overlay,x=1mm,y=-1mm,shift={(current page.north west)}]
+    \node[anchor=north west,inner sep=0pt] at (20,16) {\includegraphics[width=40mm]{\kwassetdir kw-navnetrekk-svart.pdf}};
+  \end{tikzpicture}}
+\def\kwdate{}\def\kwrecipient{}\def\kwretline{}\def\kwmeta{}\def\kwrunning{}\def\kwcompany{KodeWorks AS}\def\kworgnr{820 478 452}
+\AddToHook{shipout/foreground}{%
+  \ifnum\value{page}=1
+    \ifkwletter \kwletterhead\else\kwdocwordmark\kwdocdate\fi
+  \fi
+  \begin{tikzpicture}[remember picture,overlay,x=1mm,y=1mm,shift={(current page.south west)}]
+    \ifnum\value{page}=1 \kwframe\else
+      \ifnum\value{page}=\getpagerefnumber{LastPage}\relax\kwframe\else\kwfooterhair\fi\fi
+    \kwfootertext
+  \end{tikzpicture}%
+  \ifnum\value{page}>1
+    \begin{tikzpicture}[remember picture,overlay,x=1mm,y=-1mm,shift={(current page.north west)}]
+      \kwheadernode
+    \end{tikzpicture}%
+  \fi}

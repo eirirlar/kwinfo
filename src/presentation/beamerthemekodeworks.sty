@@ -1,0 +1,336 @@
+% KodeWorks beamer theme (formgiver, round 2). Page 338.67 x 190.5 mm. All layout is absolute (TikZ, mm from top-left).
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemekodeworks}[2026/11/11 KodeWorks presentation theme]
+\RequirePackage{fontspec}
+\RequirePackage{xcolor}
+\RequirePackage{tikz}
+\usetikzlibrary{calc}
+\RequirePackage{graphicx}
+\InputIfFileExists{paths.tex}{}{}
+\providecommand{\kwfontdir}{fonts}
+\providecommand{\kwassetdir}{assets}
+
+% ---------- Paper size (16:9, same as a PowerPoint page) ----------
+\makeatletter
+\setlength{\paperwidth}{338.67mm}\setlength{\paperheight}{190.5mm}
+\setlength{\pagewidth}{338.67mm}\setlength{\pageheight}{190.5mm}
+\def\beamer@paperwidth{338.67mm}\def\beamer@paperheight{190.5mm}
+\makeatother
+\setbeamersize{text margin left=24mm,text margin right=24mm}
+\setbeamertemplate{navigation symbols}{}
+\hypersetup{hidelinks}
+
+% ---------- Palette (colors.json) ----------
+\definecolor{kwgreen}{HTML}{B6FF9E}
+\definecolor{kwgrey}{HTML}{E8E7E6}
+\definecolor{kwblack}{HTML}{000000}
+\definecolor{kwwhite}{HTML}{FFFFFF}
+\definecolor{kwdarkgreen}{HTML}{35664C}
+\definecolor{kwdeepgreen}{HTML}{254333}
+\definecolor{kwmuted}{HTML}{666666}
+\colorlet{kwhair}{kwblack!14}
+
+% ---------- Fonts from files (never installed) ----------
+\directlua{
+fonts.handlers.otf.addfeature{name="kwfr",type="kern",data={[99]={[106]=-75},[102]={[106]=-30},[105]={[106]=-15,[58]=-10},[106]={[106]=-15,[58]=-10},[108]={[106]=-15,[58]=-10},[113]={[106]=-50,[58]=-20},[115]={[106]=-85,[58]=-10},[116]={[106]=-15},[117]={[106]=-20,[58]=-10},[120]={[106]=-30},[122]={[106]=-80,[58]=-10},[230]={[106]=-75},[114]={[102]=-40,[58]=-40},[68]={[58]=-10},[69]={[58]=-20},[71]={[58]=-30},[72]={[58]=-30},[73]={[58]=-30},[74]={[58]=-30},[77]={[58]=-30},[78]={[58]=-30},[79]={[58]=-10},[81]={[58]=-10},[85]={[58]=-30},[48]={[58]=-10},[49]={[58]=-30}}}
+fonts.handlers.otf.addfeature{name="kwfl",type="kern",data={[99]={[106]=-75},[102]={[106]=-20},[113]={[106]=-55,[58]=-25},[115]={[106]=-80,[58]=-10},[122]={[106]=-75},[230]={[106]=-75},[114]={[102]=-40,[58]=-40},[68]={[58]=-10},[69]={[58]=-15},[71]={[58]=-30},[72]={[58]=-30},[73]={[58]=-30},[74]={[58]=-30},[77]={[58]=-30},[78]={[58]=-30},[79]={[58]=-10},[81]={[58]=-10},[85]={[58]=-30},[48]={[58]=-10},[49]={[58]=-30}}}
+fonts.handlers.otf.addfeature{name="kwfm",type="kern",data={[99]={[106]=-90},[100]={[106]=-20},[102]={[106]=-35},[103]={[106]=-20},[104]={[106]=-20},[109]={[106]=-15},[110]={[106]=-20},[113]={[106]=-75,[58]=-15},[114]={[106]=-65,[102]=-35,[58]=-40},[115]={[106]=-90},[117]={[106]=-20,[58]=-10},[120]={[106]=-20},[122]={[106]=-90},[230]={[106]=-90},[105]={[58]=-10},[106]={[58]=-10},[108]={[58]=-10},[69]={[58]=-14},[71]={[58]=-20},[72]={[58]=-19},[73]={[58]=-19},[74]={[58]=-20},[77]={[58]=-19},[78]={[58]=-20},[85]={[58]=-19},[49]={[58]=-20}}}
+}
+\edef\kwfp{\directlua{tex.sprint((string.gsub([[\kwfontdir]],"/*$","/")))}}
+\defaultfontfeatures{Path=\kwfp, Extension=.otf, Ligatures=TeX}
+\setmainfont{NON Natural Grotesk-Regular}[
+  UprightFont={NON Natural Grotesk-Regular}, UprightFeatures={RawFeature={+kwfr}},
+  BoldFont={NON Natural Grotesk-Medium}, BoldFeatures={RawFeature={+kwfm}},
+  ItalicFont={NON Natural Grotesk-Regular}, ItalicFeatures={FakeSlant=0.14, RawFeature={+kwfr}},
+  BoldItalicFont={NON Natural Grotesk-Medium}, BoldItalicFeatures={FakeSlant=0.14, RawFeature={+kwfm}}]
+\setsansfont{NON Natural Grotesk-Regular}[RawFeature={+kwfr}]
+\newfontfamily\kwlight{NON Natural Grotesk-Light}[RawFeature={+kwfl}]
+\newfontfamily\kwregular{NON Natural Grotesk-Regular}[RawFeature={+kwfr}]
+\newfontfamily\kwmedium{NON Natural Grotesk-Medium}[RawFeature={+kwfm}]
+\defaultfontfeatures{}
+\renewcommand{\familydefault}{\sfdefault}
+\usefonttheme{professionalfonts}
+\let\kwlightfam\kwlight\let\kwregularfam\kwregular\let\kwmediumfam\kwmedium
+\def\kwspfix{}
+% The font's Light space is too narrow for running text; widen it for Light only.
+\renewcommand{\kwlight}{\kwlightfam\def\kwspfix{\spaceskip=0.27em plus 0.05em minus 0.03em\relax}}
+\renewcommand{\kwregular}{\kwregularfam\def\kwspfix{\spaceskip=0pt\relax}}
+\renewcommand{\kwmedium}{\kwmediumfam\def\kwspfix{\spaceskip=0pt\relax}}
+\def\kwsize#1#2{\fontsize{#1}{#2}\selectfont\kwspfix}
+
+% ---------- Absolute placement helpers (mm from the page's top-left corner) ----------
+\makeatletter
+\newcommand{\kwo}[2]{($(current page.north west)+({(#1)*1mm},{-(#2)*1mm})$)}
+\newcommand{\kwdraw}[1]{\ifvmode\nointerlineskip\fi\vbox to 0pt{\hbox to 0pt{%
+  \begin{tikzpicture}[remember picture,overlay] #1 \end{tikzpicture}\hss}\vss}\ifvmode\nointerlineskip\fi}
+% \kwat{x}{y}{width}{content}: text block, top-left anchored, fixed width
+\newcommand{\kwat}[4]{\kwdraw{\node[anchor=north west,inner sep=0pt,align=left,text width=#3mm] at \kwo{#1}{#2} {#4\par};}}
+% \kwatb{x}{y}{width}{content}: same, but anchored at its bottom-left corner
+\newcommand{\kwatb}[4]{\kwdraw{\node[anchor=south west,inner sep=0pt,align=left,text width=#3mm] at \kwo{#1}{#2} {#4\par};}}
+\newcommand{\kwrect}[5]{\kwdraw{\fill[fill=#5] \kwo{#1}{#2} rectangle ++(#3mm,-#4mm);}}
+\newcommand{\kwasset}[1]{\kwassetdir/#1}
+% \kwimg{x}{y}{width mm}{asset}: asset graphic, top-left anchored
+\newcommand{\kwimg}[4]{\kwdraw{\node[anchor=north west,inner sep=0pt] at \kwo{#1}{#2} {\includegraphics[width=#3mm]{\kwasset{#4}}};}}
+% \kwseismo{x}{y}{width mm}: green motif, clipped to the page (it bleeds off the edges)
+\newcommand{\kwseismo}[3]{\kwdraw{\begin{scope}
+  \clip (current page.north west) rectangle (current page.south east);
+  \node[anchor=north west,inner sep=0pt] at \kwo{#1}{#2} {\includegraphics[width=#3mm]{\kwasset{femte-element-gronn.pdf}}};
+  \end{scope}}}
+% \kwcover{x}{y}{W}{H}{file}: photo cropped to fill the box (document-relative path via \graphicspath)
+\newsavebox{\kwbox}
+\newcommand{\kwcover}[5]{\sbox{\kwbox}{\includegraphics{#5}}%
+  \pgfmathsetmacro{\kwar}{\strip@pt\wd\kwbox/\strip@pt\ht\kwbox}%
+  \pgfmathtruncatemacro{\kwwide}{\kwar > (#3)/(#4) ? 1 : 0}%
+  \kwdraw{\begin{scope}
+    \clip \kwo{#1}{#2} rectangle ++(#3mm,-#4mm);
+    \ifnum\kwwide=1
+      \node[inner sep=0pt] at ($(current page.north west)+(#1mm+0.5*#3mm,-#2mm-0.5*#4mm)$) {\includegraphics[height=#4mm]{#5}};
+    \else
+      \node[inner sep=0pt] at ($(current page.north west)+(#1mm+0.5*#3mm,-#2mm-0.5*#4mm)$) {\includegraphics[width=#3mm]{#5}};
+    \fi
+  \end{scope}}}
+% \kwfit{max width mm}{size pt}{text}: Light text at the given size, scaled down to fit the width
+\newcommand{\kwfit}[3]{\sbox{\kwbox}{\kwlight\kwsize{#2}{#2}#3}%
+  \pgfmathsetmacro{\kwsz}{min(#2, #2*((#1)*2.84528*0.95/\strip@pt\wd\kwbox))}%
+  \kwlight\kwsize{\kwsz}{\kwsz}#3}
+\long\def\kwifempty#1#2#3{\def\kwtmp{#1}\ifx\kwtmp\@empty #2\else #3\fi}
+\makeatother
+\def\kwcw{290.67}% content width: 338.67 - 2 x 24
+
+% ---------- Measuring and fitting (round 3) ----------
+% Content slides are measured before they are drawn: 20 pt first, 18 pt (the minimum) if the text is too tall
+% for the area above the footer, and if it is still too tall it is scaled down to fit and a package warning is issued.
+\newsavebox{\kwmeas}
+\newdimen\kwh \newdimen\kwavail \newdimen\kwmh \newdimen\kwsh
+\newif\ifkwsmall
+\makeatletter
+\newcommand{\kwmeasure}[2]{\sbox{\kwmeas}{\begin{minipage}[t]{#1mm}\hfuzz=\maxdimen\vfuzz=\maxdimen\hbadness=10000 #2\end{minipage}}\kwh=\dimexpr\ht\kwmeas+\dp\kwmeas\relax}
+\newcommand{\kwtoomuch}{\begingroup\renewcommand{\emph}[1]{##1}%
+  \PackageWarning{kodeworks}{Too much text on slide «\kwcurtitle»: split it in two}\endgroup}
+\gdef\kwcurtitle{}
+% \kwscaledraw{x}{y}{max height mm}: draw the measured box (\kwmeas), scaled down if it is taller than the limit
+\newcommand{\kwscaledraw}[3]{%
+  \ifdim\kwh>#3mm \pgfmathsetmacro{\kwsc}{(#3)*2.84528/\strip@pt\kwh}\kwtoomuch\else\def\kwsc{1}\fi
+  \kwdraw{\node[anchor=north west,inner sep=0pt] at \kwo{#1}{#2} {\scalebox{\kwsc}{\usebox{\kwmeas}}};}}
+% \kwfitbody{x}{y}{width}{max height mm}{content}{wide width}: 20 pt, then 18 pt, then 18 pt in the wide column, then scaled
+\newcommand{\kwfitbody}[6]{%
+  \global\kwsmallfalse
+  \kwmeasure{#3}{#5}%
+  \ifdim\kwh>#4mm \global\kwsmalltrue \kwmeasure{#3}{#5}%
+    \ifdim\kwh>#4mm \kwmeasure{#6}{#5}\fi\fi
+  \kwscaledraw{#1}{#2}{#4}}
+\makeatother
+
+% ---------- Type styles ----------
+\newcommand{\kwnohyph}{\hyphenpenalty=10000\exhyphenpenalty=10000\raggedright}
+\newcommand{\kwtitle}{\kwnohyph\kwlight\kwsize{36}{39}\color{kwblack}}
+\newcommand{\kwtitlebig}{\kwnohyph\kwlight\kwsize{58}{60}\color{kwwhite}}
+\newcommand{\kwlead}{\raggedright\kwlight\ifkwsmall\kwsize{20}{27}\else\kwsize{24}{32}\fi\color{kwblack}}
+\newcommand{\kwbody}{\raggedright\kwregular\ifkwsmall\kwsize{18}{23.5}\setlength{\parskip}{3.5mm}\else\kwsize{20}{26}\setlength{\parskip}{4.5mm}\fi\color{kwblack}\setlength{\parindent}{0pt}}
+\newcommand{\kwsmall}{\kwregular\kwsize{14}{19}\color{kwmuted}}
+\newcommand{\kwlabel}[1]{{\kwmedium\addfontfeature{LetterSpace=5}\kwsize{14}{18}\MakeUppercase{#1}}}
+\colorlet{kwem}{kwdarkgreen}
+\renewcommand{\emph}[1]{{\color{kwem}#1}}
+\gdef\kwnumc{kwmuted}
+\gdef\kwfootlogo{kw-navnetrekk-svart.pdf}
+\gdef\kwbgc{kwwhite}
+
+% ---------- Bullets as shapes (square, then dash), no maths fonts ----------
+\newcommand{\kwbulleta}{{\color{kwdarkgreen}\rule[0.9mm]{2.1mm}{2.1mm}}}
+\newcommand{\kwbulletb}{{\color{kwdarkgreen}\rule[1.7mm]{3.2mm}{0.45mm}}}
+\setbeamertemplate{itemize item}{\kwbulleta}
+\setbeamertemplate{itemize subitem}{\kwbulletb}
+\setbeamertemplate{itemize subsubitem}{\kwbulletb}
+\setbeamertemplate{enumerate item}{{\kwmedium\color{kwdarkgreen}\insertenumlabel}}
+\setbeamertemplate{enumerate subitem}{{\kwmedium\color{kwdarkgreen}\insertenumlabel}}
+\setbeamertemplate{itemize/enumerate body begin}{\ifkwsmall\setlength{\itemsep}{1.8mm}\else\setlength{\itemsep}{2.6mm}\fi\setlength{\parskip}{0pt}\setlength{\topsep}{0pt}}
+\setbeamertemplate{itemize/enumerate subbody begin}{\ifkwsmall\setlength{\itemsep}{1.2mm}\setlength{\topsep}{1.2mm}\kwsize{18}{22.5}\else\setlength{\itemsep}{1.8mm}\setlength{\topsep}{1.8mm}\kwsize{18}{24}\fi}
+\setlength{\leftmargini}{9mm}\setlength{\leftmarginii}{9mm}\setlength{\leftmarginiii}{9mm}
+\providecommand{\tightlist}{}
+
+% ---------- Footer: vector wordmark bottom left, page number bottom right ----------
+% Background and footer are read at shipout, after the frame group has closed, so the slide macros set
+% them with \gdef (\kwbgc, \kwnumc, \kwfootlogo); an empty \kwfootlogo means no footer.
+\setbeamertemplate{background canvas}{\color{\kwbgc}\vrule width\paperwidth height\paperheight depth 0pt}
+\setbeamertemplate{footline}{\ifx\kwfootlogo\empty\else\kwdraw{%
+  \node[anchor=south west,inner sep=0pt] at \kwo{24}{174.5} {\includegraphics[width=30mm]{\kwasset{\kwfootlogo}}};
+  \node[anchor=base east,inner sep=0pt,text=\kwnumc] at \kwo{314.67}{174.2} {\kwregular\kwsize{12}{14}\insertframenumber};}\fi}
+
+% ---------- Frame wrapper ----------
+% \kwframe{background}{footer wordmark file or empty}{page number colour}{emphasis colour}{body}{notes}
+% pandoc's beamer writer opens the frame (\begin{frame}[t]{}), so this only configures it.
+\setbeamertemplate{frametitle}{}
+\newcommand{\kwframe}[6]{\global\kwsmallfalse\gdef\kwbgc{#1}\gdef\kwfootlogo{#2}\gdef\kwnumc{#3}\colorlet{kwem}{#4}%
+  #5\kwifempty{#6}{}{\note{#6}}}
+\newcommand{\kwtab}{\kwrect{24}{0}{14}{3.4}{kwgreen}}
+
+% ---------- 1. Title slide: title, subtitle and meta flow in one block anchored to a fixed bottom line ----------
+\newcommand{\kwtitlebigs}[3]{{\kwnohyph\kwlight\kwsize{#1}{#2}\color{kwwhite}#3\par}}
+% \kwtitlesize{width}{available height (dimen)}{title}: 58 pt, then 44 pt, then 36 pt; sets \kwts and \kwtl
+\newif\ifkwbad
+\newdimen\kwtav \newdimen\kwtlim
+\newcommand{\kwtitletry}[4]{\def\kwts{#1}\def\kwtl{#2}\kwmeasure{#3}{\kwtitlebigs\kwts\kwtl{#4}}%
+  \pgfmathsetmacro{\kwlim}{3*#2+2}\kwtlim=\kwlim pt\relax
+  \ifdim\kwh>\kwtav \kwbadtrue\else\ifdim\kwh>\kwtlim \kwbadtrue\else\kwbadfalse\fi\fi}
+\newcommand{\kwtitlesize}[3]{\kwtav=#2\relax
+  \kwtitletry{58}{60}{#1}{#3}%
+  \ifkwbad\kwtitletry{44}{47}{#1}{#3}%
+    \ifkwbad\def\kwts{36}\def\kwtl{38}\fi\fi}
+\newcommand{\kwmetablk}[2]{\kwifempty{#1#2}{}{{\kwregular\kwsize{15}{20}\color{kwwhite}%
+  \kwifempty{#1}{}{{\kwmedium #1}}\kwifempty{#1}{}{\kwifempty{#2}{}{\hspace{5mm}}}%
+  \kwifempty{#2}{}{\color{kwgrey}#2}\par}}}
+\newcommand{\kwsubblk}[1]{\kwifempty{#1}{}{{\kwlight\kwsize{26}{34}\color{kwgrey}\raggedright #1\par}}}
+\newcommand{\kwtitleslide}[5]{\kwframe{kwdeepgreen}{}{kwgrey}{kwgreen}{%
+  \kwseismo{238.67}{0}{100}%
+  \kwimg{24}{24}{46}{kw-navnetrekk-hvit.pdf}%
+  \kwmeasure{190}{\kwmetablk{#3}{#4}}\kwmh=\kwh
+  \kwmeasure{196}{\kwsubblk{#2}}\kwsh=\kwh
+  \kwavail=126.5mm \advance\kwavail by-\kwmh \advance\kwavail by-\kwsh
+  \ifdim\kwmh>0pt \advance\kwavail by-14mm\fi \ifdim\kwsh>0pt \advance\kwavail by-9mm\fi
+  \kwtitlesize{196}{\kwavail}{#1}%
+  \kwatb{24}{166.5}{196}{\kwtitlebigs\kwts\kwtl{#1}%
+    \ifdim\kwsh>0pt\vskip 9mm\kwsubblk{#2}\fi\ifdim\kwmh>0pt\vskip 14mm\kwmetablk{#3}{#4}\fi}%
+  }{#5}}
+
+% ---------- 2. Section divider ----------
+\newcommand{\kwdivider}[4]{\kwframe{kwdeepgreen}{}{kwgrey}{kwgreen}{%
+  \kwseismo{250.67}{78}{88}%
+  \kwat{24}{24}{60}{{\kwmedium\addfontfeature{LetterSpace=5}\kwsize{16}{20}\color{kwgreen}#1}}%
+  \kwrect{24}{33}{12}{0.5}{kwgreen}%
+  \kwifempty{#3}{\kwsh=0pt}{\kwmeasure{150}{{\kwlight\kwsize{24}{32}\color{kwgrey}\raggedright #3\par}}\kwsh=\kwh}%
+  \kwavail=92.5mm \advance\kwavail by-\kwsh
+  \kwtitlesize{196}{\kwavail}{#2}%
+  \kwat{24}{66}{196}{\kwtitlebigs\kwts\kwtl{#2}}%
+  \kwifempty{#3}{}{\kwatb{24}{166.5}{150}{\kwlight\kwsize{24}{32}\color{kwgrey}\raggedright #3}}%
+  }{#4}}
+
+% ---------- 3. Content (title, optional lead, body) ----------
+\newcommand{\kwlb}[2]{\kwbody\kwifempty{#1}{}{{\kwlead #1\par}\vskip\ifkwsmall 5mm\else 7mm\fi}#2\par}
+\newcommand{\kwcontent}[4]{\kwframe{kwwhite}{kw-navnetrekk-svart.pdf}{kwmuted}{kwdarkgreen}{%
+  \kwtab
+  \kwat{24}{23}{250}{\kwtitle #1}%
+  \gdef\kwcurtitle{#1}%
+  \kwfitbody{24}{58}{196}{106}{\kwlb{#2}{#3}}{250}%
+  }{#4}}
+
+% ---------- 4. Image: text left, photo bleeding off top and right edge ----------
+\newcommand{\kwimageslide}[5]{\kwframe{kwwhite}{kw-navnetrekk-svart.pdf}{kwmuted}{kwdarkgreen}{%
+  \kwcover{176.67}{0}{162}{160}{#4}%
+  \kwtab
+  \kwat{24}{23}{136}{\kwtitle #1}%
+  \gdef\kwcurtitle{#1}%
+  \kwfitbody{24}{58}{136}{106}{\kwlb{#2}{#3}}{136}%
+  }{#5}}
+
+% ---------- 5. Columns / comparison ----------
+% \kwcol{index}{count}{y}{heading or empty}{body}: all columns share one size (20 pt, or 18 pt if any is too tall)
+\newcommand{\kwcolgeom}[2]{%
+  \pgfmathsetmacro{\kwcolw}{(\kwcw-16*(#2-1))/#2}%
+  \pgfmathsetmacro{\kwcolx}{24+(#1-1)*(\kwcolw+16)}}
+\newcommand{\kwcoloff}[1]{\kwifempty{#1}{\def\kwoff{0}}{\def\kwoff{17}}}
+\newcommand{\kwbodyblk}[1]{\kwbody #1\par}
+\newcommand{\kwcolmeasure}[5]{%
+  \kwcolgeom{#1}{#2}\kwcoloff{#4}\pgfmathsetmacro{\kwmx}{164-(#3)-\kwoff}%
+  \kwmeasure{\kwcolw}{\kwbodyblk{#5}}\ifdim\kwh>\kwmx mm \global\kwsmalltrue\fi}
+\newcommand{\kwcoldraw}[5]{%
+  \kwcolgeom{#1}{#2}\kwcoloff{#4}\pgfmathsetmacro{\kwmx}{164-(#3)-\kwoff}%
+  \kwifempty{#4}{}{%
+    \kwdraw{\draw[line width=0.6pt,color=kwblack] \kwo{\kwcolx}{#3} -- ++(\kwcolw mm,0);}%
+    \kwat{\kwcolx}{(#3)+5}{\kwcolw}{\color{kwblack}\kwlabel{#4}}}%
+  \kwmeasure{\kwcolw}{\kwbodyblk{#5}}%
+  \pgfmathsetmacro{\kwby}{(#3)+\kwoff}%
+  \kwscaledraw{\kwcolx}{\kwby}{\kwmx}}
+\let\kwcol\kwcoldraw
+\newcommand{\kwcolumns}[4]{\kwframe{kwwhite}{kw-navnetrekk-svart.pdf}{kwmuted}{kwdarkgreen}{%
+  \kwtab
+  \kwat{24}{23}{250}{\kwtitle #1}%
+  \gdef\kwcurtitle{#1}%
+  \kwifempty{#2}{\def\kwcy{58}}{\kwat{24}{58}{230}{\kwlead #2}\def\kwcy{92}}%
+  \global\kwsmallfalse
+  \begingroup\let\kwcol\kwcolmeasure #3\endgroup
+  \let\kwcol\kwcoldraw #3}{#4}}
+
+% ---------- 6. Quote on green ----------
+\newcommand{\kwquoteslide}[3]{\kwframe{kwgreen}{kw-navnetrekk-svart.pdf}{kwmuted}{kwdeepgreen}{%
+  \kwrect{24}{50}{18}{2.2}{kwblack}%
+  \kwat{24}{64}{250}{\kwnohyph\kwlight\kwsize{44}{52}\color{kwblack}#1%
+    \kwifempty{#2}{}{\par\vskip 11mm{\kwregular\kwsize{18}{24}\color{kwblack}\rule[1mm]{10mm}{0.5pt}\hspace{4mm}#2}}}%
+  }{#3}}
+
+% ---------- 7. Key figures on grey tiles ----------
+% \kwfig{index}{count}{y}{number}{explanation}
+\newcommand{\kwfig}[5]{%
+  \pgfmathsetmacro{\kwtw}{(\kwcw-8*(#2-1))/#2}%
+  \pgfmathsetmacro{\kwtx}{24+(#1-1)*(\kwtw+8)}%
+  \pgfmathsetmacro{\kwtn}{ifthenelse(#2>3,64,78)}%
+  \kwrect{\kwtx}{#3}{\kwtw}{92}{kwgrey}%
+  \kwrect{\kwtx}{#3}{\kwtw}{1.6}{kwgreen}%
+  \pgfmathsetmacro{\kwtwi}{\kwtw-18}%
+  \kwat{\kwtx+9}{#3+11}{\kwtwi}{\color{kwblack}\kwfit{\kwtwi}{\kwtn}{#4}}%
+  \kwatb{\kwtx+9}{#3+92-9}{\kwtwi}{\kwregular\kwsize{19}{25}\color{kwblack}\raggedright #5}}
+\newcommand{\kwfigures}[4]{\kwframe{kwwhite}{kw-navnetrekk-svart.pdf}{kwmuted}{kwdarkgreen}{%
+  \kwtab
+  \kwat{24}{23}{250}{\kwtitle #1}%
+  \kwifempty{#2}{\def\kwcy{58}}{\kwat{24}{58}{230}{\kwlead #2}\def\kwcy{84}}%
+  #3}{#4}}
+
+% ---------- 8. Logo wall ----------
+% \kwlogo{index}{y}{content}   (4 columns, tile 38 mm high)
+\def\kwhp{10000}
+\newcommand{\kwtilestyle}[3]{\hyphenpenalty=\kwhp\exhyphenpenalty=0\raggedright\kwregular\kwsize{#1}{#2}\color{kwblack}#3}
+\newcommand{\kwtilemeasure}[3]{\kwmeasure{#1}{\kwtilestyle\kwts\kwtl{#2}\par}\pgfmathsetmacro{\kwlim}{2*\kwtl+2}\kwavail=\kwlim pt\relax
+  \setbox0\hbox{\kwtilestyle\kwts\kwtl{#3}}%
+  \ifdim\wd0>#1mm \kwbadtrue\else\ifdim\kwh>\kwavail \kwbadtrue\else\kwbadfalse\fi\fi}
+% name tiles: 24 pt, 20 pt, 16 pt when the name needs more than two lines or its longest word does not fit;
+% no hyphenation (a last resort at 16 pt only if the longest word still does not fit), line spacing 1.15
+\newcommand{\kwtilefit}[3]{\def\kwhp{10000}%
+  \def\kwts{24}\def\kwtl{27.6}\kwtilemeasure{#1}{#2}{#3}%
+  \ifkwbad \def\kwts{20}\def\kwtl{23}\kwtilemeasure{#1}{#2}{#3}%
+    \ifkwbad \def\kwts{16}\def\kwtl{18.4}\setbox0\hbox{\kwtilestyle\kwts\kwtl{#3}}\ifdim\wd0>#1mm \def\kwhp{100}\fi\fi\fi}
+\newcommand{\kwlogogeom}[2]{%
+  \pgfmathtruncatemacro{\kwlr}{int((#1-1)/4)}%
+  \pgfmathtruncatemacro{\kwlc}{mod(#1-1,4)}%
+  \pgfmathsetmacro{\kwlw}{(\kwcw-24)/4}%
+  \pgfmathsetmacro{\kwliw}{\kwlw-14}%
+  \pgfmathsetmacro{\kwlx}{24+\kwlc*(\kwlw+8)}%
+  \pgfmathsetmacro{\kwly}{#2+\kwlr*40}}
+% pass 1: find the one size that fits every name (all tiles share it); pass 2: draw
+\newcommand{\kwlogomeasure}[4]{\kwlogogeom{#1}{#2}%
+  \kwifempty{#4}{}{\kwtilefit{\kwliw}{#3}{#4}%
+    \ifdim\kwts pt<\kwgts pt \global\let\kwgts\kwts \global\let\kwgtl\kwtl\fi
+    \ifnum\kwhp<10000 \gdef\kwghp{100}\fi}}
+\newcommand{\kwlogodraw}[4]{\kwlogogeom{#1}{#2}%
+  \kwrect{\kwlx}{\kwly}{\kwlw}{32}{kwgrey}%
+  \kwdraw{\node[anchor=north west,inner sep=0pt,text width=\kwliw mm,align=left]
+    at ($(current page.north west)+(\kwlx mm+7mm,-\kwly mm-9mm)$) {\let\kwts\kwgts\let\kwtl\kwgtl\let\kwhp\kwghp\kwtilestyle\kwts\kwtl{#3}\par};}}
+\let\kwlogo\kwlogodraw
+\newcommand{\kwlogoimg}[3]{\kwlogo{#1}{#2}{\includegraphics[width=\dimexpr\kwlw mm-14mm\relax,height=20mm,keepaspectratio]{#3}}{}}
+\newcommand{\kwlogos}[4]{\kwframe{kwwhite}{kw-navnetrekk-svart.pdf}{kwmuted}{kwdarkgreen}{%
+  \kwtab
+  \kwat{24}{23}{250}{\kwtitle #1}%
+  \kwifempty{#2}{\def\kwcy{66}}{\kwat{24}{58}{230}{\kwlead #2}\def\kwcy{88}}%
+  \gdef\kwgts{24}\gdef\kwgtl{27.6}\gdef\kwghp{10000}%
+  \begingroup\let\kwlogo\kwlogomeasure #3\endgroup
+  \let\kwlogo\kwlogodraw #3}{#4}}
+
+% ---------- 9. Closing on black ----------
+% \kwcontact{index}{name}{role}{email}{phone}
+\newcommand{\kwcontact}[5]{%
+  \pgfmathtruncatemacro{\kwkr}{int((#1-1)/2)}%
+  \pgfmathtruncatemacro{\kwkc}{mod(#1-1,2)}%
+  \pgfmathsetmacro{\kwkx}{102+\kwkc*118}%
+  \pgfmathsetmacro{\kwky}{98+\kwkr*48}%
+  \kwat{\kwkx}{\kwky}{100}{\raggedright\color{kwwhite}%
+    {\kwmedium\kwsize{22}{28}#2\par}\vskip 1mm
+    \kwifempty{#3}{}{{\kwregular\kwsize{15}{21}\color{kwgrey}#3\par}}\vskip 4mm
+    \kwifempty{#4}{}{{\kwregular\kwsize{18}{26}\color{kwgreen}#4\par}}
+    \kwifempty{#5}{}{{\kwregular\kwsize{18}{26}\color{kwwhite}#5\par}}}}
+\newcommand{\kwclosing}[3]{\kwframe{kwblack}{}{kwgrey}{kwgreen}{%
+  \kwimg{24}{24}{38}{kw-symbol-gronn.pdf}%
+  \kwat{102}{24}{200}{\kwtitlebig #1}%
+  #2}{#3}}
+\newcommand{\kwclosingtext}[1]{\kwat{102}{78}{200}{\raggedright\kwlight\kwsize{24}{32}\color{kwwhite}#1}}
+
+% ---------- Speaker notes page (only with the shownotes option) ----------
+\setbeamertemplate{note page}{\kwat{24}{26}{290}{\kwregular\kwsize{18}{25}\color{kwblack}\raggedright\setlength{\parskip}{3mm}\insertnote}}
+\endinput

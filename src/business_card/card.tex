@@ -1,0 +1,78 @@
+% KodeWorks business card: pandoc template (values from the YAML header of the card's Markdown file).
+% Sheet 105 x 75 mm = trim 85 x 55 mm + 10 mm margin on every side for 3 mm bleed and crop marks.
+% Page 1 = front (grey, black wordmark, contact block), page 2 = back (green, black symbol).
+% All coordinates are in mm from the lower left corner of the sheet; the trim box starts at (10,10).
+\documentclass{article}
+\input{paths.tex}
+\usepackage[paperwidth=105mm,paperheight=75mm,margin=0mm]{geometry}
+\usepackage{fontspec}
+\usepackage[\kwcolormodel]{xcolor}% cmyk for print, rgb for the screen version
+\usepackage{graphicx}
+\usepackage{tikz}
+\input{colors.tex}
+
+% ---------- fonts (files in the build folder, never installed) ----------
+\directlua{dofile("kernfix.lua")}
+\InputIfFileExists{fontguard.tex}{}{}
+\edef\kwfp{\directlua{tex.sprint((string.gsub([[\kwfontdir]],"/*$$","/")))}}
+\defaultfontfeatures{Path=\kwfp, Extension=.otf, Ligatures=TeX}
+\setmainfont{NON Natural Grotesk-Regular}[RawFeature={+kwfr}]
+\newfontfamily\kwregular{NON Natural Grotesk-Regular}[RawFeature={+kwfr}]
+\newfontfamily\kwmedium{NON Natural Grotesk-Medium}[RawFeature={+kwfm}]
+\newcommand{\kwsize}[2]{\fontsize{#1}{#2}\selectfont}
+
+% ---------- print boxes: trim 85 x 55 mm, bleed 3 mm (values in bp) ----------
+\pdfvariable pageattr {/TrimBox [28.3465 28.3465 269.2913 184.2520] /BleedBox [19.8425 19.8425 277.7953 192.7559]}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+% crop marks: 0.25 pt, from 4 mm to 9 mm outside the trim line (outside the bleed)
+\newcommand{\kwcropmarks}{%
+  \begin{scope}[line width=0.25pt, draw=kwregistration]
+    \foreach \x in {10,95}{\draw (\x,1) -- (\x,6); \draw (\x,69) -- (\x,74);}
+    \foreach \y in {10,65}{\draw (1,\y) -- (6,\y); \draw (99,\y) -- (104,\y);}
+  \end{scope}}
+\newcommand{\kwsheet}[1]{\noindent\begin{tikzpicture}[x=1mm,y=1mm]
+  \useasboundingbox (0,0) rectangle (105,75);
+  #1
+  \kwcropmarks
+\end{tikzpicture}\par}
+
+\begin{document}
+\color{kwblack}%
+% ---------------- front ----------------
+\kwsheet{%
+  \fill[kwgrey] (7,7) rectangle (98,68);
+  % wordmark: 40 mm wide, 6 mm in from the top and left trim edges
+  \node[anchor=north west, inner sep=0pt] at (16,59) {\includegraphics[width=40mm]{kw-navnetrekk.pdf}};
+  % contact block: bottom-aligned 6 mm above the bottom trim edge, so missing lines move nothing else
+  \node[anchor=south west, inner sep=0pt, align=left, text=kwblack] at (16,16) {%
+    \begin{minipage}[b]{73mm}\raggedright
+      {\kwsize{9}{11}\kwmedium $name$\par}
+$if(title)$
+      {\kwsize{8}{10}\kwregular $title$\par}
+$endif$
+      % the gap above the contact lines is set once, and only if at least one contact line follows
+      \def\kwgap{\vspace{2.2mm}\global\let\kwgap\relax}%
+      \kwsize{8}{10}\kwregular
+$if(phone)$
+      \kwgap $phone$\par
+$endif$
+$if(email)$
+      \kwgap $email$\par
+$endif$
+$if(web)$
+      \kwgap $web$\par
+$endif$
+    \end{minipage}};
+}
+\newpage
+% ---------------- back ----------------
+\kwsheet{%
+  \fill[kwgreen] (7,7) rectangle (98,68);
+  % symbol: 28 mm high, centred on the card
+  \node[anchor=center, inner sep=0pt] at (52.5,37.5) {\includegraphics[height=28mm]{kw-symbol.pdf}};
+}
+\end{document}

@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Virtual environments (one per OS, see README «Python-oppsett»)
+.venv/
+.venv-linux/
+
+# Google OAuth client and token (src/fetch_from_drive.py)
+secrets/
+
+# Local working data (downloads, files that are not part of the project)
+data/
+
+# CVs in cvs/<name>/: the Markdown and images/ are tracked; the built CV PDF and business cards are not
+cvs/*/*.pdf
+cvs/*/visittkort-*.png
+
+# Built files in the visual profile (rebuild with: uv run python src/build_all.py)
+deliverable/visualprofile/oversikt.pdf
+deliverable/visualprofile/profile/profilmanual.pdf
+deliverable/visualprofile/profile/assets/pdf/
+deliverable/visualprofile/profile/assets/png/
+deliverable/visualprofile/cv/*.pdf
+deliverable/visualprofile/presentation/*.pdf
+deliverable/visualprofile/document/*.pdf
+deliverable/visualprofile/business-card/*.pdf
+deliverable/visualprofile/business-card/*.png
+
+# Temporary files for scripts, tests and AI sessions (see CLAUDE.md: never write outside the project)
+tmp/

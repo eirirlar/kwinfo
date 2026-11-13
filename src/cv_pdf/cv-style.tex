@@ -1,0 +1,195 @@
+% KodeWorks CV v3 - style: geometry, fonts, palette, components. Used by src/build_cv_pdf.py.
+% Grid: body 9.5/14 pt at density 1. Vertical spacing in multiples of the quarter-grid \kwq.
+% \kwdensity (1..3) is set by the build script; 2 and 3 tighten leading/spacing (auto-fit).
+\usepackage[a4paper,left=20mm,right=20mm,top=22mm,bottom=30mm]{geometry}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\input{meta.tex}   % \kwfontdir, \kwimgdir, \kwcvname, \kwdensity
+\definecolor{kwgreen}{HTML}{B6FF9E}
+\definecolor{kwgrey}{HTML}{E8E7E6}
+\definecolor{kwdarkgreen}{HTML}{35664C}
+\definecolor{kwmuted}{HTML}{666666}
+\defaultfontfeatures{Path=\kwfontdir, Extension=.otf}
+\ifnum\kwisen=1 \setmainlanguage{english}\else\setmainlanguage{nb}\fi
+\newcommand{\kwhyph}{\lefthyphenmin=3 \righthyphenmin=5 \uchyph=0 \ifnum\kwisen=0 \hyphenation{medgrunnlegger forretnings-siden forretnings-side forretnings-området utviklings-prosjekt utviklings-miljø produksjons-tjenester produksjons-miljø produksjons-sette kunde-portal team-leder sanntids-data sanntids-overvåking sanntids-oppdateringer sanntids-kamera kryss-funksjonelle kryss-funksjonelt integrasjons-løsning integrasjons-systemer test-miljø test-dekning test-lab visualiserings-løsningen visualiserings-løsning videokonferanse-plattformen videokonferanse-enheter inspeksjons-systemer prosess-automasjon prosess-styring tredjeparts-integrasjoner kode-kvalitet gjenvinnings-kalkulator tekniske-diskusjoner diskusjons-ledelse medlems-bedrifter lærer-profil tilbake-melding system-utvikler fullstack-utvikler frontend-utvikler backend-utvikler fjern-styring oppdretts-merder havstrøms-målinger brann-alarm nød-lys tale-varsling slokke-systemer personell-sporing kart-visning stål-miljøer bruker-opplevelsen bruker-grensesnitt emballasje-designere miljø-påvirkning forretnings-logikk prosjekt-beskrivelse prosjekt-leder ansvars-område arkitektur-valg ytelses-problemer flaskehalser-profilering dashboard-løsning}\fi}
+\usepackage{lastpage}
+\usepackage{refcount}
+\directlua{dofile("kernfix.lua")}   % extra kern pairs (audit): see src/profile_manual/kernfix.json
+\InputIfFileExists{fontguard.tex}{}{}  % src/font_guard.py: fonts only from the build folder or TeX Live
+\setmainfont{NON Natural Grotesk-Regular}[
+  RawFeature={+kwfr},
+  BoldFont={NON Natural Grotesk-Medium}, BoldFeatures={RawFeature={+kwfm}},
+  ItalicFont={NON Natural Grotesk-Regular}, ItalicFeatures={FakeSlant=0.14, RawFeature={+kwfr}},
+  BoldItalicFont={NON Natural Grotesk-Medium}]
+\setsansfont{NON Natural Grotesk-Regular}[RawFeature={+kwfr}]
+\setmonofont{NON Natural Grotesk-Regular}[RawFeature={+kwfr}]
+\newfontfamily\kwlight{NON Natural Grotesk-Light}[RawFeature={+kwfl}]
+\newfontfamily\kwregular{NON Natural Grotesk-Regular}[RawFeature={+kwfr}]
+\newfontfamily\kwmedium{NON Natural Grotesk-Medium}[RawFeature={+kwfm}]
+\newfontfamily\kwmediumls{NON Natural Grotesk-Medium}[LetterSpace=7,RawFeature={+kwfm}]
+\newcommand{\kwsize}[2]{\fontsize{#1}{#2}\selectfont}
+\usepackage{microtype}
+\usepackage{ragged2e}
+\usepackage{needspace}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage[most]{tcolorbox}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+% ---- density: leading and spacing units -------------------------------------------------
+\newlength{\kwq}\newlength{\kwh}\newlength{\kwf}
+\ifnum\kwdensity=1 \def\kwlead{14}\def\kwledel{15}\setlength{\kwq}{3.5pt}\else
+\ifnum\kwdensity=2 \def\kwlead{13}\def\kwledel{14}\setlength{\kwq}{2.8pt}\else
+\def\kwlead{12.2}\def\kwledel{13.2}\setlength{\kwq}{2.2pt}\fi\fi
+\setlength{\kwh}{2\kwq}\setlength{\kwf}{4\kwq}
+\renewcommand{\normalsize}{\kwsize{9.5}{\kwlead}}
+\normalsize
+\raggedbottom
+\clubpenalties=2 10000 0 \widowpenalties=2 10000 0 \displaywidowpenalty=9000   % at least two lines on each side of a break
+\hyphenpenalty=180 \exhyphenpenalty=50   % ragged-right text hyphenates only when the line would otherwise be short
+\emergencystretch=3em
+\tolerance=1500
+\hfuzz=2pt
+
+\newlength{\kwlab}\setlength{\kwlab}{34mm}   % label column
+\newlength{\kwbul}\setlength{\kwbul}{4.2mm}  % bullet indent
+\newsavebox{\kwdotbox}
+\sbox{\kwdotbox}{\tikz[baseline=0pt]\fill[kwgreen] (0.9mm,1.15mm) circle (0.7mm);}
+\newcommand{\kwdot}{\usebox{\kwdotbox}}
+
+\newcommand{\kwlabel}[1]{{\kwsize{6.8}{14}\kwmediumls\color{kwmuted}\MakeUppercase{#1}}}
+\newcommand{\kwsub}[1]{{\kwsize{7.5}{14}\kwmediumls\color{kwdarkgreen}#1}}
+\newcommand{\kwmuted}[1]{{\color{kwmuted}#1}}
+% keyword separator: a dot with fixed space; at a line break the dot disappears (no dot ends or starts a line)
+\newcommand{\kwsep}{\discretionary{}{}{\hbox{\hskip0.5em{\color{kwmuted}\textperiodcentered}\hskip0.5em}}}
+
+% \kwholdtrue before a row keeps it together with the next row (no page break between them)
+\newif\ifkwhold
+\newcommand{\kwholdbreak}{\ifkwhold\nobreak\global\kwholdfalse\fi}
+% ---- project / table rows ----------------------------------------------------------------
+\newcommand{\kwrow}[2]{{\RaggedRight\leftskip=\kwlab\relax\noindent\llap{\hbox to \kwlab{\kwlabel{#1}\hss}}#2\par}\kwholdbreak\vspace{\kwq}}
+% same, with right margin reserved for the customer logo
+\newlength{\kwlw}\setlength{\kwlw}{40mm}
+\newcommand{\kwrowr}[2]{{\RaggedRight\leftskip=\kwlab\rightskip=0pt plus 1fil\relax\advance\rightskip by \kwlw\relax\noindent\llap{\hbox to \kwlab{\kwlabel{#1}\hss}}#2\par}\kwholdbreak\vspace{\kwq}}
+\newcommand{\kwbullet}[1]{{\RaggedRight\leftskip=\dimexpr\kwlab+\kwbul\relax\noindent\llap{\hbox to \kwbul{\kwdot\hss}}#1\par}\kwholdbreak\vspace{\kwq}}
+\newcommand{\kwbulletl}[2]{{\RaggedRight\leftskip=\dimexpr\kwlab+\kwbul\relax\noindent\llap{\hbox to \dimexpr\kwlab+\kwbul\relax{\kwlabel{#1}\hss}}\llap{\hbox to \kwbul{\kwdot\hss}}#2\par}\kwholdbreak\vspace{\kwq}}
+\newcommand{\kwlogo}[3]{\nointerlineskip\vbox to 0pt{\hbox to \linewidth{\hfill\vbox to 13mm{\vss\hbox{\includegraphics[width=#2mm,height=#3mm]{#1}}\vss}}\vss}\nointerlineskip}
+% 'Generelt' rows: widths (mm) measured by the build script; all columns ragged right (never justified)
+\newcommand{\kwgrow}[7]{\par\vspace{\kwq}\noindent
+  \ifdim #1mm>0pt\parbox[t]{\dimexpr#1mm-4mm\relax}{\RaggedRight\strut\kwmuted{#5}}\hskip4mm\fi
+  \parbox[t]{#2mm}{\RaggedRight\strut #6}%
+  \ifdim #3mm>0pt\hskip #4mm\parbox[t]{#3mm}{\RaggedRight\strut\kwmuted{#7}}\fi
+  \par\kwholdbreak\vspace{\kwq}}
+\newcommand{\kwgdesc}[2]{{\RaggedRight\leftskip=#1mm\noindent #2\par}\kwholdbreak\vspace{\kwq}}
+\newcommand{\kwgbul}[2]{{\RaggedRight\leftskip=\dimexpr#1mm+\kwbul\relax\noindent\llap{\hbox to \kwbul{\kwdot\hss}}#2\par}\kwholdbreak\vspace{\kwq}}
+\newcommand{\kwsubhd}[1]{{\kwmedium #1}}
+\newcommand{\kwnh}{\lefthyphenmin=100 \righthyphenmin=100 \exhyphenpenalty=10000 }  % no hyphenation
+
+\newtcolorbox{kwblock}{enhanced jigsaw, breakable, colback=white, colframe=white, boxrule=0pt, frame hidden, sharp corners, opacityback=1,
+  borderline west={1mm}{0pt}{kwgreen}, left=8mm, right=0pt, top=1.5pt, bottom=2pt,
+  boxsep=0pt, before skip=0pt, after skip=\kwf, toptitle=0pt}
+
+\newtcolorbox{kwnarrow}{enhanced jigsaw, breakable, colback=white, colframe=white, boxrule=0pt, frame hidden, sharp corners,
+  left=0pt, right=44mm, top=0pt, bottom=0pt, boxsep=0pt, before skip=0pt, after skip=0pt}
+\newcommand{\kwheading}[2][6]{\par\needspace{#1\baselineskip}\vspace{\kwf}{\RaggedRight\kwsize{14}{17}\kwlight #2\par}\nobreak\vspace{\kwh}\nobreak}
+
+% ---- section start: title + thick bar + thin line converging at the bar's right end -------
+% thick 1.3 mm : thin 0.38 mm
+\newcommand{\kwsection}[2]{\par\needspace{#2}\vspace{\dimexpr1.5\kwf\relax}%
+  \noindent\begin{tikzpicture}[x=1mm,y=-1mm,baseline=0pt]
+    \useasboundingbox (0,-6) rectangle (170,11);
+    \node[anchor=base west,inner sep=0pt] at (0,0) {\kwsize{24}{28}\kwlight #1};
+    \fill[kwgreen] (0,3.4) rectangle (170,4.7);
+    \fill[kwgreen] (8,9.7) -- (170,4.7) -- (170,5.08) -- (8,10.08) -- cycle;
+  \end{tikzpicture}\par\nobreak\vspace{\kwf}\nobreak}
+
+% ---- front page --------------------------------------------------------------------------
+\newcommand{\kwplaceholder}{%
+  \fill[kwgrey] (24,22) rectangle (76,86);
+  \begin{scope}\clip (24,22) rectangle (76,86);
+    \fill[kwgrey!78!black] (50,47) ellipse (9.2 and 10.8);
+    \fill[kwgrey!78!black] (44,55) rectangle (56,68);
+    \fill[kwgrey!78!black] (29,100) .. controls (29,73) and (39,66) .. (50,66) .. controls (61,66) and (71,73) .. (71,100) -- cycle;
+  \end{scope}}
+\newcommand{\kwheaderframe}{%
+  \fill[kwgreen] (79,22) rectangle (80.3,90.3);
+  \fill[kwgreen] (20,89) rectangle (80.3,90.3);}
+\newcommand{\kwcontactitem}[5]{% x, y, label, size, value
+  \node[anchor=base west,inner sep=0pt] at (#1,#2) {\kwlabel{#3}};
+  \node[anchor=base west,inner sep=0pt] at (#1,#2+5.4) {\kwsize{#4}{12}\kwregular #5};}
+
+% intro: "Om" and skills in two columns when it fits, stacked (flowing) otherwise.
+% #1 about block, #2 skills (two sub-columns), #3 skills (three columns, full width)
+\newsavebox{\kwintrobox}
+\newcommand{\kwlede}{\kwsize{10}{\kwledel}}
+\newcommand{\kwlededense}{\kwsize{9.5}{\kwlead}}
+\gdef\kwintroone{0}
+\newcommand{\kwabullet}[2]{{\RaggedRight\leftskip=\kwbul\noindent\llap{\hbox to \kwbul{\kwdot\hss}}#1 #2\par}\vspace{\kwq}}
+% #1 about (10 pt), #2 about (9.5 pt, tried if #1 does not fit), #3 skills (narrow column), #4 skills (full width)
+% stacked skills: groups are units (title + items stay together); a break may fall between groups, and the
+% first group on a following page gets a small "(forts.)" title. Page numbers come from the previous run.
+\newsavebox{\kwskillbox}
+\newcommand{\kwsg}[4]{% number, continued-title, title(+heading), items
+  \sbox{\kwskillbox}{\begin{minipage}{\linewidth}\kwsize{9.5}{12.4}#3\nobreak\vspace{\kwq}#4\end{minipage}}%
+  \needspace{\dimexpr\ht\kwskillbox+\dp\kwskillbox+\kwh\relax}%
+  \ifnum#1>1 \ifnum\getpagerefnumber{kwsg#1}>\getpagerefnumber{kwsg\the\numexpr#1-1\relax}\relax
+    \kwgrouphd{\MakeUppercase{#2}}\fi\fi
+  \label{kwsg#1}%
+  \noindent\usebox{\kwskillbox}\par\vspace{\kwh}}
+\newcommand{\kwtrybox}[4]{\sbox{\kwintrobox}{\begin{minipage}[t]{\linewidth}%
+    \begin{minipage}[t]{#1}#2\end{minipage}\hfill\begin{minipage}[t]{#3}#4\end{minipage}%
+  \end{minipage}}%
+  \dimen0=\dimexpr\pagegoal-\pagetotal-\ht\kwintrobox-\dp\kwintrobox\relax}
+% #1 about (10 pt), #2 about (9.5 pt), #3 skills (64 mm column), #4 skills (full width, stacked), #5 skills (70 mm column).
+% Two columns first (10 pt, then 9.5 pt, then a wider skills column); stacked only when none fits. Skills are
+% never split over a page break: the whole block stays on page 1 or moves as a whole.
+\newcommand{\kwintro}[5]{%
+  \par
+  \kwtrybox{94mm}{#1}{64mm}{#3}%
+  \ifdim\dimen0<0pt \kwtrybox{94mm}{#2}{64mm}{#3}\fi
+  \ifdim\dimen0<0pt \kwtrybox{88mm}{#2}{70mm}{#5}\fi
+  \ifdim\dimen0<0pt
+    \begin{kwnarrow}#2\end{kwnarrow}\vspace{\kwf}#4\par
+  \else
+    \ifdim\dimen0<\kwerfmin
+      \dimen1=\dimexpr0.5\dimen0\relax \ifdim\dimen1>18mm \dimen1=18mm \fi
+      \vspace{\dimen1}%
+      \noindent\usebox{\kwintrobox}\par\gdef\kwband{1}\clearpage
+    \else
+      \noindent\usebox{\kwintrobox}\par
+    \fi
+  \fi
+  \ifnum\value{page}=1 \gdef\kwintroone{1}\fi}
+\newcommand{\kwhd}[1]{{\kwsize{17}{20}\kwlight #1}\par\vspace{\kwf}}
+\newcommand{\kwgrouphd}[1]{\kwsub{#1}\par\vspace{\kwq}}
+\newcommand{\kwitems}[2]{\begin{minipage}[t]{#1}\RaggedRight #2\end{minipage}}
+\newcommand{\kwitem}[1]{{\kwnh\leftskip=\kwbul\noindent\llap{\hbox to \kwbul{\kwdot\hss}}#1\par}}
+
+% ---- fixed page furniture: running foot and closing figure (last page) ---------------------
+\newcommand{\kwclosing}{%
+  \begin{tikzpicture}[remember picture,overlay,x=1mm,y=1mm,shift={(current page.south west)}]
+    \fill[kwgreen] (20,0) rectangle (21.3,13.05);
+    \fill[kwgreen] (20,11.75) rectangle (123,13.05);
+    \fill[kwgreen] (28,27.7) -- (123,13.05) -- (123,13.43) -- (28,28.08) -- cycle;
+    \node[anchor=south east,inner sep=0pt] at (190,8.0) {\includegraphics[width=60mm]{\kwimgdir/kw-navnetrekk-svart.pdf}};
+  \end{tikzpicture}}
+\gdef\kwband{0}
+% page 1 closes with a calm seismograph band when the front page is a page of its own
+\newcommand{\kwfootband}{%
+  \begin{tikzpicture}[remember picture,overlay,x=1mm,y=1mm,shift={(current page.south west)}]
+    \fill[kwgreen] (20,0) rectangle (21.3,13.05);
+    \fill[kwgreen] (20,11.75) rectangle (190,13.05);
+    \fill[kwgreen] (28,21.7) -- (190,13.05) -- (190,13.43) -- (28,22.08) -- cycle;
+  \end{tikzpicture}}
+% page 1 gets the foot band when the first section (Erfaring/Generelt) does not start on it
+\newcommand{\kwmaybeband}{\ifnum\kwband=1 \kwfootband\else\ifnum\kwintroone=1 \ifnum\getpagerefnumber{kwfirst}>1 \kwfootband\fi\fi\fi}
+\newcommand{\kwrunning}{%
+  \begin{tikzpicture}[remember picture,overlay,x=1mm,y=1mm,shift={(current page.south west)}]
+    \node[anchor=base west,inner sep=0pt] at (20,12) {\kwsize{7.5}{9}\kwregular\color{kwmuted}\kwcvname};
+    \node[anchor=base east,inner sep=0pt] at (190,12) {\kwsize{7.5}{9}\kwregular\color{kwmuted}\thepage};
+  \end{tikzpicture}}
+\AddToHook{shipout/foreground}{%
+  \ifnum\value{page}=\getpagerefnumber{LastPage}\relax\kwclosing\else\ifnum\value{page}>1 \kwrunning\else\kwmaybeband\fi\fi}

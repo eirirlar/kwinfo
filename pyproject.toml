@@ -1,0 +1,28 @@
+[project]
+name = "kwinfo"
+version = "0.1.0"
+description = "Scripts and helpers for the kwinfo knowledge base about the KodeWorks companies."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  # Google Drive access (src/fetch_from_drive.py)
+  "google-api-python-client>=2.130.0",
+  "google-auth>=2.29.0",
+  "google-auth-oauthlib>=1.2.0",
+  "google-auth-httplib2>=0.2.0",
+]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.0",
+  "pytest-timeout>=2.3",
+]
+
+[tool.uv]
+# Not an installable package: scripts in src/ are run directly from the project root.
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+timeout = 3

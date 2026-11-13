@@ -1,0 +1,3 @@
+---
+title: Dokument uten innhold
+---

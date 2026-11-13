@@ -1,0 +1,24 @@
+{
+  "version": "2026-11",
+  "note": "CMYK/PMS with \"proposal\": true are not verified and must be checked by a printer before use in print.",
+  "colors": [
+    {"id": "green", "name": "Grønn", "role": "Hovedfarge. Aksent og profilflate; symbol og seismograf på mørk flate. Aldri tekst på lys flate.",
+     "hex": "#B6FF9E", "rgb": [182, 255, 158], "cmyk": [31, 0, 40, 0], "pms": "2267 C / 2267 U (neon)", "proposal": false},
+    {"id": "grey", "name": "Grå", "role": "Hovedfarge. Sekundærflate: kort, print, utvalgte nettseksjoner.",
+     "hex": "#E8E7E6", "rgb": [232, 231, 230], "cmyk": [8, 6, 7, 0], "pms": "179-2 C / 179-2 U (fra 2021, kontrolleres)", "proposal": false},
+    {"id": "black", "name": "Svart", "role": "Tekst, logo, mørk flate (bunntekst).",
+     "hex": "#000000", "rgb": [0, 0, 0], "cmyk": [0, 0, 0, 100], "pms": "Black C", "proposal": true},
+    {"id": "white", "name": "Hvit", "role": "Grunnflate og tekst på mørk flate.",
+     "hex": "#FFFFFF", "rgb": [255, 255, 255], "cmyk": [0, 0, 0, 0], "pms": "Papir", "proposal": false},
+    {"id": "darkgreen", "name": "Mørkegrønn", "role": "Interaktiv farge: knapper, utheving av ord i titler. Hvit tekst i knapp.",
+     "hex": "#35664C", "rgb": [53, 102, 76], "cmyk": [80, 30, 70, 40], "pms": "ca. 7729 C", "proposal": true},
+    {"id": "deepgreen", "name": "Dypgrønn", "role": "Mørk flate: skillesider, mørke seksjoner. Hover på knapper. Ikke tekst.",
+     "hex": "#254333", "rgb": [37, 67, 51], "cmyk": [85, 45, 75, 65], "pms": "ca. 3435 C", "proposal": true},
+    {"id": "pink", "name": "Rosa", "role": "Støtteflate i liten dose, høyst én flate per side. Aldri tekst.",
+     "hex": "#FAD5D5", "rgb": [250, 213, 213], "cmyk": [0, 15, 10, 0], "pms": "ca. 706 C", "proposal": true}
+  ],
+  "technical": [
+    {"id": "darkgrey", "name": "Mørkegrå", "role": "Sekundærtekst. Teknisk farge, ikke profilfarge.",
+     "hex": "#666666", "rgb": [102, 102, 102], "cmyk": [0, 0, 0, 60], "pms": "Cool Gray 10 C", "proposal": true}
+  ]
+}

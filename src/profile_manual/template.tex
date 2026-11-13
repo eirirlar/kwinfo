@@ -1,0 +1,25 @@
+\documentclass[11pt]{scrartcl}
+\usepackage[paperwidth=297mm,paperheight=167mm,left=16mm,right=16mm,top=16mm,bottom=30mm]{geometry}
+\usepackage{fontspec}
+\usepackage[norsk]{babel}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows.meta}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{setspace}
+\usepackage{array}
+\usepackage{colortbl}
+\input{build/paths.tex}
+\input{colors.tex}
+\input{fonts.tex}
+\InputIfFileExists{fontguard.tex}{}{}  % src/font_guard.py: fonts only from the build folder or TeX Live
+\input{layout.tex}
+\pagestyle{empty}
+\providecommand{\tightlist}{\setlength{\itemsep}{1pt}\setlength{\parskip}{0pt}}
+$for(header-includes)$
+$header-includes$
+$endfor$
+\begin{document}
+$body$
+\end{document}
