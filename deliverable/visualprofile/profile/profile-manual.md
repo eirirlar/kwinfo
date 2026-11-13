@@ -41,7 +41,7 @@ Helheten skal oppleves som industrielt tilsnitt uten å bli corporate: enkel, me
 \kwatw{112}{110}{44}{\kwsize{7.5}{9}\kwregular\color{kwmuted}LØFTER\par\vspace{1mm}\kwsize{10}{13.5}\kwlight Faglig sterk, åpen, delingskultur, samskapende.}
 \kwatw{16}{131}{140}{\kwsize{8}{11}\kwregular\color{kwmuted}Grunnlaget er den strategiske plattformen fra 2021. Den gjelder fortsatt.}
 % Fire byggesteiner
-\kwtile{165}{47}{56}{44}{kwgrey}{none}{kw-navnetrekk-svart.pdf}{38}{\color{kwmuted}Navnetrekk og symbol}
+\kwtile{165}{47}{56}{44}{kwgrey}{none}{kw-wordmark-black.pdf}{38}{\color{kwmuted}Navnetrekk og symbol}
 \kwrect{225}{47}{8}{44}{kwgreen}
 \kwrect{233}{47}{8}{44}{kwgrey}
 \kwrect{241}{47}{8}{44}{kwblack}
@@ -54,7 +54,7 @@ Helheten skal oppleves som industrielt tilsnitt uten å bli corporate: enkel, me
 \kwdraw{\fill[kwwhite,draw=kwhair,line width=0.4pt] \kwo{165}{95} rectangle ++(56mm,-44mm);}
 \kwat{170}{98}{\kwsize{44}{44}\kwlight Aa}
 \kwat{168}{132}{\kwsize{6.5}{8}\kwregular\color{kwmuted}Non Natural Grotesk}
-\kwph{225}{95}{56}{44}{foto_team2.jpg}{0.6664}{0.5}{0.3}
+\kwph{225}{95}{56}{44}{photo_team2.jpg}{0.6664}{0.5}{0.3}
 \kwat{228}{132}{\colorbox{kwwhite}{\kwsize{6.5}{8}\kwregular\color{kwblack}\,Egne bilder\,}}
 ```
 
@@ -87,14 +87,14 @@ Foto & Referansebilder som ikke tilhørte KodeWorks & KodeWorks' egne bilder av 
 ::: {.page section="Logo" title="Navnetrekk og symbol" lead="Logoen finnes som navnetrekk og som symbol. Begge leveres som tegnet vektorfil, ikke som tekst i fonten."}
 
 ```{=latex}
-\kwtile{16}{50}{62.5}{34}{kwwhite}{kwhair}{kw-navnetrekk-svart.pdf}{42}{\color{kwmuted}Navnetrekk, svart}
-\kwtile{83.5}{50}{62.5}{34}{kwblack}{none}{kw-navnetrekk-hvit.pdf}{42}{\color{kwgrey}Navnetrekk, hvit}
-\kwtile{151}{50}{62.5}{34}{kwblack}{none}{kw-navnetrekk-gronn.pdf}{42}{\color{kwgrey}Navnetrekk, grønn}
+\kwtile{16}{50}{62.5}{34}{kwwhite}{kwhair}{kw-wordmark-black.pdf}{42}{\color{kwmuted}Navnetrekk, svart}
+\kwtile{83.5}{50}{62.5}{34}{kwblack}{none}{kw-wordmark-white.pdf}{42}{\color{kwgrey}Navnetrekk, hvit}
+\kwtile{151}{50}{62.5}{34}{kwblack}{none}{kw-wordmark-green.pdf}{42}{\color{kwgrey}Navnetrekk, grønn}
 \kwatw{222}{50}{59}{\kwsize{9.5}{12}\kwmedium Navnetrekket er hovedlogo\par\vspace{1.5mm}\kwsize{8.5}{12}\kwregular Symbolet kan stå alene eller sammen med navnetrekket, men aldri overlappe det. I løpende tekst skrives navnet \mbox{KodeWorks} med stor K og stor W.}%
-\kwtile{16}{89}{62.5}{54}{kwwhite}{kwhair}{kw-symbol-svart.pdf}{18}{\color{kwmuted}Symbol, svart}
-\kwtile{83.5}{89}{62.5}{54}{kwwhite}{kwhair}{kw-symbol-svart-med-gronn-strek.pdf}{18}{\color{kwmuted}Symbol, svart med grønn strek}
-\kwtile{151}{89}{62.5}{54}{kwblack}{none}{kw-symbol-hvit-med-gronn-strek.pdf}{18}{\color{kwgrey}Symbol, hvit med grønn strek}
-\kwtile{218.5}{89}{62.5}{54}{kwblack}{none}{kw-symbol-gronn.pdf}{18}{\color{kwgrey}Symbol, grønn}
+\kwtile{16}{89}{62.5}{54}{kwwhite}{kwhair}{kw-symbol-black.pdf}{18}{\color{kwmuted}Symbol, svart}
+\kwtile{83.5}{89}{62.5}{54}{kwwhite}{kwhair}{kw-symbol-black-with-green-stroke.pdf}{18}{\color{kwmuted}Symbol, svart med grønn strek}
+\kwtile{151}{89}{62.5}{54}{kwblack}{none}{kw-symbol-white-with-green-stroke.pdf}{18}{\color{kwgrey}Symbol, hvit med grønn strek}
+\kwtile{218.5}{89}{62.5}{54}{kwblack}{none}{kw-symbol-green.pdf}{18}{\color{kwgrey}Symbol, grønn}
 ```
 
 :::
@@ -108,11 +108,11 @@ Foto & Referansebilder som ikke tilhørte KodeWorks & KodeWorks' egne bilder av 
 \kwdraw{\fill[fill=kwwhite,draw=kwdarkgreen,dash pattern=on 1.2mm off 0.8mm,line width=0.4pt] \kwo{21.17}{63.17} rectangle ++(72mm,-10.62mm);
   \kwdimh{16}{21.17}{56.2}{0,5x}\kwdimh{93.17}{98.34}{56.2}{0,5x}
   \kwdimv{58}{63.17}{13.5}{0,5x}\kwdimv{63.17}{73.79}{13.5}{x}\kwdimv{73.79}{78.96}{13.5}{0,5x}}
-\kwimg{21.17}{63.17}{72}{kw-navnetrekk-svart.pdf}
+\kwimg{21.17}{63.17}{72}{kw-wordmark-black.pdf}
 \kwatw{16}{84}{132}{\kwsize{8.5}{12}\kwregular x er høyden på K. Frisonen er 0,5x på alle sider, omtrent 7 prosent av bredden. Grå flate viser frisonen. Bakgrunnsfarge og seismograf bak er ikke brudd, så lenge logoen har minst 3:1 kontrast og seismografen ikke krysser bokstavene.}
 \kwatw{16}{103}{132}{\kwsize{9}{12}\kwmedium Minstestørrelse\par\kwsize{8.5}{12}\kwregular 24 mm bredde på trykk, 100 px bredde på skjerm.}
 \kwdraw{\kwdimh{16}{40}{127.5}{24 mm}}
-\kwimg{16}{129}{24}{kw-navnetrekk-svart.pdf}
+\kwimg{16}{129}{24}{kw-wordmark-black.pdf}
 \kwatw{50}{127}{95}{\kwsize{7.5}{10}\kwregular\color{kwmuted}Under 100 px bredde (for eksempel e-postsignatur): bruk 120 til 160 px og lever 2x-fil for høyoppløselige skjermer.}
 
 % ---- Symbol: height 50 mm; s = width = 28.82 mm; frisone 0.25s = 7.21 mm
@@ -121,10 +121,10 @@ Foto & Referansebilder som ikke tilhørte KodeWorks & KodeWorks' egne bilder av 
 \kwdraw{\fill[fill=kwwhite,draw=kwdarkgreen,dash pattern=on 1.2mm off 0.8mm,line width=0.4pt] \kwo{172.21}{65.21} rectangle ++(28.82mm,-50mm);
   \kwdimh{165}{172.21}{56.2}{0,25s}\kwdimh{201.03}{208.24}{56.2}{0,25s}\kwdimh{172.21}{201.03}{123.9}{s}
   \kwdimv{58}{65.21}{162.5}{0,25s}\kwdimv{115.21}{122.42}{162.5}{0,25s}}
-\kwimg{172.21}{65.21}{28.82}{kw-symbol-svart.pdf}
+\kwimg{172.21}{65.21}{28.82}{kw-symbol-black.pdf}
 \kwatw{222}{58}{59}{\kwsize{8.5}{12}\kwregular s er symbolets bredde. Frisonen er 0,25s på alle sider, omtrent 14 prosent av høyden. Grå flate viser frisonen.}
 \kwatw{222}{86}{59}{\kwsize{9}{12}\kwmedium Minstestørrelse\par\kwsize{8.5}{12}\kwregular 20 mm høyde på trykk, 80 px høyde på skjerm.}
-\kwimg{222}{103}{11.5}{kw-symbol-svart.pdf}
+\kwimg{222}{103}{11.5}{kw-symbol-black.pdf}
 \kwdraw{\kwdimv{103}{123.0}{245}{20 mm}}
 \kwatw{249}{103}{32}{\kwsize{7.5}{10}\kwregular\color{kwmuted}Under 80 px høyde forsvinner den tynne diagonalen. Der trengs et forenklet symbol (åpent punkt).}
 ```
@@ -134,18 +134,18 @@ Foto & Referansebilder som ikke tilhørte KodeWorks & KodeWorks' egne bilder av 
 ::: {.page section="Logo" title="Bakgrunner: navnetrekk" lead="Navnetrekket skal ha minst 3:1 kontrast mot bakgrunnen. Tallene er beregnet etter WCAG 2.x."}
 
 ```{=latex}
-\kwtileok{16}{50}{40.83}{38}{kwwhite}{kwhair}{kw-navnetrekk-svart.pdf}{28}{\color{kwmuted}\shortstack[l]{Svart på hvit\\21,00:1}}
-\kwtileok{60.83}{50}{40.83}{38}{kwgrey}{none}{kw-navnetrekk-svart.pdf}{28}{\color{kwmuted}\shortstack[l]{Svart på grå\\17,00:1}}
-\kwtileok{105.67}{50}{40.83}{38}{kwgreen}{none}{kw-navnetrekk-svart.pdf}{28}{\color{kwblack}\shortstack[l]{Svart på grønn\\17,79:1}}
-\kwtileok{150.5}{50}{40.83}{38}{kwblack}{none}{kw-navnetrekk-hvit.pdf}{28}{\color{kwgrey}\shortstack[l]{Hvit på svart\\21,00:1}}
-\kwtileok{195.33}{50}{40.83}{38}{kwdarkgreen}{none}{kw-navnetrekk-hvit.pdf}{28}{\color{kwwhite}\shortstack[l]{Hvit på mørkegrønn\\6,65:1}}
-\kwtileok{240.17}{50}{40.83}{38}{kwpink}{none}{kw-navnetrekk-svart.pdf}{28}{\color{kwblack}\shortstack[l]{Svart på rosa\\15,54:1}}
-\kwtileno{16}{93}{40.83}{38}{kwwhite}{kwhair}{kw-navnetrekk-gronn.pdf}{28}{\color{kwmuted}\shortstack[l]{Grønn på hvit\\1,18:1}}
-\kwtileno{60.83}{93}{40.83}{38}{kwgrey}{none}{kw-navnetrekk-gronn.pdf}{28}{\color{kwmuted}\shortstack[l]{Grønn på grå\\1,05:1}}
-\kwtileno{105.67}{93}{40.83}{38}{kwgrey}{none}{kw-navnetrekk-hvit.pdf}{28}{\color{kwmuted}\shortstack[l]{Hvit på grå\\1,23:1}}
-\kwtileno{150.5}{93}{40.83}{38}{kwgreen}{none}{kw-navnetrekk-hvit.pdf}{28}{\color{kwblack}\shortstack[l]{Hvit på grønn\\1,18:1}}
-\kwtileno{195.33}{93}{40.83}{38}{kwpink}{none}{kw-navnetrekk-hvit.pdf}{28}{\color{kwblack}\shortstack[l]{Hvit på rosa\\1,35:1}}
-\kwtileno{240.17}{93}{40.83}{38}{kwdeepgreen}{none}{kw-navnetrekk-svart.pdf}{28}{\color{kwgrey}\shortstack[l]{Svart på dypgrønn\\1,93:1}}
+\kwtileok{16}{50}{40.83}{38}{kwwhite}{kwhair}{kw-wordmark-black.pdf}{28}{\color{kwmuted}\shortstack[l]{Svart på hvit\\21,00:1}}
+\kwtileok{60.83}{50}{40.83}{38}{kwgrey}{none}{kw-wordmark-black.pdf}{28}{\color{kwmuted}\shortstack[l]{Svart på grå\\17,00:1}}
+\kwtileok{105.67}{50}{40.83}{38}{kwgreen}{none}{kw-wordmark-black.pdf}{28}{\color{kwblack}\shortstack[l]{Svart på grønn\\17,79:1}}
+\kwtileok{150.5}{50}{40.83}{38}{kwblack}{none}{kw-wordmark-white.pdf}{28}{\color{kwgrey}\shortstack[l]{Hvit på svart\\21,00:1}}
+\kwtileok{195.33}{50}{40.83}{38}{kwdarkgreen}{none}{kw-wordmark-white.pdf}{28}{\color{kwwhite}\shortstack[l]{Hvit på mørkegrønn\\6,65:1}}
+\kwtileok{240.17}{50}{40.83}{38}{kwpink}{none}{kw-wordmark-black.pdf}{28}{\color{kwblack}\shortstack[l]{Svart på rosa\\15,54:1}}
+\kwtileno{16}{93}{40.83}{38}{kwwhite}{kwhair}{kw-wordmark-green.pdf}{28}{\color{kwmuted}\shortstack[l]{Grønn på hvit\\1,18:1}}
+\kwtileno{60.83}{93}{40.83}{38}{kwgrey}{none}{kw-wordmark-green.pdf}{28}{\color{kwmuted}\shortstack[l]{Grønn på grå\\1,05:1}}
+\kwtileno{105.67}{93}{40.83}{38}{kwgrey}{none}{kw-wordmark-white.pdf}{28}{\color{kwmuted}\shortstack[l]{Hvit på grå\\1,23:1}}
+\kwtileno{150.5}{93}{40.83}{38}{kwgreen}{none}{kw-wordmark-white.pdf}{28}{\color{kwblack}\shortstack[l]{Hvit på grønn\\1,18:1}}
+\kwtileno{195.33}{93}{40.83}{38}{kwpink}{none}{kw-wordmark-white.pdf}{28}{\color{kwblack}\shortstack[l]{Hvit på rosa\\1,35:1}}
+\kwtileno{240.17}{93}{40.83}{38}{kwdeepgreen}{none}{kw-wordmark-black.pdf}{28}{\color{kwgrey}\shortstack[l]{Svart på dypgrønn\\1,93:1}}
 \kwatw{16}{134}{265}{\kwsize{8}{11}\kwregular\color{kwmuted}Grønt navnetrekk brukes bare på svart, dypgrønn eller mørkegrønn flate. På foto: svart eller hvitt navnetrekk, bare over rolig og jevn flate.}
 ```
 
@@ -154,18 +154,18 @@ Foto & Referansebilder som ikke tilhørte KodeWorks & KodeWorks' egne bilder av 
 ::: {.page section="Logo" title="Bakgrunner: symbol" lead="Symbolet bærer informasjon i den tynne diagonalen. Det skal ha minst 3:1 kontrast mot bakgrunnen, også i den grønne streken."}
 
 ```{=latex}
-\kwtileok{16}{50}{40.83}{38}{kwwhite}{kwhair}{kw-symbol-svart.pdf}{11}{\color{kwmuted}\shortstack[l]{Svart på hvit\\21,00:1}}
-\kwtileok{60.83}{50}{40.83}{38}{kwgrey}{none}{kw-symbol-svart.pdf}{11}{\color{kwmuted}\shortstack[l]{Svart på grå\\17,00:1}}
-\kwtileok{105.67}{50}{40.83}{38}{kwgreen}{none}{kw-symbol-svart.pdf}{11}{\color{kwblack}\shortstack[l]{Svart på grønn\\17,79:1}}
-\kwtileok{150.5}{50}{40.83}{38}{kwblack}{none}{kw-symbol-gronn.pdf}{11}{\color{kwgrey}\shortstack[l]{Grønn på svart\\17,79:1}}
-\kwtileok{195.33}{50}{40.83}{38}{kwblack}{none}{kw-symbol-hvit-med-gronn-strek.pdf}{11}{\color{kwgrey}\shortstack[l]{Hvit, grønn strek\\på svart, 21,00:1}}
-\kwtileok{240.17}{50}{40.83}{38}{kwdeepgreen}{none}{kw-symbol-hvit.pdf}{11}{\color{kwwhite}\shortstack[l]{Hvit på dypgrønn\\10,88:1}}
-\kwtileno{16}{93}{40.83}{38}{kwwhite}{kwhair}{kw-symbol-gronn.pdf}{11}{\color{kwmuted}\shortstack[l]{Grønn på hvit\\1,18:1}}
-\kwtileno{60.83}{93}{40.83}{38}{kwgrey}{none}{kw-symbol-gronn.pdf}{11}{\color{kwmuted}\shortstack[l]{Grønn på grå\\1,05:1}}
-\kwtileno{105.67}{93}{40.83}{38}{kwgrey}{none}{kw-symbol-hvit.pdf}{11}{\color{kwmuted}\shortstack[l]{Hvit på grå\\1,23:1}}
-\kwtileno{150.5}{93}{40.83}{38}{kwgreen}{none}{kw-symbol-hvit.pdf}{11}{\color{kwblack}\shortstack[l]{Hvit på grønn\\1,18:1}}
-\kwtileno{195.33}{93}{40.83}{38}{kwpink}{none}{kw-symbol-hvit.pdf}{11}{\color{kwblack}\shortstack[l]{Hvit på rosa\\1,35:1}}
-\kwtileno{240.17}{93}{40.83}{38}{kwdeepgreen}{none}{kw-symbol-svart.pdf}{11}{\color{kwgrey}\shortstack[l]{Svart på dypgrønn\\1,93:1}}
+\kwtileok{16}{50}{40.83}{38}{kwwhite}{kwhair}{kw-symbol-black.pdf}{11}{\color{kwmuted}\shortstack[l]{Svart på hvit\\21,00:1}}
+\kwtileok{60.83}{50}{40.83}{38}{kwgrey}{none}{kw-symbol-black.pdf}{11}{\color{kwmuted}\shortstack[l]{Svart på grå\\17,00:1}}
+\kwtileok{105.67}{50}{40.83}{38}{kwgreen}{none}{kw-symbol-black.pdf}{11}{\color{kwblack}\shortstack[l]{Svart på grønn\\17,79:1}}
+\kwtileok{150.5}{50}{40.83}{38}{kwblack}{none}{kw-symbol-green.pdf}{11}{\color{kwgrey}\shortstack[l]{Grønn på svart\\17,79:1}}
+\kwtileok{195.33}{50}{40.83}{38}{kwblack}{none}{kw-symbol-white-with-green-stroke.pdf}{11}{\color{kwgrey}\shortstack[l]{Hvit, grønn strek\\på svart, 21,00:1}}
+\kwtileok{240.17}{50}{40.83}{38}{kwdeepgreen}{none}{kw-symbol-white.pdf}{11}{\color{kwwhite}\shortstack[l]{Hvit på dypgrønn\\10,88:1}}
+\kwtileno{16}{93}{40.83}{38}{kwwhite}{kwhair}{kw-symbol-green.pdf}{11}{\color{kwmuted}\shortstack[l]{Grønn på hvit\\1,18:1}}
+\kwtileno{60.83}{93}{40.83}{38}{kwgrey}{none}{kw-symbol-green.pdf}{11}{\color{kwmuted}\shortstack[l]{Grønn på grå\\1,05:1}}
+\kwtileno{105.67}{93}{40.83}{38}{kwgrey}{none}{kw-symbol-white.pdf}{11}{\color{kwmuted}\shortstack[l]{Hvit på grå\\1,23:1}}
+\kwtileno{150.5}{93}{40.83}{38}{kwgreen}{none}{kw-symbol-white.pdf}{11}{\color{kwblack}\shortstack[l]{Hvit på grønn\\1,18:1}}
+\kwtileno{195.33}{93}{40.83}{38}{kwpink}{none}{kw-symbol-white.pdf}{11}{\color{kwblack}\shortstack[l]{Hvit på rosa\\1,35:1}}
+\kwtileno{240.17}{93}{40.83}{38}{kwdeepgreen}{none}{kw-symbol-black.pdf}{11}{\color{kwgrey}\shortstack[l]{Svart på dypgrønn\\1,93:1}}
 \kwatw{16}{134}{265}{\kwsize{8}{11}\kwregular\color{kwmuted}Det grønne symbolet brukes bare på svart, dypgrønn eller mørkegrønn flate. Åpent punkt: under 80 px høyde (favicon, app-ikon) trengs et forenklet symbol uten tynne streker.}
 ```
 
@@ -176,31 +176,31 @@ Foto & Referansebilder som ikke tilhørte KodeWorks & KodeWorks' egne bilder av 
 ```{=latex}
 % tiles: x = 16, 83.5, 151, 218.5 ; rows y = 50, 94 ; size 62.5 x 40
 \kwcell{16}{50}{62.5}{40}{kwwhite}{kwhair}{\color{kwmuted}Strekking eller press}
-\kwatc{47.25}{68}{\includegraphics[width=40mm,height=10mm]{\kwimgdir/kw-navnetrekk-svart.pdf}}
+\kwatc{47.25}{68}{\includegraphics[width=40mm,height=10mm]{\kwimgdir/kw-wordmark-black.pdf}}
 \kwmark{no}{16}{50}
 \kwcell{83.5}{50}{62.5}{40}{kwwhite}{kwhair}{\color{kwmuted}Skråstilling}
-\kwatco{114.75}{68}{xslant=0.45,transform shape}{\includegraphics[width=36mm]{\kwimgdir/kw-navnetrekk-svart.pdf}}
+\kwatco{114.75}{68}{xslant=0.45,transform shape}{\includegraphics[width=36mm]{\kwimgdir/kw-wordmark-black.pdf}}
 \kwmark{no}{83.5}{50}
 \kwcell{151}{50}{62.5}{40}{kwgrey}{none}{\color{kwmuted}Kontur}
-\kwdraw{\foreach \a in {0,30,...,330}{\node[inner sep=0pt] at \kwoo{182.25}{68}{0.05*cos(\a)}{0.05*sin(\a)} {\includegraphics[width=36mm]{\kwimgdir/kw-navnetrekk-svart.pdf}};}
-  \node[inner sep=0pt] at \kwo{182.25}{68} {\includegraphics[width=36mm]{\kwimgdir/kw-navnetrekk-hvit.pdf}};}
+\kwdraw{\foreach \a in {0,30,...,330}{\node[inner sep=0pt] at \kwoo{182.25}{68}{0.05*cos(\a)}{0.05*sin(\a)} {\includegraphics[width=36mm]{\kwimgdir/kw-wordmark-black.pdf}};}
+  \node[inner sep=0pt] at \kwo{182.25}{68} {\includegraphics[width=36mm]{\kwimgdir/kw-wordmark-white.pdf}};}
 \kwmark{no}{151}{50}
 \kwcell{218.5}{50}{62.5}{40}{kwwhite}{kwhair}{\color{kwmuted}Skygge}
-\kwatc{250.4}{68.9}{\includegraphics[width=36mm]{\kwimgdir/x-navnetrekk-skygge.pdf}}
-\kwatc{249.75}{68}{\includegraphics[width=36mm]{\kwimgdir/kw-navnetrekk-svart.pdf}}
+\kwatc{250.4}{68.9}{\includegraphics[width=36mm]{\kwimgdir/x-wordmark-shadow.pdf}}
+\kwatc{249.75}{68}{\includegraphics[width=36mm]{\kwimgdir/kw-wordmark-black.pdf}}
 \kwmark{no}{218.5}{50}
 \kwcell{16}{94}{62.5}{40}{kwwhite}{kwhair}{\color{kwmuted}Annen farge enn svart, hvit eller grønn}
-\kwatc{47.25}{112}{\includegraphics[width=36mm]{\kwimgdir/x-navnetrekk-mork-gronn.pdf}}
+\kwatc{47.25}{112}{\includegraphics[width=36mm]{\kwimgdir/x-wordmark-darkgreen.pdf}}
 \kwmark{no}{16}{94}
-\kwpanel{83.5}{94}{62.5}{40}{kwblack}{femte-element-gronn.pdf}{93.5}{86}{42}
+\kwpanel{83.5}{94}{62.5}{40}{kwblack}{fifth-element-green.pdf}{93.5}{86}{42}
 \kwcell{83.5}{94}{62.5}{40}{none}{none}{\colorbox{kwblack}{\color{kwgrey}Seismograf gjennom navnetrekket}}
-\kwatc{114.75}{112}{\includegraphics[width=36mm]{\kwimgdir/kw-navnetrekk-hvit.pdf}}
+\kwatc{114.75}{112}{\includegraphics[width=36mm]{\kwimgdir/kw-wordmark-white.pdf}}
 \kwmark{no}{83.5}{94}
 \kwcell{151}{94}{62.5}{40}{kwwhite}{kwhair}{\color{kwmuted}Satt som tekst i fonten}
 \kwatc{182.25}{112}{\kwsize{26}{28}\kwbold KodeWorks}
 \kwmark{no}{151}{94}
 \kwcell{218.5}{94}{62.5}{40}{kwgrey}{none}{\color{kwmuted}Symbolet som dekormønster}
-\kwdraw{\foreach \i in {0,...,5}{\foreach \j in {0,1}{\node[inner sep=0pt] at \kwoo{228}{104}{1.0*\i}{-1.35*\j} {\includegraphics[width=5mm]{\kwimgdir/kw-symbol-svart.pdf}};}}}
+\kwdraw{\foreach \i in {0,...,5}{\foreach \j in {0,1}{\node[inner sep=0pt] at \kwoo{228}{104}{1.0*\i}{-1.35*\j} {\includegraphics[width=5mm]{\kwimgdir/kw-symbol-black.pdf}};}}}
 \kwmark{no}{218.5}{94}
 ```
 
@@ -489,7 +489,7 @@ Skilt, tekstil og interiør & Prøve på materialet & Lag prøve før produksjon
  {\kwmedium Tegne logo.} Navnetrekket leveres som ferdig tegnet vektorfil, ikke som tekst i fonten.\par\vspace{1.5mm}
  {\kwmedium Gjøres om til webfont.} Ingen WOFF, WOFF2, EOT eller TTF-konvertering.\par\vspace{1.5mm}
  {\kwmedium Deles videre.} Lisensen er personlig for selskapet som har kjøpt den.}
-\kwimg{151}{125}{40}{kw-navnetrekk-svart.pdf}
+\kwimg{151}{125}{40}{kw-wordmark-black.pdf}
 \kwat{196}{125.5}{\kwsize{7}{9}\kwregular\color{kwmuted}Ferdig tegnet navnetrekk (vektor)}
 ```
 
@@ -531,7 +531,7 @@ Skilt, tekstil og interiør & Prøve på materialet & Lag prøve før produksjon
 ::: {.page section="Grafiske elementer" title="Det femte elementet" lead=""}
 
 ```{=latex}
-\kwpanel{128}{46}{70}{97}{kwblack}{femte-element-gronn.pdf}{131}{51}{64}
+\kwpanel{128}{46}{70}{97}{kwblack}{fifth-element-green.pdf}{131}{51}{64}
 \kwrect{206}{46}{75}{97}{kwgrey}
 \kwdraw{%
   \foreach \c in {0,...,5}{\draw[kwhair,line width=0.4pt] \kwoo{214}{50}{1.12*\c}{0} -- \kwoo{214}{122}{1.12*\c}{0};}
@@ -578,30 +578,30 @@ Seismografen er profilens femte element. Den er bygget av samarbeid: hvor mye de
 
 ```{=latex}
 % row 1 (ok) y=47, row 2 (no) y=92, tiles 62.5 x 40
-\kwpanel{16}{47}{62.5}{40}{kwwhite}{femte-element-svart.pdf}{24}{34}{46}
+\kwpanel{16}{47}{62.5}{40}{kwwhite}{fifth-element-black.pdf}{24}{34}{46}
 \kwcell{16}{47}{62.5}{40}{none}{kwhair}{\color{kwmuted}\shortstack[l]{Svart på hvit\\21,00:1}}
 \kwmark{ok}{16}{47}
-\kwpanel{83.5}{47}{62.5}{40}{kwgrey}{femte-element-svart.pdf}{91.5}{34}{46}
+\kwpanel{83.5}{47}{62.5}{40}{kwgrey}{fifth-element-black.pdf}{91.5}{34}{46}
 \kwcell{83.5}{47}{62.5}{40}{none}{none}{\color{kwmuted}\shortstack[l]{Svart på grå\\17,00:1}}
 \kwmark{ok}{83.5}{47}
-\kwpanel{151}{47}{62.5}{40}{kwblack}{femte-element-gronn.pdf}{159}{34}{46}
+\kwpanel{151}{47}{62.5}{40}{kwblack}{fifth-element-green.pdf}{159}{34}{46}
 \kwcell{151}{47}{62.5}{40}{none}{none}{\color{kwgrey}\shortstack[l]{Grønn på svart\\17,79:1}}
 \kwmark{ok}{151}{47}
-\kwpanel{218.5}{47}{62.5}{40}{kwdeepgreen}{femte-element-gronn.pdf}{226.5}{34}{46}
+\kwpanel{218.5}{47}{62.5}{40}{kwdeepgreen}{fifth-element-green.pdf}{226.5}{34}{46}
 \kwcell{218.5}{47}{62.5}{40}{none}{none}{\color{kwgrey}\shortstack[l]{Grønn på dypgrønn\\9,22:1}}
 \kwmark{ok}{218.5}{47}
-\kwpanel{16}{92}{62.5}{40}{kwwhite}{femte-element-gronn.pdf}{24}{79}{46}
+\kwpanel{16}{92}{62.5}{40}{kwwhite}{fifth-element-green.pdf}{24}{79}{46}
 \kwcell{16}{92}{62.5}{40}{none}{kwhair}{\color{kwmuted}\shortstack[l]{Grønn på hvit, stort motiv\\1,18:1}}
 \kwmark{no}{16}{92}
-\kwpanel{83.5}{92}{62.5}{40}{kwgreen}{femte-element-svart.pdf}{91.5}{79}{46}
+\kwpanel{83.5}{92}{62.5}{40}{kwgreen}{fifth-element-black.pdf}{91.5}{79}{46}
 \kwcell{83.5}{92}{62.5}{40}{none}{none}{\color{kwblack}Svart på grønn flate}
 \kwmark{no}{83.5}{92}
-\kwpanel{151}{92}{62.5}{40}{kwblack}{femte-element-gronn.pdf}{159}{79}{46}
+\kwpanel{151}{92}{62.5}{40}{kwblack}{fifth-element-green.pdf}{159}{79}{46}
 \kwatc{182.25}{112}{\color{kwwhite}\kwsize{20}{22}\kwlight Tekst over streker}
 \kwcell{151}{92}{62.5}{40}{none}{none}{\color{kwgrey}Tekst over tykke streker}
 \kwmark{no}{151}{92}
-\kwpanel{218.5}{92}{62.5}{40}{kwgrey}{femte-element-svart.pdf}{214}{68}{40}
-\kwpanel{250}{92}{31}{40}{kwgrey}{femte-element-svart.pdf}{240}{72}{40}
+\kwpanel{218.5}{92}{62.5}{40}{kwgrey}{fifth-element-black.pdf}{214}{68}{40}
+\kwpanel{250}{92}{31}{40}{kwgrey}{fifth-element-black.pdf}{240}{72}{40}
 \kwcell{218.5}{92}{62.5}{40}{none}{none}{\color{kwmuted}Flere motiver på samme flate}
 \kwmark{no}{218.5}{92}
 \kwatw{16}{135}{265}{\kwsize{8}{11}\kwregular\color{kwmuted}Høyst omtrent en tredel av en tekstflate. På tekstrike dokumenter (CV, brev, rapport) brukes den som ramme i kanten og ved seksjonsstart, aldri bak eller gjennom tekst; som slik ramme kan den være grønn også på hvit og grå, fordi de tykke strekene bærer formen (se Visittkort og brevark). Ikke i skjemaer eller verktøysider. Motivet bygger bare på aktivitetsmengde, aldri på innhold.}
@@ -675,7 +675,7 @@ Loddrett luft & 60 og 120 px & – \\ \hline
 \kwatw{218.5}{99}{62.5}{\kwsize{7.5}{10}\kwregular\color{kwmuted}Tynn svart ramme, 1 til 1,25 px, 0 radius. Brukes på teknologibokser og skjemafelt.}
 \kwat{16}{111.5}{\kwsize{11}{13}\kwmedium Bunntekst}
 \kwrect{16}{118}{265}{22}{kwblack}
-\kwimg{267}{122}{7.8}{kw-symbol-gronn.pdf}
+\kwimg{267}{122}{7.8}{kw-symbol-green.pdf}
 \kwatw{24}{123}{60}{\color{kwwhite}\kwsize{8.5}{11.5}\kwmedium KodeWorks AS\par\kwregular Fjordgata 30\\7010 Trondheim}
 \kwatw{92}{123}{60}{\color{kwwhite}\kwsize{8.5}{11.5}\kwmedium KodeWorks Oslo AS\par\kwregular Grønnegata 10\\0350 Oslo}
 \kwat{16}{141.5}{\kwsize{7.5}{10}\kwregular\color{kwmuted}Svart flate, hvit tekst, KW-symbolet i grønt øverst til høyre. Eksempelinnhold.}
@@ -709,24 +709,24 @@ Loddrett luft & 60 og 120 px & – \\ \hline
 
 % Portrait on a green panel
 \kwrect{16}{46}{55}{99}{kwgreen}
-\kwph{21}{51}{45}{56}{foto_portrett.jpg}{1.25}{0.5}{0.1}
+\kwph{21}{51}{45}{56}{photo_portrait.jpg}{1.25}{0.5}{0.1}
 \kwok{24}{54}
 \kwcapM{21}{111}{45}{Portrett}{Rolig bakgrunn og øyekontakt. Portrett kan ligge på en grønn eller grå flate.}
 % Row 1
-\kwph{78}{46}{64}{32}{foto_oslo.jpg}{0.6664}{0.5}{0.5}
+\kwph{78}{46}{64}{32}{photo_oslo.jpg}{0.6664}{0.5}{0.5}
 \kwok{82}{50}
 \kwcapM{78}{81}{64}{Dagslys og varme toner}{Tre, planter og dagslys. Ingen kalde eller blålige bilder.}
-\kwph{147.5}{46}{64}{32}{foto_team2.jpg}{0.6664}{0.5}{0.3}
+\kwph{147.5}{46}{64}{32}{photo_team2.jpg}{0.6664}{0.5}{0.3}
 \kwok{151.5}{50}
 \kwcapM{147.5}{81}{64}{Mennesket er hovedmotivet}{Folk i samtale og arbeid. Utstyret er bakgrunn.}
-\kwph{217}{46}{64}{32}{foto_team3.jpg}{0.6664}{0.5}{0.3}
+\kwph{217}{46}{64}{32}{photo_team3.jpg}{0.6664}{0.5}{0.3}
 \kwok{221}{50}
 \kwcapM{217}{81}{64}{Ekte arbeid}{Ingen poseringer. Ansatte og kunder slik de jobber sammen.}
 % Row 2
-\kwph{78}{98}{64}{32}{foto_kontoret.jpg}{1.3337}{0.5}{0.3}
+\kwph{78}{98}{64}{32}{photo_office.jpg}{1.3337}{0.5}{0.3}
 \kwok{82}{102}
 \kwcapM{78}{133}{64}{Rom og lokaler}{Kontorene i Oslo og Trondheim. Rolige flater gir plass til tittel.}
-\kwph{147.5}{98}{64}{32}{foto_team1.jpg}{0.6664}{0.5}{0.4}
+\kwph{147.5}{98}{64}{32}{photo_team1.jpg}{0.6664}{0.5}{0.4}
 \kwok{151.5}{102}
 \kwcapM{147.5}{133}{64}{Rektangulær beskjæring}{Mennesket i fokus, rette hjørner.}
 \kwrect{217}{98}{64}{32}{kwgrey}
@@ -754,16 +754,16 @@ Loddrett luft & 60 og 120 px & – \\ \hline
 % 1 circle crop
 \kwrect{16}{46}{83}{32}{kwgrey}
 \kwdraw{\begin{scope}\clip ($(current page.north west)+(57.5mm,-62mm)$) circle (15mm);
-  \node[anchor=north west,inner sep=0pt] at ($(current page.north west)+(42.5mm,-47mm)$) {\includegraphics[width=30mm]{photos/foto_portrett.jpg}};\end{scope}}
+  \node[anchor=north west,inner sep=0pt] at ($(current page.north west)+(42.5mm,-47mm)$) {\includegraphics[width=30mm]{photos/photo_portrait.jpg}};\end{scope}}
 \kwno{20}{50}
 \kwcapM{16}{81}{83}{Sirkel og avrunding}{Beskjæres rektangulært, aldri som sirkel.}
 % 2 overlay
-\kwph{107}{46}{83}{32}{foto_team2.jpg}{0.6664}{0.5}{0.3}
+\kwph{107}{46}{83}{32}{photo_team2.jpg}{0.6664}{0.5}{0.3}
 \kwdraw{\fill[kwpink,opacity=0.6] \kwo{107}{46} rectangle ++(83mm,-32mm);}
 \kwno{111}{50}
 \kwcapM{107}{81}{83}{Fargeoverlegg og filter}{Bildene brukes som de er. Ingen duotone eller fargeflate over bildet.}
 % 3 text over faces
-\kwph{198}{46}{83}{32}{foto_team3.jpg}{0.6664}{0.5}{0.3}
+\kwph{198}{46}{83}{32}{photo_team3.jpg}{0.6664}{0.5}{0.3}
 \kwat{203}{55}{\kwsize{30}{30}\kwlight\color{kwwhite}Overskrift}
 \kwno{202}{50}
 \kwcapM{198}{81}{83}{Tekst over ansikter}{Titler legges på rolig flate utenfor motivet.}
@@ -820,7 +820,7 @@ Loddrett luft & 60 og 120 px & – \\ \hline
 \kwat{226}{51.5}{\kwsize{8.5}{10}\kwlight Rette hjørner}
 % 2
 \kwrow{62}{High tech, industrielt}{Grotesk, grå flater og tekniske linjer, som i det femte elementet.}
-\kwpanel{192}{61}{45}{8}{kwgrey}{femte-element-svart.pdf}{188}{44}{50}
+\kwpanel{192}{61}{45}{8}{kwgrey}{fifth-element-black.pdf}{188}{44}{50}
 % 3
 \kwrow{73}{Lekenhet, nysgjerrig}{Lysegrønn aksent, rosa i liten dose, ordvis fargeutheving i titler.}
 \kwat{192}{72}{\kwsize{12}{14}\kwlight Dine \color{kwdarkgreen}ideer}
@@ -828,7 +828,7 @@ Loddrett luft & 60 og 120 px & – \\ \hline
 \kwrect{245}{72.3}{4}{6}{kwpink}
 % 4
 \kwrow{84}{Samskapende, samhold}{Ekte mennesker, og symbol og seismograf som er laget av felles aktivitet.}
-\kwph{192}{83}{45}{8}{foto_team3.jpg}{0.6664}{0.5}{0.3}
+\kwph{192}{83}{45}{8}{photo_team3.jpg}{0.6664}{0.5}{0.3}
 % 5
 \kwrow{95}{Åpenhet}{Mye luft og høy kontrast. Ingen dekor som skjuler innholdet.}
 \kwdraw{\fill[kwwhite,draw=kwhair,line width=0.4pt] \kwo{192}{94} rectangle ++(45mm,-8mm);}
@@ -869,14 +869,14 @@ Loddrett luft & 60 og 120 px & – \\ \hline
 ```{=latex}
 % business card front
 \kwdraw{\fill[fill=kwgrey,draw=kwhair,line width=0.4pt] \kwo{16}{50} rectangle ++(85mm,-55mm);}
-\kwimg{22}{56}{40}{kw-navnetrekk-svart.pdf}
+\kwimg{22}{56}{40}{kw-wordmark-black.pdf}
 \kwat{22}{81}{\kwsize{9}{11}\kwmedium\color{kwblack}Navn Navnesen}
 \kwat{22}{85.5}{\kwsize{8}{10}\kwregular\color{kwblack}Konsulent}
 \kwat{22}{91.5}{\kwsize{8}{10}\kwregular\color{kwblack}+47 000 00 000}
 \kwat{22}{95.5}{\kwsize{8}{10}\kwregular\color{kwblack}navn@kodeworks.no}
 % business card back
 \kwdraw{\fill[fill=kwgreen] \kwo{106}{50} rectangle ++(85mm,-55mm);}
-\kwimg{140.4}{63.5}{16.2}{kw-symbol-svart.pdf}
+\kwimg{140.4}{63.5}{16.2}{kw-symbol-black.pdf}
 % letterhead (scale 0.26)
 \kwdraw{\fill[fill=kwwhite,draw=kwhair,line width=0.4pt] \kwo{226}{50} rectangle ++(54.6mm,-77.2mm);}
 \kwbar{231.2}{70}{18}{kwblack!70}
@@ -891,7 +891,7 @@ Loddrett luft & 60 og 120 px & – \\ \hline
 \kwbar{231.2}{102.8}{43}{kwblack!25}
 \kwbar{231.2}{105.2}{36}{kwblack!25}
 % seismograph frame in the footer: closing figure with the wordmark, address line below
-\kwdraw{\node[anchor=north west,inner sep=0pt] at \kwo{231.2}{117.6} {\includegraphics[width=44.2mm]{photos/ramme-bunn.png}};}
+\kwdraw{\node[anchor=north west,inner sep=0pt] at \kwo{231.2}{117.6} {\includegraphics[width=44.2mm]{photos/frame-bottom.png}};}
 \kwbar{231.2}{122.6}{14}{kwblack!40}
 \kwbar{250}{122.6}{14}{kwblack!40}
 % captions
@@ -910,7 +910,7 @@ Loddrett luft & 60 og 120 px & – \\ \hline
 ```{=latex}
 % slide 1: opening, deep green
 \kwrect{16}{50}{84.33}{47.4}{kwdeepgreen}
-\kwimg{21}{54}{22}{kw-navnetrekk-hvit.pdf}
+\kwimg{21}{54}{22}{kw-wordmark-white.pdf}
 \kwat{21}{70}{\kwsize{15}{15.5}\kwlight\color{kwwhite}Dine \color{kwgreen}ideer\color{kwwhite},}
 \kwat{21}{76.5}{\kwsize{15}{15.5}\kwlight\color{kwwhite}våre utviklere}
 \kwat{21}{89}{\kwsize{5.5}{7}\kwregular\color{kwwhite}Navn Navnesen | 12. mars 2027}
@@ -921,11 +921,11 @@ Loddrett luft & 60 og 120 px & – \\ \hline
 \kwrect{111.3}{78}{20}{11}{kwgrey}
 \kwrect{134}{78}{20}{11}{kwgrey}
 \kwrect{156.7}{78}{20}{11}{kwgrey}
-\kwimg{111.3}{91.5}{14}{kw-navnetrekk-svart.pdf}
+\kwimg{111.3}{91.5}{14}{kw-wordmark-black.pdf}
 \kwat{182}{91.3}{\kwsize{5}{6}\kwregular\color{kwblack}02}
 % slide 3: closing, black
 \kwrect{196.67}{50}{84.33}{47.4}{kwblack}
-\kwimg{204}{58}{11.5}{kw-symbol-gronn.pdf}
+\kwimg{204}{58}{11.5}{kw-symbol-green.pdf}
 \kwat{225}{58}{\kwsize{13}{15}\kwlight\color{kwwhite}Takk}
 \kwat{225}{66}{\kwsize{6}{8}\kwregular\color{kwwhite}navn@kodeworks.no}
 \kwat{225}{70}{\kwsize{6}{8}\kwregular\color{kwwhite}+47 000 00 000}
@@ -948,7 +948,7 @@ Loddrett luft & 60 og 120 px & – \\ \hline
 % browser frame
 \kwdraw{\fill[fill=kwwhite,draw=kwblack!30,line width=0.5pt] \kwo{16}{48} rectangle ++(165mm,-93mm);}
 % top nav
-\kwimg{21}{51.5}{24}{kw-navnetrekk-svart.pdf}
+\kwimg{21}{51.5}{24}{kw-wordmark-black.pdf}
 \kwat{85}{52}{\kwsize{5.5}{7}\kwregular\color{kwblack}Våre eksperter \hspace{3mm} Våre prosjekter \hspace{3mm} Håndboka}
 \kwrect{150}{50}{26}{7.5}{kwdarkgreen}
 \kwat{154.5}{52.3}{\kwsize{5.5}{7}\kwregular\color{kwwhite}Kontakt oss}
@@ -969,7 +969,7 @@ Loddrett luft & 60 og 120 px & – \\ \hline
 \kwat{127}{110}{\kwsize{7}{8}\kwlight\color{kwblack}AI}
 % footer
 \kwrect{17}{123}{163}{17.5}{kwblack}
-\kwimg{166}{125}{8}{kw-symbol-gronn.pdf}
+\kwimg{166}{125}{8}{kw-symbol-green.pdf}
 \kwat{22}{127}{\kwsize{5.5}{7}\kwregular\color{kwgreen}Kontakt oss}
 \kwat{22}{131}{\kwsize{5.5}{7.5}\kwregular\color{kwwhite}navn@kodeworks.no}
 \kwat{70}{127}{\kwsize{5.5}{7}\kwregular\color{kwgreen}Oslo}
@@ -1011,41 +1011,41 @@ Loddrett luft & 60 og 120 px & – \\ \hline
 \kwline{16}{50}{265}{kwhair}
 \kwatw{16}{52.5}{52}{\kwsize{9.5}{12}\kwmedium Nettside og nett-e-post}
 \kwatw{72}{52.5}{74}{\kwsize{9}{12}\kwregular SVG. PNG der e-postklienten ikke viser SVG.}
-\kwimg{150}{54}{26}{kw-navnetrekk-svart.pdf}
-\kwat{182}{53.5}{\kwsize{8}{10}\kwregular kw-navnetrekk-svart.svg}
+\kwimg{150}{54}{26}{kw-wordmark-black.pdf}
+\kwat{182}{53.5}{\kwsize{8}{10}\kwregular kw-wordmark-black.svg}
 % row 2
 \kwline{16}{63}{265}{kwhair}
 \kwatw{16}{65.5}{52}{\kwsize{9.5}{12}\kwmedium Trykk: rapport, brosjyre}
 \kwatw{72}{65.5}{74}{\kwsize{9}{12}\kwregular PDF med vektorgrafikk, eller EPS. Oppgi farge: CMYK eller PMS.}
-\kwimg{150}{67}{26}{kw-navnetrekk-svart.pdf}
-\kwat{182}{66.5}{\kwsize{8}{10}\kwregular kw-navnetrekk-svart.pdf}
+\kwimg{150}{67}{26}{kw-wordmark-black.pdf}
+\kwat{182}{66.5}{\kwsize{8}{10}\kwregular kw-wordmark-black.pdf}
 % row 3
 \kwline{16}{76}{265}{kwhair}
 \kwatw{16}{78.5}{52}{\kwsize{9.5}{12}\kwmedium Word, PowerPoint, Excel}
 \kwatw{72}{78.5}{74}{\kwsize{9}{12}\kwregular PNG, minst dobbel størrelse og gjennomsiktig bakgrunn. Aldri en liten PNG skalert opp.}
-\kwimg{150}{80}{26}{kw-navnetrekk-svart.pdf}
-\kwat{182}{79.5}{\kwsize{8}{10}\kwregular kw-navnetrekk-svart.png}
+\kwimg{150}{80}{26}{kw-wordmark-black.pdf}
+\kwat{182}{79.5}{\kwsize{8}{10}\kwregular kw-wordmark-black.png}
 % row 4
 \kwline{16}{89}{265}{kwhair}
 \kwatw{16}{91.5}{52}{\kwsize{9.5}{12}\kwmedium Google Dokumenter og Slides}
 \kwatw{72}{91.5}{74}{\kwsize{9}{12}\kwregular PNG. Kontroller at fargen ikke blir svart etter opplasting.}
 \kwdraw{\fill[fill=kwblack] \kwo{150}{92.5} rectangle ++(26mm,-7mm);}
-\kwimg{152.5}{94.4}{21}{kw-navnetrekk-hvit.pdf}
-\kwat{182}{92.5}{\kwsize{8}{10}\kwregular kw-navnetrekk-hvit.png}
+\kwimg{152.5}{94.4}{21}{kw-wordmark-white.pdf}
+\kwat{182}{92.5}{\kwsize{8}{10}\kwregular kw-wordmark-white.png}
 % row 5
 \kwline{16}{102}{265}{kwhair}
 \kwatw{16}{104.5}{52}{\kwsize{9.5}{12}\kwmedium Skilt, tekstil, store flater}
 \kwatw{72}{104.5}{74}{\kwsize{9}{12}\kwregular PDF eller EPS, vektor. Be leverandøren om prøve; grønnfargen varierer.}
 \kwdraw{\fill[fill=kwblack] \kwo{150}{105.5} rectangle ++(26mm,-9mm);}
-\kwimg{162.5}{106.4}{4.2}{kw-symbol-gronn.pdf}
-\kwat{182}{105.5}{\kwsize{8}{10}\kwregular kw-symbol-gronn.pdf}
+\kwimg{162.5}{106.4}{4.2}{kw-symbol-green.pdf}
+\kwat{182}{105.5}{\kwsize{8}{10}\kwregular kw-symbol-green.pdf}
 % row 6
 \kwline{16}{115}{265}{kwhair}
 \kwatw{16}{117.5}{52}{\kwsize{9.5}{12}\kwmedium Sosiale medier}
 \kwatw{72}{117.5}{74}{\kwsize{9}{12}\kwregular PNG. Symbolet alene i profilbildet; hold symbolet på minst 80 px høyde.}
 \kwdraw{\fill[fill=kwgreen] \kwo{150}{118.5} rectangle ++(26mm,-9mm);}
-\kwimg{162.5}{119.4}{4.2}{kw-symbol-svart.pdf}
-\kwat{182}{118.5}{\kwsize{8}{10}\kwregular kw-symbol-svart.png}
+\kwimg{162.5}{119.4}{4.2}{kw-symbol-black.pdf}
+\kwat{182}{118.5}{\kwsize{8}{10}\kwregular kw-symbol-black.png}
 \kwline{16}{128}{265}{kwhair}
 \kwatw{16}{131}{265}{\kwsize{9}{12.5}\kwregular{\kwmedium Ikke} strekk, roter, legg skygge på eller tegn om logoen. PNG-filene lages fra SVG-filene i filoversikten på neste side.}
 ```
@@ -1055,22 +1055,22 @@ Loddrett luft & 60 og 120 px & – \\ \hline
 ::: {.page section="Produksjon" title="Filoversikt: logo" lead="Åtte logofiler: navnetrekk og symbol i ulike farger. Navnet viser motiv og farge." }
 
 ```{=latex}
-\kwtile{16}{47}{62.5}{32}{kwwhite}{kwhair}{kw-navnetrekk-svart.pdf}{42}{\color{kwmuted}.svg}
-\kwcap{16}{81}{62.5}{kw-navnetrekk-svart}{Standard. På hvit, grå, lysegrønn og rosa flate.}
-\kwtile{83.5}{47}{62.5}{32}{kwblack}{none}{kw-navnetrekk-hvit.pdf}{42}{\color{kwgrey}.svg}
-\kwcap{83.5}{81}{62.5}{kw-navnetrekk-hvit}{På svart, dypgrønn og mørkegrønn flate.}
-\kwtile{151}{47}{62.5}{32}{kwdeepgreen}{none}{kw-navnetrekk-gronn.pdf}{42}{\color{kwgrey}.svg}
-\kwcap{151}{81}{62.5}{kw-navnetrekk-gronn}{Bare på svart, dypgrønn og mørkegrønn flate.}
-\kwtile{218.5}{47}{62.5}{32}{kwwhite}{kwhair}{kw-symbol-svart.pdf}{14}{\color{kwmuted}.svg}
-\kwcap{218.5}{81}{62.5}{kw-symbol-svart}{Standard. På hvit, grå, lysegrønn og rosa flate.}
-\kwtile{16}{95}{62.5}{32}{kwblack}{none}{kw-symbol-gronn.pdf}{14}{\color{kwgrey}.svg}
-\kwcap{16}{129}{62.5}{kw-symbol-gronn}{På svart, dypgrønn og mørkegrønn flate.}
-\kwtile{83.5}{95}{62.5}{32}{kwdarkgreen}{none}{kw-symbol-hvit.pdf}{14}{\color{kwgrey}.svg}
-\kwcap{83.5}{129}{62.5}{kw-symbol-hvit}{På svart og mørke flater når grønt ikke passer.}
-\kwtile{151}{95}{62.5}{32}{kwwhite}{kwhair}{kw-symbol-svart-med-gronn-strek.pdf}{13.5}{\color{kwmuted}.svg}
-\kwcap{151}{129}{62.5}{kw-symbol-svart-med-gronn-strek}{Svart bokstavform, grønn diagonal. Bare på hvit flate.}
-\kwtile{218.5}{95}{62.5}{32}{kwblack}{none}{kw-symbol-hvit-med-gronn-strek.pdf}{14}{\color{kwgrey}.svg}
-\kwcap{218.5}{129}{62.5}{kw-symbol-hvit-med-gronn-strek}{Hvit bokstavform, grønn diagonal. På svart og dypgrønn flate.}
+\kwtile{16}{47}{62.5}{32}{kwwhite}{kwhair}{kw-wordmark-black.pdf}{42}{\color{kwmuted}.svg}
+\kwcap{16}{81}{62.5}{kw-wordmark-black}{Standard. På hvit, grå, lysegrønn og rosa flate.}
+\kwtile{83.5}{47}{62.5}{32}{kwblack}{none}{kw-wordmark-white.pdf}{42}{\color{kwgrey}.svg}
+\kwcap{83.5}{81}{62.5}{kw-wordmark-white}{På svart, dypgrønn og mørkegrønn flate.}
+\kwtile{151}{47}{62.5}{32}{kwdeepgreen}{none}{kw-wordmark-green.pdf}{42}{\color{kwgrey}.svg}
+\kwcap{151}{81}{62.5}{kw-wordmark-green}{Bare på svart, dypgrønn og mørkegrønn flate.}
+\kwtile{218.5}{47}{62.5}{32}{kwwhite}{kwhair}{kw-symbol-black.pdf}{14}{\color{kwmuted}.svg}
+\kwcap{218.5}{81}{62.5}{kw-symbol-black}{Standard. På hvit, grå, lysegrønn og rosa flate.}
+\kwtile{16}{95}{62.5}{32}{kwblack}{none}{kw-symbol-green.pdf}{14}{\color{kwgrey}.svg}
+\kwcap{16}{129}{62.5}{kw-symbol-green}{På svart, dypgrønn og mørkegrønn flate.}
+\kwtile{83.5}{95}{62.5}{32}{kwdarkgreen}{none}{kw-symbol-white.pdf}{14}{\color{kwgrey}.svg}
+\kwcap{83.5}{129}{62.5}{kw-symbol-white}{På svart og mørke flater når grønt ikke passer.}
+\kwtile{151}{95}{62.5}{32}{kwwhite}{kwhair}{kw-symbol-black-with-green-stroke.pdf}{13.5}{\color{kwmuted}.svg}
+\kwcap{151}{129}{62.5}{kw-symbol-black-with-green-stroke}{Svart bokstavform, grønn diagonal. Bare på hvit flate.}
+\kwtile{218.5}{95}{62.5}{32}{kwblack}{none}{kw-symbol-white-with-green-stroke.pdf}{14}{\color{kwgrey}.svg}
+\kwcap{218.5}{129}{62.5}{kw-symbol-white-with-green-stroke}{Hvit bokstavform, grønn diagonal. På svart og dypgrønn flate.}
 ```
 
 :::
@@ -1078,16 +1078,16 @@ Loddrett luft & 60 og 120 px & – \\ \hline
 ::: {.page section="Produksjon" title="Filoversikt: grafikk" lead="Det femte elementet og bakgrunnene til Google Slides. Alle filer har eksplisitte farger og tett viewBox." }
 
 ```{=latex}
-\kwtile{16}{47}{49}{62}{kwgrey}{none}{femte-element-svart.pdf}{36}{\color{kwmuted}.svg}
-\kwcap{16}{111}{49}{femte-element-svart}{Det femte elementet, svart. På hvit og grå flate.}
-\kwtile{70}{47}{49}{62}{kwblack}{none}{femte-element-gronn.pdf}{36}{\color{kwgrey}.svg}
-\kwcap{70}{111}{49}{femte-element-gronn}{Det femte elementet, grønt. På svart og dypgrønn flate. Aldri på hvit.}
-\kwtile{124}{47}{49}{62}{kwgrey}{none}{femte-element-slide-svart-gronn.pdf}{26}{\color{kwmuted}.svg}
-\kwcap{124}{111}{49}{femte-element-slide-svart-gronn}{Slidebakgrunn, svarte linjer med grønne fremhevinger. 521 × 1081.}
-\kwtile{178}{47}{49}{62}{kwblack}{none}{femte-element-slide-gronn-bred.pdf}{46}{\color{kwgrey}.svg}
-\kwcap{178}{111}{49}{femte-element-slide-gronn-bred}{Slidebakgrunn, grønne linjer midt på lerretet. 2048 × 1024. På svart flate.}
-\kwtile{232}{47}{49}{62}{kwblack}{none}{femte-element-slide-gronn-logobakgrunn.pdf}{40}{\color{kwgrey}.svg}
-\kwcap{232}{111}{49}{femte-element-slide-gronn-logobakgrunn}{Slidebakgrunn bak logo. 469 × 542. På svart flate.}
+\kwtile{16}{47}{49}{62}{kwgrey}{none}{fifth-element-black.pdf}{36}{\color{kwmuted}.svg}
+\kwcap{16}{111}{49}{fifth-element-black}{Det femte elementet, svart. På hvit og grå flate.}
+\kwtile{70}{47}{49}{62}{kwblack}{none}{fifth-element-green.pdf}{36}{\color{kwgrey}.svg}
+\kwcap{70}{111}{49}{fifth-element-green}{Det femte elementet, grønt. På svart og dypgrønn flate. Aldri på hvit.}
+\kwtile{124}{47}{49}{62}{kwgrey}{none}{fifth-element-slide-black-green.pdf}{26}{\color{kwmuted}.svg}
+\kwcap{124}{111}{49}{fifth-element-slide-black-green}{Slidebakgrunn, svarte linjer med grønne fremhevinger. 521 × 1081.}
+\kwtile{178}{47}{49}{62}{kwblack}{none}{fifth-element-slide-green-wide.pdf}{46}{\color{kwgrey}.svg}
+\kwcap{178}{111}{49}{fifth-element-slide-green-wide}{Slidebakgrunn, grønne linjer midt på lerretet. 2048 × 1024. På svart flate.}
+\kwtile{232}{47}{49}{62}{kwblack}{none}{fifth-element-slide-green-logo-background.pdf}{40}{\color{kwgrey}.svg}
+\kwcap{232}{111}{49}{fifth-element-slide-green-logo-background}{Slidebakgrunn bak logo. 469 × 542. På svart flate.}
 \kwline{16}{135}{265}{kwhair}
 \kwatw{16}{137}{265}{\kwsize{8.5}{11.5}\kwregular Filnavn følger mønsteret motiv, farge og eventuelt tillegg. PNG- og PDF-filer lages fra SVG-ene, aldri omvendt.}
 ```
@@ -1113,7 +1113,7 @@ Loddrett luft & 60 og 120 px & – \\ \hline
 \kwat{16}{104}{\kwsize{9.5}{12}\kwmedium 3. Sett logoen inn som bilde}
 \kwatw{16}{109}{125}{\kwsize{9}{12}\kwregular Navnetrekket er en tegnet vektorfil. Aldri skriv «KodeWorks» i fonten.}
 \kwrect{16}{114.5}{125}{8}{kwgrey}
-\kwimg{19}{116.4}{22}{kw-navnetrekk-svart.pdf}
+\kwimg{19}{116.4}{22}{kw-wordmark-black.pdf}
 \kwat{46}{116}{\kwsize{8}{10}\kwregular Bilde, ikke tekst}
 % right column: consultants
 \kwat{156}{46}{\kwsize{11}{13}\kwmedium For konsulenter}
@@ -1144,9 +1144,9 @@ Loddrett luft & 60 og 120 px & – \\ \hline
 {\kwregular\kwsize{10}{13.5}\setlength{\parskip}{2.4mm}
 ```
 
-1. \kwm{Mal.} Dokumentet bygger på siste versjon av malen, ikke på et gammelt dokument. \textcolor{kwmuted}{Eksempel: start fra brevmal.md, ikke fra en gammel PDF eller Word-fil.}
+1. \kwm{Mal.} Dokumentet bygger på siste versjon av malen, ikke på et gammelt dokument. \textcolor{kwmuted}{Eksempel: start fra letter-template.md, ikke fra en gammel PDF eller Word-fil.}
 
-2. \kwm{Logo.} Varianten passer bakgrunnen: svart på lys flate, hvit eller grønn på mørk. \textcolor{kwmuted}{Eksempel: kw-navnetrekk-svart på hvitt ark, aldri grønt navnetrekk.}
+2. \kwm{Logo.} Varianten passer bakgrunnen: svart på lys flate, hvit eller grønn på mørk. \textcolor{kwmuted}{Eksempel: kw-wordmark-black på hvitt ark, aldri grønt navnetrekk.}
 
 3. \kwm{Frisone og størrelse.} Navnetrekket er minst 24 mm (100 px) bredt, symbolet minst 20 mm (80 px) høyt, begge med frisone. \textcolor{kwmuted}{Eksempel: 40 mm navnetrekk gir 2,9 mm frisone.}
 

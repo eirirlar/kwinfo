@@ -6,7 +6,7 @@ Ekspert Konsulent
 - E-post: eirik.blekesaune@kodeworks.no
 - Erfaring: 10+ år
 - Språk: norsk, engelsk
-- Foto: images/foto.jpg
+- Foto: images/photo.jpg
 - Fotofokus: 0.5, 0.3
 
 ## Om Eirik

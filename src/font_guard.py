@@ -34,11 +34,6 @@ HOOK_TEX = r"""% Written by src/font_guard.py: list every font file LuaTeX loade
 }}
 """.replace("@LIST@", LIST_NAME)
 
-# TeX's own trees. Fonts inside them come with the TeX distribution, not with the OS.
-TEXMF_VARS = ["TEXMFROOT", "TEXMFDIST", "TEXMFMAIN", "TEXMFLOCAL", "TEXMFHOME", "TEXMFSYSVAR",
-              "TEXMFVAR", "TEXMFSYSCONFIG", "TEXMFCONFIG"]
-
-
 def _norm(p: str | Path) -> str:
     s = os.path.normcase(os.path.abspath(str(p))).replace("\\", "/")
     return s.rstrip("/") + "/"
@@ -46,13 +41,14 @@ def _norm(p: str | Path) -> str:
 
 @lru_cache(maxsize=1)
 def texmf_roots() -> tuple[str, ...]:
-    roots = []
-    for var in TEXMF_VARS:
-        r = subprocess.run(["kpsewhich", f"-var-value={var}"], capture_output=True, text=True)
-        for part in r.stdout.strip().replace(";", os.pathsep).split(os.pathsep):
-            part = part.strip().strip("!{}")
-            if part and Path(part).is_absolute():
-                roots.append(_norm(part))
+    """TeX's own trees: every folder in TeX's search path $TEXMF, as kpathsea expands it.
+
+    Fonts inside them come with the TeX distribution, not with the OS. Asking kpathsea for the
+    whole search path covers every distribution's layout (TeX Live from tug.org, and Debian/Ubuntu,
+    which install e.g. Latin Modern in a separate tree) without naming any of them here.
+    """
+    r = subprocess.run(["kpsewhich", "--expand-path=$TEXMF"], capture_output=True, text=True, check=True)
+    roots = [_norm(part) for part in r.stdout.strip().split(os.pathsep) if part.strip()]
     return tuple(sorted(set(roots)))
 
 

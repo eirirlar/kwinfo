@@ -376,3 +376,70 @@ Brukeren har bestemt (2026-11-13): felles logobibliotek ja, en delt mappe er ikk
 **Kobling:** bygger på T12 (CV-ene i Markdown) og T16 (CV-ene i `cvs/`). Henger sammen med T14 (`build_employee_cvs.py`).
 
 **Berørte filer:** `src/normalize_cv_images.py` (ny), `src/check_cv_md.py`, `src/build_cv_pdf.py`, `src/build_employee_cvs.py`, `cvs/logos/` (ny), `cvs/*/images/`, `cvs/*/*.md`, `cvs/AVVIK.md`, `tests/test_cv_images.py` (ny), `deliverable/visualprofile/cv/README.md`, `README.md`, `TASKS.md`
+
+### T20 [x] Engelske filnavn på alt unntatt ni bakgrunnsdokumenter
+
+En gjennomgang 2026-11-13 fant rundt 170 filer med norske navn. Brukeren har bestemt at disse ni bakgrunnsdokumentene beholder norske navn, og at alle andre filer skal ha engelske navn:
+
+- `background/2026-09-22_ansatthaandbok.md`, `2026-09-22_eiendom.md`, `2026-09-22_itko_medlemskap.md`, `2026-09-22_kodeworks_om_selskapet.md`, `2026-09-22_kw_masterpresentasjon.md`, `2026-09-22_prosjektoversikt.md`, `2026-09-22_webside_tekst_grunnlag.md`, `2026-09-24_itko_temp_rapportering.md` og `2026-11-11_notat_konsulentoppdrag_android_kotlin.md`.
+
+Dette erstatter regelen fra oppgaven om engelske navn om at dokumenter beholder norske filnavn. Innholdet i filene er fortsatt norsk. Personnavn og kundenavn (mapper og filer i `cvs/`, logoene i `cvs/logos/`) regnes ikke som norske ord.
+
+**Navn:**
+
+| Norsk | Engelsk |
+|---|---|
+| `cvs/AVVIK.md` | `cvs/DEVIATIONS.md` |
+| `visittkort-<person>.*` | `business-card-<person>.*` |
+| `images/foto.jpg`, `foto_<x>.jpg` | `images/photo.jpg`, `photo_<x>.jpg` (`kontoret` → `office`, `portrett` → `portrait`) |
+| `forside_del1–4.png`, `forside_topp_ekte_font.png` | `frontpage_part1–4.png`, `frontpage_top_real_font.png` |
+| `deliverable/2026-11-11_konsulentoppdrag_android_kotlin.md` | `deliverable/2026-11-11_consultant_assignment_android_kotlin.md` |
+| `ansattliste_itko.md`, `itko/rapport_2026-10.md` | `employee_list_itko.md`, `itko/report_2026-10.md` |
+| `oversikt.pdf` | `overview.pdf` |
+| `visittkort-eksempel`, `visittkort-mal` | `business-card-example`, `business-card-template` |
+| `cv-eksempel`, `cv-mal` | `cv-example`, `cv-template` |
+| `brevmal`, `dokumentmal`, `eksempel-brev`, `eksempel-utlysning` | `letter-template`, `document-template`, `example-letter`, `example-job-posting` |
+| `presentation/eksempel`, `presentasjonsmal` | `presentation/example`, `presentation-template` |
+| `farger.md`, `profilmanual` | `colors.md`, `profile-manual` |
+| `ramme-bunn.png` | `frame-bottom.png` |
+| `femte-element-*`, `kw-navnetrekk-*`, `kw-symbol-*` | `fifth-element-*`, `kw-wordmark-*`, `kw-symbol-*` |
+| `-gronn`, `-svart`, `-hvit`, `-med-gronn-strek`, `-bred`, `-logobakgrunn`, `-mork-gronn`, `-skygge` | `-green`, `-black`, `-white`, `-with-green-stroke`, `-wide`, `-logo-background`, `-darkgreen`, `-shadow` |
+| testfilene `brev-*`, `dokument-*`, `utheving.md` | `letter-*`, `document-*`, `emphasis.md` (`kort` → `short`, `lang-mottaker` → `long-recipient`, `mangler` → `missing`, `tre-sider` → `three-pages`, `alle-elementer` → `all-elements`, `mange-punkter` → `many-items`, `tom` → `empty`, `uten-yaml` → `without-yaml`) |
+
+Hjelpefilene byggene lager underveis (fargevarianter av logo og mønster), følger samme navn.
+
+**Endringer:**
+
+1. Gi filene nye navn, også genererte PDF-er og PNG-er som ligger lokalt.
+2. Oppdater alle henvisninger: scripts og LaTeX-filer i `src/`, tester, `.gitignore`, README, veiledningene i `deliverable/visualprofile/`, bildelenkene i CV-ene og malene, profilmanualen og lenker mellom dokumenter. Løsningsnotater for ferdige oppgaver i `TASKS.md` og `ARCHIVE.md` er historikk og beholder de gamle navnene.
+3. Testen for engelske navn utvides til filnavn, med de ni dokumentene over som eneste unntak.
+
+**Verifisering:**
+
+1. Ingen henvisning til et gammelt filnavn finnes utenfor løsningsnotatene for ferdige oppgaver.
+2. `pytest --timeout=5` består, med den utvidede testen for filnavn.
+3. Alle PDF-er bygges på nytt med `src/build_all.py` uten feil, og profilmanualen, et utvalg CV-er og visittkort, presentasjonen og dokumentmalene rendres og kontrolleres visuelt: logoer, mønstre og foto vises som før.
+
+**Estimert innsats:** 34 min
+
+**Løsning (2026-11-13):**
+
+- **Nye navn:** 147 filer har fått nytt navn etter tabellen over, med vanlig omdøping i filsystemet (uten git). Det gjelder også de genererte PDF-ene og PNG-ene. Navnene ble satt med et engangsskript i `tmp/`, først i en tørrkjøring som viste hver omdøping og hver endret linje. Skriptet er slettet. Henvisningene ble bare endret der det gamle navnet stod som filnavn, altså fulgt av en filendelse. Norsk tekst og CV-etiketten «Foto:» står uendret.
+- **Henvisninger:** 50 filer er oppdatert: bildelenkene i alle CV-ene, malene, eksemplene og veiledningene, profilmanualen (bildene, filnavnene som vises på sidene med filoversikt, og sjekklisten), lenkene mellom dokumentene i `background/` og `deliverable/`, `.gitignore`, README og testene. Navn uten filendelse ble rettet for hånd: listene over mål i `src/build_all.py`, logofilene til visittkortet, mønsteret for fotostien i CV-kontrollen (`IMAGE_PHOTO`, nå bare `images/photo.*`), filnavnet til fotoet i normaliseringen, og navnene på hjelpevariantene i byggene av profilmanualen og presentasjonene.
+- **Fargevariantene i presentasjonsbygget** lages nå fra `*-black`-filene. Det ekstra eksemplaret `-mork-gronn` er fjernet, fordi det hadde samme farge som varianten `-darkgreen` og ikke ble brukt. Med de engelske navnene heter noen varianter nå det samme som en ekte fil, for eksempel `kw-wordmark-white.pdf`. Bygget kopierer de ekte filene først og overskriver dem ikke, og malene bruker bare de ekte filene, så resultatet er det samme som før.
+- **Test:** `tests/test_english_names.py` sjekker nå også filnavn. Hvert navn deles opp ved `-`, `_`, `.` og mellomrom, og delene sammenlignes med en liste over norske ord, så person- og kundenavn ikke slår ut. De ni bakgrunnsdokumentene er de eneste unntakene, og en egen test sjekker at de fortsatt finnes. `tmp/`, `secrets/` og `.claude/worktrees/` er lagt til de utelatte mappene, og innboksen `background/new/` sjekkes ikke.
+- **README:** språkregelen og beskrivelsen av testen omfatter nå filnavn, med de ni unntakene.
+- **Ikke endret:** løsningsnotatene for ferdige oppgaver i `TASKS.md` og `ARCHIVE.md` (historikk), og `CLAUDE.md`, som bare bruker ordene i vanlig tekst.
+- **Venv:** den første kjøringen av `uv run` opprettet en Linux-venv i `.venv` (navnet til Windows-venven), fordi `UV_PROJECT_ENVIRONMENT` ikke var satt i Bash-verktøyets skall. Utdataene fra uv viste at mappen var ny, ikke en erstattet Windows-venv. Den ble slettet med en gang, og resten av kjøringene brukte `UV_PROJECT_ENVIRONMENT=.venv-linux`.
+
+**Verifisering:**
+
+1. Et søk etter alle de gamle filnavnene (utenom `ARCHIVE.md` og `TASKS.md`) finner bare vanlige norske ord i tekst, som «eksempel.» og «stockfoto.». Ingen filer har et gammelt navn.
+2. `pytest --timeout=5`: 386 passed. Med `cvs/AVVIK.md` og `brev-kort.md` lagt inn midlertidig feiler testen for filnavn og nevner begge filene.
+3. Alt er bygget på nytt uten feil: profilmanualen, CV-mal og -eksempel, begge presentasjonene, de fire dokumentmalene, begge visittkortene og oversiktsarket med `build_all.py`, og alle 18 CV-er og visittkort med `build_employee_cvs.py` i seks puljer på tre (CV-kontrollen: 0 avvik). En ny tørrkjøring gir «0 built». Alle 40 sider i profilmanualen, tre sider av presentasjonen, brevet, begge sidene av visittkortet, første side av en CV og en side av oversiktsarket er rendret og kontrollert: logoer, symboler, det femte elementet (også den mørkegrønne varianten på skillesidene), seismografen og fotoene vises som før.
+
+**Faktisk innsats:** 8m 58s (veggklokke) mot 34 min estimert. Henvisningene fulgte nesten alle mønsteret «navn + filendelse», så ett skript tok det meste, og byggene gikk raskere enn anslaget.
+
+**Kobling:** utvider T13 (engelske navn på alt som ikke er dokumenter).
+
+**Berørte filer:** 147 omdøpte filer i `cvs/`, `deliverable/`, `background/2026-11-11_kodeworks_no_design_media/` og `tests/fixtures/documents/`; `src/build_all.py`, `src/build_business_card.py`, `src/build_cv_business_cards.py`, `src/build_cv_pdf.py`, `src/build_employee_cvs.py`, `src/build_presentation.py`, `src/build_profile_manual.py`, `src/build_visualprofile_overview.py`, `src/check_cv_md.py`, `src/normalize_cv_images.py`, `src/business_card/card.tex`, `src/cv_pdf/cv-style.tex`, `src/document/kwdocument.sty`, `src/presentation/beamerthemekodeworks.sty`, `src/profile_manual/layout.tex`, `tests/test_english_names.py`, `tests/test_build_all.py`, `tests/test_check_cv_md.py`, `tests/test_cv_images.py`, `tests/test_fetch_from_drive.py`, `tests/test_platform_independence.py`, `.gitignore`, `README.md`, CV-ene i `cvs/`, `cvs/DEVIATIONS.md`, veiledningene og malene i `deliverable/visualprofile/`, `deliverable/visualprofile/profile/profile-manual.md`, `background/2026-11-11_kodeworks_no_design.md`, `background/2026-11-11_notat_konsulentoppdrag_android_kotlin.md`, `TASKS.md`

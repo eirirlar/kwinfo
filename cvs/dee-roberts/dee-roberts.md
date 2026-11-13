@@ -6,7 +6,7 @@ Konsulent
 - E-post: dee@kodeworks.no
 - Erfaring: 5 år
 - Språk: norsk, engelsk
-- Foto: images/foto.jpg
+- Foto: images/photo.jpg
 ## Om Dee
 
 Dee er en fullstack utvikler med fem års erfaring. Dee har bred erfaring i frontend-utvikling med TypeScript og React, inkludert biblioteker som Redux og Zustand, og har bygget både single page-applikasjoner og lokale applikasjoner via Electron.

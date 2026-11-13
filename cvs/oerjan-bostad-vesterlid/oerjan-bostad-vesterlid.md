@@ -6,7 +6,7 @@ Konsulent
 - E-post: orjan@kodeworks.no
 - Erfaring: 6 år
 - Språk: norsk, engelsk
-- Foto: images/foto.jpg
+- Foto: images/photo.jpg
 - Fotofokus: 0.32, 0.3
 
 ## Om Ørjan

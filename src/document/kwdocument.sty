@@ -185,11 +185,11 @@
   \fill[kwgreen] (28,33.0) -- (110,24.5) -- (110,24.88) -- (28,33.38) -- cycle;}
 \newcommand{\kwfooterhair}{\fill[kwhair] (20,23.2) rectangle (190,23.5);}
 \newcommand{\kwheadernode}{%
-  \node[anchor=north west,inner sep=0pt] at (20,12) {\includegraphics[width=24mm]{\kwassetdir kw-navnetrekk-svart.pdf}};
+  \node[anchor=north west,inner sep=0pt] at (20,12) {\includegraphics[width=24mm]{\kwassetdir kw-wordmark-black.pdf}};
   \node[anchor=base east,inner sep=0pt] at (190,15.5) {\kwsize{7.5}{9}\kwregular\color{kwmuted}\kwrunning};}
 \newcommand{\kwletterhead}{%
   \begin{tikzpicture}[remember picture,overlay,x=1mm,y=-1mm,shift={(current page.north west)}]
-    \node[anchor=north west,inner sep=0pt] at (20,16) {\includegraphics[width=40mm]{\kwassetdir kw-navnetrekk-svart.pdf}};
+    \node[anchor=north west,inner sep=0pt] at (20,16) {\includegraphics[width=40mm]{\kwassetdir kw-wordmark-black.pdf}};
     \ifx\kwrecipient\empty\else
       \node[anchor=base west,inner sep=0pt] at (20,46.5) {\kwsize{6.5}{8}\kwregular\color{kwmuted}\kwretline};
       \node[anchor=north west,inner sep=0pt,text width=95mm,align=flush left] at (20,50) {\kwsize{10}{14.5}\kwregular\kwragged\kwnh\kwrecipient\par};
@@ -203,7 +203,7 @@
   \end{tikzpicture}\fi}
 \newcommand{\kwdocwordmark}{%
   \begin{tikzpicture}[remember picture,overlay,x=1mm,y=-1mm,shift={(current page.north west)}]
-    \node[anchor=north west,inner sep=0pt] at (20,16) {\includegraphics[width=40mm]{\kwassetdir kw-navnetrekk-svart.pdf}};
+    \node[anchor=north west,inner sep=0pt] at (20,16) {\includegraphics[width=40mm]{\kwassetdir kw-wordmark-black.pdf}};
   \end{tikzpicture}}
 \def\kwdate{}\def\kwrecipient{}\def\kwretline{}\def\kwmeta{}\def\kwrunning{}\def\kwcompany{KodeWorks AS}\def\kworgnr{820 478 452}
 \AddToHook{shipout/foreground}{%

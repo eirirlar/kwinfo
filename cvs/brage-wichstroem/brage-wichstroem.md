@@ -6,7 +6,7 @@ Konsulent
 - E-post: brage.wichstrom@kodeworks.no
 - Erfaring: 1 år
 - Språk: norsk, engelsk
-- Foto: images/foto.jpg
+- Foto: images/photo.jpg
 ## Om Brage
 
 Brage Wichstrøm er en engasjert og kunnskapsrik programvareutvikler med en Master i Informatikk fra NTNU og ett års erfaring som konsulent hos KodeWorks. Han har vist sin allsidighet og tekniske dyktighet gjennom prosjekter innen fullstack-utvikling, databasearkitektur, maskinlæring og skyinfrastruktur. Med spisskompetanse i teknologier som Java, React, TypeScript og AWS, kombinerer Brage solid akademisk bakgrunn med praktisk erfaring i utviklingsteam.

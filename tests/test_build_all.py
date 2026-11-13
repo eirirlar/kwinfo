@@ -15,7 +15,7 @@ import build_employee_cvs  # noqa: E402
 
 VP = ROOT / "deliverable" / "visualprofile"
 # Markdown in the template folders that is reference text, not a build source.
-NOT_BUILT = {"deliverable/visualprofile/profile/farger.md"}
+NOT_BUILT = {"deliverable/visualprofile/profile/colors.md"}
 
 
 def ignore_patterns() -> list[re.Pattern]:
@@ -67,7 +67,7 @@ TRACKED = sorted(set(build_all.sources())
                  | {rel(p) for p in (ROOT / "cvs").glob("*/images/*")}
                  | {rel(p) for p in VP.glob("*/images/*")}
                  | {rel(p) for p in (VP / "profile" / "assets").rglob("*.svg")}
-                 | {"cvs/AVVIK.md", "deliverable/visualprofile/profile/colors.json"})
+                 | {"cvs/DEVIATIONS.md", "deliverable/visualprofile/profile/colors.json"})
 
 
 @pytest.mark.parametrize("source", TRACKED)
@@ -79,3 +79,10 @@ def test_matcher_sanity() -> None:
     assert ignored("data/anything/x.xlsx")
     assert ignored("src/__pycache__/x.pyc")
     assert not ignored("src/build_all.py")
+
+
+@pytest.mark.parametrize("name", build_employee_cvs.people())
+def test_employee_cv_inputs_exist_in_a_clean_checkout(name: str) -> None:
+    # Only tracked files may be required: a folder that is empty on one machine does not exist in a clone.
+    for target in build_employee_cvs.targets([name]):
+        assert target.missing_inputs() == [], f"{target.name}: required inputs are missing"

@@ -47,7 +47,7 @@ Vi har tatt produkter fra idéstadiet og ut i markedet siden 2008, både for kun
 
 KodeWorks AS ble kåret til Gaselle-bedrift i 2023.
 
-![](images/foto_team3.jpg)
+![](images/photo_team3.jpg)
 
 ::: notes
 Vi har både feilet og lykkes, og vet hva som skal til. Mange av oss har erfaring fra egne oppstartsselskaper, og det preger måten vi jobber på.
@@ -141,7 +141,7 @@ Tredje del: referanser. Velg de som er mest relevante for kunden.
 - **SkandiaEnergi:** Elkompis, app for strømforbruk (2021–2022)
 - **EnerSky:** API for energidata, i KodeWorks' egen portefølje (2024–nå)
 
-![](images/foto_team1.jpg)
+![](images/photo_team1.jpg)
 
 ::: notes
 Fire eksempler fra energi. Statkraft og Equinor er eksterne kunder. Elkompis er en forbruker-app for iOS og Android. EnerSky er et selskap i vår egen portefølje som leverer energidata via et REST-API.

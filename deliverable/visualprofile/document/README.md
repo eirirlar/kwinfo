@@ -6,10 +6,10 @@ Denne veiledningen er for deg som skal lage et A4-dokument i KodeWorks' profil. 
 
 | Fil | Hva den er |
 |---|---|
-| `brevmal.md` | Malen for brev. Hvert felt har en forklarende plassholder. Kopier filen og fyll ut. |
-| `dokumentmal.md` | Malen for dokument. Hvert element står med en kort instruks. Kopier filen og fyll ut. |
-| `eksempel-brev.md` | Et ferdig salgsbrev på to sider. Bruk det som forbilde for tone og oppbygging. |
-| `eksempel-utlysning.md` | En utlysning av et konsulentoppdrag på to sider. |
+| `letter-template.md` | Malen for brev. Hvert felt har en forklarende plassholder. Kopier filen og fyll ut. |
+| `document-template.md` | Malen for dokument. Hvert element står med en kort instruks. Kopier filen og fyll ut. |
+| `example-letter.md` | Et ferdig salgsbrev på to sider. Bruk det som forbilde for tone og oppbygging. |
+| `example-job-posting.md` | En utlysning av et konsulentoppdrag på to sider. |
 
 PDF- og PNG-filene er ikke i git. De bygges fra Markdown-filene med `uv run python src/build_all.py` fra prosjektroten (se «Bygge alt» i prosjektets README).
 

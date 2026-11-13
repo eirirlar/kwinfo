@@ -6,7 +6,7 @@ Seniorkonsulent
 - E-post: john@kodeworks.no
 - Erfaring: 11 år
 - Språk: norsk, engelsk
-- Foto: images/foto.jpg
+- Foto: images/photo.jpg
 ## Om John
 
 John er en erfaren fullstack-utvikler med over ti års erfaring fra krevende IT-prosjekter, og har en mastergrad i datateknikk fra NTNU med spesialisering i komplekse datasystemer.

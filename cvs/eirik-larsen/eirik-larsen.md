@@ -5,7 +5,7 @@ Seniorkonsulent
 - Telefon: +47 416 70 269
 - E-post: eirik.larsen@kodeworks.no
 - Språk: norsk, engelsk
-- Foto: images/foto.jpg
+- Foto: images/photo.jpg
 
 ## Om Eirik
 

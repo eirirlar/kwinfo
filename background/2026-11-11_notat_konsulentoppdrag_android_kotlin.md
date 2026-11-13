@@ -1,6 +1,6 @@
 # Notat: konsulentoppdrag Android/Kotlin
 
-Stikkord fra samtalen om oppdraget, grunnlaget for utlysningen `deliverable/2026-11-11_konsulentoppdrag_android_kotlin.md`. Dato: 2026-11-11 (filens endringsdato).
+Stikkord fra samtalen om oppdraget, grunnlaget for utlysningen `deliverable/2026-11-11_consultant_assignment_android_kotlin.md`. Dato: 2026-11-11 (filens endringsdato).
 
 - Android Kotlin custom SDK custom hardware, kamera, lyd.
 - UX fokus. Lage app.

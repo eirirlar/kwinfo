@@ -45,7 +45,7 @@ SHEET = (105.0, 75.0)          # mm
 TRIM = (10.0, 10.0, 95.0, 65.0)  # mm, from the lower left corner of the sheet
 BLEED = 3.0                    # mm
 SAFE = 3.0                     # mm: text must stay this far inside the trim edge
-# wordmark (card.tex): 40 mm wide, top edge 16 mm below the sheet top; aspect from kw-navnetrekk-svart.svg
+# wordmark (card.tex): 40 mm wide, top edge 16 mm below the sheet top; aspect from kw-wordmark-black.svg
 WORDMARK_BOTTOM_MM = 16.0 + 40.0 * 132.83 / 900.81
 LOGO_CLEAR = 5.0               # mm: minimum gap between the wordmark and the contact block
 REQUIRED_FIELDS = ("name",)
@@ -232,8 +232,8 @@ def main() -> None:
         font_guard.write_hook(work)
         log = ""
         for model in ("rgb", "cmyk"):  # rgb: screen version only; cmyk: the print PDF
-            for asset in ("kw-navnetrekk", "kw-symbol"):
-                src = profile / f"assets/pdf/{asset}-svart.pdf"
+            for asset in ("kw-wordmark", "kw-symbol"):
+                src = profile / f"assets/pdf/{asset}-black.pdf"
                 if model == "cmyk":
                     cmyk_logo(src, work / f"{asset}.pdf")
                 else:

@@ -4,17 +4,17 @@ CV-en skrives som en vanlig Markdown-fil og settes automatisk til en ferdig PDF 
 
 | Fil | Hva den er |
 |---|---|
-| `cv-mal.md` | Tom mal med veiledning i kommentarer. Start her. |
-| `cv-mal.pdf` | Slik ser malen ut ferdig satt. |
-| `cv-eksempel.md` | Utfylt eksempel med åtte prosjekter, foto og kundelogoer. |
-| `cv-eksempel.pdf` | Det ferdige eksempelet (fire sider). |
+| `cv-template.md` | Tom mal med veiledning i kommentarer. Start her. |
+| `cv-template.pdf` | Slik ser malen ut ferdig satt. |
+| `cv-example.md` | Utfylt eksempel med åtte prosjekter, foto og kundelogoer. |
+| `cv-example.pdf` | Det ferdige eksempelet (fire sider). |
 | `images/` | Foto og logoer som eksempelet bruker. |
 
 PDF- og PNG-filene er ikke i git. De bygges fra Markdown-filene med `uv run python src/build_all.py` fra prosjektroten (se «Bygge alt» i prosjektets README).
 
 ## Slik lager du din CV
 
-1. Lag én mappe for CV-en under `cvs/`, med navnet ditt i små bokstaver, der æ blir ae, ø blir oe, å blir aa og mellomrom blir bindestrek. Kopier `cv-mal.md` inn i mappen med samme navn, og legg fotoet i undermappen `images/`. Kundelogoene ligger i det felles logobiblioteket `cvs/logos/`, som alle CV-ene deler:
+1. Lag én mappe for CV-en under `cvs/`, med navnet ditt i små bokstaver, der æ blir ae, ø blir oe, å blir aa og mellomrom blir bindestrek. Kopier `cv-template.md` inn i mappen med samme navn, og legg fotoet i undermappen `images/`. Kundelogoene ligger i det felles logobiblioteket `cvs/logos/`, som alle CV-ene deler:
 
    ```
    cvs/
@@ -24,10 +24,10 @@ PDF- og PNG-filene er ikke i git. De bygges fra Markdown-filene med `uv run pyth
    └── ola-nordmann/
        ├── ola-nordmann.md
        └── images/
-           └── foto.jpg
+           └── photo.jpg
    ```
 
-2. Fyll inn. Bruk `cv-eksempel.md` som forbilde for nivå og lengde. Fila kan leses og redigeres i hvilken som helst teksteditor, og forhåndsvises i f.eks. VS Code.
+2. Fyll inn. Bruk `cv-example.md` som forbilde for nivå og lengde. Fila kan leses og redigeres i hvilken som helst teksteditor, og forhåndsvises i f.eks. VS Code.
 3. Bygg PDF-en og kontroller fila fra prosjektmappen:
 
    ```bash
@@ -51,7 +51,7 @@ Senior utvikler
 - E-post: ola@kodeworks.no
 - Erfaring: 8 år
 - Språk: norsk, engelsk
-- Foto: images/foto.jpg
+- Foto: images/photo.jpg
 
 ## Om Ola
 
@@ -113,9 +113,9 @@ Nøkkelord: React, TypeScript, Azure
 ## Foto og kundelogoer
 
 - **Foto:** et rolig portrett. Bildet beskjæres automatisk så det fyller rammen, også når det er liggende eller viser hele personen. Havner ansiktet feil, kan du legge til `- Fotofokus: 0.5, 0.3` (vannrett og loddrett punkt som brøk av bildet, der 0, 0 er øverst til venstre).
-- **Fotoformat:** fotoet heter `images/foto.jpg` og er en JPG uten metadata (EXIF, fargeprofil), med inntil 1200 piksler i bredden på utsnittet med rammens forhold (60:74), altså inntil 1200 × 1480 for et stående foto. Legg inn fotoet som du har det, og kjør `uv run src/normalize_cv_images.py --apply`: det gjør om til JPG, fjerner metadata, skalerer ned og retter henvisningen i CV-en. Kjør uten `--apply` først for å se hva som blir endret.
+- **Fotoformat:** fotoet heter `images/photo.jpg` og er en JPG uten metadata (EXIF, fargeprofil), med inntil 1200 piksler i bredden på utsnittet med rammens forhold (60:74), altså inntil 1200 × 1480 for et stående foto. Legg inn fotoet som du har det, og kjør `uv run src/normalize_cv_images.py --apply`: det gjør om til JPG, fjerner metadata, skalerer ned og retter henvisningen i CV-en. Kjør uten `--apply` først for å se hva som blir endret.
 - **Logoer:** hver kunde har én logo i `cvs/logos/<kunde>.svg` eller `.png`, med kundenavnet i små bokstaver og bindestrek (f.eks. `cvs/logos/sunlit-sea.png`). CV-en viser til den som `- Logo: ../logos/sunlit-sea.png`. Finnes kunden allerede i biblioteket, bruk den fila. En ny logo legges i biblioteket. Normaliseringsskriptet trimmer kanter og skalerer en PNG ned til høyst 700 × 260 piksler. CV-kontrollen melder avvik for foto og logoer som ikke følger formatet.
-- **Malen og eksempelet** i denne mappen har sine egne bilder i `images/` (`images/foto.jpg`, `images/logo-<kunde>.png`), så de kan brukes uten resten av repoet.
+- **Malen og eksempelet** i denne mappen har sine egne bilder i `images/` (`images/photo.jpg`, `images/logo-<kunde>.png`), så de kan brukes uten resten av repoet.
 - **Logo:** kundens logo vises øverst til høyre i prosjektblokken. SVG er best, PNG bør være minst 600 piksler bred. Hvite og gjennomsiktige kanter trimmes bort, og logoen skaleres så alle logoer får omtrent samme visuelle tyngde. Byggeskriptet advarer når en logo har for lav oppløsning. Når kunden er KodeWorks, vises ingen logo, fordi navnetrekket allerede står nederst i CV-en. Bruk bare logoer kunden selv publiserer.
 
 ## Hvordan CV-en tilpasser seg innholdet

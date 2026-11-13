@@ -38,7 +38,7 @@ TEKST. Overskrift på nivå 2 (##) lager et nytt lysbilde. Bruk inntil fire punk
 
 [Tekst og bilde: høyst tre punkter til venstre, ett foto fra KodeWorks til høyre.]
 
-![](images/foto_team1.jpg)
+![](images/photo_team1.jpg)
 
 ::: notes
 TEKST OG BILDE. Legg til klassen {.image} på overskriften. Teksten står til venstre, og det første bildet blir en stor flate til høyre, beskåret til å fylle. Bruk KodeWorks' egne foto av ansatte og lokaler, ikke stockfoto. Bildet må ligge i mappen images/ ved siden av Markdown-filen. Har du ikke samtykke fra de som er avbildet, bruker du et annet bilde.

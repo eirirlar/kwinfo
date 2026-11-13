@@ -7,15 +7,15 @@
 Usage (from the project root):
     uv run src/normalize_cv_images.py              # dry run: what would change, per file
     uv run src/normalize_cv_images.py --apply      # change the files
-    uv run src/normalize_cv_images.py cvs/paal-noedseth/images/foto.jpg cvs/logos/equinor.png [--apply]
+    uv run src/normalize_cv_images.py cvs/paal-noedseth/images/photo.jpg cvs/logos/equinor.png [--apply]
     uv run src/normalize_cv_images.py --self-test   # check the rules on synthetic images (used by the tests)
 
-Default: every photo cvs/*/images/foto.* and every logo in the shared library cvs/logos/.
+Default: every photo cvs/*/images/photo.* and every logo in the shared library cvs/logos/.
 
 Photo: JPG, quality 85 (lower, down to 70, if the file would otherwise grow), sRGB, no metadata (EXIF, ICC); transparency is flattened onto white. Scaled down so the
 largest crop in the CV's photo frame ratio (60:74) is PHOTO_MAX_CROP_W pixels wide (at most 1200 x 1480 for a
 portrait photo), never up. The file is not cropped: src/build_cv_pdf.py crops it around photo_focus. A photo that
-changes from .png to .jpg gets its reference in the CV (`- Foto: images/foto.png`) updated, and the .png is removed.
+changes from .png to .jpg gets its reference in the CV (`- Foto: images/photo.png`) updated, and the .png is removed.
 
 Logo (PNG/JPG; SVG is left alone): transparent or near-white margins are trimmed, then the logo is scaled down to
 fit LOGO_MAX_PX, never up. A scaled PNG is saved as a 256-colour palette with transparency, optimised; JPG is saved at quality 90.
@@ -133,7 +133,7 @@ def normalize_logo(path: Path) -> tuple[bytes | None, Path, str]:
 
 
 def default_files() -> list[Path]:
-    return sorted(ROOT.glob("cvs/*/images/foto.*")) + sorted(p for p in (ROOT / "cvs/logos").glob("*") if p.is_file())
+    return sorted(ROOT.glob("cvs/*/images/photo.*")) + sorted(p for p in (ROOT / "cvs/logos").glob("*") if p.is_file())
 
 
 def update_reference(old: Path, new: Path) -> bool:
@@ -162,16 +162,16 @@ def self_test() -> int:
         person = work / "cvs" / "ola" / "images"
         person.mkdir(parents=True)
         cv = work / "cvs" / "ola" / "ola.md"
-        cv.write_text("# Ola\n\n- Foto: images/foto.png\n", encoding="utf-8")
+        cv.write_text("# Ola\n\n- Foto: images/photo.png\n", encoding="utf-8")
         # photo: large RGBA PNG, half transparent -> JPG, flattened on white, crop width 1200
         im = Image.new("RGBA", (1600, 2400), (200, 30, 30, 255))
         im.paste((0, 0, 0, 0), (0, 0, 800, 2400))
-        im.save(person / "foto.png")
-        data, target, _ = normalize_photo(person / "foto.png")
-        check(target.name == "foto.jpg", "a PNG photo becomes foto.jpg")
+        im.save(person / "photo.png")
+        data, target, _ = normalize_photo(person / "photo.png")
+        check(target.name == "photo.jpg", "a PNG photo becomes photo.jpg")
         target.write_bytes(data)
-        check(update_reference(person / "foto.png", target), "the CV reference is updated")
-        check("images/foto.jpg" in cv.read_text(encoding="utf-8"), "the CV points at foto.jpg")
+        check(update_reference(person / "photo.png", target), "the CV reference is updated")
+        check("images/photo.jpg" in cv.read_text(encoding="utf-8"), "the CV points at photo.jpg")
         fmt, w, h, meta = image_info(target)
         check(fmt == "jpeg" and not meta, "the photo is a JPG without metadata")
         check(round(min(w, h * PHOTO_RATIO)) == PHOTO_MAX_CROP_W, f"the crop is {PHOTO_MAX_CROP_W} px wide ({w}x{h})")
@@ -183,9 +183,9 @@ def self_test() -> int:
         small.mkdir(parents=True)
         exif = Image.Exif()
         exif[0x010F] = "Camera maker"
-        Image.new("RGB", (400, 500), (90, 120, 150)).save(small / "foto.jpg", exif=exif, quality=95)
-        check(image_info(small / "foto.jpg")[3], "the test photo has metadata")
-        data, target, _ = normalize_photo(small / "foto.jpg")
+        Image.new("RGB", (400, 500), (90, 120, 150)).save(small / "photo.jpg", exif=exif, quality=95)
+        check(image_info(small / "photo.jpg")[3], "the test photo has metadata")
+        data, target, _ = normalize_photo(small / "photo.jpg")
         target.write_bytes(data)
         fmt, w, h, meta = image_info(target)
         check((w, h) == (400, 500) and not meta, f"a small photo is not scaled up and loses its metadata ({w}x{h})")
@@ -213,7 +213,7 @@ def main(argv: list[str] | None = None) -> int:
     for s in (sys.stdout, sys.stderr):
         s.reconfigure(encoding="utf-8", errors="replace")
     ap = argparse.ArgumentParser(description="Normalize the photos and logos of the employees' CVs")
-    ap.add_argument("files", nargs="*", help="images (default: cvs/*/images/foto.* and cvs/logos/*)")
+    ap.add_argument("files", nargs="*", help="images (default: cvs/*/images/photo.* and cvs/logos/*)")
     ap.add_argument("--apply", action="store_true", help="change the files (default: dry run)")
     ap.add_argument("--self-test", action="store_true", help="check the rules on synthetic images and exit")
     args = ap.parse_args(argv)
@@ -223,7 +223,7 @@ def main(argv: list[str] | None = None) -> int:
     files = [Path(f).resolve() for f in args.files] or default_files()
     before = after = changed = flagged = 0
     for p in files:
-        is_photo = p.parent.name == "images" and p.stem == "foto"
+        is_photo = p.parent.name == "images" and p.stem == "photo"
         data, target, why = (normalize_photo if is_photo else normalize_logo)(p)
         size = p.stat().st_size
         before += size

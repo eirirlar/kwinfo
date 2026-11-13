@@ -6,7 +6,7 @@ Konsulent
 - E-post: paal@kodeworks.no
 - Erfaring: 9 år
 - Språk: norsk, engelsk
-- Foto: images/foto.jpg
+- Foto: images/photo.jpg
 
 ## Om Pål
 

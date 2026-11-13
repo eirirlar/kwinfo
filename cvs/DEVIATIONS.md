@@ -44,7 +44,7 @@ Alle filene består kontrollen (`uv run python src/check_cv_md.py cvs/*/*.md`) o
 - To studentprosjekter (Brettspill utviklingsplattform, eLæringsmodul for e-helse), fra seksjonen «Artikler, foredrag og verv», står under Foredrag og publikasjoner med Keele University og UCL som sted. Det er egentlig studentprosjekter, ikke publikasjoner. Konsulenten bør ta stilling til plasseringen. Tittelen har punktum («Brettspill utviklingsplattform.»), beholdt.
 - Skrivefeil beholdt: «ut ifra», «rettningsfinnendevnene», «Et grafisk editor», «Et GDPR-kompatibel», «oppholdt», «Arkitekte», «OAuth2-flytter».
 - Bygget: «Generelt»-overskriften blir stående alene nederst på side 4 med listene på side 5 (se svakheter i rapporten).
-- Fotoet var PNG (521 × 568) og er lagret som `images/foto.jpg` med hvit bakgrunn.
+- Fotoet var PNG (521 × 568) og er lagret som `images/photo.jpg` med hvit bakgrunn.
 
 ## Eirik Blekesaune
 
@@ -211,7 +211,7 @@ Alle filene består kontrollen (`uv run python src/check_cv_md.py cvs/*/*.md`) o
 
 ## Thomas Ax Gulbrandsrød
 
-- Fotoet var en PNG (812 × 774, 1 MB) og er lagret som JPG (`images/foto.jpg`).
+- Fotoet var en PNG (812 × 774, 1 MB) og er lagret som JPG (`images/photo.jpg`).
 - Logoen i Sunami-prosjektet (07.2016 – 07.2021) er EyaSys, ikke Sunami. Jeg har utelatt logoen i stedet for å bruke feil logo. Sunami har ingen egen logo i originalen. Kunde er satt til «Sunami» (arbeidsgiver er EyaSys). Bør avklares om kunden skal være EyaSys.
 - KW-TV (internprosjekt) og SOCKS4 (internprosjekt) har KodeWorks-logo i originalen; kunde satt til KodeWorks og logo utelatt.
 - Prosjektene «Cisco microsoft teams» og «Infrastruktur og HIL testing» har ikke en rolle som overskrift i originalen (det er tema-/prosjekttittel). Beholdt som overskrift. Bør byttes mot ekte rolle.

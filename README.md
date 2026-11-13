@@ -13,9 +13,9 @@ Prosjektet er primært **Python**-basert (`uv run python`). Scripts ligger i `sr
 ├── background/      – kildedokumenter, analyser og notater (datoprefiks YYYY-MM-DD_)
 │   ├── new/         – innboks for nye originaler; tømmes når de er konvertert
 │   └── visualprofile/Fonts/ – profilfonten Non Natural Grotesk (lisensiert, med lisensene); brukes av alle byggene
-├── cvs/             – de ansattes CV-er i Markdown, én mappe per person (<navn>.md, images/foto.jpg); oppdateres med commits.
+├── cvs/             – de ansattes CV-er i Markdown, én mappe per person (<navn>.md, images/photo.jpg); oppdateres med commits.
 │                      logos/: felles logobibliotek, én fil per kunde.
-│                      CV-PDF og visittkort bygges ved siden av og er utenfor git. AVVIK.md: hva konsulentene bør rette
+│                      CV-PDF og visittkort bygges ved siden av og er utenfor git. DEVIATIONS.md: hva konsulentene bør rette
 ├── deliverable/     – ferdige dokumenter (rapporter, notater, presentasjoner)
 │   ├── itko/        – månedlige ITKO Temp-rapporter (rapport_YYYY-MM.md)
 │   └── visualprofile/ – revidert visuell profil (profile/) og maler bygget på den (cv/, presentation/, document/, business-card/)
@@ -37,12 +37,13 @@ Prosjektet er primært **Python**-basert (`uv run python`). Scripts ligger i `sr
 
 ## Konvensjoner
 
-- **Språk:** Dokumenter og rapporter skrives på norsk (bokmål). Kode, variabelnavn og CLI-flagg skrives på engelsk.
+- **Språk:** Dokumenter og rapporter skrives på norsk (bokmål). Kode, variabelnavn, CLI-flagg, mappenavn og filnavn skrives på engelsk. Unntaket er ni eldre bakgrunnsdokumenter som beholder norske filnavn (listen står i `tests/test_english_names.py`).
 - **Filnavn i `background/`:** Bruk dato-prefix `YYYY-MM-DD_beskrivelse.ext` (f.eks. `2026-09-22_konsernstruktur.md`). Dato er dokumentets egen dato, ikke arkiveringsdato.
 - **Nye filer:** Legg innkommende, uklassifiserte filer i `background/new/`. Konverter til Markdown, dato-prefix, og flytt ut til `background/` når de er lest og klassifisert.
 - **Scripts:** Alle scripts ligger i `src/` og kjøres fra prosjektroten (`uv run python src/navn.py`).
 - **Midlertidige filer:** Scripts og kommandoer vi styrer selv, skriver ikke utenfor prosjektet. Arbeidsmapper og mellomfiler legges i `tmp/` i prosjektroten (git-ignorert) med `src/project_tmp.py`: `work_dir(prefix)` lager en mappe som slettes når blokken avsluttes, også ved feil, og `mkdtemp(prefix)` lager en mappe som scriptet selv sletter (beholdes med `--keep-build`). Testen `tests/test_project_tmp.py` feiler hvis et script i `src/` bruker systemets midlertidige mappe. Installerte programmer (uv, LuaLaTeX, pytest, pandoc) beholder sine egne hurtigbuffere og midlertidige mapper.
 - **Docx/PDF-generering:** Markdown er kilden. Konvertering til `.docx`/`.pdf` skjer med Pandoc, kun når det bestilles eksplisitt.
+- **Linjeskift og filrettigheter:** Alle tekstfiler har LF-linjeskift i repoet og i hver checkout, også på Windows. Det styres av `.gitattributes`, uavhengig av git-innstillingene til den enkelte. Ingen filer i repoet er kjørbare: scripts startes med `uv run`, ikke direkte, så de trenger ikke kjøreflagget.
 
 ---
 
@@ -125,7 +126,7 @@ uv run pytest --timeout=3
 
 Aldri `pytest` uten `--timeout` (standard 3 sek er også satt i `pyproject.toml`). `tests/` importerer moduler direkte fra `src/` (`pythonpath = ["src"]`). Se CLAUDE.md for regler om test-timeout, skippede tester og bakgrunnsprosesser.
 
-`tests/test_english_names.py` håndhever språkregelen: hjelpetekster til flagg, meldinger fra skriptene og mappenavn skal være på engelsk, mens PDF-er, kildene deres og dokumentasjon er på norsk. Tekst i «…» i en melding regnes som innhold.
+`tests/test_english_names.py` håndhever språkregelen: hjelpetekster til flagg, meldinger fra skriptene, mappenavn og filnavn skal være på engelsk, mens innholdet i PDF-er, kildene deres og dokumentasjon er på norsk. Filnavnene sjekkes mot en liste med norske ord, så person- og kundenavn i `cvs/` ikke slår ut. Ni bakgrunnsdokumenter er unntatt, og testen sjekker at de fortsatt finnes. Tekst i «…» i en melding regnes som innhold.
 
 ---
 
@@ -409,7 +410,7 @@ KodeWorks rapporterer månedlig til ITKO via boten @itko-temp i ITKO-slacken (el
 
 - **Filnavn:** `deliverable/itko/rapport_YYYY-MM.md`, der `YYYY-MM` er måneden rapporten gjelder (ikke innsendingsmåneden).
 - **Innhold:** Én kodeblokk som limes rett inn i Slack, med `Måned`, `Inn`, `Ut`, `Timeprisendring` (endring i kroner, ikke nivå), `Markedsfølelse` og `Forventning` (1–5), `Nysalg` (én linje per salg: rolle, teknologi, sektor, bransje, eller `ingen`) og `Ansatte` (hele ansattlista, én linje per ansatt).
-- **Ansattlista:** Ta utgangspunkt i forrige måneds rapport og endre det som har endret seg. Formatet er beskrevet i `deliverable/ansattliste_itko.md`. Ingen navn på personer eller kunder.
+- **Ansattlista:** Ta utgangspunkt i forrige måneds rapport og endre det som har endret seg. Formatet er beskrevet i `deliverable/employee_list_itko.md`. Ingen navn på personer eller kunder.
 - **Vurderingene:** Markedsfølelse og forventning skal settes av samme person hver måned.
 
 ---
@@ -434,12 +435,12 @@ Gruppene, i byggerekkefølge:
 | Gruppe | Hva | Script |
 |---|---|---|
 | `assets` | Logoer og grafikk fra SVG til PDF og PNG (`profile/assets/pdf/`, `png/`) | `src/export_profile_assets.py` |
-| `profile` | Profilmanualen (`profile/profilmanual.pdf`) | `src/build_profile_manual.py` |
+| `profile` | Profilmanualen (`profile/profile-manual.pdf`) | `src/build_profile_manual.py` |
 | `cv` | CV-malen og CV-eksempelet | `src/build_cv_pdf.py`, kontroll med `src/check_cv_md.py` |
 | `presentation` | Presentasjonsmalen og eksempelet | `src/build_presentation.py`, kontroll med `src/check_presentation_pdf.py` |
 | `document` | Brevmal, dokumentmal og to eksempler | `src/build_document.py`, kontroll med `src/check_document_pdf.py` |
 | `business-card` | Visittkortmalen og eksempelkortet (trykkontrollene ligger i bygget) | `src/build_business_card.py` |
-| `overview` | Oversiktsarket over alle leveransene (`oversikt.pdf`) | `src/build_visualprofile_overview.py` |
+| `overview` | Oversiktsarket over alle leveransene (`overview.pdf`) | `src/build_visualprofile_overview.py` |
 | `employee-cvs` | CV-PDF og visittkort for hver ansatt i `cvs/` | `src/build_employee_cvs.py` |
 
 De ansattes CV-er har en egen kommando med samme endringssjekk, som `build_all.py` kjører til slutt. Den kontrollerer alle CV-ene med `src/check_cv_md.py` etter byggene:
@@ -458,9 +459,9 @@ Revidert visuell profil for KodeWorks (2026), bygget på designmanualen fra 2021
 
 ```
 deliverable/visualprofile/profile/
-├── profilmanual.md    – kilde: én Markdown-fil med sidetyper (::: {.cover} / {.divider} / {.page}) og rå LaTeX-komponenter
-├── profilmanual.pdf   – 40 sider 16:9 (297 × 167 mm), Non Natural Grotesk innebygd
-├── farger.md / .json  – palett med roller, HEX/RGB/CMYK/PMS (forslag merket) og beregnet kontrastmatrise
+├── profile-manual.md    – kilde: én Markdown-fil med sidetyper (::: {.cover} / {.divider} / {.page}) og rå LaTeX-komponenter
+├── profile-manual.pdf   – 40 sider 16:9 (297 × 167 mm), Non Natural Grotesk innebygd
+├── colors.md / .json  – palett med roller, HEX/RGB/CMYK/PMS (forslag merket) og beregnet kontrastmatrise
 ├── assets/            – rensede SVG-er (navnetrekk, symbol, femte element; presentation/ for slidebakgrunner)
 │   ├── pdf/           – vektor-PDF av hver SVG (generert)
 │   └── png/           – transparent PNG, 2000 px lengste side (generert)
@@ -470,7 +471,7 @@ deliverable/visualprofile/profile/
 **Bygg manualen:**
 
 ```bash
-uv run src/build_profile_manual.py          # → deliverable/visualprofile/profile/profilmanual.pdf (~20 sek)
+uv run src/build_profile_manual.py          # → deliverable/visualprofile/profile/profile-manual.pdf (~20 sek)
 ```
 
 Skriptet bygger i en arbeidsmappe under `tmp/` og skriver bare PDF-en. Motoren er **lualatex**, fordi den laster de norske bokmålsmønstrene for orddeling ved kjøring. xelatex-formatet har dem ikke og deler stille med engelske mønstre. `src/profile_manual/kernfix.json` legger til kerningpar som fonten mangler: rundt j (sj, kj …) og r–f. Rettingene slås på i `fonts.tex` og deles med CV-malen. Det pakker ut Non Natural Grotesk fra den lisensierte font-zip-en i `background/visualprofile/Fonts/` og laster fontene med fontspec `Path=` (ingen installasjon; lisensen tillater innbygging i PDF, ikke i `.docx`/`.pptx`). SVG-er konverteres til PDF med PyMuPDF (`rsvg-convert` trengs ikke). Layoutsystemet ligger i `src/profile_manual/`: `colors.tex` er eneste sted paletten defineres, `layout.tex` har sidetyper og komponenter (`\kwtile`, `\kwswatch`, `\kwmark`, `\kwtable` …), `filter.lua` gjør `:::`-blokker om til makroer. Hver `.page` er én fysisk side uten automatisk sideskift — sjekk PDF-en etter endringer. Eksemplene på reserveskriften Arial vises med TeX Gyre Heros fra TeX Live, som har samme tegnbredder. Bygget kopierer den inn i byggemappen.
@@ -494,13 +495,13 @@ Skriver WCAG 2.x-forholdstall for alle fargepar (AA normal 4,5:1, AA stor tekst 
 ### CV-mal versjon 3 — gjeldende (`deliverable/visualprofile/cv/`)
 
 CV-en skrives som **Markdown** og settes direkte til PDF med lualatex. Det er ingen Word-fil, ingen LibreOffice og ingen rastergrafikk utenom foto og kundelogoer. Mappen inneholder:
-- `cv-mal.md` og `.pdf`: tom mal, med veiledning i HTML-kommentarer;
-- `cv-eksempel.md` og `.pdf`: Pål Nødseths CV med 8 prosjekter, eget portrett og kundelogoer fra hans CV på Drive, i `images/`;
+- `cv-template.md` og `.pdf`: tom mal, med veiledning i HTML-kommentarer;
+- `cv-example.md` og `.pdf`: Pål Nødseths CV med 8 prosjekter, eget portrett og kundelogoer fra hans CV på Drive, i `images/`;
 - `README.md`: veiledning for konsulenter, med formatet, foto og logo, skriveråd og sjekkliste.
 
 ```bash
-uv run src/build_cv_pdf.py deliverable/visualprofile/cv/cv-mal.md deliverable/visualprofile/cv/cv-mal.pdf        # 5–40 sek
-uv run src/build_cv_pdf.py deliverable/visualprofile/cv/cv-eksempel.md deliverable/visualprofile/cv/cv-eksempel.pdf
+uv run src/build_cv_pdf.py deliverable/visualprofile/cv/cv-template.md deliverable/visualprofile/cv/cv-template.pdf        # 5–40 sek
+uv run src/build_cv_pdf.py deliverable/visualprofile/cv/cv-example.md deliverable/visualprofile/cv/cv-example.pdf
 uv run src/build_cv_pdf.py <cv.md> <ut.pdf> --keep <mappe>      # beholder hele byggemappen (cv.tex, cv.log) for feilsøking
 uv run python src/cv_markdown.py <cv.md>                         # viser datamodellen som JSON
 uv run python src/check_cv_md.py <cv.md> [...]                   # kontrollerer konvensjonene, exit 1 ved avvik
@@ -519,11 +520,11 @@ uv run python src/check_cv_md.py <cv.md> [...]                   # kontrollerer 
   - perioder som `MM.ÅÅÅÅ – nå`;
   - kompetansegrupper i setningsform uten duplikater;
   - kulepunkter som Markdown-lister;
-  - bilder i `images/foto.*` og `images/logo-<kunde>.*`; for de ansattes CV-er i `cvs/` kommer logoene fra `../logos/<kunde>.*`, fotoet er en JPG uten metadata med inntil 1200 piksler i bredden på utsnittet, og PNG-logoer er høyst 700 × 260 piksler (bildehodene leses uten Pillow);
+  - bilder i `images/photo.*` og `images/logo-<kunde>.*`; for de ansattes CV-er i `cvs/` kommer logoene fra `../logos/<kunde>.*`, fotoet er en JPG uten metadata med inntil 1200 piksler i bredden på utsnittet, og PNG-logoer er høyst 700 × 260 piksler (bildehodene leses uten Pillow);
   - rundtur parse → render → parse.
 
   Testet i `tests/test_check_cv_md.py` og `tests/test_cv_images.py`.
-- **De ansattes CV-er** ligger i Markdown i `cvs/<navn>/`, med én mappe per person: `<navn>.md` og `images/foto.jpg`. Kundelogoene ligger i det felles logobiblioteket `cvs/logos/<kunde>.<ext>`, én fil per kunde. Utviklerne oppdaterer sin egen CV med commits i git. CV-PDF og visittkort bygges ved siden av og er utenfor git. `cvs/AVVIK.md` lister det konsulentene bør rette. Filene ble konvertert én gang fra Word-originalene, og vedlikeholdes nå i Markdown i git.
+- **De ansattes CV-er** ligger i Markdown i `cvs/<navn>/`, med én mappe per person: `<navn>.md` og `images/photo.jpg`. Kundelogoene ligger i det felles logobiblioteket `cvs/logos/<kunde>.<ext>`, én fil per kunde. Utviklerne oppdaterer sin egen CV med commits i git. CV-PDF og visittkort bygges ved siden av og er utenfor git. `cvs/DEVIATIONS.md` lister det konsulentene bør rette. Filene ble konvertert én gang fra Word-originalene, og vedlikeholdes nå i Markdown i git.
 - **`normalize_cv_images.py`** (Pillow, numpy) gir fotoene og logoene i `cvs/` samme format: foto som JPG med kvalitet 85 (lavere, ned til 70, hvis fila ellers ville vokst), sRGB, uten metadata, gjennomsiktighet lagt på hvitt, og skalert ned så utsnittet med rammens forhold (60:74) er 1200 piksler bredt. Logoer får trimmet kanter og skaleres ned til høyst 700 × 260 piksler, og PNG-er lagres med palett. Bilder skaleres aldri opp, og fotoet beskjæres ikke i fila. Standard er tørrkjøring som viser endringen per fil og flagger filer som krymper under 30 %. `--apply` endrer filene og retter henvisningen når et foto går fra `.png` til `.jpg`. Skriptet er idempotent. `--self-test` sjekker reglene på syntetiske bilder og brukes av testene.
 
   ```bash
@@ -549,10 +550,10 @@ Versjon 1 og 2 av CV-malen (Word-filer via python-docx) er erstattet av versjon 
 
 ### Presentasjonsmal (`deliverable/visualprofile/presentation/`)
 
-Presentasjoner skrives i pandoc-Markdown og settes direkte til PDF (16:9, 338,67 × 190,5 mm) med pandoc → beamer → lualatex. Det er ingen PowerPoint-fil og ingen LibreOffice. Mappen inneholder `presentasjonsmal.md` og `.pdf` (mal som forklarer alle lysbildetypene), `eksempel.md` og `.pdf` (14 lysbilder), `images/` og `README.md` (veiledning med Markdown-syntaksen for hver lysbildetype).
+Presentasjoner skrives i pandoc-Markdown og settes direkte til PDF (16:9, 338,67 × 190,5 mm) med pandoc → beamer → lualatex. Det er ingen PowerPoint-fil og ingen LibreOffice. Mappen inneholder `presentation-template.md` og `.pdf` (mal som forklarer alle lysbildetypene), `example.md` og `.pdf` (14 lysbilder), `images/` og `README.md` (veiledning med Markdown-syntaksen for hver lysbildetype).
 
 ```bash
-uv run src/build_presentation.py deliverable/visualprofile/presentation/eksempel.md     # → eksempel.pdf ved siden av (~6 sek)
+uv run src/build_presentation.py deliverable/visualprofile/presentation/example.md     # → example.pdf ved siden av (~6 sek)
 uv run src/build_presentation.py <deck.md> --notes            # → <deck>-notater.pdf med talernotater
 uv run src/build_presentation.py <deck.md> -o <ut.pdf> [--theme-dir DIR] [--keep-build]
 uv run src/check_presentation_pdf.py <deck.pdf>              # PASS/WARN/FAIL, exit 1 ved FAIL
@@ -564,10 +565,10 @@ uv run src/check_presentation_pdf.py <deck.pdf>              # PASS/WARN/FAIL, e
 
 ### Dokumentmal for A4, med brev som variant (`deliverable/visualprofile/document/`)
 
-Én felles mal for A4-dokumenter: varianten `letter` (brev: salgsbrev, henvendelser) og varianten `document` (utlysning av konsulentoppdrag, notat, tilbud). Kilden er pandoc-Markdown med YAML-hode, og PDF-en settes med pandoc → LaTeX → lualatex. Det er ingen Word-fil og ingen LibreOffice. Nye behov legges inn som elementer i den felles malen, ikke som lokale løsninger i enkeltdokumenter. Mappen inneholder `dokumentmal.md`/`.pdf` og `brevmal.md`/`.pdf` (tomme maler med instruks), `eksempel-brev.md`/`.pdf` (salgsbrev, to sider), `eksempel-utlysning.md`/`.pdf` (utlysning av Android-oppdraget) og `README.md` (YAML-felt, syntaks for hvert element, sjekkliste).
+Én felles mal for A4-dokumenter: varianten `letter` (brev: salgsbrev, henvendelser) og varianten `document` (utlysning av konsulentoppdrag, notat, tilbud). Kilden er pandoc-Markdown med YAML-hode, og PDF-en settes med pandoc → LaTeX → lualatex. Det er ingen Word-fil og ingen LibreOffice. Nye behov legges inn som elementer i den felles malen, ikke som lokale løsninger i enkeltdokumenter. Mappen inneholder `document-template.md`/`.pdf` og `letter-template.md`/`.pdf` (tomme maler med instruks), `example-letter.md`/`.pdf` (salgsbrev, to sider), `example-job-posting.md`/`.pdf` (utlysning av Android-oppdraget) og `README.md` (YAML-felt, syntaks for hvert element, sjekkliste).
 
 ```bash
-uv run src/build_document.py deliverable/visualprofile/document/eksempel-brev.md   # → eksempel-brev.pdf ved siden av
+uv run src/build_document.py deliverable/visualprofile/document/example-letter.md   # → example-letter.pdf ved siden av
 uv run src/build_document.py <fil.md> -o <ut.pdf> [--style-dir DIR] [--keep-build]
 uv run src/check_document_pdf.py <fil.pdf> [--company "KodeWorks Oslo AS"]      # OK/WARN/FAIL, exit 1 ved FAIL
 uv run src/check_document_pdf.py --self-test                                      # bevisst dårlig PDF; alle kontroller skal slå ut
@@ -579,10 +580,10 @@ uv run src/check_document_pdf.py --self-test                                    
 
 ### Visittkort (`deliverable/visualprofile/business-card/`)
 
-Tosidig visittkort etter profilmanualens visittkortside: grå forside med svart navnetrekk (40 mm) og kontaktblokk (navn i Medium 9 pt, resten i Regular 8 pt), og grønn bakside med svart symbol (28 mm). Hvert kort er en Markdown-fil der bare YAML-hodet brukes: `name` (påkrevd), `title`, `phone`, `email` og `web`. Felt som utelates, faller bort uten at resten flytter seg. Mappen inneholder `visittkort-mal.md`/`.pdf`/`.png`, `visittkort-eksempel.md`/`.pdf`/`.png` (Eirik Larsen) og `README.md` (nytt kort, trykkspesifikasjon, fargetabell, bestilling).
+Tosidig visittkort etter profilmanualens visittkortside: grå forside med svart navnetrekk (40 mm) og kontaktblokk (navn i Medium 9 pt, resten i Regular 8 pt), og grønn bakside med svart symbol (28 mm). Hvert kort er en Markdown-fil der bare YAML-hodet brukes: `name` (påkrevd), `title`, `phone`, `email` og `web`. Felt som utelates, faller bort uten at resten flytter seg. Mappen inneholder `business-card-template.md`/`.pdf`/`.png`, `business-card-example.md`/`.pdf`/`.png` (Eirik Larsen) og `README.md` (nytt kort, trykkspesifikasjon, fargetabell, bestilling).
 
 ```bash
-uv run src/build_business_card.py deliverable/visualprofile/business-card/visittkort-eksempel.md   # → .pdf og .png ved siden av (~10 sek)
+uv run src/build_business_card.py deliverable/visualprofile/business-card/business-card-example.md   # → .pdf og .png ved siden av (~10 sek)
 uv run src/build_business_card.py <kort.md> [-o <ut.pdf>] [--png <ut.png>] [--keep-build]
 ```
 
@@ -590,7 +591,7 @@ uv run src/build_business_card.py <kort.md> [-o <ut.pdf>] [--png <ut.png>] [--ke
   - **Trykk-PDF (CMYK):** ark 105 × 75 mm, trim 85 × 55 mm, 3 mm utfallende kant og TrimBox/BleedBox satt, skjæremerker i registreringsfarge utenfor den utfallende kanten. Profilfargene skrives som CMYK fra `colors.json`, og navnetrekk og symbol skrives om fra RGB-svart til 100 % K.
   - **Skjermversjon (PNG):** RGB-fargene fra profilen, forside og bakside side om side, beskåret til trim. Den bygges separat fordi neongrønnfargen ikke kan vises riktig via CMYK.
 - **Kontroller i bygget** (exit 1 ved varsel): arkstørrelse, trimboks og utfallende kant, all tekst minst 3 mm innenfor kuttkanten og minst 5 mm under navnetrekket, bare NON Natural Grotesk og innebygd, ingen rasterbilder, ingen tegning eller tekst i RGB eller gråtone (også inne i logoene), og tegn som mangler i fonten.
-- **Visittkort fra CV-ene (`build_cv_business_cards.py`):** leser navn, tittel, telefon og e-post fra CV-ene i Markdown (`src/cv_markdown.py`), med `kodeworks.no` som nettadresse, og bygger hvert kort med `build_business_card.py`. Kortene havner som `visittkort-<navn>.pdf` og `.png` ved siden av hver CV, eller i `--out`. Felt som mangler i CV-en, utelates. Et kort som ikke består trykkontrollen, rapporteres, og kjøringen ender med exit 1:
+- **Visittkort fra CV-ene (`build_cv_business_cards.py`):** leser navn, tittel, telefon og e-post fra CV-ene i Markdown (`src/cv_markdown.py`), med `kodeworks.no` som nettadresse, og bygger hvert kort med `build_business_card.py`. Kortene havner som `business-card-<navn>.pdf` og `.png` ved siden av hver CV, eller i `--out`. Felt som mangler i CV-en, utelates. Et kort som ikke består trykkontrollen, rapporteres, og kjøringen ender med exit 1:
 
   ```bash
   uv run src/build_cv_business_cards.py --dry-run                 # viser feltene for alle CV-er i cvs/
@@ -598,12 +599,12 @@ uv run src/build_business_card.py <kort.md> [-o <ut.pdf>] [--png <ut.png>] [--ke
   uv run src/build_cv_business_cards.py cvs/<navn>/<navn>.md [--out <mappe>]
   ```
 
-### Oversiktsark (`deliverable/visualprofile/oversikt.pdf`)
+### Oversiktsark (`deliverable/visualprofile/overview.pdf`)
 
 `src/build_visualprofile_overview.py` lager ett A4-ark på tvers per leveranse: profilmanualen, CV-en, visittkortet, presentasjonen og dokumentmalen. Sidene settes inn som vektor fra de ferdige PDF-ene, med overskrifter i profilfonten fra den lisensierte zip-en. Bygg leveransene først:
 
 ```bash
-uv run src/build_visualprofile_overview.py        # → deliverable/visualprofile/oversikt.pdf (5 sider, ~3 sek)
+uv run src/build_visualprofile_overview.py        # → deliverable/visualprofile/overview.pdf (5 sider, ~3 sek)
 ```
 
 ---

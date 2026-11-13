@@ -13,7 +13,7 @@ relative to the Markdown file. Everything is assembled in a temporary build fold
   2. the Non Natural Grotesk OTFs are unpacked from the licensed font zip into the build
      folder (never installed, never copied into the repo; the folder is deleted afterwards);
   3. kernfix.json -> kernfix.lua (kerning repairs), SVG assets -> vector PDF with PyMuPDF
-     (plus recoloured variants of every *-svart asset), paths.tex is written;
+     (plus recoloured variants of every *-black asset), paths.tex is written;
   4. pandoc -> deck.tex, lualatex twice, PDF copied out.
 Theme contract: the .sty must \\input{paths.tex} (defines \\kwfontdir, \\kwassetdir and a
 \\graphicspath to the Markdown folder) and may \\directlua{dofile("kernfix.lua")}; features
@@ -107,9 +107,8 @@ def svg_to_pdf(svg: str) -> bytes:
 
 
 def build_assets(profile: Path, out: Path) -> None:
-    """Copy ready vector PDFs; convert SVGs lacking a PDF; add recoloured variants of *-svart assets
-    (name: <stem without -svart>-<colour id>.pdf, e.g. kw-navnetrekk-deepgreen.pdf; plus the alias
-    -mork-gronn for the dark green #35664C used on dividers in the manual)."""
+    """Copy ready vector PDFs; convert SVGs lacking a PDF; add recoloured variants of *-black assets
+    (name: <stem without -black>-<colour id>.pdf, e.g. kw-wordmark-deepgreen.pdf)."""
     out.mkdir(parents=True, exist_ok=True)
     pdf_dir = profile / "assets" / "pdf"
     if pdf_dir.is_dir():
@@ -121,13 +120,12 @@ def build_assets(profile: Path, out: Path) -> None:
         text = svg_path.read_text(encoding="utf-8")
         if not (out / f"{svg_path.stem}.pdf").exists():
             (out / f"{svg_path.stem}.pdf").write_bytes(svg_to_pdf(text))
-        if svg_path.stem.endswith("-svart"):
-            base = svg_path.stem[:-len("-svart")]
+        if svg_path.stem.endswith("-black"):
+            base = svg_path.stem[:-len("-black")]
             for cid in ("white", "green", "darkgreen", "deepgreen", "grey"):
                 target = out / f"{base}-{cid}.pdf"
                 if not target.exists():
                     target.write_bytes(svg_to_pdf(recolour(text, colors[cid])))
-            (out / f"{base}-mork-gronn.pdf").write_bytes(svg_to_pdf(recolour(text, colors["darkgreen"])))
 
 
 # ---------------------------------------------------------------- pre-flight on the Markdown

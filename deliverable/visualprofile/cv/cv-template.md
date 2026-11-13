@@ -2,7 +2,7 @@
 KodeWorks CV-mal. Kommentarer som denne vises ikke i PDF-en. Alle felt er valgfrie: slett det du ikke trenger.
 
 Én mappe per person, med navnet i små bokstaver (æ → ae, ø → oe, å → aa, mellomrom → bindestrek):
-  ola-nordmann/ola-nordmann.md, ola-nordmann/images/foto.jpg og ola-nordmann/images/logo-<kunde>.png
+  ola-nordmann/ola-nordmann.md, ola-nordmann/images/photo.jpg og ola-nordmann/images/logo-<kunde>.png
 Bygg PDF og kontroller fila fra prosjektmappen (se README.md):
   uv run src/build_cv_pdf.py ola-nordmann/ola-nordmann.md ola-nordmann/ola-nordmann.pdf
   uv run python src/check_cv_md.py ola-nordmann/ola-nordmann.md
@@ -21,7 +21,7 @@ Stillingstittel
 - E-post: fornavn.etternavn@kodeworks.no
 - Erfaring: 0 år
 - Språk: norsk, engelsk
-<!-- - Foto: images/foto.jpg     Portrett, jpg eller png. Beskjæres automatisk til rammen. -->
+<!-- - Foto: images/photo.jpg     Portrett, jpg eller png. Beskjæres automatisk til rammen. -->
 
 ## Om Navn
 

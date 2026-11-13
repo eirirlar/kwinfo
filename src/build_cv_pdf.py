@@ -513,7 +513,7 @@ def header_tex(cv: dict, base: Path, work: Path, lab: dict) -> str:
         else:
             L.append(rf"\kwcontactitem{{{CONTACT_X}}}{{{y:.1f}}}{{{lb}}}{{{size:.1f}}}{{{esc(val, hints=False)}}}")
     L.append(r"\node[anchor=north east,inner sep=0pt] at (190,22) "
-             r"{\includegraphics[width=17mm]{img/kw-symbol-svart-med-gronn-strek.pdf}};")
+             r"{\includegraphics[width=17mm]{img/kw-symbol-black-with-green-stroke.pdf}};")
     L += nodes
     L.append(rf"\end{{tikzpicture}}\par\vspace*{{{PY1 + 4.3 - 22 + 16:.1f}mm}}")
     return "\n".join(L)
@@ -876,7 +876,7 @@ def main() -> None:
                 if n.lower().endswith(".otf") and "__MACOSX" not in n:
                     (work / "fonts" / Path(n).name).write_bytes(z.read(n))
         FONTS = Fonts(work / "fonts")
-        for stem in ["kw-symbol-svart-med-gronn-strek", "kw-navnetrekk-svart"]:
+        for stem in ["kw-symbol-black-with-green-stroke", "kw-wordmark-black"]:
             (work / "img" / f"{stem}.pdf").write_bytes(svg_to_pdf_bytes(ASSETS / f"{stem}.svg"))
         shutil.copyfile(STYLE, work / "cv-style.tex")
         write_kernfix(work)

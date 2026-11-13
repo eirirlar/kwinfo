@@ -6,7 +6,7 @@ Konsulent
 - E-post: janmarius@kodeworks.no
 - Erfaring: 5 år
 - Språk: norsk, engelsk
-- Foto: images/foto.jpg
+- Foto: images/photo.jpg
 
 ## Om Jan-Marius
 

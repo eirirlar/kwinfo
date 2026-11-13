@@ -6,7 +6,7 @@ Konsulent
 - E-post: lars@kodeworks.no
 - Erfaring: 10 år
 - Språk: norsk, engelsk
-- Foto: images/foto.jpg
+- Foto: images/photo.jpg
 
 ## Om Lars
 

@@ -15,11 +15,11 @@ data/
 
 # CVs in cvs/<name>/: the Markdown and images/ are tracked; the built CV PDF and business cards are not
 cvs/*/*.pdf
-cvs/*/visittkort-*.png
+cvs/*/business-card-*.png
 
 # Built files in the visual profile (rebuild with: uv run python src/build_all.py)
-deliverable/visualprofile/oversikt.pdf
-deliverable/visualprofile/profile/profilmanual.pdf
+deliverable/visualprofile/overview.pdf
+deliverable/visualprofile/profile/profile-manual.pdf
 deliverable/visualprofile/profile/assets/pdf/
 deliverable/visualprofile/profile/assets/png/
 deliverable/visualprofile/cv/*.pdf

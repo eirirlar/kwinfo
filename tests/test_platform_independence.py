@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parent.parent
 # Sources that feed the document builds.
 BUILD_SOURCES = sorted(
     [p for p in (ROOT / "src").rglob("*") if p.suffix in {".py", ".tex", ".lua"}]
-    + [ROOT / "deliverable" / "visualprofile" / "profile" / "profilmanual.md"]
+    + [ROOT / "deliverable" / "visualprofile" / "profile" / "profile-manual.md"]
 )
 
 # References to OS font folders or to fonts that only exist when installed in the OS.
@@ -43,14 +43,16 @@ def test_guard_accepts_build_folder_and_rejects_os_fonts(tmp_path: Path, monkeyp
     monkeypatch.setattr(font_guard, "texmf_roots", lambda: (font_guard._norm(texmf),))
     work = tmp_path / "work"
     work.mkdir()
+    # A font folder outside the build folder and the TeX trees stands in for the OS font folders.
+    os_font = str(tmp_path / "os-fonts" / "arial.ttf")
     (work / font_guard.LIST_NAME).write_text("\n".join([
         str(work / "fonts" / "NON Natural Grotesk-Regular.otf"),
+        "fonts/NON Natural Grotesk-Light.otf",  # relative to the build folder
         str(texmf / "fonts" / "opentype" / "public" / "tex-gyre" / "texgyreheros-regular.otf"),
-        "C:/Windows/Fonts/arial.ttf",
-        "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+        os_font,
+        "../outside/escape.otf",  # relative, but outside the build folder
     ]), encoding="utf-8")
-    assert font_guard.offending(work) == ["/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
-                                          "C:/Windows/Fonts/arial.ttf"]
+    assert font_guard.offending(work) == sorted([os_font, "../outside/escape.otf"])
     with pytest.raises(SystemExit):
         font_guard.check(work)
 

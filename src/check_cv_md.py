@@ -15,7 +15,7 @@ so that all CVs look alike and can be maintained the same way:
 - periods as MM.ÅÅÅÅ – MM.ÅÅÅÅ, MM.ÅÅÅÅ – nå or ÅÅÅÅ – ÅÅÅÅ (optional addition in parentheses);
 - skill group names not in capitals, no duplicate items in a group;
 - bullets as Markdown lists, not as "\\-" or "•" text;
-- images/foto.<ext> and images/logo-<customer>.<ext> exist where referenced;
+- images/photo.<ext> and images/logo-<customer>.<ext> exist where referenced;
 - for the employees' CVs in cvs/<name>/: logos come from the shared library ../logos/<customer>.<ext>,
   the photo is a JPG without metadata whose largest crop in the frame ratio is at most
   PHOTO_MAX_CROP_W pixels wide, and raster logos are at most LOGO_MAX_PX (see src/normalize_cv_images.py);
@@ -44,7 +44,7 @@ PERIOD = re.compile(rf"^{DATE}(?: – (?:{DATE}|nå|now))?(?: \([^()]+\))?$")
 PHONE_NO = re.compile(r"^\+47 \d{3} \d{2} \d{3}$")
 YEARS = re.compile(r"^\d+\+?$")
 BAD_BULLET = re.compile(r"^\s*(\\-|•|·|–\s)", re.M)
-IMAGE_FOTO = re.compile(r"^images/foto\.(jpe?g|png)$")
+IMAGE_PHOTO = re.compile(r"^images/photo\.(jpe?g|png)$")
 IMAGE_LOGO = re.compile(r"^images/logo-[a-z0-9]+(?:-[a-z0-9]+)*\.(png|svg|jpe?g)$")
 LIBRARY_LOGO = re.compile(r"^\.\./logos/[a-z0-9]+(?:-[a-z0-9]+)*\.(png|svg|jpe?g)$")
 # Image format for the employees' CVs (cvs/<name>/), kept in step with src/normalize_cv_images.py.
@@ -174,7 +174,7 @@ def check_text(text: str, base: Path | None = None) -> list[str]:
             if not LIBRARY_LOGO.match(path):
                 issues.append(f"{what} should come from the shared library: ../logos/<customer>.png (or .svg/.jpg): «{path}»")
         elif not pattern.match(path):
-            want = "images/foto.jpg (or .png)" if pattern is IMAGE_FOTO else "images/logo-<customer>.png (or .svg/.jpg)"
+            want = "images/photo.jpg (or .png)" if pattern is IMAGE_PHOTO else "images/logo-<customer>.png (or .svg/.jpg)"
             issues.append(f"{what} should be {want}: «{path}»")
         if base is not None and not (base / path).exists():
             issues.append(f"{what} does not exist: «{path}»")
@@ -187,10 +187,10 @@ def check_text(text: str, base: Path | None = None) -> list[str]:
                 issues.append(f"{what} is not a readable PNG or JPEG: «{path}»")
             return
         fmt, w, h, meta = info
-        if pattern is IMAGE_FOTO:
+        if pattern is IMAGE_PHOTO:
             crop_w = min(w, h * PHOTO_RATIO)
             if fmt != "jpeg":
-                issues.append(f"photo should be a JPG (images/foto.jpg), not {fmt.upper()}: run src/normalize_cv_images.py")
+                issues.append(f"photo should be a JPG (images/photo.jpg), not {fmt.upper()}: run src/normalize_cv_images.py")
             if crop_w > PHOTO_MAX_CROP_W + 1:
                 issues.append(f"photo is larger than needed ({w} × {h} px; the crop may be at most "
                               f"{PHOTO_MAX_CROP_W} px wide): run src/normalize_cv_images.py")
@@ -199,7 +199,7 @@ def check_text(text: str, base: Path | None = None) -> list[str]:
         elif w > LOGO_MAX_PX[0] or h > LOGO_MAX_PX[1]:
             issues.append(f"{what} is larger than needed ({w} × {h} px, at most {LOGO_MAX_PX[0]} × {LOGO_MAX_PX[1]}): "
                           "run src/normalize_cv_images.py")
-    image(cv.get("photo"), IMAGE_FOTO, "photo")
+    image(cv.get("photo"), IMAGE_PHOTO, "photo")
 
     # skills
     for g in cv.get("skills") or []:

@@ -6,7 +6,7 @@ Konsulent
 - E-post: joachim.spange@kodeworks.no
 - Erfaring: 7 år
 - Språk: norsk, engelsk
-- Foto: images/foto.jpg
+- Foto: images/photo.jpg
 
 ## Om Joachim
 

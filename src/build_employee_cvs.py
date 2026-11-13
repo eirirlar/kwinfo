@@ -7,7 +7,7 @@ Usage (from the project root):
 
 For each person two targets are built next to the CV, both kept out of git by .gitignore:
     cvs/<name>/<name>.pdf                       the CV (src/build_cv_pdf.py)
-    cvs/<name>/visittkort-<name>.pdf and .png   the business card (src/build_cv_business_cards.py)
+    cvs/<name>/business-card-<name>.pdf and .png   the business card (src/build_cv_business_cards.py)
 A target is rebuilt only when it is missing or the CV, its photo, the shared logos in cvs/logos/ or the build
 scripts and styles are newer.
 After the builds, every CV is checked against the shared conventions (src/check_cv_md.py).
@@ -32,13 +32,15 @@ def targets(names: list[str]) -> list[Target]:
     for n in names:
         src = f"cvs/{n}/{n}.md"
         t.append(Target("cv", f"{n}: CV", uv("build_cv_pdf.py", src, f"cvs/{n}/{n}.pdf"),
-                        [src, f"cvs/{n}/images", "cvs/logos", *ASSET_SVGS, "src/cv_pdf", "src/build_cv_pdf.py",
+                        # images/ as a pattern: a CV without a photo has no images/ folder in a fresh
+                        # clone (git does not store empty folders), and a pattern may match nothing.
+                        [src, f"cvs/{n}/images/**/*", "cvs/logos", *ASSET_SVGS, "src/cv_pdf", "src/build_cv_pdf.py",
                          "src/cv_markdown.py"], [f"cvs/{n}/{n}.pdf"]))
         t.append(Target("card", f"{n}: business card", uv("build_cv_business_cards.py", src),
                         [src, f"{VP}/profile/colors.json", *ASSET_SVGS, f"{VP}/profile/assets/pdf/*.pdf", "src/business_card",
                          "src/build_business_card.py", "src/build_cv_business_cards.py", "src/build_presentation.py",
                          "src/cv_markdown.py"],
-                        [f"cvs/{n}/visittkort-{n}.pdf", f"cvs/{n}/visittkort-{n}.png"]))
+                        [f"cvs/{n}/business-card-{n}.pdf", f"cvs/{n}/business-card-{n}.png"]))
     return t
 
 

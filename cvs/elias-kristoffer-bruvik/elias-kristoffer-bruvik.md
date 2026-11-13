@@ -6,7 +6,7 @@ Konsulent
 - E-post: elias.bruvik@kodeworks.no
 - Erfaring: 3 år
 - Språk: norsk, engelsk
-- Foto: images/foto.jpg
+- Foto: images/photo.jpg
 
 ## Om Elias
 

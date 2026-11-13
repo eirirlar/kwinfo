@@ -65,7 +65,7 @@ def test_good_cv_has_no_deviations() -> None:
 
 
 def test_delivered_example_has_no_deviations() -> None:
-    assert check_file(ROOT / "deliverable" / "visualprofile" / "cv" / "cv-eksempel.md") == []
+    assert check_file(ROOT / "deliverable" / "visualprofile" / "cv" / "cv-example.md") == []
 
 
 def issues_for(old: str, new: str) -> list[str]:
@@ -125,5 +125,5 @@ def test_text_bullets() -> None:
 def test_image_naming_and_existence(tmp_path: Path) -> None:
     text = GOOD.replace("- Språk: norsk, engelsk", "- Språk: norsk, engelsk\n- Foto: bilder/ase.jpg")
     issues = check_text(text, base=tmp_path)
-    assert any("images/foto.jpg" in i for i in issues)
+    assert any("images/photo.jpg" in i for i in issues)
     assert any("does not exist" in i for i in issues)

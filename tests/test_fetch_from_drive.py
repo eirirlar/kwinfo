@@ -76,7 +76,7 @@ def test_safe_filename_removes_forbidden_characters():
         ("Budsjett", SHEET_MIME, "pdf", "Budsjett.pdf"),
         ("Deck", SLIDES_MIME, "md", "Deck.pptx"),
         ("cv.pdf", "application/pdf", "docx", "cv.pdf"),
-        ("foto.jpg", "image/jpeg", "md", "foto.jpg"),
+        ("photo.jpg", "image/jpeg", "md", "photo.jpg"),
     ],
 )
 def test_target_filename(name, mime, fmt, expected):

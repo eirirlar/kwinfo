@@ -7,7 +7,7 @@
 Usage (from the project root):
     uv run src/build_profile_manual.py [manual.md] [--assets DIR] [--photos DIR] [--fonts-zip ZIP]
 
-Defaults build deliverable/visualprofile/profile/profilmanual.md into profilmanual.pdf next to it.
+Defaults build deliverable/visualprofile/profile/profile-manual.md into profile-manual.pdf next to it.
 
 The layout system (LaTeX template, page types, components, palette) lives in src/profile_manual/.
 Everything is assembled in a temporary build folder, so nothing but the PDF is written:
@@ -43,13 +43,13 @@ DEFAULT_FONTS_ZIP = (ROOT / "background" / "visualprofile" / "Fonts" / "Non Natu
 TEXLIVE_FONTS = ["texgyreheros-regular.otf"]
 
 # helper variants: output stem -> (source stem, colour name from colors.tex)
-# The *mork-gronn* pattern is used on dividers; the x-* files exist only for misuse examples.
+# The *darkgreen* pattern is used on dividers; the x-* files exist only for misuse examples.
 EXTRA = {
-    "femte-element-mork-gronn": ("femte-element-svart", "kwdarkgreen"),
-    "femte-element-hvit": ("femte-element-svart", "kwwhite"),
-    "x-navnetrekk-skygge": ("kw-navnetrekk-svart", "kwshadow"),
-    "x-navnetrekk-mork-gronn": ("kw-navnetrekk-svart", "kwdarkgreen"),
-    "x-symbol-skygge": ("kw-symbol-svart", "kwshadow"),
+    "fifth-element-darkgreen": ("fifth-element-black", "kwdarkgreen"),
+    "fifth-element-white": ("fifth-element-black", "kwwhite"),
+    "x-wordmark-shadow": ("kw-wordmark-black", "kwshadow"),
+    "x-wordmark-darkgreen": ("kw-wordmark-black", "kwdarkgreen"),
+    "x-symbol-shadow": ("kw-symbol-black", "kwshadow"),
 }
 
 
@@ -132,7 +132,7 @@ def run(cmd: list[str], cwd: Path) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("source", nargs="?", default=str(PROFILE / "profilmanual.md"))
+    ap.add_argument("source", nargs="?", default=str(PROFILE / "profile-manual.md"))
     ap.add_argument("--assets", default=str(PROFILE / "assets"), help="folder with the clean SVG assets")
     ap.add_argument("--photos", default=str(PROFILE / "images"), help="folder with photos used in the manual")
     ap.add_argument("--fonts-zip", default=str(DEFAULT_FONTS_ZIP), help="Non Natural Grotesk font zip")

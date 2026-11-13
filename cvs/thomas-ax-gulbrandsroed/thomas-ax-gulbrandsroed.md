@@ -6,7 +6,7 @@ Konsulent
 - E-post: thomas@kodeworks.no
 - Erfaring: 5 år
 - Språk: norsk, engelsk
-- Foto: images/foto.jpg
+- Foto: images/photo.jpg
 ## Om Thomas
 
 Thomas er en embedded- og backend-utvikler med fem års erfaring i C++ og Python. Han har spesialisert seg på utvikling av robuste og ytelseskritiske systemer innen robotikk, sensorikk og embedded Linux. Med en bachelor i informatikk og påbegynt grad i elektronikk har han arbeidet på tvers av hele stacken – fra lavnivå mikrokontrollerkode og bootloadere til systemdesign og infrastruktur.

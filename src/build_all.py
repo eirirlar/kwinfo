@@ -48,27 +48,27 @@ def asset_targets() -> list[Target]:
 
 def targets() -> list[Target]:
     t: list[Target] = asset_targets()
-    t.append(Target("profile", "profile/profilmanual.pdf", uv("build_profile_manual.py"),
-                    [f"{VP}/profile/profilmanual.md", f"{VP}/profile/images", *ASSET_SVGS,
+    t.append(Target("profile", "profile/profile-manual.pdf", uv("build_profile_manual.py"),
+                    [f"{VP}/profile/profile-manual.md", f"{VP}/profile/images", *ASSET_SVGS,
                      "src/profile_manual", "src/build_profile_manual.py"],
-                    [f"{VP}/profile/profilmanual.pdf"]))
-    for stem in ("cv-mal", "cv-eksempel"):
+                    [f"{VP}/profile/profile-manual.pdf"]))
+    for stem in ("cv-template", "cv-example"):
         src, pdf = f"{VP}/cv/{stem}.md", f"{VP}/cv/{stem}.pdf"
-        check = ["uv", "run", "python", "src/check_cv_md.py", src] if stem == "cv-eksempel" else None
+        check = ["uv", "run", "python", "src/check_cv_md.py", src] if stem == "cv-example" else None
         t.append(Target("cv", f"cv/{stem}.pdf", uv("build_cv_pdf.py", src, pdf),
                         [src, f"{VP}/cv/images", *ASSET_SVGS, "src/cv_pdf", "src/build_cv_pdf.py",
                          "src/cv_markdown.py"], [pdf], check=check))
-    for stem in ("presentasjonsmal", "eksempel"):
+    for stem in ("presentation-template", "example"):
         src, pdf = f"{VP}/presentation/{stem}.md", f"{VP}/presentation/{stem}.pdf"
         t.append(Target("presentation", f"presentation/{stem}.pdf", uv("build_presentation.py", src),
                         [src, f"{VP}/presentation/images", *PROFILE_DATA, "src/presentation",
                          "src/build_presentation.py"], [pdf], check=uv("check_presentation_pdf.py", pdf)))
-    for stem in ("brevmal", "dokumentmal", "eksempel-brev", "eksempel-utlysning"):
+    for stem in ("letter-template", "document-template", "example-letter", "example-job-posting"):
         src, pdf = f"{VP}/document/{stem}.md", f"{VP}/document/{stem}.pdf"
         t.append(Target("document", f"document/{stem}.pdf", uv("build_document.py", src),
                         [src, *PROFILE_DATA, "src/document", "src/build_document.py", "src/build_presentation.py"],
                         [pdf], check=uv("check_document_pdf.py", pdf)))
-    for stem in ("visittkort-mal", "visittkort-eksempel"):
+    for stem in ("business-card-template", "business-card-example"):
         src = f"{VP}/business-card/{stem}.md"
         t.append(Target("business-card", f"business-card/{stem}.pdf", uv("build_business_card.py", src),
                         [src, *PROFILE_DATA, "src/business_card", "src/build_business_card.py",
@@ -76,8 +76,8 @@ def targets() -> list[Target]:
                         [f"{VP}/business-card/{stem}.pdf", f"{VP}/business-card/{stem}.png"],
                         note="the print checks run inside the build"))
     deliverable_pdfs = [o for x in t for o in x.outputs if o.endswith(".pdf") and "/assets/" not in o]
-    t.append(Target("overview", "oversikt.pdf", uv("build_visualprofile_overview.py"),
-                    deliverable_pdfs + ["src/build_visualprofile_overview.py"], [f"{VP}/oversikt.pdf"]))
+    t.append(Target("overview", "overview.pdf", uv("build_visualprofile_overview.py"),
+                    deliverable_pdfs + ["src/build_visualprofile_overview.py"], [f"{VP}/overview.pdf"]))
     return t
 
 

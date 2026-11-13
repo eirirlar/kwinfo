@@ -6,8 +6,8 @@ Denne veiledningen er for deg som skal lage en presentasjon i KodeWorks' profil.
 
 | Fil | Hva den er |
 |---|---|
-| `presentasjonsmal.md` og `presentasjonsmal.pdf` | Malen. En presentasjon som forklarer seg selv: ett lysbilde per lysbildetype, med en kort instruks på lysbildet og Markdown-syntaksen i talernotatene. Kopier filen og fyll ut. |
-| `eksempel.md` og `eksempel.pdf` | Et ferdig eksempel på 14 lysbilder som bruker alle lysbildetypene. Bruk det som forbilde for tone og oppbygging. |
+| `presentation-template.md` og `presentation-template.pdf` | Malen. En presentasjon som forklarer seg selv: ett lysbilde per lysbildetype, med en kort instruks på lysbildet og Markdown-syntaksen i talernotatene. Kopier filen og fyll ut. |
+| `example.md` og `example.pdf` | Et ferdig eksempel på 14 lysbilder som bruker alle lysbildetypene. Bruk det som forbilde for tone og oppbygging. |
 | `images/` | KodeWorks' egne foto som brukes i malen og eksempelet. |
 
 PDF- og PNG-filene er ikke i git. De bygges fra Markdown-filene med `uv run python src/build_all.py` fra prosjektroten (se «Bygge alt» i prosjektets README).
@@ -35,7 +35,7 @@ Vanlig pandoc-Markdown. Et nytt lysbilde starter med en overskrift på nivå 2 (
 | Åpning | Lages automatisk fra YAML-blokken øverst: `title`, `subtitle`, `author`, `date`. | Én tittel, valgfri undertittel |
 | Seksjonsskille | `# Tittel {number="01"}`, med en valgfri setning under. Uten `number` nummereres skillene automatisk. | Én kort setning |
 | Tekst | `## Tittel`, valgfritt avsnitt og punktliste. Med `{.lead}` blir første avsnitt en ingress. | Høyst fire punkter |
-| Tekst og bilde | `## Tittel {.image}`, tekst, og `![](images/foto_team1.jpg)`. Bildet fyller høyre del av lysbildet. | Ett bilde, høyst tre punkter |
+| Tekst og bilde | `## Tittel {.image}`, tekst, og `![](images/photo_team1.jpg)`. Bildet fyller høyre del av lysbildet. | Ett bilde, høyst tre punkter |
 | To kolonner | En `columns`-blokk med to `column`-blokker (se under). | Høyst tre punkter per kolonne |
 | Sammenligning | Som to kolonner, men hver kolonne starter med `### Overskrift`. | Høyst tre punkter per kolonne |
 | Sitat | `## {.quote}`, sitatet som blokksitat (`>`), og en linje `Kilde: …`. | Én til to setninger |

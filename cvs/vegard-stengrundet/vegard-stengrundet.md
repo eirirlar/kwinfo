@@ -6,7 +6,7 @@ Konsulent
 - E-post: vegard@kodeworks.no
 - Erfaring: 6 år
 - Språk: norsk, engelsk
-- Foto: images/foto.jpg
+- Foto: images/photo.jpg
 
 ## Om Vegard
 

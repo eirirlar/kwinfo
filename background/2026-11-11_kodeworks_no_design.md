@@ -6,11 +6,11 @@ Skjermbilder i `2026-11-11_kodeworks_no_design_media/`:
 
 | | |
 |:---:|:---:|
-| ![](2026-11-11_kodeworks_no_design_media/forside_topp_ekte_font.png) | ![](2026-11-11_kodeworks_no_design_media/forside_del1.png) |
+| ![](2026-11-11_kodeworks_no_design_media/frontpage_top_real_font.png) | ![](2026-11-11_kodeworks_no_design_media/frontpage_part1.png) |
 | *Toppen av forsiden med riktig font* | *Topp, kunderekke og tjenester* |
-| ![](2026-11-11_kodeworks_no_design_media/forside_del2.png) | ![](2026-11-11_kodeworks_no_design_media/forside_del3.png) |
+| ![](2026-11-11_kodeworks_no_design_media/frontpage_part2.png) | ![](2026-11-11_kodeworks_no_design_media/frontpage_part3.png) |
 | *Teknologi, prosjekter, kontaktperson, kunder* | *Kunder, eksperter, kontorene* |
-| ![](2026-11-11_kodeworks_no_design_media/forside_del4.png) | |
+| ![](2026-11-11_kodeworks_no_design_media/frontpage_part4.png) | |
 | *Kontaktskjema og bunntekst* | |
 
 Merk: Skjermbildene del 1–4 er tatt av en lokal kopi der animasjoner er slått av for at alt innhold skal vises; der er webfonten erstattet av en standard seriffont. Fonten på nettsiden er Non Natural Grotesk, som i bildet «Toppen av forsiden med riktig font».

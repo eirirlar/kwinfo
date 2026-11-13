@@ -111,18 +111,18 @@
 % ---------- Page types (called from the Lua filter) ----------
 % Cover: \kwcover{title}{subtitle}{meta}
 \newcommand{\kwcover}[3]{\kwbegin{}{kwblack}{kwwhite}{none}%
-  \kwpanel{0}{0}{297}{167}{kwblack}{kw-symbol-hvit-med-gronn-strek.pdf}{184}{-30}{104}%
-  \kwimg{16}{16}{62}{kw-navnetrekk-hvit.pdf}%
+  \kwpanel{0}{0}{297}{167}{kwblack}{kw-symbol-white-with-green-stroke.pdf}{184}{-30}{104}%
+  \kwimg{16}{16}{62}{kw-wordmark-white.pdf}%
   \kwat{16}{66}{\color{kwwhite}\kwsize{70}{72}\kwlight #1}%
   \kwatw{16}{128}{150}{\color{kwwhite}\kwsize{13}{18}\kwregular #2}%
   \kwat{16}{148}{\color{kwgreen}\kwsize{8.5}{10}\kwregular #3}}
 % Divider: \kwdivider{number}{title}{text}; sets label sec:<number> for the contents page
 \newcommand{\kwdivider}[3]{\kwbegin{}{kwdeepgreen}{kwwhite}{none}\label{sec:#1}%
-  \kwpanel{0}{0}{297}{167}{kwdeepgreen}{femte-element-mork-gronn.pdf}{205}{-12}{130}%
+  \kwpanel{0}{0}{297}{167}{kwdeepgreen}{fifth-element-darkgreen.pdf}{205}{-12}{130}%
   \kwat{16}{18}{\color{kwgreen}\kwsize{11}{13}\kwmedium #1}%
   \kwat{16}{52}{\color{kwwhite}\kwsize{54}{58}\kwlight #2}%
   \kwatw{16}{118}{110}{\color{kwwhite}\kwsize{13}{18.5}\kwregular #3}%
-  \kwimg{16}{148}{34}{kw-navnetrekk-hvit.pdf}}
+  \kwimg{16}{148}{34}{kw-wordmark-white.pdf}}
 
 % ---------- Contents page ----------
 % \kwpg{01}: page number of divider 01 (works after the second pass; '--' when the divider is not in the build)

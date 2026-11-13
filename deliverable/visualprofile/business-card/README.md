@@ -6,8 +6,8 @@ KodeWorks-visittkortet har en grå forside med navnetrekket og kontaktinformasjo
 
 | Fil | Innhold |
 |---|---|
-| `visittkort-mal.md` / `.pdf` / `.png` | Malen med plassholdere (Navn Navnesen) |
-| `visittkort-eksempel.md` / `.pdf` / `.png` | Eksempelkort for Eirik Larsen |
+| `business-card-template.md` / `.pdf` / `.png` | Malen med plassholdere (Navn Navnesen) |
+| `business-card-example.md` / `.pdf` / `.png` | Eksempelkort for Eirik Larsen |
 | `README.md` | Denne veiledningen |
 
 PDF- og PNG-filene er ikke i git. De bygges fra Markdown-filene med `uv run python src/build_all.py` fra prosjektroten (se «Bygge alt» i prosjektets README).
@@ -16,7 +16,7 @@ PDF-en er trykkfila. PNG-en er en skjermversjon, for eksempel til e-post eller i
 
 ## Lag et nytt kort
 
-1. Kopier malen og gi kopien ditt navn, for eksempel `visittkort-kari-nordmann.md`.
+1. Kopier malen og gi kopien ditt navn, for eksempel `business-card-kari-nordmann.md`.
 2. Endre verdiene i hodet øverst i fila:
 
    ```yaml
@@ -36,10 +36,10 @@ PDF-en er trykkfila. PNG-en er en skjermversjon, for eksempel til e-post eller i
 3. Bygg kortet fra prosjektroten:
 
    ```bash
-   uv run src/build_business_card.py deliverable/visualprofile/business-card/visittkort-kari-nordmann.md
+   uv run src/build_business_card.py deliverable/visualprofile/business-card/business-card-kari-nordmann.md
    ```
 
-   Bygget tar noen sekunder. Det lager `visittkort-kari-nordmann.pdf` (trykk) og `visittkort-kari-nordmann.png` (skjerm) ved siden av Markdown-fila.
+   Bygget tar noen sekunder. Det lager `business-card-kari-nordmann.pdf` (trykk) og `business-card-kari-nordmann.png` (skjerm) ved siden av Markdown-fila.
 
 4. Se på PNG-en. Bygget kontrollerer også kortet selv og skriver `VARSEL:` hvis noe er galt, for eksempel at en lang tittel vokser opp mot navnetrekket eller at teksten havner for nær kuttkanten. Lange titler brytes over flere linjer. Hvis du får et varsel, kort ned teksten.
 

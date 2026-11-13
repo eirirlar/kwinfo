@@ -74,7 +74,7 @@ fonts.handlers.otf.addfeature{name="kwfm",type="kern",data={[99]={[106]=-90},[10
 % \kwseismo{x}{y}{width mm}: green motif, clipped to the page (it bleeds off the edges)
 \newcommand{\kwseismo}[3]{\kwdraw{\begin{scope}
   \clip (current page.north west) rectangle (current page.south east);
-  \node[anchor=north west,inner sep=0pt] at \kwo{#1}{#2} {\includegraphics[width=#3mm]{\kwasset{femte-element-gronn.pdf}}};
+  \node[anchor=north west,inner sep=0pt] at \kwo{#1}{#2} {\includegraphics[width=#3mm]{\kwasset{fifth-element-green.pdf}}};
   \end{scope}}}
 % \kwcover{x}{y}{W}{H}{file}: photo cropped to fill the box (document-relative path via \graphicspath)
 \newsavebox{\kwbox}
@@ -132,7 +132,7 @@ fonts.handlers.otf.addfeature{name="kwfm",type="kern",data={[99]={[106]=-90},[10
 \colorlet{kwem}{kwdarkgreen}
 \renewcommand{\emph}[1]{{\color{kwem}#1}}
 \gdef\kwnumc{kwmuted}
-\gdef\kwfootlogo{kw-navnetrekk-svart.pdf}
+\gdef\kwfootlogo{kw-wordmark-black.pdf}
 \gdef\kwbgc{kwwhite}
 
 % ---------- Bullets as shapes (square, then dash), no maths fonts ----------
@@ -182,7 +182,7 @@ fonts.handlers.otf.addfeature{name="kwfm",type="kern",data={[99]={[106]=-90},[10
 \newcommand{\kwsubblk}[1]{\kwifempty{#1}{}{{\kwlight\kwsize{26}{34}\color{kwgrey}\raggedright #1\par}}}
 \newcommand{\kwtitleslide}[5]{\kwframe{kwdeepgreen}{}{kwgrey}{kwgreen}{%
   \kwseismo{238.67}{0}{100}%
-  \kwimg{24}{24}{46}{kw-navnetrekk-hvit.pdf}%
+  \kwimg{24}{24}{46}{kw-wordmark-white.pdf}%
   \kwmeasure{190}{\kwmetablk{#3}{#4}}\kwmh=\kwh
   \kwmeasure{196}{\kwsubblk{#2}}\kwsh=\kwh
   \kwavail=126.5mm \advance\kwavail by-\kwmh \advance\kwavail by-\kwsh
@@ -206,7 +206,7 @@ fonts.handlers.otf.addfeature{name="kwfm",type="kern",data={[99]={[106]=-90},[10
 
 % ---------- 3. Content (title, optional lead, body) ----------
 \newcommand{\kwlb}[2]{\kwbody\kwifempty{#1}{}{{\kwlead #1\par}\vskip\ifkwsmall 5mm\else 7mm\fi}#2\par}
-\newcommand{\kwcontent}[4]{\kwframe{kwwhite}{kw-navnetrekk-svart.pdf}{kwmuted}{kwdarkgreen}{%
+\newcommand{\kwcontent}[4]{\kwframe{kwwhite}{kw-wordmark-black.pdf}{kwmuted}{kwdarkgreen}{%
   \kwtab
   \kwat{24}{23}{250}{\kwtitle #1}%
   \gdef\kwcurtitle{#1}%
@@ -214,7 +214,7 @@ fonts.handlers.otf.addfeature{name="kwfm",type="kern",data={[99]={[106]=-90},[10
   }{#4}}
 
 % ---------- 4. Image: text left, photo bleeding off top and right edge ----------
-\newcommand{\kwimageslide}[5]{\kwframe{kwwhite}{kw-navnetrekk-svart.pdf}{kwmuted}{kwdarkgreen}{%
+\newcommand{\kwimageslide}[5]{\kwframe{kwwhite}{kw-wordmark-black.pdf}{kwmuted}{kwdarkgreen}{%
   \kwcover{176.67}{0}{162}{160}{#4}%
   \kwtab
   \kwat{24}{23}{136}{\kwtitle #1}%
@@ -241,7 +241,7 @@ fonts.handlers.otf.addfeature{name="kwfm",type="kern",data={[99]={[106]=-90},[10
   \pgfmathsetmacro{\kwby}{(#3)+\kwoff}%
   \kwscaledraw{\kwcolx}{\kwby}{\kwmx}}
 \let\kwcol\kwcoldraw
-\newcommand{\kwcolumns}[4]{\kwframe{kwwhite}{kw-navnetrekk-svart.pdf}{kwmuted}{kwdarkgreen}{%
+\newcommand{\kwcolumns}[4]{\kwframe{kwwhite}{kw-wordmark-black.pdf}{kwmuted}{kwdarkgreen}{%
   \kwtab
   \kwat{24}{23}{250}{\kwtitle #1}%
   \gdef\kwcurtitle{#1}%
@@ -251,7 +251,7 @@ fonts.handlers.otf.addfeature{name="kwfm",type="kern",data={[99]={[106]=-90},[10
   \let\kwcol\kwcoldraw #3}{#4}}
 
 % ---------- 6. Quote on green ----------
-\newcommand{\kwquoteslide}[3]{\kwframe{kwgreen}{kw-navnetrekk-svart.pdf}{kwmuted}{kwdeepgreen}{%
+\newcommand{\kwquoteslide}[3]{\kwframe{kwgreen}{kw-wordmark-black.pdf}{kwmuted}{kwdeepgreen}{%
   \kwrect{24}{50}{18}{2.2}{kwblack}%
   \kwat{24}{64}{250}{\kwnohyph\kwlight\kwsize{44}{52}\color{kwblack}#1%
     \kwifempty{#2}{}{\par\vskip 11mm{\kwregular\kwsize{18}{24}\color{kwblack}\rule[1mm]{10mm}{0.5pt}\hspace{4mm}#2}}}%
@@ -268,7 +268,7 @@ fonts.handlers.otf.addfeature{name="kwfm",type="kern",data={[99]={[106]=-90},[10
   \pgfmathsetmacro{\kwtwi}{\kwtw-18}%
   \kwat{\kwtx+9}{#3+11}{\kwtwi}{\color{kwblack}\kwfit{\kwtwi}{\kwtn}{#4}}%
   \kwatb{\kwtx+9}{#3+92-9}{\kwtwi}{\kwregular\kwsize{19}{25}\color{kwblack}\raggedright #5}}
-\newcommand{\kwfigures}[4]{\kwframe{kwwhite}{kw-navnetrekk-svart.pdf}{kwmuted}{kwdarkgreen}{%
+\newcommand{\kwfigures}[4]{\kwframe{kwwhite}{kw-wordmark-black.pdf}{kwmuted}{kwdarkgreen}{%
   \kwtab
   \kwat{24}{23}{250}{\kwtitle #1}%
   \kwifempty{#2}{\def\kwcy{58}}{\kwat{24}{58}{230}{\kwlead #2}\def\kwcy{84}}%
@@ -305,7 +305,7 @@ fonts.handlers.otf.addfeature{name="kwfm",type="kern",data={[99]={[106]=-90},[10
     at ($(current page.north west)+(\kwlx mm+7mm,-\kwly mm-9mm)$) {\let\kwts\kwgts\let\kwtl\kwgtl\let\kwhp\kwghp\kwtilestyle\kwts\kwtl{#3}\par};}}
 \let\kwlogo\kwlogodraw
 \newcommand{\kwlogoimg}[3]{\kwlogo{#1}{#2}{\includegraphics[width=\dimexpr\kwlw mm-14mm\relax,height=20mm,keepaspectratio]{#3}}{}}
-\newcommand{\kwlogos}[4]{\kwframe{kwwhite}{kw-navnetrekk-svart.pdf}{kwmuted}{kwdarkgreen}{%
+\newcommand{\kwlogos}[4]{\kwframe{kwwhite}{kw-wordmark-black.pdf}{kwmuted}{kwdarkgreen}{%
   \kwtab
   \kwat{24}{23}{250}{\kwtitle #1}%
   \kwifempty{#2}{\def\kwcy{66}}{\kwat{24}{58}{230}{\kwlead #2}\def\kwcy{88}}%
@@ -326,7 +326,7 @@ fonts.handlers.otf.addfeature{name="kwfm",type="kern",data={[99]={[106]=-90},[10
     \kwifempty{#4}{}{{\kwregular\kwsize{18}{26}\color{kwgreen}#4\par}}
     \kwifempty{#5}{}{{\kwregular\kwsize{18}{26}\color{kwwhite}#5\par}}}}
 \newcommand{\kwclosing}[3]{\kwframe{kwblack}{}{kwgrey}{kwgreen}{%
-  \kwimg{24}{24}{38}{kw-symbol-gronn.pdf}%
+  \kwimg{24}{24}{38}{kw-symbol-green.pdf}%
   \kwat{102}{24}{200}{\kwtitlebig #1}%
   #2}{#3}}
 \newcommand{\kwclosingtext}[1]{\kwat{102}{78}{200}{\raggedright\kwlight\kwsize{24}{32}\color{kwwhite}#1}}

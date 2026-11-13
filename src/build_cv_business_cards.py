@@ -13,8 +13,8 @@ For each CV the contact fields are read with src/cv_markdown.py (name, title, ph
 address is always kodeworks.no), written as a card file in the format of src/build_business_card.py, and
 built with that script, so the card layout and its print checks live in one place only.
 
-Output, next to the CV unless --out is given: visittkort-<folder name>.pdf (print, CMYK, bleed and crop
-marks) and visittkort-<folder name>.png (screen). The intermediate card file is not kept. A CV without a
+Output, next to the CV unless --out is given: business-card-<folder name>.pdf (print, CMYK, bleed and crop
+marks) and business-card-<folder name>.png (screen). The intermediate card file is not kept. A CV without a
 name is skipped; a card that fails the print checks (e.g. a title too long for the safe zone) is reported
 and the run ends with exit code 1.
 """
@@ -85,7 +85,7 @@ def main() -> int:
             failed.append(cv_path.name)
             continue
         out_dir = Path(args.out).resolve() if args.out else cv_path.parent
-        stem = f"visittkort-{cv_path.parent.name if cv_path.stem == cv_path.parent.name else cv_path.stem}"
+        stem = f"business-card-{cv_path.parent.name if cv_path.stem == cv_path.parent.name else cv_path.stem}"
         pdf, png = out_dir / f"{stem}.pdf", out_dir / f"{stem}.png"
         missing = [k for k in ("title", "phone", "email") if k not in fields]
         note = f"  (no {', '.join(missing)} in the CV)" if missing else ""

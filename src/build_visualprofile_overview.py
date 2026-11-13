@@ -2,7 +2,7 @@
 # requires-python = ">=3.10"
 # dependencies = ["pymupdf"]
 # ///
-"""Build deliverable/visualprofile/oversikt.pdf: one page per deliverable of the visual profile.
+"""Build deliverable/visualprofile/overview.pdf: one page per deliverable of the visual profile.
 
 Usage (from the project root):
     uv run src/build_visualprofile_overview.py [-o out.pdf]
@@ -35,18 +35,18 @@ MUTED = (0x66 / 255, 0x66 / 255, 0x66 / 255)
 # (title, note, [(pdf relative to visualprofile/, page index, use trim box)], columns)
 SHEETS = [
     ("Profilmanual", "40 sider, 16:9. Omslag, innhold, farger og bruk av seismografen.",
-     [("profile/profilmanual.pdf", 0, False), ("profile/profilmanual.pdf", 1, False),
-      ("profile/profilmanual.pdf", 12, False), ("profile/profilmanual.pdf", 23, False)], 2),
+     [("profile/profile-manual.pdf", 0, False), ("profile/profile-manual.pdf", 1, False),
+      ("profile/profile-manual.pdf", 12, False), ("profile/profile-manual.pdf", 23, False)], 2),
     ("CV", "Markdown → PDF. Eksempelet: forside, første side med prosjekter og siste side med «Generelt».",
-     [("cv/cv-eksempel.pdf", 0, False), ("cv/cv-eksempel.pdf", 1, False), ("cv/cv-eksempel.pdf", 3, False)], 3),
+     [("cv/cv-example.pdf", 0, False), ("cv/cv-example.pdf", 1, False), ("cv/cv-example.pdf", 3, False)], 3),
     ("Visittkort", "85 × 55 mm, trykk-PDF i CMYK med utfallende kant. Forside og bakside.",
-     [("business-card/visittkort-eksempel.pdf", 0, True), ("business-card/visittkort-eksempel.pdf", 1, True)], 2),
+     [("business-card/business-card-example.pdf", 0, True), ("business-card/business-card-example.pdf", 1, True)], 2),
     ("Presentasjon", "16:9. Åpning, innhold, seksjonsskille og avslutning.",
-     [("presentation/eksempel.pdf", 0, False), ("presentation/eksempel.pdf", 2, False),
-      ("presentation/eksempel.pdf", 5, False), ("presentation/eksempel.pdf", 13, False)], 2),
+     [("presentation/example.pdf", 0, False), ("presentation/example.pdf", 2, False),
+      ("presentation/example.pdf", 5, False), ("presentation/example.pdf", 13, False)], 2),
     ("Dokument og brev", "A4. Brev og utlysning av konsulentoppdrag, med samme rutenett som CV-en.",
-     [("document/eksempel-brev.pdf", 0, False), ("document/eksempel-utlysning.pdf", 0, False),
-      ("document/eksempel-utlysning.pdf", 1, False)], 3),
+     [("document/example-letter.pdf", 0, False), ("document/example-job-posting.pdf", 0, False),
+      ("document/example-job-posting.pdf", 1, False)], 3),
 ]
 
 
@@ -80,7 +80,7 @@ def place_grid(page: pymupdf.Page, items: list, cols: int, top: float) -> None:
 def main() -> int:
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     ap = argparse.ArgumentParser(description="Build the overview sheet of the visual profile deliverables")
-    ap.add_argument("-o", "--output", default=str(VP / "oversikt.pdf"), help="output PDF (default: %(default)s)")
+    ap.add_argument("-o", "--output", default=str(VP / "overview.pdf"), help="output PDF (default: %(default)s)")
     args = ap.parse_args()
     light, regular = profile_font("NON Natural Grotesk-Light"), profile_font("NON Natural Grotesk-Regular")
     missing = [rel for _, _, items, _ in SHEETS for rel, _, _ in items if not (VP / rel).is_file()]
