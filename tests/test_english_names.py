@@ -1,4 +1,4 @@
-"""Code, flags, messages and folder names are in English; documents (PDFs and their sources) are Norwegian.
+"""Code, flags, messages, folder names and documentation are in English; documents (PDFs and their sources) are Norwegian.
 
 Checked here:
 - help texts and descriptions of command-line flags in every script in src/;

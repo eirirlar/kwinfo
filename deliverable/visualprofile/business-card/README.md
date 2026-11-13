@@ -1,23 +1,25 @@
-# Visittkort – slik lager og bestiller du et nytt kort
+# Business card – how to make and order a new card
 
-KodeWorks-visittkortet har en grå forside med navnetrekket og kontaktinformasjonen din, og en grønn bakside med KW-symbolet. Alt som skiller ett kort fra et annet, står i fem linjer i en Markdown-fil.
+The KodeWorks business card has a grey front with the wordmark and your contact information, and a green back with the KW symbol. Everything that differs from one card to another is in five lines of a Markdown file.
 
-## Filene i mappen
+Employees with a CV in `cvs/` get their card automatically when the CV is built (`uv run python src/build_employee_cvs.py <my-folder>`, see the CV guide). This guide is for making a card on its own, and for ordering it.
 
-| Fil | Innhold |
+## The files in the folder
+
+| File | Content |
 |---|---|
-| `business-card-template.md` / `.pdf` / `.png` | Malen med plassholdere (Navn Navnesen) |
-| `business-card-example.md` / `.pdf` / `.png` | Eksempelkort for Eirik Larsen |
-| `README.md` | Denne veiledningen |
+| `business-card-template.md` / `.pdf` / `.png` | The template with placeholders (Navn Navnesen) |
+| `business-card-example.md` / `.pdf` / `.png` | Example card for Eirik Larsen |
+| `README.md` | This guide |
 
-PDF- og PNG-filene er ikke i git. De bygges fra Markdown-filene med `uv run python src/build_all.py` fra prosjektroten (se «Bygge alt» i prosjektets README).
+The PDF and PNG files are not in git. They are built from the Markdown files with `uv run python src/build_all.py` from the project root (see «Building everything» in the project README).
 
-PDF-en er trykkfila. PNG-en er en skjermversjon, for eksempel til e-post eller intranett.
+The PDF is the print file. The PNG is a screen version, for example for email or the intranet.
 
-## Lag et nytt kort
+## Make a new card
 
-1. Kopier malen og gi kopien ditt navn, for eksempel `business-card-kari-nordmann.md`.
-2. Endre verdiene i hodet øverst i fila:
+1. Copy the template and give the copy your name, for example `business-card-kari-nordmann.md`.
+2. Change the values in the header at the top of the file:
 
    ```yaml
    ---
@@ -29,55 +31,55 @@ PDF-en er trykkfila. PNG-en er en skjermversjon, for eksempel til e-post eller i
    ---
    ```
 
-   - `name` er påkrevd. Alle de andre feltene kan utelates, og da forsvinner linjen uten at resten av kortet flytter seg.
-   - Skriv telefonnummeret med landskode og mellomrom: `+47 912 34 567`.
-   - Skriv nettadressen uten `https://` og `www.`.
+   - `name` is required. All the other fields can be left out, and then the line disappears without the rest of the card moving.
+   - Write the phone number with the country code and spaces: `+47 912 34 567`.
+   - Write the web address without `https://` and `www.`.
 
-3. Bygg kortet fra prosjektroten:
+3. Build the card from the project root:
 
    ```bash
    uv run src/build_business_card.py deliverable/visualprofile/business-card/business-card-kari-nordmann.md
    ```
 
-   Bygget tar noen sekunder. Det lager `business-card-kari-nordmann.pdf` (trykk) og `business-card-kari-nordmann.png` (skjerm) ved siden av Markdown-fila.
+   The build takes a few seconds and needs pandoc, LuaLaTeX (TeX Live) and uv (see «Quick start» in the project README). It makes `business-card-kari-nordmann.pdf` (print) and `business-card-kari-nordmann.png` (screen) next to the Markdown file.
 
-4. Se på PNG-en. Bygget kontrollerer også kortet selv og skriver `VARSEL:` hvis noe er galt, for eksempel at en lang tittel vokser opp mot navnetrekket eller at teksten havner for nær kuttkanten. Lange titler brytes over flere linjer. Hvis du får et varsel, kort ned teksten.
+4. Look at the PNG. The build also checks the card itself and prints `WARNING:` if something is wrong, for example that a long title grows up towards the wordmark or that the text ends up too close to the cut edge. Long titles wrap over several lines. If you get a warning, shorten the text.
 
-## Trykkfila
+## The print file
 
-| Egenskap | Verdi |
+| Property | Value |
 |---|---|
-| Ferdig format | 85 × 55 mm, liggende, tosidig (side 1 forside, side 2 bakside) |
-| Utfallende kant | 3 mm på alle sider. Arket er 105 × 75 mm med skjæremerker utenfor den utfallende kanten. TrimBox og BleedBox er satt i PDF-en. |
-| Sikker sone | All tekst står minst 5,5 mm innenfor kuttkanten. Kravet er 3 mm. |
-| Font | NON Natural Grotesk Regular og Medium, innebygd i PDF-en. Lisensen tillater innbygging. |
-| Grafikk | Bare vektor: navnetrekk, symbol og flater. Ingen rasterbilder. |
-| Farger | Bare CMYK. Verdiene er hentet fra profilens fargepalett. |
+| Finished format | 85 × 55 mm, landscape, two-sided (page 1 front, page 2 back) |
+| Bleed | 3 mm on all sides. The sheet is 105 × 75 mm with crop marks outside the bleed. TrimBox and BleedBox are set in the PDF. |
+| Safe zone | All text is at least 5.5 mm inside the cut edge. The requirement is 3 mm. |
+| Font | NON Natural Grotesk Regular and Medium, embedded in the PDF. The licence allows embedding. |
+| Graphics | Vector only: wordmark, symbol and surfaces. No raster images. |
+| Colours | CMYK only. The values come from the profile's colour palette. |
 
-| Farge | Brukes til | CMYK | PMS |
+| Colour | Used for | CMYK | PMS |
 |---|---|---|---|
-| Grå `#E8E7E6` | Forsidens flate | 8 / 6 / 7 / 0 | 179-2 C/U (fra 2021, må kontrolleres) |
-| Grønn `#B6FF9E` | Baksidens flate | 31 / 0 / 40 / 0 | 2267 C / 2267 U (neon) |
-| Svart `#000000` | Tekst, navnetrekk og symbol | 0 / 0 / 0 / 100 | Black C (forslag) |
-| Registreringsfarge | Bare skjæremerkene | 100 / 100 / 100 / 100 | – |
+| Grey `#E8E7E6` | The front surface | 8 / 6 / 7 / 0 | 179-2 C/U (from 2021, must be checked) |
+| Green `#B6FF9E` | The back surface | 31 / 0 / 40 / 0 | 2267 C / 2267 U (neon) |
+| Black `#000000` | Text, wordmark and symbol | 0 / 0 / 0 / 100 | Black C (proposal) |
+| Registration colour | Only the crop marks | 100 / 100 / 100 / 100 | – |
 
-Profilgrønnen er en neonfarge. Den kan ikke gjengis i CMYK, så i firefargetrykk blir baksiden mattere enn på skjerm. Skjermversjonen (PNG) bygges derfor separat med profilens RGB-farger. Vil du ha den riktige grønnfargen på trykk, be trykkeriet om å trykke baksidens flate i Pantone 2267 som spotfarge.
+The profile green is a neon colour. It cannot be reproduced in CMYK, so in four-colour printing the back comes out duller than on screen. The screen version (PNG) is therefore built separately with the profile's RGB colours. If you want the right green in print, ask the printer to print the back surface in Pantone 2267 as a spot colour.
 
-## Bestill kortet
+## Order the card
 
-Send trykk-PDF-en til trykkeriet med denne bestillingen:
+Send the print PDF to the printer with this order:
 
-- format 85 × 55 mm, tosidig, 3 mm utfallende kant (inkludert i fila);
-- papir etter avtale, gjerne ubestrøket 350–400 g;
-- farger: CMYK som i fila, eller baksiden i Pantone 2267 C/U som spotfarge for riktig grønn;
-- be om korrektur før trykk, og kontroller at svart er ren svart (100 % K) og ikke en firefargesvart.
+- format 85 × 55 mm, two-sided, 3 mm bleed (included in the file);
+- paper by agreement, preferably uncoated 350–400 g;
+- colours: CMYK as in the file, or the back in Pantone 2267 C/U as a spot colour for the right green;
+- ask for a proof before printing, and check that black is pure black (100 % K) and not a four-colour black.
 
-CMYK-verdiene for svart og PMS-navnet for grått er forslag som trykkeriet bør bekrefte før første opplag.
+The CMYK values for black and the PMS name for grey are proposals the printer should confirm before the first print run.
 
-## QR-kode
+## QR code
 
-Kortet har ingen QR-kode. Profilmanualen viser kortet uten, og navnetrekket og nettadressen dekker det samme behovet.
+The card has no QR code. The profile manual shows the card without one, and the wordmark and the web address cover the same need.
 
-## Bygget
+## The build
 
-Bygget bruker pandoc og lualatex, som de andre KodeWorks-malene. Fonten pakkes ut fra den lisensierte font-fila i repoet til en midlertidig mappe og installeres aldri. Fontkontrollen stopper bygget hvis en font fra operativsystemet blir brukt. Kortet blir derfor likt på Windows, WSL2 og Linux.
+The build uses pandoc and lualatex, like the other KodeWorks templates. The font is unpacked from the licensed font file in the repo to a temporary folder and is never installed. The font check stops the build if a font from the operating system is used. The card therefore comes out the same on Windows, WSL2 and Linux.

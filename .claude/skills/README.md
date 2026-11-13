@@ -1,7 +1,7 @@
-# Prosjekt-skills
+# Project skills
 
-Hver skill ligger i egen undermappe med `SKILL.md` (navn, beskrivelse og prosedyre). Claude Code aktiverer en skill når brukeren skriver `/<navn>`, eller når forespørselen matcher beskrivelsen. Innholdet leses først når skill-en invokeres.
+Each skill has its own subfolder with a `SKILL.md` (name, description and procedure). Claude Code activates a skill when the user types `/<name>`, or when the request matches the description. The content is read only when the skill is invoked.
 
-| Skill | Formål |
+| Skill | Purpose |
 |---|---|
-| [`fetch-from-drive/`](fetch-from-drive/SKILL.md) | Hent filer eller mapper fra Google Drive (fildato = sist endret på Drive) med `src/fetch_from_drive.py`. Ikke for CV-ene, som er i git i `cvs/`. |
+| [`fetch-from-drive/`](fetch-from-drive/SKILL.md) | Fetch files or folders from Google Drive (file date = last modified on Drive) with `src/fetch_from_drive.py`. Not for the CVs, which are in git in `cvs/`. |

@@ -1,20 +1,24 @@
-# CV-mal for KodeWorks-konsulenter
+# CV template for KodeWorks consultants
 
-CV-en skrives som en vanlig Markdown-fil og settes automatisk til en ferdig PDF i KodeWorks' visuelle profil. Du skriver innholdet. Layout, typografi, sideskift, logoer, foto og seismograframmen ordnes av byggeskriptet. Det finnes ingen Word-versjon, fordi profilfonten bare kan bygges inn i PDF.
+**Start here if you are a consultant.** Your CV is written as an ordinary Markdown file and built automatically into a finished PDF in the KodeWorks visual profile. You write the content. Layout, typography, page breaks, logos, photo and the seismograph frame are handled by the build script. There is no Word version, because the profile font can only be embedded in PDF.
 
-| Fil | Hva den er |
+| File | What it is |
 |---|---|
-| `cv-template.md` | Tom mal med veiledning i kommentarer. Start her. |
-| `cv-template.pdf` | Slik ser malen ut ferdig satt. |
-| `cv-example.md` | Utfylt eksempel med åtte prosjekter, foto og kundelogoer. |
-| `cv-example.pdf` | Det ferdige eksempelet (fire sider). |
-| `images/` | Foto og logoer som eksempelet bruker. |
+| `cv-template.md` | An empty template with guidance in comments. Start here. |
+| `cv-template.pdf` | What the template looks like when typeset. |
+| `cv-example.md` | A filled-in example with eight projects, a photo and customer logos. |
+| `cv-example.pdf` | The finished example (four pages). |
+| `images/` | Photo and logos used by the example. |
 
-PDF- og PNG-filene er ikke i git. De bygges fra Markdown-filene med `uv run python src/build_all.py` fra prosjektroten (se «Bygge alt» i prosjektets README).
+The PDF and PNG files are not in git. They are built from the Markdown files with `uv run python src/build_all.py` from the project root (see «Building everything» in the project README).
 
-## Slik lager du din CV
+## What you need
 
-1. Lag én mappe for CV-en under `cvs/`, med navnet ditt i små bokstaver, der æ blir ae, ø blir oe, å blir aa og mellomrom blir bindestrek. Kopier `cv-template.md` inn i mappen med samme navn, og legg fotoet i undermappen `images/`. Kundelogoene ligger i det felles logobiblioteket `cvs/logos/`, som alle CV-ene deler:
+The build works the same on Windows, Linux and macOS. It needs `uv`, TeX Live with `lualatex`, and Pandoc (the CV command also builds your business card, which uses Pandoc). The profile font is taken from the font file in the project and does not need to be installed on the machine. Installation and a quick check of the setup are in «Quick start» in the project README. If you do not have the tools, the person responsible for the profile can build the CV for you.
+
+## How to make your CV
+
+1. Create one folder for the CV under `cvs/`, named after you in lower case, where æ becomes ae, ø becomes oe, å becomes aa and spaces become hyphens. Copy `cv-template.md` into the folder with the same name, and put the photo in the subfolder `images/`. The customer logos are in the shared logo library `cvs/logos/`, which all the CVs share:
 
    ```
    cvs/
@@ -27,20 +31,21 @@ PDF- og PNG-filene er ikke i git. De bygges fra Markdown-filene med `uv run pyth
            └── photo.jpg
    ```
 
-2. Fyll inn. Bruk `cv-example.md` som forbilde for nivå og lengde. Fila kan leses og redigeres i hvilken som helst teksteditor, og forhåndsvises i f.eks. VS Code.
-3. Bygg PDF-en og kontroller fila fra prosjektmappen:
+2. Fill it in. Use `cv-example.md` as the model for level and length. The file can be read and edited in any text editor, and previewed in e.g. VS Code.
+3. Build the PDF and check the file from the project folder:
 
    ```bash
-   uv run python src/build_employee_cvs.py ola-nordmann          # CV-PDF og visittkort ved siden av CV-en
+   uv run python src/build_employee_cvs.py ola-nordmann          # CV PDF and business card next to the CV
    uv run python src/check_cv_md.py cvs/ola-nordmann/ola-nordmann.md
    ```
 
-   Kontrollen sjekker at CV-en følger de samme reglene som alle de andre (rekkefølge, etiketter, datoform og bildenavn), og skriver hva som eventuelt må rettes.
+   The check makes sure the CV follows the same rules as all the others (order, labels, date format and image names), and prints what needs fixing, if anything. The build takes 5–40 seconds.
+4. Read the warnings from the build, open the PDF and go through the checklist at the bottom.
+5. Commit the Markdown file and the photo. The PDF and the business card are not committed.
 
-   Bygget tar 5–40 sekunder. Det fungerer likt på Windows, Linux og macOS. Det krever bare `uv` og TeX Live med `lualatex`. Profilfonten hentes fra font-fila i prosjektet og trenger ikke være installert på maskinen. Mangler du verktøyene, kan den som har ansvar for profilen bygge CV-en for deg.
-4. Les advarslene fra bygget, åpne PDF-en og gå gjennom sjekklisten nederst.
+## The format
 
-## Formatet
+The CV itself can be in Norwegian or English. The example below is Norwegian; English labels are listed under the rules.
 
 ```markdown
 # Ola Nordmann
@@ -92,54 +97,54 @@ Nøkkelord: React, TypeScript, Azure
 - 2021 | Azure Fundamentals (AZ-900) | Microsoft
 ```
 
-**Regler:**
+**Rules:**
 
-- `#` er navnet. Avsnittet rett under er stillingstittelen.
-- Lista under tittelen er kontaktinformasjonen, alltid i denne rekkefølgen: Telefon (`+47 000 00 000`), E-post, Erfaring (`N år`), Språk (små bokstaver, komma mellom) og Foto.
-- Seksjonene kommer i denne rekkefølgen: `## Om <fornavn>`, `## Teknisk kompetanse`, `## Erfaring`, `## Arbeidserfaring`, `## Utdanning`, `## Sertifiseringer` og eventuelle egne lister. «Om»-teksten står på forsiden, og kulepunkter er lov.
-- Under `## Teknisk kompetanse` er hver `###` en gruppe, med gruppenavnet i vanlig setningsform («Infrastruktur og DevOps», ikke store bokstaver). Elementene skrives på én linje med komma mellom. Hele setninger skrives som punktliste. Samme element står bare én gang.
-- Under `## Erfaring` er hver `###` ett prosjekt, med rollen som overskrift og nyeste prosjekt først.
-  - Lista rett under overskriften er faste felt, i rekkefølgen Kunde, Prosjekt, Periode og Logo.
-  - Prosjekt utelates når det er likt kunden.
-  - Deretter kommer beskrivelsen, og til slutt én linje som begynner med `Nøkkelord:`.
-- I beskrivelser gir `**fet**` uthevet tekst, og et avsnitt som bare er `**Tekst**`, blir en liten mellomtittel. Kulepunkter skrives som Markdown-liste (`- `), ikke som «\-» eller «•».
-- I `Arbeidserfaring`, `Utdanning` og `Sertifiseringer` er hver rad `periode | navn | sted`. Mangler perioden, skriver du `- | navn | sted`. Underpunkter (rykket inn to mellomrom) blir en kort beskrivelse av raden. Sertifiseringer er bare formelle sertifiseringer, som AZ-900 og PSM I.
-- Andre lister får egen overskrift med en av de faste titlene `## Verv og engasjement`, `## Foredrag og publikasjoner`, `## Kurs` eller `## Utmerkelser`, i samme form. Bruk dem i stedet for å legge slikt under Sertifiseringer.
-- Perioder skrives som `MM.ÅÅÅÅ – MM.ÅÅÅÅ`, `MM.ÅÅÅÅ – nå`, `ÅÅÅÅ – ÅÅÅÅ` eller `ÅÅÅÅ`, med tankestrek og mellomrom. Skriv «nå», ikke «d.d.». Tillegg står i parentes etter perioden og brytes pent: `2011 – 2018 (40 % stilling)`.
-- Alle felt er valgfrie. Det som mangler, vises ikke og gir ikke hull.
-- Kommentarer (`<!-- … -->`) vises ikke i PDF-en.
-- **Engelsk CV:** bruk engelske overskrifter og etiketter (`## About Ola`, `## Skills`, `## Experience`, `Customer:`, `Period:`, `Keywords:`, `## Work experience`, `## Education`, `## Certifications`). Da får CV-en engelsk orddeling og engelske etiketter.
+- `#` is the name. The paragraph right below is the job title.
+- The list below the title is the contact information, always in this order: Telefon (`+47 000 00 000`), E-post, Erfaring (`N år`), Språk (lower case, separated by commas) and Foto.
+- The sections come in this order: `## Om <first name>`, `## Teknisk kompetanse`, `## Erfaring`, `## Arbeidserfaring`, `## Utdanning`, `## Sertifiseringer` and any extra lists. The «Om» text is on the front page, and bullet points are allowed.
+- Under `## Teknisk kompetanse` each `###` is a group, with the group name in sentence case («Infrastruktur og DevOps», not capitals). The items are written on one line separated by commas. Whole sentences are written as a bullet list. Each item appears only once.
+- Under `## Erfaring` each `###` is one project, with the role as the heading and the newest project first.
+  - The list right below the heading holds fixed fields, in the order Kunde, Prosjekt, Periode and Logo.
+  - Prosjekt is left out when it is the same as the customer.
+  - Then comes the description, and finally one line that starts with `Nøkkelord:`.
+- In descriptions `**bold**` gives emphasised text, and a paragraph that is only `**Text**` becomes a small subheading. Bullet points are written as a Markdown list (`- `), not as «\-» or «•».
+- In `Arbeidserfaring`, `Utdanning` and `Sertifiseringer` each row is `period | name | place`. Without a period, write `- | name | place`. Sub-items (indented two spaces) become a short description of the row. Sertifiseringer are only formal certifications, such as AZ-900 and PSM I.
+- Other lists get their own heading with one of the fixed titles `## Verv og engasjement`, `## Foredrag og publikasjoner`, `## Kurs` or `## Utmerkelser`, in the same form. Use them instead of putting such things under Sertifiseringer.
+- Periods are written as `MM.ÅÅÅÅ – MM.ÅÅÅÅ`, `MM.ÅÅÅÅ – nå`, `ÅÅÅÅ – ÅÅÅÅ` or `ÅÅÅÅ`, with an en dash and spaces. Write «nå», not «d.d.». Additions go in brackets after the period and wrap neatly: `2011 – 2018 (40 % stilling)`.
+- All fields are optional. What is missing is not shown and leaves no gap.
+- Comments (`<!-- … -->`) are not shown in the PDF.
+- **English CV:** use English headings and labels (`## About Ola`, `## Skills`, `## Experience`, `Customer:`, `Period:`, `Keywords:`, `## Work experience`, `## Education`, `## Certifications`). The CV then gets English hyphenation and English labels.
 
-## Foto og kundelogoer
+## Photo and customer logos
 
-- **Foto:** et rolig portrett. Bildet beskjæres automatisk så det fyller rammen, også når det er liggende eller viser hele personen. Havner ansiktet feil, kan du legge til `- Fotofokus: 0.5, 0.3` (vannrett og loddrett punkt som brøk av bildet, der 0, 0 er øverst til venstre).
-- **Fotoformat:** fotoet heter `images/photo.jpg` og er en JPG uten metadata (EXIF, fargeprofil), med inntil 1200 piksler i bredden på utsnittet med rammens forhold (60:74), altså inntil 1200 × 1480 for et stående foto. Legg inn fotoet som du har det, og kjør `uv run src/normalize_cv_images.py --apply`: det gjør om til JPG, fjerner metadata, skalerer ned og retter henvisningen i CV-en. Kjør uten `--apply` først for å se hva som blir endret.
-- **Logoer:** hver kunde har én logo i `cvs/logos/<kunde>.svg` eller `.png`, med kundenavnet i små bokstaver og bindestrek (f.eks. `cvs/logos/sunlit-sea.png`). CV-en viser til den som `- Logo: ../logos/sunlit-sea.png`. Finnes kunden allerede i biblioteket, bruk den fila. En ny logo legges i biblioteket. Normaliseringsskriptet trimmer kanter og skalerer en PNG ned til høyst 700 × 260 piksler. CV-kontrollen melder avvik for foto og logoer som ikke følger formatet.
-- **Malen og eksempelet** i denne mappen har sine egne bilder i `images/` (`images/photo.jpg`, `images/logo-<kunde>.png`), så de kan brukes uten resten av repoet.
-- **Logo:** kundens logo vises øverst til høyre i prosjektblokken. SVG er best, PNG bør være minst 600 piksler bred. Hvite og gjennomsiktige kanter trimmes bort, og logoen skaleres så alle logoer får omtrent samme visuelle tyngde. Byggeskriptet advarer når en logo har for lav oppløsning. Når kunden er KodeWorks, vises ingen logo, fordi navnetrekket allerede står nederst i CV-en. Bruk bare logoer kunden selv publiserer.
+- **Photo:** a calm portrait. The image is cropped automatically to fill the frame, also when it is landscape or shows the whole person. If the face ends up in the wrong place, add `- Fotofokus: 0.5, 0.3` (horizontal and vertical point as a fraction of the image, where 0, 0 is the top left).
+- **Photo format:** the photo is called `images/photo.jpg` and is a JPG without metadata (EXIF, colour profile), with at most 1200 pixels across the crop with the frame's aspect ratio (60:74), so at most 1200 × 1480 for a portrait photo. Add the photo as you have it, and run `uv run src/normalize_cv_images.py --apply`: it converts to JPG, removes metadata, scales down and fixes the reference in the CV. Run it without `--apply` first to see what will change.
+- **Logos:** each customer has one logo in `cvs/logos/<customer>.svg` or `.png`, with the customer name in lower case with hyphens (e.g. `cvs/logos/sunlit-sea.png`). The CV refers to it as `- Logo: ../logos/sunlit-sea.png`. If the customer is already in the library, use that file. A new logo goes into the library. The normalisation script trims edges and scales a PNG down to at most 700 × 260 pixels. The CV check reports deviations for photos and logos that do not follow the format.
+- **The template and the example** in this folder have their own images in `images/` (`images/photo.jpg`, `images/logo-<customer>.png`), so they can be used without the rest of the repo.
+- **Logo:** the customer's logo is shown at the top right of the project block. SVG is best; a PNG should be at least 600 pixels wide. White and transparent edges are trimmed away, and the logo is scaled so all logos get about the same visual weight. The build script warns when a logo has too low a resolution. When the customer is KodeWorks, no logo is shown, because the wordmark is already at the bottom of the CV. Only use logos the customer publishes itself.
 
-## Hvordan CV-en tilpasser seg innholdet
+## How the CV adapts to the content
 
-- Forsiden har kontaktinformasjon, «Om» og teknisk kompetanse, helst i to kolonner. Er «Om» lang, stables kompetansen under. Er det god plass igjen, starter «Erfaring» allerede på forsiden. Ellers lukkes forsiden med seismografbåndet.
-- Prosjekter brytes over sideskift med den grønne venstrekanten intakt. Det er minst to linjer på hver side av et skift, og en prosjekttittel blir aldri stående alene nederst på en side. Kompetansen deles aldri inne i en gruppe.
-- Kolonnene i «Generelt» måles ut fra innholdet og står på linje gjennom alle listene. Korte lister deles ikke over sideskift.
-- Bygget prøver flere varianter og velger den med færrest sider uten halvtomme sider. Brødteksten er alltid 9,5 pt. Lange CV-er får heller flere sider enn mindre skrift.
-- Malen er testet med 20 ekte KodeWorks-CV-er og med kunstige tester: bare navn, 0–13 prosjekter, spesialtegn, overlange ord og URL-er, og engelsk tekst.
+- The front page has the contact information, «Om» and the skills, preferably in two columns. If «Om» is long, the skills are stacked below. If there is plenty of room left, «Erfaring» starts on the front page already. Otherwise the front page is closed with the seismograph band.
+- Projects break across pages with the green left edge intact. There are at least two lines on each side of a break, and a project title is never left alone at the bottom of a page. The skills are never split inside a group.
+- The columns in «Generelt» are measured from the content and line up through all the lists. Short lists are not split across pages.
+- The build tries several variants and picks the one with the fewest pages without half-empty pages. The body text is always 9.5 pt. Long CVs get more pages rather than smaller text.
+- The template is tested with 20 real KodeWorks CVs and with artificial tests: name only, 0–13 projects, special characters, overlong words and URLs, and English text.
 
-## Skriveråd
+## Writing advice
 
-- **Om deg:** fagprofil først (tyngdepunkt, erfaring, hvordan du jobber), deretter noe som skiller deg ut. Tredje person, konkret, uten superlativer.
-- **Prosjektbeskrivelse:** start med problemet eller målet kunden hadde, og hva systemet er for noe. Beskriv deretter din rolle og ditt ansvar, og avslutt med resultatet. Tre til åtte linjer pluss kulepunkter for konkrete bidrag, med verb i fortid.
-- **Nøkkelord:** de viktigste teknologiene i prosjektet, helst fire til åtte. Nevn dem også i teksten der de ble brukt.
-- Eldre eller mindre prosjekter kan ha én til to setninger.
+- **About you:** professional profile first (focus, experience, how you work), then something that sets you apart. Third person, concrete, without superlatives.
+- **Project description:** start with the problem or goal the customer had, and what kind of system it is. Then describe your role and responsibility, and end with the result. Three to eight lines plus bullet points for concrete contributions, with verbs in the past tense.
+- **Keywords:** the most important technologies in the project, preferably four to eight. Also mention them in the text where they were used.
+- Older or smaller projects can have one or two sentences.
 
-## Sjekkliste før CV-en sendes
+## Checklist before the CV is sent
 
-1. Navn, tittel, telefon og e-post er riktige.
-2. Prosjektene står med nyeste først, og alle perioder har samme format.
-3. Kundenavn og prosjektnavn er skrevet likt som i tidligere CV-er og tilbud.
-4. Ingen kundelogo brukes uten at kunden selv publiserer den.
-5. Ingen advarsler fra byggeskriptet om manglende bilder, lav oppløsning eller fjernede tegn, og kontrollen (`check_cv_md.py`) gir ingen avvik.
-6. Fonten er innebygd: i PDF-leseren, under Egenskaper → Skrifter, skal det bare stå NON Natural Grotesk.
-7. Fotoet viser ansiktet godt i rammen.
-8. Filnavnet er beskrivende, f.eks. `CV Ola Nordmann KodeWorks.pdf`.
+1. Name, title, phone and email are correct.
+2. The projects are newest first, and all periods have the same format.
+3. Customer and project names are written the same way as in earlier CVs and offers.
+4. No customer logo is used unless the customer publishes it itself.
+5. No warnings from the build script about missing images, low resolution or removed characters, and the check (`check_cv_md.py`) reports no deviations.
+6. The font is embedded: in the PDF reader, under Properties → Fonts, only NON Natural Grotesk is listed.
+7. The photo shows the face well in the frame.
+8. The file name is descriptive, e.g. `CV Ola Nordmann KodeWorks.pdf`.

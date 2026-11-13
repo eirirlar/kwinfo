@@ -1,108 +1,108 @@
-# Dokumentmal for KodeWorks
+# Document template for KodeWorks
 
-Denne veiledningen er for deg som skal lage et A4-dokument i KodeWorks' profil. Du skriver teksten som vanlig Markdown og bygger den til en PDF. Malen har to varianter: **brev** og **dokument**. Brevet brukes til salgsbrev og henvendelser til kunder. Dokumentvarianten brukes til utlysning av konsulentoppdrag, notater og tilbud. Begge bruker profilfonten NON Natural Grotesk, KodeWorks' navnetrekk og en bunntekst med selskapsopplysninger.
+This guide is for you if you are making an A4 document in the KodeWorks profile. You write the text as plain Markdown and build it into a PDF. The template has two variants: **letter** and **document**. The letter is used for sales letters and enquiries to customers. The document variant is used for consultant assignment postings, notes and offers. Both use the profile font NON Natural Grotesk, the KodeWorks wordmark and a footer with company details. The documents themselves are usually written in Norwegian.
 
-## Filene
+## The files
 
-| Fil | Hva den er |
+| File | What it is |
 |---|---|
-| `letter-template.md` | Malen for brev. Hvert felt har en forklarende plassholder. Kopier filen og fyll ut. |
-| `document-template.md` | Malen for dokument. Hvert element står med en kort instruks. Kopier filen og fyll ut. |
-| `example-letter.md` | Et ferdig salgsbrev på to sider. Bruk det som forbilde for tone og oppbygging. |
-| `example-job-posting.md` | En utlysning av et konsulentoppdrag på to sider. |
+| `letter-template.md` | The letter template. Every field has an explanatory placeholder. Copy the file and fill it in. |
+| `document-template.md` | The document template. Every element comes with a short instruction. Copy the file and fill it in. |
+| `example-letter.md` | A finished two-page sales letter. Use it as the model for tone and structure. |
+| `example-job-posting.md` | A two-page posting of a consultant assignment. |
 
-PDF- og PNG-filene er ikke i git. De bygges fra Markdown-filene med `uv run python src/build_all.py` fra prosjektroten (se «Bygge alt» i prosjektets README).
+The PDF and PNG files are not in git. They are built from the Markdown files with `uv run python src/build_all.py` from the project root (see «Building everything» in the project README).
 
-## Bygge PDF
+## Building the PDF
 
-Fra prosjektroten:
+From the project root:
 
 ```
-uv run src/build_document.py mitt-dokument.md
+uv run src/build_document.py my-document.md
 ```
 
-PDF-en havner ved siden av Markdown-filen, med samme navn (`mitt-dokument.pdf`). Bruk `-o` for et annet filnavn. Du trenger pandoc, LuaLaTeX (TeX Live) og uv. Et bygg tar vanligvis under et halvt minutt. Byggescriptet sier fra med vanlig norsk tekst hvis et felt mangler, hvis en linje går utenfor margen, hvis et avsnitt ender med ett ord alene på siste linje, eller hvis et tegn ikke finnes i fonten (for eksempel «✓»; tegnet blir da utelatt). Les varslene før du sender PDF-en. I brev holdes siste avsnitt sammen med hilsenen og signaturen, så signaturen aldri står alene øverst på en side.
+The PDF ends up next to the Markdown file, with the same name (`my-document.pdf`). Use `-o` for a different file name. You need pandoc, LuaLaTeX (TeX Live) and uv (see «Quick start» in the project README). A build usually takes less than half a minute. The build script warns if a field is missing, if a line runs outside the margin, if a paragraph ends with a single word alone on the last line, or if a character does not exist in the font (for example «✓»; the character is then left out). Read the warnings before you send the PDF. In letters the last paragraph is kept together with the closing and the signature, so the signature is never alone at the top of a page.
 
-## YAML-feltene
+## The YAML fields
 
-Alle felt er valgfrie. De står øverst i filen, mellom to linjer med `---`.
+All fields are optional. They go at the top of the file, between two lines of `---`.
 
-| Felt | Gjelder | Hva det gjør |
+| Field | Applies to | What it does |
 |---|---|---|
-| `variant` | begge | `letter` (brev) eller `document` (dokument). Uten feltet bygges et dokument. De eldre verdiene `brev` og `dokument` virker fortsatt, men gir en advarsel. |
-| `title` | begge | I brev: emnelinjen. I dokument: tittelen. Uten feltet brukes første overskrift på nivå én. |
-| `subtitle` | dokument | Undertittel under tittelen. |
-| `company` | begge | Avsenderselskapet i bunnteksten (se under). |
-| `date` | begge | Dato på formen `2026-11-11`, som settes som «11. november 2026». Brev uten dato får dagens dato. Dokument uten dato får ingen dato. |
-| `recipient` | brev | Mottakerblokken, én linje per rad. |
-| `their-ref` | brev | «Deres ref.» |
-| `our-ref` | brev | «Vår ref.» |
-| `closing` | brev | Avslutningshilsen. Standard er «Vennlig hilsen». |
-| `sender` | brev | Signaturen: `name`, `title`, `email`, `phone`. Én person, eller en liste. |
-| `contact` | dokument | Kontaktblokken sist i dokumentet, med samme felt som `sender`. Én person, eller en liste. |
+| `variant` | both | `letter` or `document`. Without the field a document is built. The older values `brev` and `dokument` still work, but give a warning. |
+| `title` | both | In a letter: the subject line. In a document: the title. Without the field the first level 1 heading is used. |
+| `subtitle` | document | Subtitle below the title. |
+| `company` | both | The sending company in the footer (see below). |
+| `date` | both | Date in the form `2026-11-11`, which is set as «11. november 2026». A letter without a date gets today's date. A document without a date gets no date. |
+| `recipient` | letter | The recipient block, one line per row. |
+| `their-ref` | letter | «Deres ref.» |
+| `our-ref` | letter | «Vår ref.» |
+| `closing` | letter | The closing greeting. The default is «Vennlig hilsen». |
+| `sender` | letter | The signature: `name`, `title`, `email`, `phone`. One person, or a list. |
+| `contact` | document | The contact block at the end of the document, with the same fields as `sender`. One person, or a list. |
 
-Et felt over flere linjer, som mottakeren i et brev, skrives med `|` og én linje per rad.
+A field over several lines, such as the recipient of a letter, is written with `|` and one line per row.
 
-## Slik skriver du
+## How to write
 
-Vanlig pandoc-Markdown. Malen tar seg av skrift, farger og plassering.
+Plain pandoc Markdown. The template takes care of type, colours and placement.
 
-| Element | Slik skriver du det |
+| Element | How to write it |
 |---|---|
-| Tittel | Feltet `title` i YAML. Uten det blir første `#`-overskrift tittelen. Står det et kolon i tittelen, for eksempel «Konsulentoppdrag: Android-utvikler», blir delen før kolonet en liten etikett over tittelen. Har filen både `title` og en `#`-overskrift, vinner `title`, og overskriften blir en seksjon. |
-| Seksjon | `## Overskrift` |
-| Underseksjon | `### Overskrift` |
-| Faktaboks | Linjer på formen `**Etikett:** verdi` rett etter tittelen, hver linje unntatt den siste avsluttet med `\`. De blir automatisk en boks, men bare når alle linjene har den formen og etikettene er korte (inntil ca. 25 tegn, uten punktum). Ellers blir avsnittet vanlig tekst. Faktaboks andre steder i dokumentet: `::: {.facts}` rundt linjene. |
-| To kolonner | `:::: {.columns}` rundt to `::: {.column}`-blokker. Passer for «må ha» og «fint å ha». |
-| Kontaktblokk | Feltet `contact` i YAML, eller `::: {.contact}` rundt linjer med navnet først og tittelen på andre linje. Et siste avsnitt som begynner med et navn i fet skrift og inneholder en e-postadresse, blir også en kontaktblokk. |
-| Sitat | `> Sitat` |
-| Lister | `- punkt` eller `1. punkt`, med inntil to nivåer. |
-| Tabell | Enkel pipe-tabell med `\|` mellom kolonnene. |
-| Fet skrift | `**fet**` gir skrift i Medium-vekt. |
-| Kursiv | `*kursiv*` gir skrå Regular. Bruk sparsomt. |
+| Title | The field `title` in the YAML. Without it the first `#` heading becomes the title. If the title contains a colon, for example «Konsulentoppdrag: Android-utvikler», the part before the colon becomes a small label above the title. If the file has both `title` and a `#` heading, `title` wins and the heading becomes a section. |
+| Section | `## Heading` |
+| Subsection | `### Heading` |
+| Facts box | Lines of the form `**Label:** value` right after the title, each line except the last ending with `\`. They become a box automatically, but only when all the lines have that form and the labels are short (up to about 25 characters, without a full stop). Otherwise the paragraph becomes ordinary text. A facts box elsewhere in the document: `::: {.facts}` around the lines. |
+| Two columns | `:::: {.columns}` around two `::: {.column}` blocks. Suits «må ha» and «fint å ha». |
+| Contact block | The field `contact` in the YAML, or `::: {.contact}` around lines with the name first and the title on the second line. A last paragraph that starts with a name in bold and contains an email address also becomes a contact block. |
+| Quote | `> Quote` |
+| Lists | `- item` or `1. item`, with up to two levels. |
+| Table | A simple pipe table with `\|` between the columns. |
+| Bold | `**bold**` gives Medium weight. |
+| Italic | `*italic*` gives slanted Regular. Use sparingly. |
 
-## Selskapet i bunnteksten
+## The company in the footer
 
-Bunnteksten viser avsenderselskapets navn og organisasjonsnummer, kontoradressene og kodeworks.no. Velg avsender med feltet `company`:
+The footer shows the sending company's name and organisation number, the office addresses and kodeworks.no. Choose the sender with the field `company`:
 
-| Verdi | Org.nr. |
+| Value | Org. no. |
 |---|---|
 | `KodeWorks AS` | 820 478 452 |
 | `KodeWorks Trondheim AS` | 920 478 492 |
 | `KodeWorks Eiendom AS` | 920 478 506 |
 | `KodeWorks Oslo AS` | 922 070 709 |
 
-Dette er fire forskjellige selskaper. Velg det som faktisk er avsender av dokumentet. Uten `company` brukes KodeWorks AS.
+These are four different companies. Choose the one that actually sends the document. Without `company`, KodeWorks AS is used.
 
-## Slik skriver du godt
+## Writing well
 
-**Tone.** Konkret og saklig. Skriv hele setninger, og la dokumenterte fakta tale for seg. Unngå superlativer som «verdensledende» og «best i klassen». Vi er en partner som er med så lenge vi bidrar, og det skal merkes i språket: rolig, direkte og uten salgsprat.
+**Tone.** Concrete and factual. Write whole sentences, and let documented facts speak for themselves. Avoid superlatives such as «verdensledende» and «best i klassen». We are a partner that stays as long as we contribute, and the language should show it: calm, direct and without sales talk.
 
-**Lengde.** En utlysning bør holde seg på én til to sider. Et brev bør ikke bli lengre enn to sider. Har du mer å si, er det som regel et tegn på at du bør dele innholdet i to dokumenter.
+**Length.** A posting should stay at one or two pages. A letter should not be longer than two pages. If you have more to say, it is usually a sign that the content should be split into two documents.
 
-**Brev.** Start med hvorfor du skriver og hva du ber om eller tilbyr, og henvis til tidligere kontakt med dato. Avslutt med hva som skjer videre og hvem som tar neste steg.
+**Letters.** Start with why you are writing and what you are asking for or offering, and refer to earlier contact with a date. End with what happens next and who takes the next step.
 
-**Utlysning.** Faktaboksen øverst gir sted, oppstart, frist og varighet. Deretter følger oppdraget, oppgavene, «må ha» og «fint å ha», en kort presentasjon av KodeWorks og hvordan man tar kontakt. Skriv «må ha» bare om det som virkelig er et krav.
+**Postings.** The facts box at the top gives the location, start, deadline and duration. Then follow the assignment, the tasks, «må ha» and «fint å ha», a short presentation of KodeWorks and how to get in touch. Only write «må ha» about what really is a requirement.
 
-**Tall.** Bruk bare tall du kan dokumentere, og oppgi alltid årstall («omsetning i 2023»).
+**Numbers.** Only use numbers you can document, and always give the year («omsetning i 2023»).
 
-## Før du sender
+## Before you send
 
-1. Byggescriptet har ikke gitt varsler.
-2. Fakta er kontrollert mot kilden: datoer, frister, adresser og navn.
-3. Tall har årstall og kan dokumenteres.
-4. Kundenavn, logoer og bilder er nevnt eller brukt bare der vi har lov til det og der samtykke finnes.
-5. Selskapet i bunnteksten er riktig avsender.
-6. Du har bladd gjennom hele PDF-en: ingen enslige ord på egen linje, ingen tomme sider og ingen overskrift nederst på siden.
-7. Kontaktinformasjonen er riktig.
-8. Du sender PDF-en. Send aldri Markdown-filen, og aldri fontfilene.
+1. The build script has given no warnings.
+2. The facts are checked against the source: dates, deadlines, addresses and names.
+3. Numbers have a year and can be documented.
+4. Customer names, logos and images are mentioned or used only where we are allowed to and where consent exists.
+5. The company in the footer is the right sender.
+6. You have paged through the whole PDF: no single words on a line of their own, no empty pages and no heading at the bottom of a page.
+7. The contact information is correct.
+8. You send the PDF. Never send the Markdown file, and never the font files.
 
-## Når malen ikke har det du trenger
+## When the template lacks what you need
 
-Trenger du noe malen ikke har, for eksempel en ny type boks, en tabellstil eller en annen sidetype, skal du ikke lage en lokal løsning med ekstra LaTeX eller manuelle justeringer i det enkelte dokumentet. Slike løsninger blir borte neste gang malen oppdateres, og to dokumenter ender opp med to ulike uttrykk. Nye behov skal i stedet bli elementer i den felles malen, slik at alle får dem.
+If you need something the template does not have, for example a new kind of box, a table style or another page type, do not make a local solution with extra LaTeX or manual adjustments in the single document. Such solutions disappear the next time the template is updated, and two documents end up with two different expressions. New needs should instead become elements in the shared template, so everyone gets them.
 
-Slik ber du om det: Send en kort beskrivelse til den som forvalter malene i KodeWorks, med et eksempel på hva du ville skrevet i Markdown og hvordan du vil at resultatet skal se ut. Legg ved dokumentet du jobber med. Så lenge elementet ikke finnes, bygg dokumentet uten det og send PDF-en som vanlig.
+How to ask for it: send a short description to the person who maintains the templates at KodeWorks, with an example of what you would write in Markdown and how you want the result to look. Attach the document you are working on. Until the element exists, build the document without it and send the PDF as usual.
 
-## Om fonten
+## About the font
 
-NON Natural Grotesk er en lisensiert font. Byggescriptet pakker den ut til en midlertidig mappe under bygget, bygger den inn i PDF-en og sletter den igjen, slik at dokumentet ser riktig ut for mottakeren. Fontfilene skal ikke kopieres, videresendes eller installeres.
+NON Natural Grotesk is a licensed font. The build script unpacks it to a temporary folder during the build, embeds it in the PDF and deletes it again, so the document looks right for the recipient. The font files must not be copied, forwarded or installed.

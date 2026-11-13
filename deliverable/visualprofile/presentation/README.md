@@ -1,49 +1,49 @@
-# Presentasjonsmal for KodeWorks
+# Presentation template for KodeWorks
 
-Denne veiledningen er for deg som skal lage en presentasjon i KodeWorks' profil. Du skriver presentasjonen som vanlig tekst i Markdown og bygger den til en PDF. Malen følger profilmanualen: hvit innholdsflate, dypgrønn åpning og seksjonsskille, grønn sitatflate, grå flate for nøkkeltall, svart avslutning og profilfonten NON Natural Grotesk. Formatet er 16:9.
+This guide is for you if you are making a presentation in the KodeWorks profile. You write the presentation as plain text in Markdown and build it into a PDF. The template follows the profile manual: a white content surface, a deep green opening and section dividers, a green quote surface, a grey surface for key figures, a black closing and the profile font NON Natural Grotesk. The format is 16:9. The slides themselves are usually written in Norwegian.
 
-## Filene
+## The files
 
-| Fil | Hva den er |
+| File | What it is |
 |---|---|
-| `presentation-template.md` og `presentation-template.pdf` | Malen. En presentasjon som forklarer seg selv: ett lysbilde per lysbildetype, med en kort instruks på lysbildet og Markdown-syntaksen i talernotatene. Kopier filen og fyll ut. |
-| `example.md` og `example.pdf` | Et ferdig eksempel på 14 lysbilder som bruker alle lysbildetypene. Bruk det som forbilde for tone og oppbygging. |
-| `images/` | KodeWorks' egne foto som brukes i malen og eksempelet. |
+| `presentation-template.md` and `presentation-template.pdf` | The template. A presentation that explains itself: one slide per slide type, with a short instruction on the slide and the Markdown syntax in the speaker notes. Copy the file and fill it in. |
+| `example.md` and `example.pdf` | A finished example of 14 slides that uses every slide type. Use it as the model for tone and structure. |
+| `images/` | KodeWorks' own photos used in the template and the example. |
 
-PDF- og PNG-filene er ikke i git. De bygges fra Markdown-filene med `uv run python src/build_all.py` fra prosjektroten (se «Bygge alt» i prosjektets README).
+The PDF and PNG files are not in git. They are built from the Markdown files with `uv run python src/build_all.py` from the project root (see «Building everything» in the project README).
 
-## Bygge PDF
+## Building the PDF
 
-Fra prosjektroten:
+From the project root:
 
 ```
-uv run src/build_presentation.py min-presentasjon.md
+uv run src/build_presentation.py my-presentation.md
 ```
 
-PDF-en havner ved siden av Markdown-filen, med samme navn (`min-presentasjon.pdf`). Bruk `-o` for et annet filnavn.
+The PDF ends up next to the Markdown file, with the same name (`my-presentation.pdf`). Use `-o` for a different file name.
 
-Du trenger pandoc, LuaLaTeX (TeX Live) og uv. Profilfonten og grafikken hentes av byggescriptet. Et bygg tar vanligvis 5–40 sekunder.
+You need pandoc, LuaLaTeX (TeX Live) and uv (see «Quick start» in the project README). The profile font and the graphics are fetched by the build script. A build usually takes 5–40 seconds.
 
-Byggescriptet sier fra hvis noe er galt: bilder som ikke finnes (med linjenummer), og lysbilder med for mye tekst (med lysbildets tittel). Les varslene før du sender PDF-en.
+The build script reports problems: images that do not exist (with line number), and slides with too much text (with the slide title). Read the warnings before you send the PDF.
 
-## Slik skriver du
+## How to write
 
-Vanlig pandoc-Markdown. Et nytt lysbilde starter med en overskrift på nivå 2 (`##`). Klassen i krøllparentes bak overskriften velger lysbildetype. Uten klasse får du et vanlig tekstlysbilde.
+Plain pandoc Markdown. A new slide starts with a level 2 heading (`##`). The class in curly brackets after the heading selects the slide type. Without a class you get an ordinary text slide.
 
-| Lysbildetype | Slik skriver du den | Grense |
+| Slide type | How to write it | Limit |
 |---|---|---|
-| Åpning | Lages automatisk fra YAML-blokken øverst: `title`, `subtitle`, `author`, `date`. | Én tittel, valgfri undertittel |
-| Seksjonsskille | `# Tittel {number="01"}`, med en valgfri setning under. Uten `number` nummereres skillene automatisk. | Én kort setning |
-| Tekst | `## Tittel`, valgfritt avsnitt og punktliste. Med `{.lead}` blir første avsnitt en ingress. | Høyst fire punkter |
-| Tekst og bilde | `## Tittel {.image}`, tekst, og `![](images/photo_team1.jpg)`. Bildet fyller høyre del av lysbildet. | Ett bilde, høyst tre punkter |
-| To kolonner | En `columns`-blokk med to `column`-blokker (se under). | Høyst tre punkter per kolonne |
-| Sammenligning | Som to kolonner, men hver kolonne starter med `### Overskrift`. | Høyst tre punkter per kolonne |
-| Sitat | `## {.quote}`, sitatet som blokksitat (`>`), og en linje `Kilde: …`. | Én til to setninger |
-| Nøkkeltall | `## Tittel {.figures}`, hvert tall som definisjonsliste (se under). Sett enheten i forklaringen, ikke i tallet. | To til fire tall |
-| Kundelogoer | `## Tittel {.logos}`, kundenavn som punktliste, eller logoer som bilder i PDF-format. | Høyst åtte |
-| Avslutning | `## Takk {.closing}`. Kontaktpersonene hentes fra `contacts` i YAML. Uten `contacts` vises KodeWorks' felles kontaktinformasjon. | Én til to kontakter |
+| Opening | Made automatically from the YAML block at the top: `title`, `subtitle`, `author`, `date`. | One title, optional subtitle |
+| Section divider | `# Title {number="01"}`, with an optional sentence below. Without `number` the dividers are numbered automatically. | One short sentence |
+| Text | `## Title`, an optional paragraph and a bullet list. With `{.lead}` the first paragraph becomes a lead. | At most four bullets |
+| Text and image | `## Title {.image}`, text, and `![](images/photo_team1.jpg)`. The image fills the right part of the slide. | One image, at most three bullets |
+| Two columns | A `columns` block with two `column` blocks (see below). | At most three bullets per column |
+| Comparison | Like two columns, but each column starts with `### Heading`. | At most three bullets per column |
+| Quote | `## {.quote}`, the quote as a block quote (`>`), and a line `Kilde: …`. | One or two sentences |
+| Key figures | `## Title {.figures}`, each figure as a definition list (see below). Put the unit in the explanation, not in the number. | Two to four figures |
+| Customer logos | `## Title {.logos}`, customer names as a bullet list, or logos as images in PDF format. | At most eight |
+| Closing | `## Takk {.closing}`. The contact people come from `contacts` in the YAML. Without `contacts` KodeWorks' shared contact information is shown. | One or two contacts |
 
-Eksempler:
+Examples:
 
 ````
 ## To kolonner
@@ -72,7 +72,7 @@ Talernotater skrives slik.
 :::
 ````
 
-Åpningen og avslutningen trenger ikke noe innhold utover YAML-blokken:
+The opening and the closing need no content beyond the YAML block:
 
 ```
 ---
@@ -88,46 +88,46 @@ contacts:
 ---
 ```
 
-Felt du utelater (for eksempel `subtitle`, kilden i et sitat eller telefonnummeret) utgår uten at siden får hull. Et felt over flere linjer, som en adresse, skrives med `|` og en omvendt skråstrek (`\`) på slutten av hver linje som ikke er den siste.
+Fields you leave out (for example `subtitle`, the source of a quote or the phone number) are dropped without leaving a gap. A field over several lines, such as an address, is written with `|` and a backslash (`\`) at the end of every line except the last.
 
-## Regler
+## Rules
 
-**Fargeutheving i titler.** Sett stjerner rundt ett eller to ord i tittelen: `Vi muliggjør *ideer*`. Ordet får farge, ikke fet skrift: mørkegrønn på lys flate og lysegrønn på dypgrønn. Aldri uthev mer enn to ord, og aldri hele tittelen. I brødtekst gir `**dobbel stjerne**` skrift i Medium-vekt. Fonten har ingen ekte kursiv, så enkel stjerne i brødtekst bør unngås.
+**Colour highlighting in titles.** Put asterisks around one or two words in the title: `Vi muliggjør *ideer*`. The word gets colour, not bold: dark green on a light surface and light green on deep green. Never highlight more than two words, and never the whole title. In body text `**double asterisks**` gives Medium weight. The font has no true italic, so single asterisks in body text should be avoided.
 
-**Skrift.** Titler og store tall står i Light, brødtekst i Regular. Du velger ikke skrift selv, og fet skrift brukes ikke.
+**Type.** Titles and large numbers are in Light, body text in Regular. You do not choose the type yourself, and bold is not used.
 
-**Mengde tekst.** Inntil fire punkter per lysbilde, og korte punkter. Brødtekst er 20 pt. Får ikke teksten plass, setter malen den først i 18 pt. Er det fortsatt for mye, krymper malen teksten slik at den holder seg innenfor flaten, og byggescriptet varsler «For mye tekst på lysbildet …». Da skal du dele lysbildet i to, ikke sende det slik.
+**Amount of text.** Up to four bullets per slide, and short bullets. Body text is 20 pt. If the text does not fit, the template first sets it in 18 pt. If it is still too much, the template shrinks the text so it stays within the surface, and the build script warns «Too much text on slide …». Then split the slide in two; do not send it like that.
 
-**Seismografen og navnetrekket.** Seismografen (strekgrafikken på åpningen og seksjonsskillene) og navnetrekket «KodeWorks» nederst på hvert innholdslysbilde ligger i temaet. Du skal ikke legge dem inn selv.
+**The seismograph and the wordmark.** The seismograph (the stroke graphic on the opening and the section dividers) and the wordmark «KodeWorks» at the bottom of every content slide are part of the theme. Do not add them yourself.
 
-**Bilder og samtykke.** Bruk KodeWorks' egne foto av ansatte og lokaler, ikke stockfoto. Legg bildene i `images/` ved siden av Markdown-filen. Bildet bør være minst 2000 piksler bredt, ellers blir det grovt i PDF-en. Bruk bare bilder der de som er avbildet har samtykket til at bildet brukes til formålet.
+**Images and consent.** Use KodeWorks' own photos of employees and premises, not stock photos. Put the images in `images/` next to the Markdown file. An image should be at least 2000 pixels wide, otherwise it looks coarse in the PDF. Only use images where the people shown have consented to the image being used for the purpose.
 
-**Kunder.** Nevn bare kunder vi har lov til å vise. Logoer legges inn som PDF (vektor), ikke som skjermbilde. Uten logofiler settes kundenavnene som tekst i fliser.
+**Customers.** Only mention customers we are allowed to show. Logos are added as PDF (vector), not as screenshots. Without logo files the customer names are set as text in tiles.
 
-**Tall og sitater.** Bruk bare tall du kan dokumentere, og oppgi årstall (for eksempel «omsetning i 2023»). Et sitat skal være ekte og ha kilde.
+**Numbers and quotes.** Only use numbers you can document, and give the year (for example «omsetning i 2023»). A quote must be real and have a source.
 
-**Tone.** Korte, direkte titler og konkret tekst. Ikke superlativer som «verdensledende» eller «best i klassen».
+**Tone.** Short, direct titles and concrete text. No superlatives such as «verdensledende» or «best i klassen».
 
-## Talernotater
+## Speaker notes
 
-Skriv notatene i en `::: notes`-blokk rett under lysbildet de hører til. De vises ikke i den vanlige PDF-en. Bygg med `--notes` for å få en egen versjon med notatsider (`min-presentasjon-notater.pdf`) til eget bruk:
+Write the notes in a `::: notes` block right below the slide they belong to. They are not shown in the normal PDF. Build with `--notes` to get a separate version with note pages (`my-presentation-notater.pdf`) for your own use:
 
 ```
-uv run src/build_presentation.py min-presentasjon.md --notes
+uv run src/build_presentation.py my-presentation.md --notes
 ```
 
-Send ikke notatversjonen til andre.
+Do not send the notes version to others.
 
-## Før du sender
+## Before you send
 
-1. Byggescriptet har ikke gitt varsler.
-2. Titlene har høyst ett eller to uthevede ord.
-3. Bla gjennom hele PDF-en: ingen tekst som er krympet, ingen enslige ord på egen linje.
-4. Kontroller tall, årstall, kundenavn og sitater mot kilden.
-5. Sjekk kontaktinformasjonen på siste lysbilde.
-6. Sjekk at bildene er KodeWorks' egne, og at samtykke finnes.
-7. Send den vanlige PDF-en, ikke notatversjonen.
+1. The build script has given no warnings.
+2. The titles have at most one or two highlighted words.
+3. Page through the whole PDF: no shrunk text, no single words on a line of their own.
+4. Check numbers, years, customer names and quotes against the source.
+5. Check the contact information on the last slide.
+6. Check that the images are KodeWorks' own, and that consent exists.
+7. Send the normal PDF, not the notes version.
 
-## Om fonten
+## About the font
 
-NON Natural Grotesk er en lisensiert font. Byggescriptet pakker den ut til en midlertidig mappe under bygget, bygger den inn i PDF-en og sletter den igjen, slik at dokumentet ser riktig ut for mottakeren. Fontfilene skal ikke kopieres, videresendes eller installeres. Flagget `--keep-build` beholder byggemappen (med fontfilene) for feilsøking; slett den etterpå.
+NON Natural Grotesk is a licensed font. The build script unpacks it to a temporary folder during the build, embeds it in the PDF and deletes it again, so the document looks right for the recipient. The font files must not be copied, forwarded or installed. The flag `--keep-build` keeps the build folder (with the font files) for debugging; delete it afterwards.
