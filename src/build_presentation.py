@@ -41,7 +41,7 @@ TIMEOUT = 115  # seconds per external command
 
 
 def find_root() -> Path | None:
-    """Locate the kwinfo project root (has deliverable/visualprofile/profile) from script dir or cwd."""
+    """Locate the project root (has deliverable/visualprofile/profile) from script dir or cwd."""
     for start in (HERE, Path.cwd()):
         for p in (start, *start.parents):
             if (p / PROFILE_REL / "colors.json").exists():

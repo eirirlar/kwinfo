@@ -16,11 +16,15 @@ so that all CVs look alike and can be maintained the same way:
 - skill group names not in capitals, no duplicate items in a group;
 - bullets as Markdown lists, not as "\\-" or "•" text;
 - images/foto.<ext> and images/logo-<customer>.<ext> exist where referenced;
+- for the employees' CVs in cvs/<name>/: logos come from the shared library ../logos/<customer>.<ext>,
+  the photo is a JPG without metadata whose largest crop in the frame ratio is at most
+  PHOTO_MAX_CROP_W pixels wide, and raster logos are at most LOGO_MAX_PX (see src/normalize_cv_images.py);
 - parse -> render -> parse round-trips.
 """
 from __future__ import annotations
 
 import re
+import struct
 import sys
 from pathlib import Path
 
@@ -42,6 +46,42 @@ YEARS = re.compile(r"^\d+\+?$")
 BAD_BULLET = re.compile(r"^\s*(\\-|•|·|–\s)", re.M)
 IMAGE_FOTO = re.compile(r"^images/foto\.(jpe?g|png)$")
 IMAGE_LOGO = re.compile(r"^images/logo-[a-z0-9]+(?:-[a-z0-9]+)*\.(png|svg|jpe?g)$")
+LIBRARY_LOGO = re.compile(r"^\.\./logos/[a-z0-9]+(?:-[a-z0-9]+)*\.(png|svg|jpe?g)$")
+# Image format for the employees' CVs (cvs/<name>/), kept in step with src/normalize_cv_images.py.
+PHOTO_RATIO = 60.0 / 74.0          # width / height of the photo frame in the CV (PHOTO_W, PHOTO_H in build_cv_pdf.py)
+PHOTO_MAX_CROP_W = 1200            # pixels across the largest crop in the frame ratio
+LOGO_MAX_PX = (700, 260)           # largest raster logo, width x height
+
+
+def image_info(path: Path) -> tuple[str, int, int, bool] | None:
+    """(format, width, height, has metadata) for a PNG or JPEG, read from the file header; None otherwise.
+
+    Metadata means EXIF or an embedded ICC profile (JPEG APP1 Exif / APP2 ICC_PROFILE, PNG eXIf / iCCP)."""
+    data = path.read_bytes()
+    if data[:8] == b"\x89PNG\r\n\x1a\n":
+        w, h = struct.unpack(">II", data[16:24])
+        return "png", w, h, b"eXIf" in data or b"iCCP" in data
+    if data[:2] != b"\xff\xd8":
+        return None
+    i, size, meta = 2, None, False
+    while i + 4 <= len(data) and data[i] == 0xFF:
+        marker = data[i + 1]
+        if marker in (0xD8, 0x01) or 0xD0 <= marker <= 0xD7:
+            i += 2
+            continue
+        length = struct.unpack(">H", data[i + 2:i + 4])[0]
+        seg = data[i + 4:i + 2 + length]
+        if marker == 0xE1 and seg.startswith(b"Exif"):
+            meta = True
+        if marker == 0xE2 and seg.startswith(b"ICC_PROFILE"):
+            meta = True
+        if 0xC0 <= marker <= 0xCF and marker not in (0xC4, 0xC8, 0xCC) and size is None:
+            h, w = struct.unpack(">HH", seg[1:5])
+            size = (w, h)
+        if marker == 0xDA:   # start of scan: no more headers
+            break
+        i += 2 + length
+    return ("jpeg", size[0], size[1], meta) if size else None
 
 
 def _start_key(period: str) -> tuple[int, int] | None:
@@ -124,15 +164,41 @@ def check_text(text: str, base: Path | None = None) -> list[str]:
         if lang != lang.lower():
             issues.append(f"languages are written in lower case: «{lang}»")
 
-    # images
+    # images; the employees' CVs (cvs/<name>/) also follow the image format and the shared logo library
+    employee = base is not None and base.parent.name == "cvs"
+
     def image(path: str | None, pattern: re.Pattern, what: str) -> None:
         if not path:
             return
-        if not pattern.match(path):
+        if pattern is IMAGE_LOGO and employee:
+            if not LIBRARY_LOGO.match(path):
+                issues.append(f"{what} should come from the shared library: ../logos/<customer>.png (or .svg/.jpg): «{path}»")
+        elif not pattern.match(path):
             want = "images/foto.jpg (or .png)" if pattern is IMAGE_FOTO else "images/logo-<customer>.png (or .svg/.jpg)"
             issues.append(f"{what} should be {want}: «{path}»")
         if base is not None and not (base / path).exists():
             issues.append(f"{what} does not exist: «{path}»")
+            return
+        if not employee or base is None:
+            return
+        info = image_info(base / path)
+        if info is None:
+            if not path.endswith(".svg"):
+                issues.append(f"{what} is not a readable PNG or JPEG: «{path}»")
+            return
+        fmt, w, h, meta = info
+        if pattern is IMAGE_FOTO:
+            crop_w = min(w, h * PHOTO_RATIO)
+            if fmt != "jpeg":
+                issues.append(f"photo should be a JPG (images/foto.jpg), not {fmt.upper()}: run src/normalize_cv_images.py")
+            if crop_w > PHOTO_MAX_CROP_W + 1:
+                issues.append(f"photo is larger than needed ({w} × {h} px; the crop may be at most "
+                              f"{PHOTO_MAX_CROP_W} px wide): run src/normalize_cv_images.py")
+            if meta:
+                issues.append("photo contains metadata (EXIF or ICC profile): run src/normalize_cv_images.py")
+        elif w > LOGO_MAX_PX[0] or h > LOGO_MAX_PX[1]:
+            issues.append(f"{what} is larger than needed ({w} × {h} px, at most {LOGO_MAX_PX[0]} × {LOGO_MAX_PX[1]}): "
+                          "run src/normalize_cv_images.py")
     image(cv.get("photo"), IMAGE_FOTO, "photo")
 
     # skills

@@ -1,4 +1,4 @@
-# kwinfo
+# KodeWorks – kunnskapsgrunnlag og leveranser
 
 Prosjektrepo for kunnskapsgrunnlag og leveranser om **KodeWorks**-selskapene (KodeWorks AS, KodeWorks Trondheim AS, KodeWorks Eiendom AS, KodeWorks Oslo AS). Se `CLAUDE.md` for prosjektkontekst, konsern-fakta og arbeidsregler.
 
@@ -7,13 +7,14 @@ Prosjektet er primært **Python**-basert (`uv run python`). Scripts ligger i `sr
 ## Mappestruktur
 
 ```
-kwinfo/
+<prosjektrot>/
 ├── CLAUDE.md        – prosjektkontekst og arbeidsregler for AI-assistent
 ├── README.md        – dette dokumentet
 ├── background/      – kildedokumenter, analyser og notater (datoprefiks YYYY-MM-DD_)
 │   ├── new/         – innboks for nye originaler; tømmes når de er konvertert
 │   └── visualprofile/Fonts/ – profilfonten Non Natural Grotesk (lisensiert, med lisensene); brukes av alle byggene
-├── cvs/             – de ansattes CV-er i Markdown, én mappe per person (<navn>.md, images/); oppdateres med commits.
+├── cvs/             – de ansattes CV-er i Markdown, én mappe per person (<navn>.md, images/foto.jpg); oppdateres med commits.
+│                      logos/: felles logobibliotek, én fil per kunde.
 │                      CV-PDF og visittkort bygges ved siden av og er utenfor git. AVVIK.md: hva konsulentene bør rette
 ├── deliverable/     – ferdige dokumenter (rapporter, notater, presentasjoner)
 │   ├── itko/        – månedlige ITKO Temp-rapporter (rapport_YYYY-MM.md)
@@ -518,11 +519,17 @@ uv run python src/check_cv_md.py <cv.md> [...]                   # kontrollerer 
   - perioder som `MM.ÅÅÅÅ – nå`;
   - kompetansegrupper i setningsform uten duplikater;
   - kulepunkter som Markdown-lister;
-  - bilder i `images/foto.*` og `images/logo-<kunde>.*`;
+  - bilder i `images/foto.*` og `images/logo-<kunde>.*`; for de ansattes CV-er i `cvs/` kommer logoene fra `../logos/<kunde>.*`, fotoet er en JPG uten metadata med inntil 1200 piksler i bredden på utsnittet, og PNG-logoer er høyst 700 × 260 piksler (bildehodene leses uten Pillow);
   - rundtur parse → render → parse.
 
-  Testet i `tests/test_check_cv_md.py`.
-- **De ansattes CV-er** ligger i Markdown i `cvs/<navn>/`, med én mappe per person: `<navn>.md` og `images/`. Utviklerne oppdaterer sin egen CV med commits i git. CV-PDF og visittkort bygges ved siden av og er utenfor git. `cvs/AVVIK.md` lister det konsulentene bør rette. Filene er konvertert én gang fra Word-originalene i `data/cv/` og skal vedlikeholdes i Markdown på Drive.
+  Testet i `tests/test_check_cv_md.py` og `tests/test_cv_images.py`.
+- **De ansattes CV-er** ligger i Markdown i `cvs/<navn>/`, med én mappe per person: `<navn>.md` og `images/foto.jpg`. Kundelogoene ligger i det felles logobiblioteket `cvs/logos/<kunde>.<ext>`, én fil per kunde. Utviklerne oppdaterer sin egen CV med commits i git. CV-PDF og visittkort bygges ved siden av og er utenfor git. `cvs/AVVIK.md` lister det konsulentene bør rette. Filene ble konvertert én gang fra Word-originalene, og vedlikeholdes nå i Markdown i git.
+- **`normalize_cv_images.py`** (Pillow, numpy) gir fotoene og logoene i `cvs/` samme format: foto som JPG med kvalitet 85 (lavere, ned til 70, hvis fila ellers ville vokst), sRGB, uten metadata, gjennomsiktighet lagt på hvitt, og skalert ned så utsnittet med rammens forhold (60:74) er 1200 piksler bredt. Logoer får trimmet kanter og skaleres ned til høyst 700 × 260 piksler, og PNG-er lagres med palett. Bilder skaleres aldri opp, og fotoet beskjæres ikke i fila. Standard er tørrkjøring som viser endringen per fil og flagger filer som krymper under 30 %. `--apply` endrer filene og retter henvisningen når et foto går fra `.png` til `.jpg`. Skriptet er idempotent. `--self-test` sjekker reglene på syntetiske bilder og brukes av testene.
+
+  ```bash
+  uv run src/normalize_cv_images.py            # tørrkjøring for alle foto og logoer i cvs/
+  uv run src/normalize_cv_images.py --apply
+  ```
 - **`build_cv_pdf.py`** (PyMuPDF, PyYAML, fontTools, Pillow, numpy) bygger CV-en.
   - YAML med samme datamodell leses fortsatt, for tester.
   - All tekst escapes for LaTeX. Glyfer som fonten mangler, fjernes med advarsel.

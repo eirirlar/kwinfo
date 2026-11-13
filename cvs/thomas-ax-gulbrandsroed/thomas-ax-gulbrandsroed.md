@@ -6,8 +6,7 @@ Konsulent
 - E-post: thomas@kodeworks.no
 - Erfaring: 5 år
 - Språk: norsk, engelsk
-- Foto: images/foto.png
-
+- Foto: images/foto.jpg
 ## Om Thomas
 
 Thomas er en embedded- og backend-utvikler med fem års erfaring i C++ og Python. Han har spesialisert seg på utvikling av robuste og ytelseskritiske systemer innen robotikk, sensorikk og embedded Linux. Med en bachelor i informatikk og påbegynt grad i elektronikk har han arbeidet på tvers av hele stacken – fra lavnivå mikrokontrollerkode og bootloadere til systemdesign og infrastruktur.
@@ -36,8 +35,7 @@ Agile, Kanban, Scrum
 
 - Kunde: Cisco
 - Periode: 01.2026 – nå
-- Logo: images/logo-cisco.png
-
+- Logo: ../logos/cisco.png
 **Cisco** er et teknologiselskap som utvikler møteromsteknologi. Her har han vært med i teamet som er ansvarlige for Microsoft Teams Rooms integrasjon inn til Cisco sine møteromsplatformer. Dette innebærer utvikling og vedlikehold av Cisco's Android og Java programmer for å støtte Microsoft Teams Rooms. I tillegg har han vært med på å videreutvikle Cisco’s interne tester og testsystem.
 
 Noen av kjerneområdene for prosjektet var:
@@ -52,8 +50,7 @@ Nøkkelord: Python, Java, testing, testsystemer
 
 - Kunde: Six Robotics
 - Periode: 03.2025 – 01.2026
-- Logo: images/logo-six-robotics.png
-
+- Logo: ../logos/six-robotics.png
 **Six Robotics** er et teknologiselskap som utvikler svermdroner for militært bruk. Thomas har vært ansvarlig for kjerneinfrastrukturen til Six Robotics for HIL (Hardware In the Loop) samt jobbet i team som har fokus på intern tooling. Dette innebærer servere, hardware setup og tooling i Python for å gjøre bruken av HIL enkelt for utviklere og robust i CI. Ved siden av har han også vært med på oppdateringslogikken til Nvidia Jetson som er en del av hovedproduktet til Six Robotics.
 
 Noen av kjerneområdene for prosjektet var:
@@ -69,8 +66,7 @@ Nøkkelord: Python, Linux, testing, pytest, Nvidia Jetson, HIL, networking
 
 - Kunde: Kilter Systems
 - Periode: 12.2023 – 03.2025
-- Logo: images/logo-kilter.png
-
+- Logo: ../logos/kilter.png
 **Kilter** er et teknologiselskap som utvikler robotikk- og sensorløsninger med fokus på ROS2, embedded Linux og mikrokontrollere. Et av Thomas’ prosjekter var å designe en skreddersydd vindsensor med tilhørende CAN-bus-basert bootloader. Denne løsningen muliggjør multi-node-oppdateringer uten å forstyrre andre noder i nettverket. I tillegg utviklet han et Python-basert testbibliotek for å validere PCB-funksjonalitet før montering, med full integrasjon mot WATS for logging og kvalitetskontroll.
 
 Noen av kjerneområdene for prosjektet var:
@@ -111,8 +107,7 @@ Nøkkelord: Python, C++20, SFML, Pybind11, CMake, Poetry, Pillow, ffmpeg, Github
 
 - Kunde: Elporten
 - Periode: 04.2023 – 09.2023
-- Logo: images/logo-elporten.png
-
+- Logo: ../logos/elporten.png
 Elporten tilbyr et KIS SAAS-system for salg av strøm, spesielt designet for mindre aktører. Thomas har bidratt betydelig i å utvikle systemet, samt deler av systemets design. Systemet er todelt:
 
 - Et KIS-system utviklet med Python og Django
@@ -150,8 +145,7 @@ Nøkkelord: C++(>17), nettverk, sockets, asio, async programmering
 - Kunde: Abbott Rapid Diagnostics
 - Prosjekt: Realtime OS migrering
 - Periode: 10.2022 – 01.2023
-- Logo: images/logo-abbott.png
-
+- Logo: ../logos/abbott.png
 Abbot Rapid Diagnostics leverer maskiner for rask blodtest. De har et system som trenger å migreres over til en nyere versjon. Det er et moderniseringsbehov, som gjør at de må se på/migrere kode som går gjennom hele systemet. Fra å sette opp CPU, MMU og andre peripherals til filsystem og applikasjonskode.
 
 Eksperimentering, testing, dokumentering og planlegging av QNX real time OS versjons migrering. Abbott brukte en veldig gammel QNX versjon og trengte noen til å finne ut av hva som måtte gjøres og hvor lang tid migrering over til en ny versjon kom til å ta.
@@ -163,8 +157,7 @@ Nøkkelord: QNX RTOS, Makefile, C99 og 11, C++ 98 og 11
 - Kunde: Sunlit Sea
 - Prosjekt: Realtime dashboard for solcelle-installasjon
 - Periode: 01.2022 – 05.2022
-- Logo: images/logo-sunlit-sea.png
-
+- Logo: ../logos/sunlit-sea.png
 Bacheloroppgaven ble skrevet for Sunlit Sea, et selskap som leverer norskproduserte flytende solcelleanlegg. Thomas har vært delaktig i utvikling av sensor-elektronikken i anleggene. Oppgaven gikk ut på å lage en web app hvor man kan se en digital tvilling av solcelleinstallasjonen representert i 3D sammen med relevant statistikk.
 
 Designet og utviklet en fullstack web app-løsning som kunne streame data fra ulike sensorer i anlegget i realtime med Server Sent Events (SSE) fra backend. Dette ble visualisert i 3D via Three.js, sammen med annen tilhørende statistikk slik som produksjon, solinnstråling, bølge-aksellerasjon mm. Mye tid ble brukt på softwarearkitektur, 3D visualisering og backend utvikling for optimalisering av datastrøm. Python 3.10 med Flask som streaming/data backend. En initiell demo ble laget i React, mens resten ble skrevet i vanilla JavaScript.
@@ -176,8 +169,7 @@ Nøkkelord: Python, Flask, JavaScript, Three.js, Chart.js, InfluxDB, React
 - Kunde: Sunlit Sea
 - Prosjekt: Elektronikk og sensorikk
 - Periode: 06.2019 – 07.2022 (deltid 40%)
-- Logo: images/logo-sunlit-sea.png
-
+- Logo: ../logos/sunlit-sea.png
 Sunlit Sea er et nyoppstartet firma som utvikler flytende solcellepaneler for bruk på vann. De har som salgspunkt at de samler data fra solcellepanelene så det blir mulig å se real time bevegelse, strømproduksjon, hva slags bølger det er og hva som er forventet return rate for strømproduksjon basert på disse dataene.
 
 Fullstack utvikling av Sunlit Sea sin tekniske løsning. Dette inkluderer utformingen av kretskortet, etablering av en fysisk kommunikasjonsstandard for sensorene, og design av en mottakerenhet som tolker data fra denne kommunikasjonslinjen. Fysisk kravspesifisering for hele anlegg og hvordan de skal se ut elektrisk.

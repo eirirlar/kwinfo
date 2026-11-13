@@ -37,8 +37,7 @@ Agile, Scrum, Kanban, DevOps
 
 - Kunde: inatur.no
 - Periode: 06.2023 – nå
-- Logo: images/logo-inatur.png
-
+- Logo: ../logos/inatur.png
 Inatur sine systemer består av blant annet en applikasjon skrevet i Java/Spring, med en front-end bestående av nyere TypeScript/React-kode of eldre legacy kode skrevet i backbone.js.
 
 Oppgavene mine er hovedsakelig utvikling av nye tjenester for Inatur, både på frontend og backend, samt forvaltning av den eksisterende kodebasen gjennom optimalisering, refaktorering og feilretting.

@@ -37,8 +37,7 @@ Git, Github, IntelliJ, VsCode, Scrum, Kanban, Webpack
 - Kunde: Equinor
 - Prosjekt: Echo 3D
 - Periode: 03.2022 – nå
-- Logo: images/logo-equinor.png
-
+- Logo: ../logos/equinor.png
 Seniorutvikler for Echo 3D - Equinors digitale tvilling-plattform som leverer 3D-visualisering av olje- og gassinstallasjoner. Nøkkelansvar:
 
 - Designet og implementerte arkitektur for flere kritiske features i visualiseringsløsningen
@@ -53,8 +52,7 @@ Nøkkelord: React, TypeScript, Three.js, C#, .NET, Azure, Azure DevOps, Github A
 - Kunde: Cisco
 - Prosjekt: Webex Home og Cisco Photo Frame
 - Periode: 11.2020 – 02.2022
-- Logo: images/logo-cisco.png
-
+- Logo: ../logos/cisco.png
 Lead utvikler for et prosjekt rundt Webex Desk Pro-plattformen. Nøkkelansvar:
 
 - Ledet utviklingen av nytt dashboard og widget-system for videokonferanseenheter
@@ -70,8 +68,7 @@ Nøkkelord: Typescript, Svelte, Oauth2, Netlify, Serverless functions, Github Ac
 - Kunde: Scanreach
 - Prosjekt: ConnectPOB
 - Periode: 01.2020 – 05.2020
-- Logo: images/logo-scanreach.png
-
+- Logo: ../logos/scanreach.png
 Lead utvikler for ConnectPOB - et system for sanntidsovervåking av personell på skip. Nøkkelansvar:
 
 - Utviklet interaktiv kartvisning for sporing av personell i komplekse stålmiljøer
@@ -86,8 +83,7 @@ Nøkkelord: Angular, Vue.js, Leaflet.js, Node.js, Socket.io, Git, Github, Github
 - Kunde: Grønt Punkt Norge
 - Prosjekt: Gjenvinningskalkulator
 - Periode: 06.2019 – 01.2020
-- Logo: images/logo-gront-punkt.png
-
+- Logo: ../logos/gront-punkt.png
 Lead frontend-utvikler for ny gjenvinningskalkulator hos Grønt Punkt Norge. Nøkkelansvar:
 
 - Utviklet interaktivt verktøy for å analysere og visualisere emballasjes gjenvinnbarhet
@@ -102,8 +98,7 @@ Nøkkelord: React, Redux, Redux Saga, Gitlab, Oauth2, Typescript, Webpack
 - Kunde: Nortek Security & Technology
 - Prosjekt: Visualisering av havstrømsdata
 - Periode: 2019
-- Logo: images/logo-nortek.png
-
+- Logo: ../logos/nortek.png
 Nortek Security & Technology AS er en kunnskapsbedrift som utvikler, importerer, selger og leverer komplette løsninger og produkter innenfor brannalarm, nødlys, talevarsling og slokkesystemer.
 
 I dette prosjektet utviklet vi en webapplikasjon for å visualisere data fra havstrømsmålinger på forskjellige dybder..
@@ -115,8 +110,7 @@ Nøkkelord: Vue.js, Plotly.js, Azure
 - Kunde: Piscada
 - Prosjekt: GKCloud.no
 - Periode: 2018
-- Logo: images/logo-piscada.png
-
+- Logo: ../logos/piscada.png
 Piscadas kjerneområder er utvikling av skybasert prosesstyring for automasjon og industriell IT. Programvaren reduserer og fjerner mange av utfordringene mellom SCADA/IoT og industriell IT. Deres fokus er å forenkle industriell IT og bygge en bro mellom OT og IT. Piscada har utviklet en moderne prosess styringsplattform for prosesskontroll med skytjenester og big data, business analytics og maskinlæring. Plattformen er åpen og leverandøruavhengig. Piscada brukes i dag innen byggautomasjon, akvakultur, vannrensing og prosesstyring,
 
 Utviklingen av smarte bygg og fokus på energieffektivitet gjør det stadig viktigere å få helhetlig oversikt over alle tekniske installasjoner i et bygg. GK Cloud er en av landets ledende løsninger for behovsstyrt og prediktivt vedlikehold bygget på en unik, skybasert teknologiplattform.
@@ -130,8 +124,7 @@ Nøkkelord: Vue.js, Javascript, Socket.iot
 - Kunde: Piscada
 - Prosjekt: PMP / OAP
 - Periode: 2018 – 2019
-- Logo: images/logo-piscada.png
-
+- Logo: ../logos/piscada.png
 Piscadas kjerneområder er utvikling av skybasert prosesstyring for automasjon og industriell IT. Programvaren reduserer og fjerner mange av utfordringene mellom SCADA/IoT og industriell IT. Deres fokus er å forenkle industriell IT og bygge en bro mellom OT og IT. Piscada har utviklet en moderne prosess styringsplattform for prosesskontroll med skytjenester og big data, business analytics og maskinlæring. Plattformen er åpen og leverandøruavhengig. Piscada brukes i dag innen byggautomasjon, akvakultur, vannrensing og prosesstyring,
 
 Piscada Process Management Platform – PMP er et generisk prosesskontrollsystem for skybasert prosessautomatisering. Piscada-plattformen er bygget med en dynamisk arkitektur basert på åpne kommunikasjonsprotokoller og grensesnitt. Dette gir kundene et fleksibelt system som ikke låser kunden til proprietære systemer. Støtter mange protokoller som ModbusTCP, ModbusRTU, M-Bus, FINS UDP og OPC UA.
@@ -144,8 +137,7 @@ Nøkkelord: Javascript, Node.js, RTSP IP kamera, WebRTC, Socket.io, Unreal Media
 
 - Kunde: Tatimer
 - Periode: 2015 – 2017
-- Logo: images/logo-tatimer.png
-
+- Logo: ../logos/tatimer.png
 Tatimer.no var en formidlingsplattform for kunnskap og ferdigheter - "AirBnB for undervisning". Plattformen er basert på delingsøkonomi, og alle som har en kompetanse/ferdighet kan opprette en lærerprofil og tilby undervisning i sitt nærområde eller over nett. Man kunne finne blant annet leksehjelp, musikkundervisere, språklærere med mer på nettstedet.
 
 Pål var frontend- og backendutvikler på dette prosjektet. Gjorde i tillegg en god del design. Pål var også co-founder av Tatimer.

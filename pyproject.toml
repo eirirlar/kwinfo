@@ -1,7 +1,7 @@
 [project]
-name = "kwinfo"
+name = "kodeworks-knowledge-base"
 version = "0.1.0"
-description = "Scripts and helpers for the kwinfo knowledge base about the KodeWorks companies."
+description = "Scripts and helpers for the knowledge base about the KodeWorks companies."
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [

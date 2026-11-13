@@ -1,6 +1,6 @@
 # TASKS
 
-Åpne og in-progress oppgaver for `kwinfo`. Se `ARCHIVE.md` for løste oppgaver.
+Åpne og in-progress oppgaver for prosjektet. Se `ARCHIVE.md` for løste oppgaver.
 
 Format: `### T<n> [<status>] <tittel>` — status er `[ ]` (åpen), `[~]` (in-progress) eller `[x]` (løst). Ved løsning: skriv løsningen under tasken før den flagges `[x]` og eventuelt arkiveres.
 
@@ -319,3 +319,60 @@ De tre som bruker `mkdtemp`, rydder bare opp når bygget lykkes og `--keep-build
 **Kobling:** følger opp regelen om å ikke skrive utenfor prosjektet (CLAUDE.md, 2026-11-13). Henger sammen med T14 (byggeskriptet brukes i verifiseringen) og T17 (som kjører alle byggene på nytt og kan gjøres etter denne).
 
 **Berørte filer:** `src/project_tmp.py` (ny), `src/build_business_card.py`, `src/build_document.py`, `src/build_presentation.py`, `src/build_profile_manual.py`, `src/build_cv_pdf.py`, `src/build_cv_business_cards.py`, `src/build_md_pdf.py`, `src/check_document_pdf.py`, `src/extract_visualprofile.py`, `tests/test_project_tmp.py` (ny), `README.md`, `TASKS.md`
+
+### T19 [x] Mindre og mer enhetlige bilder i CV-ene, med felles logobibliotek
+
+CV-mappene i `cvs/` har 82 bilder på til sammen 7,4 MB: 16 foto (6,4 MB) og 66 logoer (1,0 MB). Status per 2026-11-13:
+
+- Fotoet settes inn som 60 × 74 mm (`PHOTO_W`, `PHOTO_H` i `src/build_cv_pdf.py`). Byggeskriptet beskjærer det rundt fokuspunktet og skalerer ned til høyst 1800 piksler bredt. Mange originaler er 2000 piksler eller mer på den lengste siden.
+- Fire foto er PNG med gjennomsiktighet (Brage Wichstrøm, Dee Roberts, John Hagen, Thomas Ax Gulbrandsrød), og to av dem er de største filene (1,0 og 1,2 MB). To foto har lav oppløsning: Brage Wichstrøm (367 × 463) og Dee Roberts (521 × 568). Tre foto har EXIF-data, men ingen har GPS-posisjon.
+- Logoene vises på inntil 34 × 13 mm (`LOGO_MAX_W`, `LOGO_MAX_H`), med minst 200 dpi (`LOGO_MIN_DPI`). Den største er Brattvaag Electro på 381 KB (1006 × 441). De fleste er under 40 KB.
+- Samme kunde ligger i flere versjoner hos flere personer: Sunlit Sea hos seks, Equinor og NTNU hos fem hver, Kongsberg, Enersky, Inatur og Thales hos tre eller fire, og Cisco, Elporten, Lilbit og Skandia Energi hos to. Fire logoer har for lav oppløsning (`cvs/AVVIK.md`): Sunlit Sea, NTNU, Lilbit og AppearTV.
+
+Brukeren har bestemt (2026-11-13): felles logobibliotek ja, en delt mappe er ikke et problem. Fotoene beholder nok oppløsning til annen bruk, nemlig 1200 piksler i bredden på utsnittet.
+
+**Endringer:**
+
+1. **`src/normalize_cv_images.py`** (ny) behandler bildene i `cvs/*/images/` og `cvs/logos/`:
+   - **Foto:** JPG med kvalitet 85, sRGB, uten metadata (EXIF, ICC). Gjennomsiktighet flates ut mot hvit bakgrunn. Bildet skaleres ned så det største utsnittet med fotorammens forhold (60:74) blir 1200 piksler bredt, altså inntil 1200 × 1480 for et stående foto. Bilder skaleres aldri opp. Fila beskjæres ikke, så byggeskriptet fortsatt kan flytte utsnittet med `photo_focus`. Bytter fotoet fra `.png` til `.jpg`, rettes henvisningen i CV-fila.
+   - **Logoer:** PNG-er og JPG-er skaleres ned så de er høyst 700 × 260 piksler (rundt 500 dpi på største plass). PNG beholder gjennomsiktighet og lagres optimalisert. SVG røres ikke.
+   - **Kjøremåte:** standard er tørrkjøring som viser per fil gammel og ny størrelse og pikselmål, og flagger filer som krymper til under 30 % av opprinnelig filstørrelse for inspeksjon. Originalene endres bare med `--apply`. Skriptet er idempotent: en ny kjøring på behandlede bilder endrer ingenting.
+2. **Felles logobibliotek `cvs/logos/`:** én fil per kunde, `cvs/logos/<kunde>.<ext>`, med kundenavn i små bokstaver og bindestrek (`equinor.svg`, `sunlit-sea.png`). Helst SVG. Ellers velges den beste versjonen blant CV-ene, og der logoen har for lav oppløsning, hentes en bedre versjon fra kundens nettside, helst SVG. CV-ene viser til logoen som `../logos/<kunde>.<ext>`. Logoer som bare én person bruker, flyttes også dit, så alle logoer ligger på ett sted. `images/` i hver CV-mappe har da bare fotoet. Varianter av samme kunde (Kongsberg, Kongsberg Digital og Kongsberg Satellite Services) holdes som egne logoer.
+3. **Byggeskriptet og CV-kontrollen** godtar logoer i `../logos/`: `src/check_cv_md.py` (mønsteret for logostier, og sjekken av at fila finnes), `src/build_cv_pdf.py` (relative stier fra CV-mappa), og endringssjekken i `src/build_employee_cvs.py` (`cvs/logos/` blir en innfil for alle CV-ene).
+4. **Kontroll av nye bilder** i `src/check_cv_md.py`: avvik for foto som ikke er JPG, foto med utsnitt over 1200 piksler i bredden eller med metadata, og logoer over 700 × 260 piksler. Da holder formatet seg når utviklerne oppdaterer CV-ene selv.
+5. **`cvs/AVVIK.md`:** punktet om logoer med lav oppløsning oppdateres etter hva som ble erstattet. De to fotoene med lav oppløsning står fortsatt som noe konsulenten selv må rette.
+6. **Dokumentasjon:** CV-veiledningen (`deliverable/visualprofile/cv/README.md`) beskriver bildeformatet: foto som `images/foto.jpg` i inntil 1200 piksler i bredden på utsnittet, og logoer fra `cvs/logos/`, med regel for navn og størrelse. Mappeoversikten i README får `cvs/logos/`. Malen og eksempelet i `deliverable/visualprofile/cv/` beholder sine egne bilder.
+
+**Verifisering:**
+
+1. Tørrkjøringen viser bare forventede endringer, og ingen fil er flagget uten at den er sett på. Etter `--apply` gir en ny tørrkjøring ingen endringer.
+2. `uv run python src/check_cv_md.py cvs/*/*.md`: 0 avvik.
+3. `pytest --timeout=5` består, med nye tester for normaliseringen (skalering, utflating av gjennomsiktighet, fjerning av metadata, ingen oppskalering, idempotens) og for logostier i `../logos/`.
+4. Alle 18 CV-er og visittkort bygges med `--force`, i puljer på tre og én kommando om gangen. CV-PDF-ene sammenlignes med kopier tatt før endringen: samme antall sider og samme tekst på hver side. Bare foto og logoer får se annerledes ut. Et utvalg sider rendres til PNG og kontrolleres visuelt: fotoene er like skarpe som før, og de nye logoene er minst like gode.
+5. Bildene i `cvs/` er til sammen under 3 MB, og ingen logo finnes i mer enn én fil. (Grensen var først 2 MB. Den kom fra et overslag med 900 piksler i fotoutsnittet. Med de 1200 pikslene brukeren valgte, blir et portrett på kvalitet 85 alene 150–300 KB, og tørrkjøringen ga 2,9 MB. Grensen ble rettet under løsningen, 2026-11-13.)
+
+**Estimert innsats:** 55 min
+
+**Løsning (2026-11-13):**
+
+- **Logobiblioteket `cvs/logos/`:** 42 logoer, én fil per kunde, fra 66 filer i personmappene. Der samme kunde fantes i flere versjoner, ble den beste valgt etter et kontaktark: ny Appear-logo i stedet for den gamle lilla, Equinor i rødt og liggende, NTNU uten slagord, Sunlit Sea i sort på gjennomsiktig bakgrunn (de andre hadde gul bakgrunn eller var 200 × 200), ordmerket til Enersky, og versjonene med høyest oppløsning av Cisco, Kongsberg, Lilbit og Skandia Energi. Navnevarianter ble slått sammen (`appeartv` → `appear-tv`, `skandiaenergi` → `skandia-energi`, `thales-norway` → `thales`). Kongsberg, Kongsberg Digital og Kongsberg Satellite Services er egne logoer. Alle 83 logohenvisninger i CV-ene peker nå til `../logos/<kunde>.<ext>`, og `images/` har bare fotoet. **Det ble ikke hentet logoer fra nett:** alle fire logoene med for lav oppløsning hadde en god nok versjon hos en annen person.
+- **`src/normalize_cv_images.py`** (ny): foto blir JPG med kvalitet 85, sRGB, uten metadata, gjennomsiktighet lagt på hvitt, og skalert ned så utsnittet med rammens forhold (60:74) er 1200 piksler bredt. Logoer får trimmet kanter og skaleres ned til høyst 700 × 260 piksler. Standard er tørrkjøring, `--apply` endrer filene, og `--self-test` sjekker reglene på syntetiske bilder i `tmp/`. To justeringer etter første tørrkjøring: kvaliteten senkes trinnvis ned til 70 når et foto ellers ville blitt større enn originalen (to foto var hardere komprimert enn kvalitet 85), og skalerte PNG-logoer lagres med palett på 256 farger, fordi fullfarge gjorde noen logoer opptil fire ganger større. Etter første `--apply` endret en ny kjøring tre logoer til, fordi skaleringen myker opp kantpikslene. Skriptet trimmer derfor én gang til etter skaleringen, og er nå idempotent.
+- **Resultat:** 40 av 59 filer endret. Fire foto gikk fra PNG til JPG (henvisningene ble rettet automatisk), tre mistet EXIF-data, og åtte ble skalert ned. Bildene i `cvs/` gikk fra 7,4 MB (82 filer) til 2,9 MB (58 filer).
+- **`src/check_cv_md.py`:** ny funksjon `image_info` leser format, mål og metadata fra PNG- og JPEG-hodene uten Pillow, som ikke er i prosjektmiljøet. For CV-ene i `cvs/` gir kontrollen avvik for logoer utenfor `../logos/`, foto som ikke er JPG, foto med utsnitt over 1200 piksler eller med metadata, og logoer over 700 × 260 piksler. Malen og eksempelet i `deliverable/visualprofile/cv/` beholder sine egne bilder i `images/`, og reglene gjelder ikke dem. Grensene ligger som konstanter i kontrollen og brukes også av normaliseringen.
+- **`src/build_employee_cvs.py`:** `cvs/logos` er innfil for alle CV-ene, så en endret logo bygger CV-ene som bruker den på nytt.
+- **Tester:** `tests/test_cv_images.py` (ny, 13 tester): `image_info` på håndlagde PNG- og JPEG-hoder, reglene for foto og logo i `cvs/`, unntaket for malen, at hver logo finnes i én fil og ingen ligger i personmappene, og selvtesten til normaliseringen kjørt i en egen uv-prosess.
+- **Dokumentasjon:** `cvs/AVVIK.md` har et nytt fellespunkt om logobiblioteket og et om de to fotoene med lav oppløsning (Brage Wichstrøm, ca. 155 dpi, og Dee Roberts, ca. 220 dpi). Sju punkter om logoer med lav oppløsning og foto i PNG er fjernet eller rettet. CV-veiledningen beskriver mappestrukturen med `cvs/logos/`, fotoformatet, logoreglene og normaliseringen. README har logobiblioteket i mappeoversikten, et avsnitt om `normalize_cv_images.py` og de nye kontrollreglene.
+
+**Verifisering:**
+
+1. Tørrkjøringen viste bare forventede endringer. De 13 flaggede filene (fem foto og åtte logoer som krympet under 30 %) ble kontrollert visuelt før og etter. Det var ingen synlige kompresjonsfeil i nærbilder av ansiktene, og ingen fargefeil i logoene etter palettkonverteringen. Etter `--apply` og rettelsen av trimmingen gir en ny tørrkjøring «0 would change».
+2. `check_cv_md.py cvs/*/*.md`: 18 filer, 0 avvik. CV-eksempelet består også.
+3. `pytest --timeout=5`: 358 passed (færre enn før, fordi testene som går over filene i `cvs/` har to personer og 27 logofiler mindre).
+4. Alle 18 CV-er og visittkort er bygget med `--force`, i seks puljer på tre og én kommando om gangen, uten feil. Mot kopiene fra før har alle samme antall sider, og 17 har identisk tekst på hver side. Hos Dee Roberts er ordene like, men ett avsnitt på side 4 brytes annerledes, fordi Asolvi-logoen ved siden av fikk litt andre mål etter trimmingen. Første og andre side hos John Hagen og Sindre Stephansen er rendret og sammenlignet visuelt: fotoene er like skarpe, og logoene sitter på samme sted og har samme størrelse. Et anslag for største størrelse gir alle logoer minst 205 dpi, så byggeskriptet melder ingen logo med lav oppløsning.
+5. Bildene i `cvs/` er på 2,91 MB, under grensen på 3 MB. Ingen logo finnes i mer enn én fil.
+
+**Faktisk innsats:** 13m 50s (veggklokke) mot 55 min estimert. Ingen logoer måtte hentes fra nett, og de fleste valgene kunne gjøres ut fra ett kontaktark.
+
+**Kobling:** bygger på T12 (CV-ene i Markdown) og T16 (CV-ene i `cvs/`). Henger sammen med T14 (`build_employee_cvs.py`).
+
+**Berørte filer:** `src/normalize_cv_images.py` (ny), `src/check_cv_md.py`, `src/build_cv_pdf.py`, `src/build_employee_cvs.py`, `cvs/logos/` (ny), `cvs/*/images/`, `cvs/*/*.md`, `cvs/AVVIK.md`, `tests/test_cv_images.py` (ny), `deliverable/visualprofile/cv/README.md`, `README.md`, `TASKS.md`

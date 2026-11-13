@@ -6,8 +6,7 @@ Konsulent
 - E-post: dee@kodeworks.no
 - Erfaring: 5 år
 - Språk: norsk, engelsk
-- Foto: images/foto.png
-
+- Foto: images/foto.jpg
 ## Om Dee
 
 Dee er en fullstack utvikler med fem års erfaring. Dee har bred erfaring i frontend-utvikling med TypeScript og React, inkludert biblioteker som Redux og Zustand, og har bygget både single page-applikasjoner og lokale applikasjoner via Electron.
@@ -36,8 +35,7 @@ Agile, CI/CD, Kanban, Scrum
 
 - Kunde: Inatur
 - Periode: 02.2024 – nå
-- Logo: images/logo-inatur.png
-
+- Logo: ../logos/inatur.png
 Hovedoppgaven har gått ut på å vedlikeholde og videreutvikle en stor Java Spring-applikasjon, med nye features og bugfixes etter behov. En stor del av arbeidet har involvert å sikre interoperabilitet av flere eldre frontend-teknologier som kjører sammen på én side. Jeg bidro til modernisering av systemet ved å designe en strategi for gradvis migrering til TypeScript, samt innføre strengere rutiner rundt CI.
 
 **Nytt API-prosjekt**
@@ -65,8 +63,7 @@ Nøkkelord: Java, Spring, TypeScript, React, Backend-for-frontend, Tailwind, Typ
 
 - Kunde: Nordic Semiconductor
 - Periode: 08.2020 – 12.2023
-- Logo: images/logo-nordic-semiconductor.png
-
+- Logo: ../logos/nordic-semiconductor.png
 Jobbet i avdelingen for programvareverktøy, med å designe, utvikle og vedlikeholde desktop-applikasjoner og relaterte systemer som gjør det enkelt for utviklere å skrive programvare for Nordics brikker.
 
 **nRF Direction Viewer**
@@ -95,8 +92,7 @@ Nøkkelord: React, TypeScript, Node.js, Redux, Python, Zustand, three.js, D3, SV
 
 - Kunde: Asolvi
 - Periode: 08.2019 – 08.2020
-- Logo: images/logo-asolvi.png
-
+- Logo: ../logos/asolvi.png
 Jobbet som fullstack-utvikler i et self-managed team som var ansvarlig for å gjøre om komponenter i legacy-systemer til gjenbrukbare mikrotjenester. Alle tjenestene ble skrevet i Elixir, med bruk av Phoenix-webrammeverket. Fikk erfaring med Large Scale Scrum-metodologien, og jobbet i tett samarbeid med stakeholdere i flere land.
 
 Spesifikke oppdrag:

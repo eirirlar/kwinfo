@@ -6,7 +6,7 @@ local utils = pandoc.utils
 local stringify = utils.stringify
 
 local function warn(msg) io.stderr:write("KWWARN: " .. msg .. "\n") end
-local function info(msg) io.stderr:write("KWINFO: " .. msg .. "\n") end
+local function info(msg) io.stderr:write("KWNOTE: " .. msg .. "\n") end
 local function trim(s) return (s:gsub("^%s+", ""):gsub("%s+$", "")) end
 
 local COMPANIES = {

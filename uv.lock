@@ -453,7 +453,7 @@ wheels = [
 ]
 
 [[package]]
-name = "kwinfo"
+name = "kodeworks-knowledge-base"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [

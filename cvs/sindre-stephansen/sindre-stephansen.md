@@ -40,8 +40,7 @@ Scrum, Kanban, Agile, Lean
 
 - Kunde: EnerSky
 - Periode: 02.2026 – nå
-- Logo: images/logo-enersky.png
-
+- Logo: ../logos/enersky.png
 EnerSky er et selskap som leverer forenklet tilgang til energidata. Hovedproduktet er EnerSky Insight API, som lar kunder enkelt be om tredjepartstilgang til energidata for sluttbrukere. Insight API er et veldokumentert REST API basert på OpenAPI v3, og gjør det enkelt å integrere, fremfor å måtte selv integrere med Elhub sitt SOAP XML grensesnitt.
 
 Sindre jobber med å utvide EnerSky med et API for å hente nettleiepriser for målepunkter, uansett hvilket nettselskap de tilhører. Dette innebærer å kartlegge prismodellene for alle nettselskaper i Norge, definere en modell som kan representere alle de mulige variasjonene, og å lage et API for sluttbrukere.
@@ -53,8 +52,7 @@ Nøkkelord: Python, FastAPI, Pydantic, Elhub, asyncio
 - Kunde: Kongsberg
 - Prosjekt: Ship Noise Monitoring
 - Periode: 05.2025 – 01.2026
-- Logo: images/logo-kongsberg.png
-
+- Logo: ../logos/kongsberg.png
 Sindre utvikler en applikasjon som tar imot lyd fra hydrofoner og viser spektrogrammer i sanntid. Dette kan brukes til å monitorere lyder fra dyr i vann, eller å følge med på ulyder fra båter. Applikasjonen prosesserer store mengder data (150GB per dag per hydrofon). Den tar også imot data fra andre sensorer, som GPS, som korreleres med lyddataene.
 
 Applikasjonen består av en backend skrevet i C# ASP.NET, med en frontend skrevet i Angular, og distribueres til Windows, Debian, RHEL og Docker.
@@ -79,8 +77,7 @@ Nøkkelord: Rust, Qemu, RISC-V, x86, Assembly
 - Kunde: Thales Norway
 - Prosjekt: Gradert
 - Periode: 03.2022 – nå
-- Logo: images/logo-thales-norway.png
-
+- Logo: ../logos/thales.png
 Sindre er en del av teamet hos Thales Norway som utvikler løsninger for et system for konfigurasjonsstyring og avvikshåndtering av maskiner på et gradert nettverk.
 
 Sindre fikk hovedansvar for utvikling av en Kotlin backend som samler konfigurasjon og retter avvik, og et web-grensesnitt som presenterer konfigurasjon og avvik for en operatør.
@@ -94,8 +91,7 @@ Nøkkelord: Kotlin, C++, Qt, SIP, SSH, SNMP, WMI, CIM, TLS, TCP, UDP, Windows, L
 - Kunde: Skandia Energi
 - Prosjekt: Android app for oversikt over strømforbruk
 - Periode: 09.2021 – 02.2022
-- Logo: images/logo-skandia-energi.png
-
+- Logo: ../logos/skandia-energi.png
 Skandia Energi utviklet en app for at kunder skulle kunne følge med på strømprisen og strømforbruket sitt enklere, og kunne tilpasse seg til når strømmen er billig. Under utviklingen ble designet av appen endret, og Sindre kom inn for å implementere det nye designet for Android.
 
 Sindre identifiserte raskt svakheter i appens tilstandshåndtering. Han refaktorerte arkitekturen ved å innføre en reaktiv MVVM-modell. Han skrev om Repository- og ViewModel-laget til å bruke Kotlin Flows, slik at endringer i data (f.eks. bytte av visningsseksjon eller oppdatert brukerinfo) propagerte umiddelbart gjennom hele applikasjonen. Dette sikret en robust dataflyt og en sømløs brukeropplevelse uten behov for manuelle oppdateringer.
@@ -107,8 +103,7 @@ Nøkkelord: Android, Kotlin, MVVM, Reactive Programming, Coroutines, Flow
 - Kunde: Sunlit Sea
 - Prosjekt: Bølgemåler
 - Periode: 08.2021
-- Logo: images/logo-sunlit-sea.png
-
+- Logo: ../logos/sunlit-sea.png
 Sunlit Sea er et nyoppstartet firma som utvikler flytende solcellepaneler for bruk på vann.
 
 For å legge solceller på vann er det nødvendig med grundige undersøkelser av forholdene i området. En del av dette er bølgeforholdene og hvordan de påvirker panelene. Sindre jobbet med å videreutvikle et Open-Source program for en flytende bølgemåler som samler inn og analyserer data med Fast Fourier Transforms. Resultatet ble sendt over Iridium til et system som setter sammen en full analyse av forholdene for utplassering av en solcelle-installasjon.
@@ -120,8 +115,7 @@ Nøkkelord: C++, Arduino, Mbed OS.
 - Kunde: NTNU
 - Prosjekt: Porting av Inferno til RISC-V
 - Periode: 08.2020 – 08.2021
-- Logo: images/logo-ntnu.png
-
+- Logo: ../logos/ntnu.png
 Inferno er et operativsystem fra Bell Labs, som ble utviklet av de samme folkene som tidligere hadde lagd Unix. Det har en innebygd virtuell maskin slik at applikasjonene kan kjøre uavhengig av prosessorarkitektur.
 
 Sindres oppgave var å porte Inferno til å kjøre på den nye RISC-V arkitekturen. Først måtte han integrere en kompatibel kompilator, fordi Inferno bruker sin egen dialekt av C. Denne kompilatoren produserte ikke debug-informasjon for verktøy som GDB, så all debugging måtte kjøres på assembly-nivå. Når kompilatoren var på plass måtte Sindre skrive et entrypoint for operativsystemet som konfigurerte prosessoren, klargjorde minneområder og satte opp timer og interrupts. Etter det skrev han drivere for tastatur og mus, og en grafikkdriver. Til slutt skrev han en Just-In-Time kompilator fra bytecode for den virtuelle maskinen til bytecode for RISC-V.
@@ -133,8 +127,7 @@ Nøkkelord: C, RISC-V, Assembly, QEMU, Inferno
 - Kunde: Lilbit
 - Prosjekt: Android App
 - Periode: 06.2020 – 08.2021
-- Logo: images/logo-lilbit.png
-
+- Logo: ../logos/lilbit.png
 Lilbit AS (tidligere Tail it Technologies AS) produserer små GPS-enheter, hovedsakelig for kjæledyr
 
 Lilbit har en mobil-app som kobler til GPS-enheter for å se hvor de er, og få varsler når de går utenfor et gitt område.
@@ -148,8 +141,7 @@ Nøkkelord: Android, Kotlin, Room, Bluetooth
 - Kunde: NTNU
 - Prosjekt: TDT4295 Datamaskinprosjektet / TDT4255 Datamaskinkonstruksjon
 - Periode: 08.2019 – 12.2019
-- Logo: images/logo-ntnu.png
-
+- Logo: ../logos/ntnu.png
 I 4. klasse på NTNU tok Sindre to fag som fokuserte på FPGA og hardware.
 
 I Datamaskinprosjektet skulle en gruppe studenter designe og programmere et kretskort fra bunnen av. Når Sindre tok faget skulle gruppen lage et lydbrett som tok inn lyd og la på effekter. Kortet skulle inneholde en FPGA for real-time lydprosessering og en MCU for kontrollering. Sindre hadde erfaring med kretskortdesign og FPGA-programmering, så han tok lederrollen for de delene av prosjektet. Han designet store deler av kretskortet, gjorde feilsøking når det var produksjonsfeil, og satte opp pipeline, struktur og lavnivågrensesnitt for FPGA-koden. Til slutt der man kunne legge på lydkompresjon, tremolo og ekko i real-time.
@@ -163,8 +155,7 @@ Nøkkelord: PCB, KiCAD, FPGA, Scala, Chisel, Verilog, Lydprosessering
 - Kunde: Eyasys
 - Prosjekt: Battery Stick
 - Periode: 03.2019 – 06.2020
-- Logo: images/logo-eyasys.png
-
+- Logo: ../logos/eyasys.png
 Eyasys tilbyr helhetlige løsninger i sjiktet mellom sikkerhet, pålitelighet, programvare og ved behov, tilpasset maskinvare.
 
 Battery Stick er et mobilt batteri, rettet mot bønder i Afrika, som kan lades opp med solceller, og kan drive diverse elektriske apparater.
@@ -178,8 +169,7 @@ Nøkkelord: C, ARM Cortex-M, Kryptering
 - Kunde: Vaskehjelp
 - Prosjekt: Android App
 - Periode: 01.2019 – 02.2019
-- Logo: images/logo-vaskehjelp.png
-
+- Logo: ../logos/vaskehjelp.png
 Vaskehjelp AS er en markedsplass som knytter kunder opp mot vaskere i sitt geografiske område. De gjør det enkelt for kunder å finne renholdere i sitt område, og håndterer betaling og forsikring for å gjøre det trygt og enkelt for begge parter.
 
 Mobilapplikasjonen er hovedplattformen til Vaskehjelp, og det er den både kunder og renholdere bruker for å legge ut og finne oppdrag. Det er separate apper for iOS og Android, og de utvikles parallelt.

@@ -1,4 +1,4 @@
-# Prosjekt-skills for kwinfo
+# Prosjekt-skills
 
 Hver skill ligger i egen undermappe med `SKILL.md` (navn, beskrivelse og prosedyre). Claude Code aktiverer en skill når brukeren skriver `/<navn>`, eller når forespørselen matcher beskrivelsen. Innholdet leses først når skill-en invokeres.
 

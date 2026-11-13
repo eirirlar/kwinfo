@@ -6,7 +6,8 @@ Alle filene består kontrollen (`uv run python src/check_cv_md.py cvs/*/*.md`) o
 
 **Felles for flere:**
 
-- **Logoer med lav oppløsning** (byggeskriptet advarer): Sunlit Sea (200 × 200 piksler, 149 dpi) hos Jan-Marius Vatle, Simen Moen Storvik, Sindre Stephansen og Vegard Stengrundet; NTNU (126 dpi) hos Sindre Stephansen; Lilbit (157 dpi) hos Ørjan Bostad Vesterlid; AppearTV (199 dpi) hos Aleksander Skraastad. En felles logo i bedre oppløsning (helst SVG) bør skaffes og brukes av alle.
+- **Logoer:** alle kundelogoer ligger i det felles logobiblioteket `cvs/logos/`, med én fil per kunde, og CV-ene viser til dem som `../logos/<kunde>.png`. Der samme kunde fantes i flere versjoner, er den beste brukt: Sunlit Sea i sort på gjennomsiktig bakgrunn, ny Appear-logo, Equinor i rødt, NTNU uten slagord, Lilbit i større utgave. Logoene som tidligere hadde for lav oppløsning (Sunlit Sea, NTNU, Lilbit og AppearTV), gir ikke lenger advarsel. De minste er Inatur, Abbott og Ocean Access, med rundt 205 dpi i største størrelse. SVG-versjoner bør skaffes når anledningen byr seg.
+- **Foto med lav oppløsning:** Brage Wichstrøm (367 × 463 piksler, rundt 155 dpi i CV-en) og Dee Roberts (521 × 568, rundt 220 dpi). Et større foto bør skaffes.
 - **Kunder som er utledet** fra logo, tittel eller tekst fordi originalen ikke hadde kundefelt, bør bekreftes av konsulenten (se den enkelte).
 - **Utelatte logoer:** når kunden er KodeWorks, og der originalen hadde feil logo (Thomas Ax Gulbrandsrød: Sunami med EyaSys-logo; Ørjan Bostad Vesterlid: 3T Treningssenter med WTW-logo).
 - **Uten ekte portrett:** Lasse Holanger. PDF-en viser da en grå plassholder.
@@ -14,7 +15,7 @@ Alle filene består kontrollen (`uv run python src/check_cv_md.py cvs/*/*.md`) o
 
 ## Aleksander Skraastad
 
-- Bygg-advarsel: logoen til AppearTV er 200 × 200 piksler (199 dpi ved 19 mm). Bygget melder også 2 «overfull boxes» (smal tekst som stikker litt utenfor, trolig lange nøkkelord-/URL-linjer). Ser ikke feil ut i PDF-en, men bør sjekkes.
+- Bygget melder 2 «overfull boxes» (smal tekst som stikker litt utenfor, trolig lange nøkkelord-/URL-linjer). Ser ikke feil ut i PDF-en, men bør sjekkes.
 - Kunde mangler i originalen for flere prosjekter. Utledet fra logo og tekst: DNB (RDM/EDM, teksten nevner DNB og logoen er DNB), Statkraft (Fusion og Algorithmic Trading, Statkraft-logo og tekst), AppearTV (Gateway, logoen er Appear; arbeidsgiver heter «AppearTV» i Arbeidserfaring). Bør bekreftes.
 - Prosjektet Algorithmic Trading har ingen egen rolle i originalen. Det følger rett etter Fusion og har fått Fusions rolle («Utvikler / Tech lead / Team lead»).
 - Nøkkelord: «Elhub» to ganger i EnerSky, «Tailwind v5» (trolig v4), «TypeScript 5» uten «v». Beholdt.
@@ -38,12 +39,12 @@ Alle filene består kontrollen (`uv run python src/check_cv_md.py cvs/*/*.md`) o
 
 - Originalen blander «Dee» og «han» i Om-teksten, og «Jeg» i prosjektbeskrivelser (Inatur). Beholdt uendret.
 - «Nåværende» i Inatur-perioden er skrevet som «nå».
-- Inatur-logoen i originalen er svært liten (119 × 40 px). Byttet til den større Inatur-filen (255 × 85 px) fra Simen Moen Storvik sin CV, siden det er samme logo. Bør byttes mot en ordentlig fil.
+- Inatur-logoen i originalen er svært liten (119 × 40 px). Den felles Inatur-logoen i `cvs/logos/` (255 × 85 px) brukes i stedet. Den bør byttes mot SVG.
 - Periodene «01.2024» (KodeWorks) og «02.2024» (Inatur) og Asolvi (Arbeidserfaring 08.2019 – 07.2020, prosjekt til 08.2020) er ulike i originalen. Beholdt.
 - To studentprosjekter (Brettspill utviklingsplattform, eLæringsmodul for e-helse), fra seksjonen «Artikler, foredrag og verv», står under Foredrag og publikasjoner med Keele University og UCL som sted. Det er egentlig studentprosjekter, ikke publikasjoner. Konsulenten bør ta stilling til plasseringen. Tittelen har punktum («Brettspill utviklingsplattform.»), beholdt.
 - Skrivefeil beholdt: «ut ifra», «rettningsfinnendevnene», «Et grafisk editor», «Et GDPR-kompatibel», «oppholdt», «Arkitekte», «OAuth2-flytter».
 - Bygget: «Generelt»-overskriften blir stående alene nederst på side 4 med listene på side 5 (se svakheter i rapporten).
-- Fotoet er PNG (521 × 568), og er brukt som images/foto.png.
+- Fotoet var PNG (521 × 568) og er lagret som `images/foto.jpg` med hvit bakgrunn.
 
 ## Eirik Blekesaune
 
@@ -99,7 +100,6 @@ Alle filene består kontrollen (`uv run python src/check_cv_md.py cvs/*/*.md`) o
 
 ## Jan-Marius Vatle
 
-- Bygg-advarsel: logoen til Sunlit Sea (`logo-sunlit-sea.png`) er bare 200 × 200 piksler og gir 149 dpi i PDF-en. Originalen har ikke bedre. Bør byttes mot SVG eller større PNG.
 - Nøkkelord i Echo3D-prosjektet har «Scrum» to ganger. Beholdt som i originalen.
 - Prosjektet hos Brattvaag Electro AS (06.2009 – 04.2016) står som ett prosjekt, mens Arbeidserfaring har tre rader hos samme arbeidsgiver. Periodene stemmer ikke helt (Arbeidserfaring-raden «Deltidsansatt» starter 06.2008). Ikke endret.
 - Skrivefeil beholdt: «Elekrtiker» (Arbeidserfaring), «Kodeworks» i prosjektteksten, «teknologien» (SpareBank 1), «IFE’s».
@@ -112,7 +112,7 @@ Alle filene består kontrollen (`uv run python src/check_cv_md.py cvs/*/*.md`) o
 
 - Utkastrest i originalen: punktet «Mer?» under Ansvarsoppgaver i Blue Insight. Beholdt, må fjernes eller fylles ut av konsulenten.
 - Kunde for Blue Insight er ikke oppgitt i originalen. Satt Kunde: Kongsberg Discovery (fra Om-teksten og Kongsberg-logoen). Konsulenten bør bekrefte.
-- Eldste prosjekt har kunde «Kongsberg Seatex» (nå Kongsberg Discovery) med samme Kongsberg-logo, delt fil logo-kongsberg.png.
+- Eldste prosjekt har kunde «Kongsberg Seatex» (nå Kongsberg Discovery) med samme Kongsberg-logo (`cvs/logos/kongsberg.png`).
 - Rollene «Datakryptering» (Ocean Access) er egentlig en oppgave, ikke en rolle. Brukt som overskrift fordi originalen ikke har rolle.
 - Perioden «03.2024 - 03.2024» ble skrevet som «03.2024».
 - Bioscope-beskrivelsen er én lang tekst med kolon-introduserte punkter. Gjort om til punktlister. Setningen «I tillegg til alt dette var også Joachim de ansattes tillitsvalgte…» hørte til siste punkt i originalen og står nå som eget avsnitt. Den siste punktlista (Programvareutvikler, Drift, Hardware osv.) sto som en egen rad uten tittel i originalen og står nå som punktliste før Nøkkelord.
@@ -159,7 +159,6 @@ Alle filene består kontrollen (`uv run python src/check_cv_md.py cvs/*/*.md`) o
 ## Ørjan Bostad Vesterlid
 
 - Fotoet er i liggende format (800 × 533) med personen til venstre. Lagt til `Fotofokus: 0.32, 0.3`. Bør sjekkes.
-- Bygg-advarsel: logoen til Lilbit er 173 × 65 piksler (157 dpi ved 26 mm). Bør byttes.
 - Prosjektet «3T Treningssenter iOS app» (01.2021 – 05.2021) har en kopiert beskrivelse fra Elkompis/SkandiaEnergi (beskriver ElKompis, SkandiaEnergi og Eggs Design) og nøkkelord for iOS. Beholdt som i originalen. Logoen i originalen er WTW (ikke 3T), så den er utelatt. Kunde er utledet fra tittelen. Beskrivelsen må skrives for riktig prosjekt.
 - Prosjektet «Hverdagshelt» (01.2019) har nøkkelord fra et helt annet prosjekt («FoU, Maskinvare, RK3188, ARM, Android, Programvare, Produksjon, Prosjektledelse, Entreprenørskap»). Beholdt, men må rettes. Logoen er NTNU (skolefag TDAT2003); kunde satt til NTNU.
 - Rekkefølge endret: Hverdagshelt (01.2019) står nå foran Mplify (06.2018); originalen hadde dem motsatt.
@@ -193,7 +192,6 @@ Alle filene består kontrollen (`uv run python src/check_cv_md.py cvs/*/*.md`) o
 
 ## Simen Moen Storvik
 
-- Bygget advarer: logoen til Sunlit Sea har lav oppløsning (200 × 200 px, 149 dpi). Inatur-logoen (255 × 85 px) er også liten, men gir ingen advarsel. Bør byttes mot bedre filer.
 - Ingen kunde er oppgitt for prosjektet «Nettapp som erstatter fysiske nøkler» (originalen har bare KodeWorks-logo). Satt Kunde: KodeWorks, så logo utelates.
 - Prosjektet 2018–2019 har NTNU-logo og nevner SAP Norge AS i teksten. Satt Kunde: NTNU, og SAP Norge AS står i beskrivelsen og nøkkelordene. Sunlit Sea er hentet fra teksten og logoen som kunde for FPV-prosjektet.
 - Seksjonen «Artikler, foredrag og verv» inneholdt bare Professional Scrum Master I (2022) med to beskrivelsesavsnitt. Flyttet til Sertifiseringer (utsteder satt til Scrum.org etter PSM-merket i originalen), og beskrivelsen ligger som underpunkter. PSM-merket (bilde) er ikke tatt med.
@@ -206,7 +204,6 @@ Alle filene består kontrollen (`uv run python src/check_cv_md.py cvs/*/*.md`) o
 - For EnerSky var «Prosjekt» lik kunden i originalen, så `Prosjekt` er utelatt.
 - «Sikkerhetsklarering: Hemmelig / NATO Secret» hadde ingen plass i malen. Lagt som egen kompetansegruppe.
 - Sorteringen: hobbyprosjektet (2025 – nå) ligger rett etter Ship Noise Monitoring (05.2025). Originalen hadde det nesten sist.
-- Bygget advarer om lav oppløsning på `logo-ntnu.png` (126 dpi) og `logo-sunlit-sea.png` (149 dpi). Sunlit Sea-logoen er et 200 x 200 piksler stort bilde med gul stripe. Bedre kilder bør hentes (John Hagens CV har en bredere Sunlit Sea-logo).
 - Innholdsfeil beholdt: «Hovedsaklig», «IOS», «bla.», «Nøkkelord: C++, Arduino, Mbed OS.» (punktum til slutt), Lilbit-avsnittet uten punktum, «Kodeworks» med liten w i brødtekst. «Sindre utvikler/jobber med» i presens for avsluttede prosjekter (Ship Noise, 01.2026). «Erfaring: 6 år» stemmer ikke med Arbeidserfaring fra 05.2017.
 - «Foredrag og publikasjoner»: 2018-oppføringen har bare en URL (medium.com) som underpunkt. Kursene i 2022 og 2023 er holdt for KodeWorks, men «sted» er ikke fylt ut fordi det står i beskrivelsen.
 - Foto er et helfigurbilde som bygget beskjærer automatisk. Ansiktet kom ut riktig.
@@ -214,7 +211,7 @@ Alle filene består kontrollen (`uv run python src/check_cv_md.py cvs/*/*.md`) o
 
 ## Thomas Ax Gulbrandsrød
 
-- Fotoet er en PNG (812 × 774, 1 MB) og heter derfor `foto.png`. Kan med fordel lagres som JPG.
+- Fotoet var en PNG (812 × 774, 1 MB) og er lagret som JPG (`images/foto.jpg`).
 - Logoen i Sunami-prosjektet (07.2016 – 07.2021) er EyaSys, ikke Sunami. Jeg har utelatt logoen i stedet for å bruke feil logo. Sunami har ingen egen logo i originalen. Kunde er satt til «Sunami» (arbeidsgiver er EyaSys). Bør avklares om kunden skal være EyaSys.
 - KW-TV (internprosjekt) og SOCKS4 (internprosjekt) har KodeWorks-logo i originalen; kunde satt til KodeWorks og logo utelatt.
 - Prosjektene «Cisco microsoft teams» og «Infrastruktur og HIL testing» har ikke en rolle som overskrift i originalen (det er tema-/prosjekttittel). Beholdt som overskrift. Bør byttes mot ekte rolle.
@@ -229,7 +226,6 @@ Alle filene består kontrollen (`uv run python src/check_cv_md.py cvs/*/*.md`) o
 
 ## Vegard Stengrundet
 
-- Bygg-advarsel: logoen til Sunlit Sea er 200 × 200 piksler (149 dpi). Bør byttes.
 - Prosjektet «Visualisering av Fjordbyen og Sunlit Sea / Visualisering av skipssimulator / Administrere sensordata fra balansebrett / Likviditetskontrollsystem» (11.2018 – 11.2020) samler fire delprosjekter i ett. Kunde er satt til KodeWorks (logoen i originalen er KodeWorks) og logo er utelatt. Delprosjektene er mellomtitler. Bør vurderes delt i fire prosjekter med egne perioder og kunder (Sunlit Sea er kunde for Fjordbyen).
 - HoloLens-prosjektet har KodeWorks som logo i originalen, så kunde er satt til KodeWorks og logo utelatt.
 - Prosjektet «Sunlit Sea, Visualisering» er satt til kunde Sunlit Sea og prosjekt «Visualisering» (originalen skiller med komma). Samme for «Echo, Digital Tvilling» (kunde Equinor ut fra logo og tekst) og «K-Sim, Maritim Simulering» (kunde Kongsberg Digital).

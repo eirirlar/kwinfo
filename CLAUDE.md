@@ -2,7 +2,7 @@
 
 ## Hva er dette
 
-`kwinfo` er en samling av bakgrunnsmateriale, analyser og leveranser om **KodeWorks AS** og de andre KodeWorks-selskapene. Prosjektet drives av Eirik Larsen. Hensikten er å bygge opp et strukturert kunnskapsgrunnlag — selskapsstruktur, bakgrunn, nøkkeltall, styringsdokumenter — og å produsere leveranser (rapporter, notater, presentasjoner) basert på dette grunnlaget.
+Prosjektet er en samling av bakgrunnsmateriale, analyser og leveranser om **KodeWorks AS** og de andre KodeWorks-selskapene. Prosjektet drives av Eirik Larsen. Hensikten er å bygge opp et strukturert kunnskapsgrunnlag — selskapsstruktur, bakgrunn, nøkkeltall, styringsdokumenter — og å produsere leveranser (rapporter, notater, presentasjoner) basert på dette grunnlaget.
 
 Prosjektet er **git-delt** på tvers av flere maskiner (Windows Git Bash, WSL2, Linux). All varig kunnskap må ligge i filer som følger med checkoutet — se «Ingen historikk-fil» og «Auto-memory brukes ikke» under.
 
@@ -35,7 +35,7 @@ Bruk disse verdiene direkte i leveranser og skjemaer — ikke sett `[SETT INN]`-
 ## Filer og mapper
 
 ```
-kwinfo/
+<prosjektrot>/
 ├── CLAUDE.md                  – dette dokumentet (prosjektkontekst for AI)
 ├── README.md                  – oversikt over repo og verktøy
 ├── background/                – kildedokumenter, analyser, notater
@@ -57,7 +57,7 @@ kwinfo/
 
 - **Les disse først:** Ved oppstart av en oppgave, eller når kontekst mangler, les `README.md`, `CLAUDE.md`, `TASKS.md` og `ARCHIVE.md`. README beskriver scripts og dataflyt, TASKS viser åpne oppgaver, og ARCHIVE inneholder løste oppgaver med løsningsnotat. Søk i ARCHIVE før du starter en ny oppgave for å unngå dobbeltarbeid.
 - **Ingen historikk-fil brukes.** Dette prosjektet har bevisst valgt bort en `historikk.md` / `history-log.md` / kronologisk logg-fil. Naboprosjektene `../fjordgata30`, `../stotte` og `../sure-d61` bruker slike filer, men her skal all varig kunnskap ligge enten (a) direkte i `CLAUDE.md`, `README.md`, `TASKS.md`, `ARCHIVE.md`, eller (b) som dokumenter i `background/`. Task-løsningsnotater i `TASKS.md` / `ARCHIVE.md` er den kronologiske ryggraden. Ikke opprett en historikk-fil selv om det virker naturlig eller det etterspørres implisitt — foreslå heller hvor det aktuelle innholdet kan festes i en av de eksisterende filene.
-- **Tillatelser:** Spør alltid om tillatelse før du kjører kode eller rører filer utenfor prosjektmappen (`kwinfo/`), selv om du kjører med `--dangerously-skip-permissions`. Dette gjelder bl.a. lesing fra `../fjordgata30` eller andre naboprosjekter – les der, men skriv aldri dit uten eksplisitt godkjenning.
+- **Tillatelser:** Spør alltid om tillatelse før du kjører kode eller rører filer utenfor prosjektmappen, selv om du kjører med `--dangerously-skip-permissions`. Dette gjelder bl.a. lesing fra `../fjordgata30` eller andre naboprosjekter – les der, men skriv aldri dit uten eksplisitt godkjenning.
 - **Skriv aldri utenfor prosjektmappen.** Dette gjelder også midlertidige filer: ikke Claude Codes scratchpad-mappe, `AppData/Local/Temp`, `/tmp` eller andre systemmapper for midlertidige filer, selv om systemprompten anbefaler det. Hjelpescripts, mellomresultater, notatutkast og testnedlastinger legges i `tmp/` i prosjektroten (git-ignorert), og ryddes når de ikke trengs lenger. Det samme gjelder scripts i `src/` der vi selv velger hvor filene havner: arbeidsmapper og mellomfiler legges i `tmp/`, ikke i systemets midlertidige mappe (`tempfile`-standarden). Programmer som er installert på maskinen (uv, LuaLaTeX, pytest, pandoc o.l.), kan beholde sine vanlige hurtigbuffere og midlertidige mapper. Regelen gjelder det vi enkelt kan styre. Trenger en handling ellers å skrive utenfor prosjektet, spør først.
 - **Kodeendringer krever konfirmasjon:** Ikke gjør endringer i kode eller opprett nye filer uten at brukeren eksplisitt har bedt om det. Hvis brukeren diskuterer, spør eller ber om en beskrivelse/plan, svar med tekst — ikke med kode. Vent på et tydelig "gjør det" eller tilsvarende før du rører filer.
 - **Sitér autorisasjonen før du handler.** Før hver `Edit` eller `Write` mot en prosjektfil — inkludert `TASKS.md` status-toggling fra `[ ]` til `[x]` og nye `### T<n>`-overskrifter — skal du i tekst-svaret ditt sitere den spesifikke frasen fra brukerens siste melding som autoriserer denne handlingen. Kan du ikke sitere en frase, er du ikke autorisert. Svar da med tekst alene. En riktig diagnose er ikke autorisasjon. «Brukeren virker å ville dette» er ikke autorisasjon. Bare et imperativ rettet mot den spesifikke handlingen teller: `fix det`, `gjør det`, `lag den`, `løs den`, eller et eksplisitt `ja` til et forslag du nevnte i forrige tur. Dette gjør sjekken synlig i teksten din — hvis du skriver «Fikser per din melding X» og X ikke er et sitat fra brukerens faktiske melding, er det samme fil-og-fiks-uten-godkjenning-feil, nå fangbar før edit.

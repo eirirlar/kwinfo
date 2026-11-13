@@ -182,8 +182,8 @@ def main() -> None:
         for line in res.stderr.splitlines():
             if line.startswith("KWWARN: "):
                 warnings.append(line[len("KWWARN: "):])
-            elif line.startswith("KWINFO: "):
-                print("INFO: " + line[len("KWINFO: "):])
+            elif line.startswith("KWNOTE: "):
+                print("INFO: " + line[len("KWNOTE: "):])
             elif line.strip():
                 print("pandoc:", line)
 

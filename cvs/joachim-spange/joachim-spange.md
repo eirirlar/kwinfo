@@ -37,8 +37,7 @@ Agile, MLOps, Scrum, DevOps, OKR
 - Kunde: Kongsberg Discovery
 - Prosjekt: Blue Insight
 - Periode: 08.2024 – nå
-- Logo: images/logo-kongsberg.png
-
+- Logo: ../logos/kongsberg.png
 Kongsberg Blue Insight er et åpent og fleksibelt digitalt infrastrukturprodukt utformet for å møte den økende etterspørselen etter nøyaktig informasjon fra havet, med fokus på internettsikkerhet og sømløs integrasjon. Blue Insight automatiserer dataflyten fra et bredt spekter av sensorer og plattformtyper og visualiserer dem i en felles ramme. Løsningen legger til rette for moderne databehandling og maskinlæring, og gir ny forståelse og dypere innsikt.
 
 Ansvarsoppgaver:
@@ -54,8 +53,7 @@ Nøkkelord: C#, Python, MQTT, Telegraf, InfluxDB, Grafana, parsing av XML/NMEA/U
 - Kunde: Ocean Access
 - Prosjekt: Nedsenkbar bøye
 - Periode: 03.2024
-- Logo: images/logo-ocean-access.png
-
+- Logo: ../logos/ocean-access.png
 Ocean Access ønsket å kryptere data opplastet til sitt API fra enhetene i felt. Ruteren som ble brukt var OpenWRT-basert og støttet WireGuard. Et WireGuard VPN ble satt opp med VPN-serveren hos Digital Ocean og rutere som klienter. Et alternativ var å implementere MbedTLS på mikrokontrolleren, men ble sett på som en dårligere løsning da det ville øke behovet for regnekraft på mikrokontrolleren.
 
 Nøkkelord: IT-sikkerhet, VPN, WireGuard, OpenWRT, Digital Ocean, Edge Computing, IoT, Linux, STM32, MbedTLS
@@ -65,8 +63,7 @@ Nøkkelord: IT-sikkerhet, VPN, WireGuard, OpenWRT, Digital Ocean, Edge Computing
 - Kunde: OptoScale
 - Prosjekt: Bioscope
 - Periode: 04.2017 – 09.2023
-- Logo: images/logo-optoscale.png
-
+- Logo: ../logos/optoscale.png
 Produktutvikling av en gründeridé: biomassekamera for oppdrettsnæringen. Biomasseestimering, sår- og velferdklassifisering samt telling av lus ble utviklet. Utvikling av winch for mobilitet og et toppside GSM/WiFI-kommunikasjonskabinett. Fra prototyping til 200 enheter i innland og Canada, Chile, Island og Storbritannia. Laboratorietesting og felttesting før pilotkunder også lansering av et kommersielt produkt. Valg av maskinvare, operativsystem, VPN, sensorikk, databehandling lokalt vs. i sky, tele- og mobildataleverandør. Som tidlig ansatt i en oppstartsbedrift fikk Joachim et stort fotavtrykk og “hva jobber du med” ble vanskelig å forklare da han engasjerte seg og gjøv fatt på nye problemstillinger. En del av teamet "AI & Optikk". Joachim var ansvarlig for:
 
 - mikrokontrolleren - C++ kildekoden som samlet inn ekstern data og kommuniserte med annen programvare for å videreformidle sensordata samt motta instruksjoner, som å sende utløsersignal til kamera;
@@ -95,8 +92,7 @@ Nøkkelord: Akvakultur, Python/Pandas, C ++, 3D kamerasyn, Edge Computing, IoT, 
 - Kunde: Kongsberg Seatex
 - Prosjekt: eBird og MRU
 - Periode: 06.2014 – 07.2016
-- Logo: images/logo-kongsberg.png
-
+- Logo: ../logos/kongsberg.png
 Kongsberg Seatex, nå Kongsberg Discovery, selger maritim elektronikk til verdensmarkedet. eBird holder kontroll på seismiske kabler. Joachim jobbet med å teste produktets oppførsel i ulike temperaturer samt magnetfelt. Skrev kode for å generere magnetfelt i en helmholtz spole.
 
 Joachim jobbet også med avanserte gyroer (MRU) for å regne ut pivot punkt på skip. Planla og gjennomførte et forskningstokt med F/F Gunnerus.

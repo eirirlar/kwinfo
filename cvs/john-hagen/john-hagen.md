@@ -6,8 +6,7 @@ Seniorkonsulent
 - E-post: john@kodeworks.no
 - Erfaring: 11 år
 - Språk: norsk, engelsk
-- Foto: images/foto.png
-
+- Foto: images/foto.jpg
 ## Om John
 
 John er en erfaren fullstack-utvikler med over ti års erfaring fra krevende IT-prosjekter, og har en mastergrad i datateknikk fra NTNU med spesialisering i komplekse datasystemer.
@@ -39,8 +38,7 @@ Agile, Scrum, Universal Utforming, Kanban, DevOps, Micro Services, CI/CD
 - Kunde: reMarkable
 - Prosjekt: Store
 - Periode: 01.2022 – nå
-- Logo: images/logo-remarkable.png
-
+- Logo: ../logos/remarkable.png
 reMarkable utvikler e-ink-baserte skrivebrett og tilhørende digitale løsninger. John har hatt en sentral rolle i utviklingen og arkitekturen av remarkable.com, og bidratt til å modernisere løsningen fra Gatsby til Next.js, med særlig fokus på ytelse, tilgjengelighet og arkitekturforbedringer.
 
 Arbeidet omfattet utvikling av sidebyggingssystem i Sanity CMS, server-side validering og AI-integrasjon, samt tracking og samtykkehåndtering i tråd med personvernkrav.
@@ -58,8 +56,7 @@ Nøkkelord: TypeScript, React, NextJS (App router, Pages router, Performance), S
 
 - Kunde: KLP
 - Periode: 09.2020 – 01.2022
-- Logo: images/logo-klp.png
-
+- Logo: ../logos/klp.png
 KLP er Norges største pensjonsselskap med omfattende digitale systemer. John utviklet og videreutviklet webapplikasjoner brukt av både sluttbrukere og interne systemer, i tett samarbeid med designere og testere.
 
 Fokus var på universell utforming, ytelse, og brukervennlighet i tråd med Digitaliseringsdirektoratets retningslinjer.
@@ -76,8 +73,7 @@ Nøkkelord: TypeScript, React, Enonic XP, Webpack, Universell Utforming, Tilgjen
 
 - Kunde: Sunlit Sea
 - Periode: 05.2020 – 09.2020
-- Logo: images/logo-sunlit-sea.png
-
+- Logo: ../logos/sunlit-sea.png
 Utvikling av monitoreringssystem for flytende solcelleanlegg. Løsningen skulle gi sanntidsoversikt over installasjoner og sensordata.
 
 Nøkkelbidrag:
@@ -94,8 +90,7 @@ Nøkkelord: React, Redux, 3D
 - Kunde: TechnipFMC
 - Prosjekt: Vision
 - Periode: 07.2019 – 04.2020
-- Logo: images/logo-technipfmc.png
-
+- Logo: ../logos/technipfmc.png
 John moderniserte og videreutviklet “Vision TPlotter” – en applikasjon for sanntids og historisk sensoranalyse.
 
 Ansvarlig for arkitektur, refaktorering og etablering av enhetstester og DevOps pipelines for kvalitet og stabilitet.
@@ -107,8 +102,7 @@ Nøkkelord: Javascript
 - Kunde: Equinor
 - Prosjekt: Well Design
 - Periode: 2018 – 2020
-- Logo: images/logo-equinor.png
-
+- Logo: ../logos/equinor.png
 Utvikling av Well Design – en skybasert løsning for samhandling i designprosessen for oljebrønner.
 
 John bidro til både frontend-arkitektur og backend-integrasjon, og arbeidet i et tverrfaglig SCRUM-team på 12 personer.

@@ -35,8 +35,7 @@ Agile, Scrum, Kanban, Testdriven Development
 - Kunde: Kongsberg Digital
 - Prosjekt: K-Sim, Maritim Simulering
 - Periode: 08.2021 – 12.2021
-- Logo: images/logo-kongsberg-digital.png
-
+- Logo: ../logos/kongsberg-digital.png
 Kongsberg Digital er et selskap i Kongsberg Gruppen som utvikler software og teknologi for handelsflåten, fornybar energi, olje og gass.
 
 K-Sim tilbyr en realistisk real-time simulering av navigasjon av skip og båter. Simulatorien bruker til trening og opplæring, og oppfyller også krav for en rekke sertifiseringer.
@@ -54,8 +53,7 @@ Nøkkelord: Unreal Engine, gRPC, Protobuf, C++, C#/.NET
 - Kunde: Sunlit Sea
 - Prosjekt: Sunlitsea.no
 - Periode: 06.2021 – 08.2021
-- Logo: images/logo-sunlit-sea.png
-
+- Logo: ../logos/sunlit-sea.png
 Sunlit Sea er et nyoppstartet selskap som utvikler en løsning for solcellepaneler på vann. Målet til Sunlit Sea er å utvikle en billigst og enklest mulig løsning for å etablere et solcelleanlegg på vann.
 
 En ny nettside for SunlitSea ble utviklet. Nettsiden er en one-page applikasjon som inneholder blant annet 3D-animasjoner og dynamiske løsninger basert på scrolling.
@@ -73,8 +71,7 @@ Nøkkelord: VueJS, ThreeJS, GSAP
 - Kunde: WTW
 - Prosjekt: Proof of concept
 - Periode: 11.2020 – 05.2021
-- Logo: images/logo-wtw.jpg
-
+- Logo: ../logos/wtw.jpg
 WTW er et trondheimsbasert firma som driver med mobil tjenesteutvikling. WTW har blant annet løsninger for billettsystemer for buss og parkering, betaling og kommunikasjon med fastlege og betalingsløsning for havner.
 
 Mobillett er et billettsystem for kollektivtransportselskaper, som gjør at reisende kan kjøpe billetter med mobilen. Løsningen bruker i flere norske byer.
@@ -88,8 +85,7 @@ Nøkkelord: Azure, C#, Vue.js, Umbraco
 - Kunde: Sunlit Sea
 - Prosjekt: Visualisering
 - Periode: 04.2020 – 11.2020
-- Logo: images/logo-sunlit-sea.png
-
+- Logo: ../logos/sunlit-sea.png
 I planlegging- og prototypefasen ble det lagd 3D modeller og animasjoner som ble brukt til planlegging, kommunikasjon og markedsføring.
 
 Vegard produserte videoer for montering av solcellepaneler, produksjon av flyteelementene til solcellepanelene og veien fra fabrikk til utplassering på vann. I tillegg ble det produsert en video for markedsføring hvor systemet ble visualisert på en mulig lokasjon.
@@ -103,8 +99,7 @@ Nøkkelord: Blender, Unity, C#
 - Kunde: Equinor
 - Prosjekt: Echo, Digital Tvilling
 - Periode: 02.2019 – nå
-- Logo: images/logo-equinor.png
-
+- Logo: ../logos/equinor.png
 Del av AR/VR-teamet som utvikler Equinors Digitale Tvilling. En digital tvilling er en digital kopi av et fysisk bygg, som tilgjengeliggjør informasjon for brukere.
 
 Echo, Equinors digitale tvilling, blir brukt til å blant annet inspisere og verifisere installasjoner av oljeplattformer, identifisere fremtidige problemer, samt redusere tid for søk, navigasjon og kontroll.

@@ -37,8 +37,7 @@ Scrum, Kanban, Agile, Lean
 - Kunde: Thales
 - Prosjekt: Gradert
 - Periode: 07.2021 – nå
-- Logo: images/logo-thales.png
-
+- Logo: ../logos/thales.png
 Thales Norway utvikler kommunikasjonsløsninger for forsvarssektoren og er hovedleverandør av IP-krypto til NATO.
 
 Høsten 2021 ble Lars en del av teamet for utvikling av taktiske kommunikasjonssystemer hos Thales Norway.
@@ -54,8 +53,7 @@ Nøkkelord: C++20/C++23, Cmake, Jenkins, Linux, Python
 - Kunde: Thales
 - Prosjekt: Gradert
 - Periode: 11.2020 – 07.2021
-- Logo: images/logo-thales.png
-
+- Logo: ../logos/thales.png
 Fra november 2020 har Lars vært en del av teamet hos Thales Norway som utvikler løsninger for sikker IP-basert kommunikasjon.
 
 Som en del av software-teamet har jobbet han med design, implementasjon og testing av løsninger for et Linux-miljø som sørger for kryptert IP-trafikk.
@@ -69,8 +67,7 @@ Nøkkelord: C++20, Linux, Conan, Python, Rust
 - Kunde: Kongsberg Defence & Aerospace
 - Prosjekt: Gradert
 - Periode: 10.2019 – 10.2020
-- Logo: images/logo-kongsberg.png
-
+- Logo: ../logos/kongsberg.png
 Kongsberg Defence & Aerospace (KDA) er en ledende leverandør av produkter innen kommando og kontroll, overvåkning, rom, taktisk kommunikasjon, fjernvåpenstasjoner og missiler.
 
 Lars har fra høsten 2019 jobbet for Defence Communications avdelingen til Kongsberg. Denne avdelingen utvikler taktisk kommunikasjonsutstyr designet for bruk i felt.
@@ -84,8 +81,7 @@ Nøkkelord: C/C++, Linux, SNMP, MIB, Python, SDL
 - Kunde: Appear TV
 - Prosjekt: Transcoder
 - Periode: 01.2019 – 09.2019
-- Logo: images/logo-appear-tv.png
-
+- Logo: ../logos/appear-tv.png
 Appear TV er et norsk selskap som utvikler software og hardware for broadcasting, kontribusjon og nett-TV. Selskapet har rundt 120 ansatte, hvorav 80% er utviklere.
 
 Appear TV sin video-transkoder er basert på spesiallaget HW designet for videoprosessering i sanntid. Produktet retter seg mot profesjonelle brukere som er leverandører av video.
@@ -103,8 +99,7 @@ Nøkkelord: C++, Linux, Yocto, Typescript, React, HEVC, AVC, scrumban, Trello
 - Kunde: Appear TV
 - Prosjekt: HLS Server
 - Periode: 01.2018 – 08.2018
-- Logo: images/logo-appear-tv.png
-
+- Logo: ../logos/appear-tv.png
 Lars har designet og implementert HLS integrasjonen for dette produktet. HLS er Apple sin protokoll for strømming av video over nett.
 
 Implementasjonen er basert på en klient/server-arkitektur, hvor hver instans genererer en eller flere videostrømmer. Klienten er skrevet i Python og bruker WebDAV for overføring, og mottakeren er en nginx-instans med WebDAV-utvidelse.
@@ -118,8 +113,7 @@ Nøkkelord: HLS, Python, WebDAV, nginx
 - Kunde: Appear TV
 - Prosjekt: Coders
 - Periode: 08.2014 – 01.2019
-- Logo: images/logo-appear-tv.png
-
+- Logo: ../logos/appear-tv.png
 Lars har hatt flere roller og ansvarsområder i AppearTV. Blant annet hadde han ansvaret for et team på 12 utviklere som jobbet med flere produkter for videokomprimering. I denne rollen var hovedansvaret å sørge for koordinering av utviklingen, samt å sørge for at alle produktene ble tildelt nok ressurser til å levere.
 
 Andre ansvarsområder Lars hadde inkluderer:

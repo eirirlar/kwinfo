@@ -36,8 +36,7 @@ Agile, Scrum, Microservices, Kanban, DevOps
 
 - Kunde: EnerSky
 - Periode: 06.2024 – nå
-- Logo: images/logo-enersky.png
-
+- Logo: ../logos/enersky.png
 EnerSky er et selskap som leverer forenklet tilgang til energidata. Hovedproduktet er EnerSky Insight API, som lar kunder enkelt be om tredjepartstilgang til energidata for sluttbrukere. Insight API er et veldokumentert REST API basert på OpenAPI v3, og gjør det enkelt å integrere, fremfor å måtte selv integrere med Elhub sitt SOAP XML grensesnitt.
 
 Noe av kjernefunksjonaliteten EnerSky leverer for sine kunder er blant annet å kunne forholde seg til et REST API fremfor SOAP. Oppetid selv om Elhub er nede. Brukervennlig kundeportal. Lynrask support. Ulike API-spørringer på målerverdier, og grunndata om målepunkt og sluttbruker. API-nøkler med flere scopes (lese og skrivetilgang) og utløpsdato. Sluttbrukerhåndtering med støtte for digital signering av sluttbrukeravtaler, enten på e-post eller integrert. Støtte for å benytte EnerSky sitt GLN eller eget GLN. Integrert BRS-NO-624 tilgangsflyt for Elhub. Day-ahead spot priser fra ENTSO-e og interpolerte vekslingskurser fra nordiske sentralbanker, og mye mer.
@@ -67,8 +66,7 @@ Nøkkelord: Elhub, Python, FastAPI, Django, Pydantic, SQLAlchemy, Alembic, Postg
 
 - Kunde: Elporten
 - Periode: 04.2023 – 09.2023
-- Logo: images/logo-elporten.png
-
+- Logo: ../logos/elporten.png
 Elporten var et prosjekt som leverte kundeinformasjonssystem (KIS) for kraftleverandører i Norge.
 
 Elporten KIS-system var en SaaS-løsning der Kraftleverandører i det norske kraftmarkedet (Elhub rolle DDQ), kunne benytte Elporten som KIS-system for håndtering av:
@@ -96,8 +94,7 @@ Nøkkelord: Python, Flask, Django, sqlite, PostgreSQL, HTML/CSS, JavaScript, Doc
 - Kunde: DNB
 - Prosjekt: RDM/EDM
 - Periode: 01.2022 – 10.2022
-- Logo: images/logo-dnb.png
-
+- Logo: ../logos/dnb.png
 Sentral master- og referansedatahub basert på Oracle EDM.
 
 Aleksander har i prosjektet arbeidet med å etablere forståelse for måten DNB håndterer migrasjon til skyen, målsetninger i den transformasjonen og etablerte sikkerhetskrav og rutiner.
@@ -119,8 +116,7 @@ Nøkkelord: Python, Oracle EDM, SQL, REST, Kafka, AWS
 - Kunde: Statkraft
 - Prosjekt: Fusion
 - Periode: 03.2020 – 11.2021
-- Logo: images/logo-statkraft.png
-
+- Logo: ../logos/statkraft.png
 Booking og risikohåndteringsplatform for ikke-standard kraftkjøpsavtaler med Beacon.io
 
 Aleksander har i starten av prosjektet arbeidet som utvikler og senere både utvikler samt tech lead og team lead. Prosjektet omhandler oppsett, integrasjon og utvikling av en samlet plattform for booking, risikoevaluering og rapportering av kraftkjøpsavtaler. Prosjektet benytter en tredjepartsleverandør kalt Beacon som leverer en Platform as a Service (PaaS) stack til Statkraft’s Azure tenant.
@@ -143,8 +139,7 @@ Nøkkelord: Python, Pandas, Beacon.io, Azure, Azure AD, Azure Enterprise Applica
 - Kunde: Statkraft
 - Prosjekt: Algorithmic Trading
 - Periode: 09.2019 – 06.2020
-- Logo: images/logo-statkraft.png
-
+- Logo: ../logos/statkraft.png
 Aleksander overtok majoriteten av utviklingen på et Algorithmic Trading initiativ hos Statkraft, et prosjekt som tar sikte på å tilrettelegge for at traderne i selskapet skal kunne skrive algoritmer for kjøp og salg av ulike typer kraft på kraftmarkedet, da han gikk inn i prosjektet. Store deler av systemet var på plass på daværende tidspunkt, men flere sentrale deler som innhenting av historiske data, real-time streaming av børsmeldinger, ulike adaptere for back-testing av trading strategier og liknende var oppgaver Aleksander arbeidet med. Kjernen av systemet er skrevet i Python, men det er koblet opp mot en rekke interne og tredjepartsapplikasjoner og systemer skrevet i bl.a Java og C++.
 
 Noen av oppgavene Aleksander hadde i prosjektet var:
@@ -163,8 +158,7 @@ Nøkkelord: Python, Data Engineering, AlgoTrading, WebSockets, STOMP, Git, BitBu
 - Kunde: AppearTV
 - Prosjekt: Gateway
 - Periode: 07.2017 – 08.2019
-- Logo: images/logo-appeartv.jpg
-
+- Logo: ../logos/appear-tv.png
 Aleksander startet først som utvikler i Gateway-teamet, før han tok over rollen som Team Lead/Prosjektleder etter et år. Teamet har ansvar for 3 ulike produkter innenfor distribusjon, ruting og manipulasjon av videostrømmer beregnet for profesjonelle aktører.
 
 Disse tre produktene omfatter transport av videostrømmer over IP, gjennom ulike transportlag og protokoller som RTP, UDP, L2TPv3, konvertering til og fra ukomprimert video (SDI) til IP, samt ASI (komprimert video over SDI til IP).

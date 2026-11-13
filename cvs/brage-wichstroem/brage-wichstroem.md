@@ -6,8 +6,7 @@ Konsulent
 - E-post: brage.wichstrom@kodeworks.no
 - Erfaring: 1 år
 - Språk: norsk, engelsk
-- Foto: images/foto.png
-
+- Foto: images/foto.jpg
 ## Om Brage
 
 Brage Wichstrøm er en engasjert og kunnskapsrik programvareutvikler med en Master i Informatikk fra NTNU og ett års erfaring som konsulent hos KodeWorks. Han har vist sin allsidighet og tekniske dyktighet gjennom prosjekter innen fullstack-utvikling, databasearkitektur, maskinlæring og skyinfrastruktur. Med spisskompetanse i teknologier som Java, React, TypeScript og AWS, kombinerer Brage solid akademisk bakgrunn med praktisk erfaring i utviklingsteam.
@@ -61,8 +60,7 @@ Nøkkelord: Java, Typescript, React, PostgreSQL, Spring Boot, Tailwind, Docker, 
 - Kunde: NTNU
 - Prosjekt: Masteroppgave
 - Periode: 01.2023 – 07.2023
-- Logo: images/logo-ntnu.png
-
+- Logo: ../logos/ntnu.png
 Masteroppgaven hans fokuserte på å utvikle en prediktiv modell for å vurdere risikoen for at sauer blir angrepet av rovdyr ved hjelp av GPS-halsbåndsdata. Ved å analysere historiske bevegelsesdata fra sauer og sammenligne det med kjente tilfeller av rovdyrangrep i samme område, utarbeidet han et integrert datasett. Fra dette datasettet trente han flere maskinlæringsmodeller, med målet om å identifisere avvik i bevegelsesmønstrene som kunne indikere et potensielt rovdyrangrep
 
 Nøkkelord: Python, Maskinlæring, Sckit-learn, Pandas
@@ -72,8 +70,7 @@ Nøkkelord: Python, Maskinlæring, Sckit-learn, Pandas
 - Kunde: Kongsberg Satellite Services
 - Prosjekt: Sommerjobb
 - Periode: 06.2022 – 08.2022
-- Logo: images/logo-kongsberg-satellite-services.png
-
+- Logo: ../logos/kongsberg-satellite-services.png
 I sitt sommerprosjekt fokuserte Brage på å automatisere manuelle tester ved å implementere en maskin-til-maskin løsning. I tillegg utviklet han et REST-basert API for å gi tilgang til interne systemer som tidligere bare kunne nås via GUI-applikasjoner. Dette prosjektet ble utført i et tverrfaglig team med ekspertise innen elektronikk og romfart, hvor Brage, med sin kunnskap om systemutvikling, fungerte som en nøkkelperson.
 
 Nøkkelord: Python, MongoDB, Docker, InfluxDB, Flask, Machine-to-machine

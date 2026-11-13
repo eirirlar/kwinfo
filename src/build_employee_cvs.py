@@ -8,7 +8,8 @@ Usage (from the project root):
 For each person two targets are built next to the CV, both kept out of git by .gitignore:
     cvs/<name>/<name>.pdf                       the CV (src/build_cv_pdf.py)
     cvs/<name>/visittkort-<name>.pdf and .png   the business card (src/build_cv_business_cards.py)
-A target is rebuilt only when it is missing or the CV, its images or the build scripts and styles are newer.
+A target is rebuilt only when it is missing or the CV, its photo, the shared logos in cvs/logos/ or the build
+scripts and styles are newer.
 After the builds, every CV is checked against the shared conventions (src/check_cv_md.py).
 src/build_all.py runs this script as its last step.
 """
@@ -31,7 +32,7 @@ def targets(names: list[str]) -> list[Target]:
     for n in names:
         src = f"cvs/{n}/{n}.md"
         t.append(Target("cv", f"{n}: CV", uv("build_cv_pdf.py", src, f"cvs/{n}/{n}.pdf"),
-                        [src, f"cvs/{n}/images", *ASSET_SVGS, "src/cv_pdf", "src/build_cv_pdf.py",
+                        [src, f"cvs/{n}/images", "cvs/logos", *ASSET_SVGS, "src/cv_pdf", "src/build_cv_pdf.py",
                          "src/cv_markdown.py"], [f"cvs/{n}/{n}.pdf"]))
         t.append(Target("card", f"{n}: business card", uv("build_cv_business_cards.py", src),
                         [src, f"{VP}/profile/colors.json", *ASSET_SVGS, f"{VP}/profile/assets/pdf/*.pdf", "src/business_card",

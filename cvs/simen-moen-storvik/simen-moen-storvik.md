@@ -38,8 +38,7 @@ Agile, CI/CD, Concurrent Design, Scrum
 
 - Kunde: Inatur
 - Periode: 07.2022 – nå
-- Logo: images/logo-inatur.png
-
+- Logo: ../logos/inatur.png
 Inatur er Norges største plattform for kjøp og salg av jakt og fiske. Simen har siden 2022 jobbet med fullstack-utvikling for Inatur. Hos Inatur får utvikleren stort ansvar og frihet til å løse fullstack-oppgaver som spenner bredt gjennom plattformen. Simen har blant annet utviklet funksjonalitet for brukersletting fra Inaturs systemer - en oppgave som krever at man produserer svært robust kode i et komplisert domeneområde, i tråd med gjeldende GDPR-reglement. Han har ellers jobbet med UX, klientkode, API, optimalisering og forbedring av legacykode, integrasjon med tredjepartsleverandører og backend-utvikling, og i nyere tid et omfattende omskrivingsprosjekt med fokus på RESTful API og frontend.
 
 I prosjektet har Simen jobbet i et kompakt, scrum-basert team. Fokus har vært fordelt på vedlikehold og videreutviklig av legacykode, hyppige leveranser av features og større leveranser av ny funksjonalitet.
@@ -63,8 +62,7 @@ Nøkkelord: Svakstrøm, Arduino, MQTT, Docker, SQLite, JavaScript, TypeScript, N
 - Kunde: Sunlit Sea
 - Prosjekt: Sensorfusjonering for tilstandsestimering i FPV-teknologi
 - Periode: 09.2020 – 01.2022
-- Logo: images/logo-sunlit-sea.png
-
+- Logo: ../logos/sunlit-sea.png
 Simen har utviklet et prosesseringsverktøy som benytter sanntidskalibrering og sensorfusjonering til å estimere posisjon og vinkler på IMU-sensorer. Videre har han bidratt i samarbeid med andre aktører på områder som forskning, robotikk og automatisering av produksjonslinjer.
 
 Nøkkelord: Data processing, Big data, Sensor fusion, Pose estimation, Python, IMU, Kalman filters, Sensorics, Robotics
@@ -74,8 +72,7 @@ Nøkkelord: Data processing, Big data, Sensor fusion, Pose estimation, Python, I
 - Kunde: NTNU
 - Prosjekt: Maskinlæringsmodell for tilstandsestimering i vindmøller
 - Periode: 11.2018 – 05.2019
-- Logo: images/logo-ntnu.png
-
+- Logo: ../logos/ntnu.png
 I samarbeid med SAP Norge AS ble det gjennomført en forskningsrettet oppgave der målet var å bruke maskinlæring for å gjøre avviksdeteksjon på vibrasjonslik data fra vindmøller.
 
 Flere forskjellige modellarkitekturer ble implementert og trent på datasettene, som inneholdt kunstig introduserte feil og avvik. Koden ble i sin helhet skrevet i Python.

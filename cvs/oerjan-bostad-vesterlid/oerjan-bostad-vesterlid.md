@@ -38,8 +38,7 @@ Agile, Scrum, Pull request, Code review, Test-Driven-Development, Rest
 - Kunde: EnerSky
 - Prosjekt: Nettleie API
 - Periode: 01.2026 – nå
-- Logo: images/logo-enersky.png
-
+- Logo: ../logos/enersky.png
 EnerSky er et selskap som fokuserer på å gjøre energidata fra husholdninger, bedrifter og industri mer tilgjengelig og enklere å behandle.
 
 Ørjan bidro til å utvikle selskapets Nettleie API produkt som har som mål å gjøre data og informasjon om nettleie i Norge mer tilgjengelig.
@@ -57,8 +56,7 @@ Nøkkelord: Python, REST, ChangeDetectionIO, TypeScript, NextJS
 - Kunde: Equinor
 - Prosjekt: Data Producer Mnemonics
 - Periode: 03.2025 – 12.2025
-- Logo: images/logo-equinor.png
-
+- Logo: ../logos/equinor.png
 Data Producer Mnemonics er en applikasjon som forenkler samarbeid mellom Equinor og tjenesteleverandører av boring og brønn-data. Applikasjonen gjør det enklere for tjenesteleverandørene å holde Equinor oppdatert på hvilke tjenester og data de til enhver tid kan levere, og er integrert i Equinors indre systemer for å gjøre datagrunnlaget tilgjengelig for videre bruk internt.
 
 Ørjan hadde rolle som fullstack-utvikler og arbeidet på alle deler av applikasjonen, eksempelvis:
@@ -77,8 +75,7 @@ Nøkkelord: TypeScript, React, C#, AspNetCore, Azure, Bicep, PostgreSQL
 - Kunde: Lilbit
 - Prosjekt: Lildog-app, GPS for hund og katt
 - Periode: 03.2023 – 03.2025
-- Logo: images/logo-lilbit.png
-
+- Logo: ../logos/lilbit.png
 Lilbit leverer GPS-trackere for kjæledyr med en tilhørende iOS-applikasjon, Lildog, som gir brukerne avanserte verktøy for å overvåke og samhandle med sporingsenheten. GPS-trackeren festes på kjæledyrets halsbånd og kommuniserer både via LTE og CoAP med servere, eller direkte med mobiltelefonen via Bluetooth Low Energy (BLE).
 
 Ørjan hadde hovedansvaret for utviklingen av Lildog iOS-appen, med fokus på å skape en intuitiv og effektiv brukeropplevelse. Han har designet og implementert funksjonalitet som:
@@ -96,8 +93,7 @@ Nøkkelord: iOS, Swift, Xcode, App Store, UIKit, Combine, Firebase, Bluetooth, B
 - Kunde: Nomono
 - Prosjekt: Pilot- app for Nomono
 - Periode: 08.2022 – 02.2023
-- Logo: images/logo-nomono.png
-
+- Logo: ../logos/nomono.png
 Nomono er en innovativ oppstartsbedrift fra Trondheim som utvikler løsninger for spatial audio og tredimensjonal lydopptak. Sentralt i deres portefølje står Sound Capsule, en trådløs mobil opptaksstasjon med fire mikrofoner som muliggjør profesjonell lydproduksjon.
 
 Ørjan spilte en nøkkelrolle som iOS-utvikler i prosjektet, hvor han ledet utviklingen av en kontrolllapplikasjon for Sound Capsule. Appen muliggjør funksjoner som:
@@ -116,8 +112,7 @@ Nøkkelord: iOS, Swift, Xcode, App Store, SwiftUI, Combine, Auth0, Bluetooth, BL
 
 - Kunde: Pexip
 - Periode: 03.2022 – 08.2022
-- Logo: images/logo-pexip.png
-
+- Logo: ../logos/pexip.png
 Pexip tilbyr sikker, multi-plattform videokonferanseteknologi som brukes av kunder globalt. Prosjektet fokuserte på å tilpasse eksisterende C- og C++-kode for å muliggjøre bruk på Android og iOS, og dermed utvide teknologiens rekkevidde til mobile enheter.
 
 Ørjan ledet utviklingen på både Android- og iOS-plattformene, der han samarbeidet tett med Pexips utviklingsteam for å tilpasse koden til mobile rammeverk. Han leverte en MVP på kort tid for begge plattformer som demonstrerte:
@@ -139,8 +134,7 @@ Nøkkelord: Android, Kotlin, iOS, Swift, UIKit, Native, C
 - Kunde: SkandiaEnergi
 - Prosjekt: Elkompis app for SkandiaEnergi
 - Periode: 08.2021 – 03.2022
-- Logo: images/logo-skandiaenergi.png
-
+- Logo: ../logos/skandia-energi.png
 ElKompis er en app for kundene av SkandiaEnergi som tar sikte på å gjøre hverdagen som strømkunde mer oversiktlig, samt tilby smarte løsninger for strøm og lading. Appen gir strømkunder oversikt over nyttige ting som forbruk, strømpris og prognoser, og hjelper kundene med å ta smartere valg når det kommer til timing av forbruk.
 
 Ørjan kom inn mot slutten av prosjektperioden etter at det hadde blitt bestemt at appen skulle få et nytt visuelt design, og jobbet da tett med designerne fra Eggs Design for å implementere det nye designet i appen. Mye av jobben som ble gjort gikk på visualisering av data i form av grafer, i tillegg til implementering av gjenbrukbare komponenter og skjermer tilpasset det nye designet. Etter første release ble Ørjan med på videreutvikling av appen, og fikk et bredere ansvar for implementasjon av nye features samt vedlikehold og endring av eksisterende features.
@@ -173,8 +167,7 @@ Nøkkelord: iOS, Swift, UIKit
 - Kunde: Tail it
 - Prosjekt: Tail it sin plattform og system for lokasjonssporing med GPS-sporingsenheter
 - Periode: 10.2019 – 08.2020
-- Logo: images/logo-tail-it.png
-
+- Logo: ../logos/tail-it.png
 Tail it tilbyr GPS-sporingsenheter og tilhørende plattformer som gir brukere muligheten til å spore sykler, kjæledyr og mennesker. Den tilhørende mobilappen gjør det mulig for brukerne å overvåke enhetene sine, dele lokasjoner og interagere med andre brukere.
 
 Ørjan spilte en nøkkelrolle i utviklingen av Tail its Android-løsninger, der han:
@@ -196,8 +189,7 @@ Nøkkelord: Kotlin, Java, Android, Spring, React, Typescript
 - Kunde: NTNU
 - Prosjekt: Hverdagshelt
 - Periode: 01.2019
-- Logo: images/logo-ntnu.png
-
+- Logo: ../logos/ntnu.png
 Prosjektoppgave i faget TDAT2003 - Systemutvikling 2 med web-applikasjoner.
 
 Hverdagshelt skal være en plattform for alle kommuner i Norge hvor man kan melde inn om feil og mangler ved infrastruktur i de ulike tettstedene. I dag finnes det utallige løsninger i de ulike kommunene og ingen felles plattform. Hverdagshelt skal gjøre det enklere og raskere å melde fra om feil og mangler på blant annet veisystemer, friarealer, vann og avløp uten å krever mer fra kommunene enn dagens løsninger. Systemet er web-basert og skal kunne brukes fra mobile enheter.
@@ -211,8 +203,7 @@ Nøkkelord: FoU, Maskinvare, RK3188, ARM, Android, Programvare, Produksjon, Pros
 - Kunde: SALT
 - Prosjekt: Mplify
 - Periode: 06.2018 – 10.2018
-- Logo: images/logo-salt.png
-
+- Logo: ../logos/salt.png
 SALT er en linjeforening for lærerstudenter ved NTNU
 
 Mplify er en web-applikasjonsløsning for medlemsregisteret for linjeforeningen SALT.
